@@ -1,0 +1,3 @@
+files:
+  - source: /Maths Club Resources/en/**/*.md
+    translation: /Maths Club Resources/%two_letters_code%/%original_file_name%
