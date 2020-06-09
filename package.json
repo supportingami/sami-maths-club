@@ -1,0 +1,30 @@
+{
+  "name": "sami-maths-club",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "npm run prepare",
+    "prepare": "ts-node scripts/app-prepare.ts",
+    "start": "cd maths-club-app && npm run start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/supportingami/sami-maths-club.git"
+  },
+  "author": "",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/supportingami/sami-maths-club/issues"
+  },
+  "homepage": "https://github.com/supportingami/sami-maths-club#readme",
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.1",
+    "@types/node": "^14.0.12",
+    "ts-node": "^8.10.2",
+    "typescript": "~3.8.3"
+  },
+  "dependencies": {
+    "fs-extra": "^9.0.1"
+  }
+}
