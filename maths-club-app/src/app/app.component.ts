@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'sami-maths-club-app';
+  title = 'SAMI Maths Club App';
 }
