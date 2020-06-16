@@ -1,3 +1,3 @@
-export class Problem{
+export interface Problem{
     name: string;
 }

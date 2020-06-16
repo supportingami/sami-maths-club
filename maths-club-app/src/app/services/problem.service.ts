@@ -13,6 +13,6 @@ export class ProblemService {
 
   // get Problems
   getProblems(): Observable<Problem[]>{
-    return this.http.get<Problem[]>('/../maths-club-pack/problems.json');
+    return this.http.get<Problem[]>('../../maths-club-pack/problems.json');
   }
 }

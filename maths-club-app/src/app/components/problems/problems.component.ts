@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProblemService } from '../../services/problem.service';
 import { Problem } from '../../models/Problem';
+import { ALL_PROBLEMS } from '../../../../../maths-club-pack/problems';
 
 @Component({
   selector: 'app-problems',
@@ -9,16 +10,11 @@ import { Problem } from '../../models/Problem';
 })
 export class ProblemsComponent implements OnInit {
 
-  problems: Problem[];
+  problems: Problem[] = ALL_PROBLEMS;
 
-  constructor(private problemService: ProblemService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.problemService.getProblems().subscribe(problems => {
-      this.problems = problems;
-
-      console.log("Problems");
-    });
   }
 
 }
