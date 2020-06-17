@@ -3,24 +3,20 @@ import { ActivatedRoute } from '@angular/router';
 
 import { ALL_PROBLEMS as problems } from '../../../../../maths-club-pack/problems';
 
-
-
 @Component({
   selector: 'app-problem-card',
   templateUrl: './problem-card.component.html',
-  styleUrls: ['./problem-card.component.scss']
+  styleUrls: ['./problem-card.component.scss'],
 })
 export class ProblemCardComponent implements OnInit {
-
   problem;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      console.log("Params" + params);
+    this.route.params.subscribe((params) => {
+      console.log('Params', params);
       // this.problem = problems[+params.get('slug')];
-    })
+    });
   }
-
 }

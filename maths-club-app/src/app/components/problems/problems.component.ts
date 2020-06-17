@@ -9,17 +9,17 @@ import { ALL_PROBLEMS } from '../../../../../maths-club-pack/problems';
   styleUrls: ['./problems.component.scss'],
 })
 export class ProblemsComponent implements OnInit {
-  problems: Problem[] = ALL_PROBLEMS;
-  news;
+  all_problems: Problem[] = ALL_PROBLEMS;
+  problems;
 
   constructor() {}
 
   ngOnInit(): void {
-    this.news = this.problems.map((obj) => ({
+    this.problems = this.all_problems.map((obj) => ({
       ...obj,
-      slug: obj.name,
+      slug: obj.name.toLowerCase().replace(/\s+/g, '-'),
     }));
 
-    console.log(this.news);
+    console.log(this.problems);
   }
 }
