@@ -18,7 +18,8 @@ export class ProblemCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.problem = problems[+params.get('slug')];
+      console.log("Params" + params);
+      // this.problem = problems[+params.get('slug')];
     })
   }
 

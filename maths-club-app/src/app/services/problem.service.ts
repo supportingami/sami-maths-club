@@ -5,14 +5,13 @@ import { Problem } from '../models/Problem';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProblemService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   // get Problems
-  getProblems(): Observable<Problem[]>{
+  getProblems(): Observable<Problem[]> {
     return this.http.get<Problem[]>('../../maths-club-pack/problems.json');
   }
 }
