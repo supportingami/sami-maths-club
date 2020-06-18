@@ -1,0 +1,19 @@
+<h4>Problems</h4>
+<div class="problems-list-container">
+  <div
+    class="problem-card"
+    *ngFor="let problem of problems"
+    [routerLink]="['/p/' + problem.slug]"
+  >
+    <img
+      class="card-img-top"
+      [src]="['/assets/maths-club-pack/cover_images/' + problem.slug + '.svg']"
+      width="150px"
+      height="150px"
+      [alt]="problem.title"
+    />
+    <div class="problem-title">
+      {{ problem.title }}
+    </div>
+  </div>
+</div>

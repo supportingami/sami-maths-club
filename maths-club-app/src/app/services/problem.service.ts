@@ -1,17 +1,9 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
-import { Problem } from '../models/Problem';
-import { Observable } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class ProblemService {
   constructor(private http: HttpClient) {}
-
-  // get Problems
-  getProblems(): Observable<Problem[]> {
-    return this.http.get<Problem[]>('../../maths-club-pack/problems.json');
-  }
 }

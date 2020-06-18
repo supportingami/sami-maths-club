@@ -1,29 +1,36 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-
-//import { ALL_PROBLEMS as problems } from '../../../../../maths-club-pack/problems';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
-  selector: 'app-problem-card',
-  templateUrl: './problem-card.component.html',
-  styleUrls: ['./problem-card.component.scss'],
+  selector: "app-problem-card",
+  templateUrl: "./problem-card.component.html",
+  styleUrls: ["./problem-card.component.scss"],
 })
 export class ProblemCardComponent implements OnInit {
-  problem;
-  slug;
+  problemText: string;
+  slug: string;
 
   constructor(private route: ActivatedRoute, private http: HttpClient) {}
 
   async ngOnInit() {
     this.route.params.subscribe((params) => {
       this.slug = params.slug;
-      console.log('Params', this.slug);
-      // this.problem = problems[+params.get('slug')];
+      console.log("Params", this.slug);
     });
-    this.problem = await this.http
-      .get(`/assets/en/student/` + this.slug + `.md`, { responseType: 'text' })
+    const problemText = await this.http
+      .get<string>(`/assets/maths-club-pack/en/student/` + this.slug + `.md`, {
+        responseType: "text" as any,
+      })
       .toPromise();
-    console.log(this.problem);
+    const formattedProblem = this.rewriteImageUrls(problemText);
+    this.problemText = formattedProblem;
+  }
+
+  rewriteImageUrls(problemText: string) {
+    return problemText.replace(
+      /\.\.\/\.\.\/images/g,
+      "assets/maths-club-pack/images"
+    );
   }
 }
