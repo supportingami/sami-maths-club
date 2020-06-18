@@ -1,9 +1,9 @@
-# Buffon’s Needle
+### 9 Dots
 
-If you drop a small toothpick on the grid below, what do you think is the
-probability that it will cross over a line?
+Go through all 9 dotes using only four straight lines without taking your pen off the page.
 
-![grid with needle](../../images/p2-a.png)
+![grid with needle](assets/images/9-dots.png)
 
-(See the facilitator notes for details of how to conduct an experiment and
-test your predictions)
+You may not go back over a line you have already drawn
+
+(Do not look at the facilitator notes until you are sure you have the solution.)
