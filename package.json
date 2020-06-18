@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "cd maths-club-app && yarn install && npm run prepare",
     "prepare": "ts-node scripts/app-prepare.ts",
-    "start": "cd maths-club-app && npm run start"
+    "start": "npm run prepare && cd maths-club-app && npm run start"
   },
   "repository": {
     "type": "git",
