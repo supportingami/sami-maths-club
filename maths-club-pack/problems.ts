@@ -1,4 +1,4 @@
-[
+export const ALL_PROBLEMS = [
     {
         "name": "Buffon's needle"
     },
@@ -30,3 +30,4 @@
         "name": "Geometry Puzzles"
     }
 ]
+
