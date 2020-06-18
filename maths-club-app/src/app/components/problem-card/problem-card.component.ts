@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
-import { ALL_PROBLEMS as problems } from '../../../../../maths-club-pack/problems';
+//import { ALL_PROBLEMS as problems } from '../../../../../maths-club-pack/problems';
 
 @Component({
   selector: 'app-problem-card',
@@ -10,13 +11,19 @@ import { ALL_PROBLEMS as problems } from '../../../../../maths-club-pack/problem
 })
 export class ProblemCardComponent implements OnInit {
   problem;
+  slug;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private http: HttpClient) {}
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.route.params.subscribe((params) => {
-      console.log('Params', params);
+      this.slug = params.slug;
+      console.log('Params', this.slug);
       // this.problem = problems[+params.get('slug')];
     });
+    this.problem = await this.http
+      .get(`/assets/en/student/` + this.slug + `.md`, { responseType: 'text' })
+      .toPromise();
+    console.log(this.problem);
   }
 }
