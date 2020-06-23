@@ -7,7 +7,9 @@ import { MarkdownModule } from "ngx-markdown";
 import { AppComponent } from "./app.component";
 import { ProblemCardComponent } from "./components/problem-card/problem-card.component";
 import { ProblemsListComponent } from "./components/problems-list/problems-list.component";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatToolbarModule } from "@angular/material/toolbar";
+
 
 @NgModule({
   declarations: [AppComponent, ProblemCardComponent, ProblemsListComponent],
@@ -17,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     MarkdownModule.forRoot(),
     BrowserAnimationsModule,
+    MatToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
