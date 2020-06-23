@@ -1,0 +1,19 @@
+<svg enable-background="new 0 0 480 480" version="1.1" viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg">
+ <g fill="#63C8CD">
+  <path d="M80,400v-80H0v80v80h160v-80H80z"/>
+  <path d="m240 80v80h80v-160h-160v80h80z"/>
+ </g>
+ <path d="m320 400v-80h-240v80h80v80h80v-80h80z" fill="#1895AA"/>
+ <path d="M80,240h80v-80H80V80H0v240h80V240z" fill="#F7D04F"/>
+ <path d="M400,240v80h80V80h-80V240z" fill="#1895AA"/>
+ <path d="M240,400v80h240v-80H240z" fill="#F7D04F"/>
+ <path d="m400 240h-160v80h80v80h160v-80h-80v-80z" fill="#63C8CD"/>
+ <path d="M80,160h80h80V80h-80V0H0v80h80V160z" fill="#1895AA"/>
+ <path d="m160 160v80h-80v80h160v-80h80v-80h-160z" fill="#EF9F35"/>
+ <path d="m368 0h-48v240h80v-160h80v-80h-112z" fill="#F7D04F"/>
+ <g fill="#F9F6ED">
+  <path d="m440 440h16v16h-16v-16z"/>
+  <path d="m408 440h16v16h-16v-16z"/>
+  <path d="m376 440h16v16h-16v-16z"/>
+ </g>
+</svg>

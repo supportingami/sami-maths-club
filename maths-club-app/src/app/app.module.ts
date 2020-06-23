@@ -8,8 +8,9 @@ import { AppComponent } from "./app.component";
 import { ProblemCardComponent } from "./components/problem-card/problem-card.component";
 import { ProblemsListComponent } from "./components/problems-list/problems-list.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MatToolbarModule } from "@angular/material/toolbar";
 
+import { MatCardModule } from "@angular/material/card";
+import { MatToolbarModule } from "@angular/material/toolbar";
 
 @NgModule({
   declarations: [AppComponent, ProblemCardComponent, ProblemsListComponent],
@@ -20,6 +21,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
     MarkdownModule.forRoot(),
     BrowserAnimationsModule,
     MatToolbarModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
