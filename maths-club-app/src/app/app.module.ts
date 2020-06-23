@@ -7,6 +7,7 @@ import { MarkdownModule } from "ngx-markdown";
 import { AppComponent } from "./app.component";
 import { ProblemCardComponent } from "./components/problem-card/problem-card.component";
 import { ProblemsListComponent } from "./components/problems-list/problems-list.component";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent, ProblemCardComponent, ProblemsListComponent],
@@ -15,6 +16,7 @@ import { ProblemsListComponent } from "./components/problems-list/problems-list.
     AppRoutingModule,
     HttpClientModule,
     MarkdownModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
