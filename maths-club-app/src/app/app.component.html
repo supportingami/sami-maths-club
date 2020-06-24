@@ -9,7 +9,7 @@
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav
       #snav
-      mode="side"
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
       [opened]="mobileQuery.matches ? false : true"
     >
       <mat-nav-list>
