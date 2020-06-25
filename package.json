@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "postinstall": "cd maths-club-app && yarn install && npm run prepare",
+    "postinstall": "npm run prepare && cd maths-club-app && yarn install",
     "prepare": "ts-node scripts/app-prepare.ts",
     "start": "npm run prepare && cd maths-club-app && npm run start"
   },

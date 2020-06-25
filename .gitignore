@@ -1,3 +1,4 @@
 node_modules
 # maths-club-pack assets automatically copied from top-level folder to assets
 maths-club-app/src/assets/maths-club-pack
+**/package.lock.json
