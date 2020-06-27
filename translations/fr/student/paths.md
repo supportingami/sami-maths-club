@@ -1,16 +1,16 @@
-# Paths
+# Chemins
 
-1.How many ways are there from A to B in the grid if you can only walk along the lines and only walk right or down each time? How about from A to C? How about from A to any other point?
+1.Combien de voies y a-t-il de A à B dans le réseau si vous ne pouvez marcher que le long des lignes et marcher à chaque fois? Que diriez-vous de A à C ? Que diriez-vous de A à tout autre point ?
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/paths.png?raw=true)
 
-2.How can you write down a path from A to B as a sequence of 10 letters? Or as a set of 4 numbers?
+2.Comment pouvez-vous écrire un chemin de A à B comme une séquence de 10 lettres ? Ou comme un ensemble de 4 nombres ?
 
 
-Only try these after solving 1 and 2:
+Ne les essayez qu'après avoir résolu 1 et 2 :
 
 
-3.How many ways are there to line up 4 blue and 6 green books in your shelf?
+3.Combien de façons y a-t-il pour aligner 4 livres bleus et 6 livres verts sur votre étagère?
 
 
-4.If you take 3 balls from a bag of 7 different balls, how many possible different outcomes are there?
+4.Si vous prenez 3 boules dans un sac de 7 boules différentes, combien y a-t-il de résultats différents possibles?
