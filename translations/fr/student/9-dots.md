@@ -1,4 +1,4 @@
-# 9 points
+# 9 Dots
 
 Parcourez les 9 points en utilisant seulement quatre lignes droites sans enlever votre stylet de la page.
 
