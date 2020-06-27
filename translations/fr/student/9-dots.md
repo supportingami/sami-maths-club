@@ -1,4 +1,4 @@
-# 9 Dots
+# 9 points
 
 Go through all 9 dotes using only four straight lines without taking your pen off the page.
 
