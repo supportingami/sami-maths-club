@@ -1,7 +1,5 @@
 # Buffon's Needle
 
-(test - should remove)<img src="../../images/buffons-needle-1.png">
-
 ## Introduction
 
 This session will take more organization by the facilitator to help students find interesting results, find instructions as follows:
