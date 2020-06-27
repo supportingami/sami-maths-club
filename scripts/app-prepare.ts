@@ -4,7 +4,6 @@ import { stripSpecialCharacters } from "./utils/string.utils";
 import { replaceInFileSync } from "replace-in-file";
 
 const PACK_DIR = "./maths-club-pack";
-const APP_ASSETS_DIR = "./maths-club-app/src/assets";
 const APP_PACK_DIR = "./maths-club-app/src/assets/maths-club-pack";
 const TRANSLATIONS_DIR = "./translations";
 
@@ -16,7 +15,7 @@ function main() {
 function generateAppProblemsList() {
   const allProblems = listProblems();
   fs.writeFileSync(
-    `${APP_ASSETS_DIR}/ProblemsList.ts`,
+    `${APP_PACK_DIR}/ProblemsList.ts`,
     `export const ALL_PROBLEMS = ${JSON.stringify(allProblems)}`
   );
 }
