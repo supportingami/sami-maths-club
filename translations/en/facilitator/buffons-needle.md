@@ -1,7 +1,5 @@
 # Buffon's Needle
 
-(test - should remove)<img src="https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/buffons-needle-1.png?raw=true">
-
 ## Introduction
 
 This session will take more organization by the facilitator to help students find interesting results, find instructions as follows:
