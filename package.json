@@ -21,6 +21,7 @@
   "devDependencies": {
     "@types/fs-extra": "^9.0.1",
     "@types/node": "^14.0.12",
+    "replace-in-file": "^6.1.0",
     "ts-node": "^8.10.2",
     "typescript": "~3.8.3"
   },
