@@ -1,18 +1,18 @@
-# Find the path
+# Trouver le chemin d'accès
 
-By moving up, down, left or right, make a path from the Start to the Finish.
+En se déplaçant vers le haut, vers le bas, vers la gauche ou vers la droite, faire un chemin depuis le début jusqu'à la fin.
 
-Add up all the numbers you pass through.
+Ajoutez tous les chiffres que vous passez.
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/find-the-path.png?raw=true)
 
 
-Can you make exactly 53?
+Pouvez-vous faire exactement 53?
 
 
 
-What is the smallest possible number?
+Quel est le plus petit nombre possible?
 
 
 
-Can you make exactly 60?
+Pouvez-vous faire exactement 60?
