@@ -47,7 +47,7 @@ function copyTranslationsForUpload() {
  */
 function rewriteAppImageUrlsForTranslation() {
   replaceInFileSync({
-    files: `${TRANSLATIONS_DIR}/**/*.md`,
+    files: `${TRANSLATIONS_DIR}/en/**/*.md`,
     from: /(..\/)(.)*.(?:jpg|jpeg|gif|png)/g,
     to: (match) =>
       match.replace(
