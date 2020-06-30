@@ -1,16 +1,25 @@
-<div class="problems-list-container">
-  <mat-card
-    class="problem-card"
+<div
+  class="problems-list-container"
+  fxLayout="row wrap"
+  fxLayoutGap="16px grid"
+>
+  <div
+    fxFlex="16%"
+    fxFlex.xs="100%"
+    fxFlex.xs="50%"
     *ngFor="let problem of problems"
-    [routerLink]="['/p/' + problem.slug]"
   >
-    <mat-card-header>
-      <mat-card-subtitle>{{ problem.title }}</mat-card-subtitle>
-    </mat-card-header>
-    <img
-      mat-card-image
-      [src]="['/assets/maths-club-pack/cover_images/' + problem.slug + '.svg']"
-      [alt]="problem.title"
-    />
-  </mat-card>
+    <mat-card class="problem-card" [routerLink]="['/p/' + problem.slug]">
+      <mat-card-header>
+        <mat-card-subtitle>{{ problem.title }}</mat-card-subtitle>
+      </mat-card-header>
+      <img
+        mat-card-image
+        [src]="[
+          '/assets/maths-club-pack/cover_images/' + problem.slug + '.svg'
+        ]"
+        [alt]="problem.title"
+      />
+    </mat-card>
+  </div>
 </div>
