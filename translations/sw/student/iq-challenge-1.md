@@ -1,7 +1,3 @@
-- - -
-title: IQ Challenge 1 slug: iq-challenge-1 type: problem order: 8
-- - -
-
 # IQ Challenge 1
 
 1.Fill in the missing numbers for each sequence
