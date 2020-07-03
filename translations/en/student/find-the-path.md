@@ -1,10 +1,3 @@
----
-title: Find the path
-slug: find-the-path
-type: problem
-order: 6
----
-
 # Find the path
 
 By moving up, down, left or right, make a path from the Start to the Finish.

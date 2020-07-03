@@ -27,7 +27,7 @@ Clicking on a row will load the editor
 ![](./images/translators-3.png)
 Text for translation is highlighted in yellow. You can see the current translation in the box on the right, alongside other possible recommendations. Make required changes to the translation and click save.
 
-**Note** you can ignore the text at the very top (title:... type:... order:...), this is just additional data used in the app.
+**Note** you can ignore any text at the very top (title:... type:... order:...), this is just additional data used in the app.
 
 Click the view toggle icon to see the problem as currently translated.
 ![](./images/translators-4.png)

@@ -35,11 +35,13 @@ function copyPackToApp() {
 
 /**
  * Make a copy of all maths clug pack en versions and change image asset urls
- * to display on crowdin using github asset direct link instead of local files
+ * to display on crowdin using github asset direct link instead of local files.
+ * Remove metadata from yml
  */
 function copyTranslationsForUpload() {
   fs.emptyDirSync(`${TRANSLATIONS_DIR}/en`);
   fs.copySync(`${PACK_DIR}/content`, "translations/en");
+  removeProblemMeta("./translations/en/student");
   rewriteAppImageUrlsForTranslation();
 }
 /**
@@ -75,10 +77,10 @@ function rewriteAppImageUrlsFromTranslation() {
 }
 
 /**
- * Locate all problem .md files, and convert frontmeta to json
+ * List all student versions in club pack dir, extract and return frontmeta as json
  */
 function extractProblemList() {
-  const allFiles = recFindByExt("maths-club-pack/content/student", "md");
+  const allFiles = recFindByExt(`${PACK_DIR}/content/student`, "md");
   return allFiles
     .map((filepath: string) => extractProblemMeta(filepath))
     .sort(problemSort);
@@ -93,6 +95,17 @@ function extractProblemMeta(filepath: string) {
   const attributes = fm(fileText).attributes as IProblemMeta;
   const slug = stripSpecialCharacters(attributes.title);
   return { ...attributes, slug };
+}
+/**
+ * Find all .md files within a folder and remove content between ---  ---
+ */
+function removeProblemMeta(folderBase: string) {
+  const filepaths = recFindByExt(folderBase, "md");
+  for (const filepath of filepaths) {
+    const fileText = fs.readFileSync(filepath, { encoding: "utf-8" });
+    const { body } = fm(fileText);
+    fs.writeFileSync(filepath, body, { encoding: "utf-8" });
+  }
 }
 
 /**

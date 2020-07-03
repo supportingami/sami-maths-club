@@ -1,10 +1,3 @@
----
-title: Logic Puzzles 1
-slug: logic-puzzles-1
-type: problem
-order: 12
----
-
 # Logic Puzzles 1
 
 1.A man has two empty jugs: a 3 litre jug and a 5 litre jug. The jugs have no markings on them. How can he measure exactly 1 litre of milk without wasting any?

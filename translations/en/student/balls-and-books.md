@@ -1,9 +1,3 @@
----
-title: Balls and Books
-type: problem
-order: 32
----
-
 # Balls and Books
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/balls-and-books-1.png?raw=true)
