@@ -1,10 +1,14 @@
-# Addition Squares
+---
+title: Addition Squares
+type: problem
+order: 4
+---
 
+# Addition Squares
 
 There is something strange about this addition square. Can you find the missing number?
 
 ![](../../images/addition-squares-1.png)
-
 
 How about this square? It follows a different rule.
 

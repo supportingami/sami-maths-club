@@ -1,7 +1,8 @@
 import * as fs from "fs-extra";
 import * as path from "path";
-import { stripSpecialCharacters } from "./utils/string.utils";
 import { replaceInFileSync } from "replace-in-file";
+import fm from "front-matter";
+import { stripSpecialCharacters } from "./utils/string.utils";
 
 const PACK_DIR = "./maths-club-pack";
 const APP_PACK_DIR = "./maths-club-app/src/assets/maths-club-pack";
@@ -13,7 +14,7 @@ function main() {
   generateAppProblemsList();
 }
 function generateAppProblemsList() {
-  const allProblems = listProblems();
+  const allProblems = extractProblemList();
   fs.writeFileSync(
     `${APP_PACK_DIR}/ProblemsList.ts`,
     `export const ALL_PROBLEMS = ${JSON.stringify(allProblems)}`
@@ -73,25 +74,32 @@ function rewriteAppImageUrlsFromTranslation() {
   });
 }
 
-function listProblems() {
+/**
+ * Locate all problem .md files, and convert frontmeta to json
+ */
+function extractProblemList() {
   const allFiles = recFindByExt("maths-club-pack/content/student", "md");
-  return allFiles.map((filepath: string) => {
-    const title = extractProblemTitle(filepath);
-    const filename = path.basename(filepath, ".md");
-    return {
-      title: title,
-      slug: stripSpecialCharacters(filename),
-    };
-  });
+  return allFiles
+    .map((filepath: string) => extractProblemMeta(filepath))
+    .sort(problemSort);
 }
 
 /**
- * Reads a markdown files and returns the first line as a problem title
+ * Read markdown file and return content between ---   --- as json object
+ * Add additional slug field
  */
-function extractProblemTitle(filepath: string) {
+function extractProblemMeta(filepath: string) {
   const fileText = fs.readFileSync(filepath, { encoding: "utf-8" });
-  return fileText.split("\n")[0].replace(/#/g, "").trim();
+  const attributes = fm(fileText).attributes as IProblemMeta;
+  const slug = stripSpecialCharacters(attributes.title);
+  return { ...attributes, slug };
 }
+
+/**
+ * Sort alphabetically by type (e.g. problem/game) and then by order field
+ */
+const problemSort = (a: IProblemMeta, b: IProblemMeta) =>
+  a.type === b.type ? a.order - b.order : a.type > b.type ? 1 : -1;
 
 /**
  * find files by a given extension recursively, returning full paths
@@ -114,3 +122,9 @@ function recFindByExt(base, ext, files?, result?) {
 }
 
 main();
+
+interface IProblemMeta {
+  title: string;
+  type: "puzzle" | "game" | "computer";
+  order: number;
+}
