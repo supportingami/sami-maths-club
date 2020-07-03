@@ -1,7 +1,3 @@
-- - -
-title: Geometry Puzzle 1 slug: geometry-puzzle-1 type: problem order: 13
-- - -
-
 # Geometry Puzzle 1
 
 1. Imagine that the Earth is a perfect sphere and imagine we have a large piece of string tied around the equator.
