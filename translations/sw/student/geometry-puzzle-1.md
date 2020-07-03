@@ -1,3 +1,7 @@
+- - -
+title: Geometry Puzzle 1 slug: geometry-puzzle-1 type: problem order: 13
+- - -
+
 # Geometry Puzzle 1
 
 1. Imagine that the Earth is a perfect sphere and imagine we have a large piece of string tied around the equator.
@@ -15,5 +19,3 @@ What is the size of the gap between the equator and the piece of string? Enough 
 3. A farmer wants to plant 10 trees in five rows, with four trees in each row. How can they do this?
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/geometry-puzzle-one-3.png?raw=true)
-
-
