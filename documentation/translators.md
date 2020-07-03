@@ -1,15 +1,18 @@
 # Translators Documentation
 
 ## Joining the Project
-All translations are managed online via a system called crowdin. You can join the project by clicking on the direct link: https://sami.crowdin.com/u/signup?hash=4599cd4afe3eb4dc3cbbebb9598e5f4616 
+All translations are managed online via a system called crowdin. You can join the project by clicking on the direct link: https://sami.crowdin.com 
 
-Alternative (if the link doesn't work), an email invite can be sent.
+Once joined, you will still need an invite to the maths club project. Email [admin@supportingami.org](mailto:admin@supportingami.org?subject=SAMI%20Maths%20Club%20Translations) to request an invite
+
+![](./images/crowdin-new.png)
 
 ## Project Home Page
 ![](./images/translators-1.png)
 
 Here you will see a list of languages and current translation status. 
-The bars may  be misleading, as text is first auto-translated (via google translate) before being verified. Therefore 100% translated does not mean that translation is complete.
+
+There are two bars, a blue one showing submitted translations and a green one showing approved translations.
 
 Clicking on a language gives a full breakdown by problem
 

@@ -6,11 +6,12 @@ This repo contains source code for the SAMI Maths Club App
 
 ## Contributing Problems
 
-Have a favourite maths puzzle or problem? Share it with us by email at: admin@supportingami.org
+Have a favourite maths puzzle or problem? 
+
+See the [Authors Documentation](./documentation/authors.md) for ways to include it in pack. 
 
 ## Contributing Translations
 
-If you are interested in helping us translate, please visit the translation project at:
-https://sami.crowdin.com/
+Want to translate problems into more languages?
 
-Or contact chris@supportingami.org for more information
+See the [Translators Documentation](./documentation/translators.md) to learn how to join our translations project.
