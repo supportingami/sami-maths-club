@@ -1,7 +1,3 @@
-- - -
-title: Paths slug: paths type: problem order: 36
-- - -
-
 # Paths
 
 1.How many ways are there from A to B in the grid if you can only walk along the lines and only walk right or down each time? How about from A to C? How about from A to any other point?
