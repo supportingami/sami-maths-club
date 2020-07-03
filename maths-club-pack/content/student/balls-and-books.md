@@ -1,10 +1,16 @@
+---
+title: Balls and Books
+type: problem
+order: 32
+---
+
 # Balls and Books
 
 ![](../../images/balls-and-books-1.png)
 
 1.You have a bag of 5 balls, all of different colors. You take two balls out of the bag.
 
-How many different possible outcomes are there? 
+How many different possible outcomes are there?
 
 What if you add another ball of a new color to the bag (so you have 6)? What about 7 balls?
 

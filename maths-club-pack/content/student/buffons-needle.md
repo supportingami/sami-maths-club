@@ -1,3 +1,9 @@
+---
+title: Buffon's Needle
+type: problem
+order: 2
+---
+
 # Buffon’s Needle
 
 If you drop a small toothpick on the grid below, what do you think is the
