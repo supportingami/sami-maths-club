@@ -1,7 +1,3 @@
-- - -
-title: Pell Numbers slug: pell-numbers type: problem order: 31
-- - -
-
 # Pell Numbers
 
 It can be proven that there are no integer (whole number) solutions to
