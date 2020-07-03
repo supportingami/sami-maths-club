@@ -1,4 +1,4 @@
-# Numéros Pell
+# Suite de Pell
 
 Il peut être prouvé qu'il n'y a pas de solution entière (nombre entier) pour
 
