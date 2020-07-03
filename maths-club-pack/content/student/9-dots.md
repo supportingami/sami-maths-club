@@ -1,6 +1,6 @@
 # 9 Dots
 
-Go through all 9 dotes using only four straight lines without taking your pen off the page.
+Go through all 9 dots using only four straight lines without taking your pen off the page.
 
 ![](../../images/9-dots.png)
 
