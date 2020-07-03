@@ -1,7 +1,7 @@
-# Aiguille du Buffon
+# Buffon’s Needle
 
-Si vous lâchez un petit cure-dents sur la grille ci-dessous, quelle est la probabilité de franchir une ligne ?
+If you drop a small toothpick on the grid below, what do you think is the probability that it will cross over a line?
 
-![grille avec aiguille](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/buffons-needle-1.png?raw=true)
+![grid with needle](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/buffons-needle-1.png?raw=true)
 
-(Voir les notes du facilitateur pour plus de détails sur la manière de faire une expérience et tester vos prédictions)
+(See the facilitator notes for details of how to conduct an experiment and test your predictions)
