@@ -1,7 +1,3 @@
-- - -
-title: Addition Squares type: problem order: 4
-- - -
-
 # Addition Squares
 
 There is something strange about this addition square. Can you find the missing number?
