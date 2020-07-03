@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { ProblemService } from "../../services/problem.service";
 
 interface Language {
   value: string;
@@ -15,13 +16,17 @@ export class LanguageSwitcherComponent implements OnInit {
     { value: "en", viewValue: "English" },
     { value: "fr", viewValue: "French" },
   ];
-  selected = "";
-  constructor() {}
+  language = "en";
+  checked = true;
+  constructor(private problemService: ProblemService) {}
 
   ngOnInit(): void {}
 
-  onSelect(l) {
-    console.log("Selected", l.viewValue);
-    this.selected = l.value;
+  onSelect() {
+    console.log("Selected", this.checked);
+    !this.checked ? (this.language = "en") : (this.language = "fr");
+
+    console.log("Language selected", this.language);
+    this.problemService.setLanguage(this.language);
   }
 }
