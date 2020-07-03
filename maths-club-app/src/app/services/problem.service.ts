@@ -26,7 +26,7 @@ export class ProblemService {
     this.language = lang;
   }
 
-  getLanguage(lang){
+  getLanguage(){
     return this.language;
   }
 }
