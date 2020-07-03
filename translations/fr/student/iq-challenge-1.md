@@ -1,5 +1,5 @@
-# Défi QI 1
-1.Remplissez les numéros manquants pour chaque séquence
+# IQ Challenge 1
+1.Fill in the missing numbers for each sequence
 
 0, 1, 4, 9, 16, 25, 36, 49, ?
 
@@ -12,10 +12,10 @@
 
 5, 26, 131, 656, ?
 
-2.Quel nombre doit représenter le ?
+2.What number should represent the ?
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/iq-challenge-one-1.png?raw=true)
 
-3.Combien de faces sont visibles sur la forme ci-dessous si vous pouviez la regarder de toutes les directions?
+3.How many faces are visible on the shape below if you could look at it from all directions?
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/iq-challenge-one-2.png?raw=true)
