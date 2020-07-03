@@ -10,6 +10,7 @@ import { HttpClient } from "@angular/common/http";
 export class ProblemCardComponent implements OnInit {
   problemText: string;
   slug: string;
+  language: string = "en";
 
   constructor(private route: ActivatedRoute, private http: HttpClient) {}
 
@@ -19,9 +20,12 @@ export class ProblemCardComponent implements OnInit {
       console.log("Params", this.slug);
     });
     const problemText = await this.http
-      .get<string>(`/assets/maths-club-pack/en/student/` + this.slug + `.md`, {
-        responseType: "text" as any,
-      })
+      .get<string>(
+        `/assets/maths-club-pack/${this.language}/student/` + this.slug + `.md`,
+        {
+          responseType: "text" as any,
+        }
+      )
       .toPromise();
     const formattedProblem = this.rewriteImageUrls(problemText);
     this.problemText = formattedProblem;
