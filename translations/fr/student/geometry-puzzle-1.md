@@ -1,18 +1,18 @@
-# Problème géométrique 1
+# Geometry Puzzle 1
 
-1. Imaginez que la Terre est une sphère parfaite et imaginez que nous avons un gros morceau de corde attaché autour de l'équateur.
+1. Imagine that the Earth is a perfect sphere and imagine we have a large piece of string tied around the equator.
 
-Nous ajoutons ensuite un mètre à la longueur de la chaîne de sorte que maintenant la chaîne plane au-dessus de l'équateur, toujours dans un cercle.
+We then add one meter to the length of the string so that now the string is hovering above the equator, still in a circle.
 
-Quelle est la taille de l'écart entre l'équateur et le morceau de chaîne ? Assez pour mettre un bout de papier sous ? Un chat? Une voiture?
+What is the size of the gap between the equator and the piece of string? Enough to fit a piece of paper under? A cat? A car?
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/geometry-puzzle-one-1.png?raw=true)
 
-2. Comment couper un gâteau rond en 8 pièces égales avec seulement trois tranches droites d'un couteau.
+2. How can you cut a round cake into 8 equal pieces with only three straight slices of a knife.
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/geometry-puzzle-one-2.png?raw=true)
 
-3. Un fermier veut planter 10 arbres en cinq rangées, avec quatre arbres par rangée. Comment peuvent-ils le faire?
+3. A farmer wants to plant 10 trees in five rows, with four trees in each row. How can they do this?
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/geometry-puzzle-one-3.png?raw=true)
 
