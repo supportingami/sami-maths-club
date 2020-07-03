@@ -1,7 +1,3 @@
-- - -
-title: 9 Dots type: problem order: 5
-- - -
-
 # 9 Points
 
 Go through all 9 dots using only four straight lines without taking your pen off the page.
