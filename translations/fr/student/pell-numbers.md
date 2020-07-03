@@ -1,17 +1,17 @@
-# Numéros Pell
+# Pell Numbers
 
-Il peut être prouvé qu'il n'y a pas de solution entière (nombre entier) pour
+It can be proven that there are no integer (whole number) solutions to
 
-$\sqrt{2}=\frac{a}{b}$$
+$\sqrt{2}=\frac{a}{b}$
 
-Il n'y a donc aucune solution entière pour
+So there are no integer solutions to
 
-$$2b^2 - a^2 = 0$$
+$2b^2 - a^2 = 0$
 
-Mais pouvez-vous trouver des valeurs entières positives d'un et b que _presque_ fonctionne? Cela donne la réponse 1 ou -1?
+But can you find positive integer values of a and b that _nearly_ work? That give the answer 1 or -1?
 
-$$2b^2 - a^2 = \pm1$$
+$2b^2 - a^2 = \pm1$
 
-Pouvez-vous trouver un modèle pour toutes vos solutions ?
+Can you find a pattern to all your solutions?
 
-À quoi correspond $\frac{a}{b}$ ?
+What does $\frac{a}{b}$ give a good approximation to?
