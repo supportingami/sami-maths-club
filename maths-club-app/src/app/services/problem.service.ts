@@ -20,4 +20,12 @@ export class ProblemService {
       )
       .toPromise();
   }
+
+
+  // Set Language
+  setLanguage(lang) {
+    this.language = lang;
+  }
+
+
 }

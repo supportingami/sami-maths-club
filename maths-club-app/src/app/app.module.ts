@@ -12,9 +12,15 @@ import { ProblemsListComponent } from "./components/problems-list/problems-list.
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { MaterialModule } from "./material.module";
+import { LanguageSwitcherComponent } from "./components/language-switcher/language-switcher.component";
 
 @NgModule({
-  declarations: [AppComponent, ProblemCardComponent, ProblemsListComponent],
+  declarations: [
+    AppComponent,
+    ProblemCardComponent,
+    ProblemsListComponent,
+    LanguageSwitcherComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
