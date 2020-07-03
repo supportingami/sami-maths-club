@@ -21,7 +21,7 @@ Chaque élève doit entrer dans sa devinette quant au pourcentage de fois qu'un 
 
 ## Solution
 
-La réponse devrait devenir plus proche de Pi <unk> que vous répétez l'expérience de plus en plus de fois!
+La réponse devrait devenir plus proche de Pi
 
 ## Extension
 
