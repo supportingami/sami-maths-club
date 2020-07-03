@@ -1,9 +1,13 @@
+- - -
+title: 9 Dots type: problem order: 5
+- - -
+
 # 9 Points
 
-Parcourez les neuf points en utilisant uniquement quatre lignes droites sans lever le stylo du papier.
+Go through all 9 dots using only four straight lines without taking your pen off the page.
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/9-dots.png?raw=true)
 
-Vous ne pouvez pas revenir sur une ligne que vous avez déjà tracée
+You may not go back over a line you have already drawn
 
-(Ne regardez pas les notes du facilitateur tant que vous n'aurez pas la solution)
+(Do not look at the facilitator notes until you are sure you have the solution.)
