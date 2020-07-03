@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
+import { ProblemService } from "../../services/problem.service";
 
 @Component({
   selector: "app-problem-card",
@@ -10,23 +10,18 @@ import { HttpClient } from "@angular/common/http";
 export class ProblemCardComponent implements OnInit {
   problemText: string;
   slug: string;
-  language: string = "en";
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+  constructor(
+    private route: ActivatedRoute,
+    private problemService: ProblemService
+  ) {}
 
   async ngOnInit() {
     this.route.params.subscribe((params) => {
       this.slug = params.slug;
-      console.log("Params", this.slug);
     });
-    const problemText = await this.http
-      .get<string>(
-        `/assets/maths-club-pack/${this.language}/student/` + this.slug + `.md`,
-        {
-          responseType: "text" as any,
-        }
-      )
-      .toPromise();
+    const problemText = await this.problemService.getProblem(this.slug);
+
     const formattedProblem = this.rewriteImageUrls(problemText);
     this.problemText = formattedProblem;
   }
