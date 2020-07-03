@@ -28,7 +28,9 @@ Click the view toggle icon to see the problem as currently translated.
 ![](./images/translators-4.png)
 
 ## Proofreading Page
-When all text is translated correctly you can approve the final list of translations from the proofreading screen. You can toggle this screen from the menu bar breadcrumbs.
+All translations also require proofreading. Anybody can proofread, although it is best if this is somebody other than the original translator. The job of the proofreader is to check all text is translated correctly, and in case of any conflict from multiple translations decide which version to keep.
+
+You can toggle this screen from the menu bar breadcrumbs.
 
 ![](./images/translators-5.png)
 
