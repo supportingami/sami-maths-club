@@ -1,9 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { ProblemService } from "../../services/problem.service";
+import { Router, ActivationEnd, ActivatedRoute } from "@angular/router";
 
 interface Language {
   value: string;
-  viewValue: string;
+  label: string;
 }
 
 @Component({
@@ -11,22 +12,37 @@ interface Language {
   templateUrl: "./language-switcher.component.html",
   styleUrls: ["./language-switcher.component.scss"],
 })
-export class LanguageSwitcherComponent implements OnInit {
+export class LanguageSwitcherComponent {
   languages: Language[] = [
-    { value: "en", viewValue: "English" },
-    { value: "fr", viewValue: "French" },
+    { value: "en", label: "English" },
+    { value: "fr", label: "French" },
   ];
-  language = "en";
-  checked = true;
-  constructor(private problemService: ProblemService) {}
+  language: Language;
+  constructor(
+    private problemService: ProblemService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    router.events.subscribe((e) => {
+      if (e instanceof ActivationEnd) {
+        this.setLanguage(e.snapshot.params.lang);
+      }
+    });
+  }
+  selectionChanged(e: any) {
+    const lang: Language = e.value;
+    this.router.navigate(["../", lang.value], {
+      relativeTo: this.route,
+      replaceUrl: true,
+    });
+  }
 
-  ngOnInit(): void {}
+  setLanguage(languageCode: string = "en") {
+    this.language = this.languages.find((l) => l.value === languageCode);
+    this.problemService.setLanguage(this.language.value);
+  }
 
-  onSelect() {
-    console.log("Selected", this.checked);
-    !this.checked ? (this.language = "en") : (this.language = "fr");
-
-    console.log("Language selected", this.language);
-    this.problemService.setLanguage(this.language);
+  compareObjects(o1: Language, o2: Language) {
+    return o1 && o2 && o1.value === o2.value;
   }
 }

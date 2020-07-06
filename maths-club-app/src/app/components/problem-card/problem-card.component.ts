@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
 import { ProblemService } from "../../services/problem.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-problem-card",
@@ -9,19 +9,16 @@ import { ProblemService } from "../../services/problem.service";
 })
 export class ProblemCardComponent implements OnInit {
   problemText: string;
-  slug: string;
 
   constructor(
-    private route: ActivatedRoute,
-    private problemService: ProblemService
+    private problemService: ProblemService,
+    private route: ActivatedRoute
   ) {}
 
   async ngOnInit() {
-    this.route.params.subscribe((params) => {
-      this.slug = params.slug;
-    });
-    const problemText = await this.problemService.getProblem(this.slug);
-
+    const slug = this.route.snapshot.params.slug;
+    console.log("slug", slug);
+    const problemText = await this.problemService.getProblem(slug);
     const formattedProblem = this.rewriteImageUrls(problemText);
     this.problemText = formattedProblem;
   }

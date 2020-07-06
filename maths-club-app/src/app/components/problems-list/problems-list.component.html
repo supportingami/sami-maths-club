@@ -9,10 +9,7 @@
     fxFlex.xs="50%"
     *ngFor="let problem of problems"
   >
-    <mat-card
-      class="problem-card"
-      [routerLink]="['/p/' + language + '/' + problem.slug]"
-    >
+    <mat-card class="problem-card" [routerLink]="[problem.slug]">
       <mat-card-header>
         <mat-card-subtitle>{{ problem.title }}</mat-card-subtitle>
       </mat-card-header>

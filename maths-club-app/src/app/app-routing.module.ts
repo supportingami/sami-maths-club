@@ -5,9 +5,9 @@ import { ProblemsListComponent } from "./components/problems-list/problems-list.
 import { ProblemCardComponent } from "./components/problem-card/problem-card.component";
 
 const routes: Routes = [
-  { path: "", component: ProblemsListComponent },
-  { path: "p/:slug", component: ProblemCardComponent },
-  { path: "p/:lang/:slug", component: ProblemCardComponent },
+  { path: ":lang", component: ProblemsListComponent },
+  { path: ":lang/:slug", component: ProblemCardComponent },
+  { path: "", redirectTo: "en", pathMatch: "full" },
 ];
 
 @NgModule({

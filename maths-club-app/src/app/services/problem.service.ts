@@ -7,10 +7,13 @@ import { HttpClient } from "@angular/common/http";
 export class ProblemService {
   language: string = "en";
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    console.log("problem service initialised");
+  }
 
   // Get problem
-  async getProblem(slug) {
+  async getProblem(slug: string) {
+    console.log("getting problem", slug, this.language);
     return await this.http
       .get<string>(
         `/assets/maths-club-pack/${this.language}/student/` + slug + `.md`,
@@ -22,11 +25,11 @@ export class ProblemService {
   }
 
   // Set Language
-  setLanguage(lang) {
+  setLanguage(lang: string) {
     this.language = lang;
   }
 
-  getLanguage(){
+  getLanguage() {
     return this.language;
   }
 }

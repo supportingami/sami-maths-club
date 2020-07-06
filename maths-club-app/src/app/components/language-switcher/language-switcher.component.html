@@ -1,8 +1,13 @@
-<div class="switch">
-  <label class="language-switcher">
-    <input type="checkbox" [(ngModel)]="checked" (click)="onSelect()"/>
-    <span class="slider round"></span>
-    <span class="select-fr">FR</span>
-    <span class="select-en">EN</span>
-  </label>
-</div>
+<mat-form-field appearance="fill">
+  <mat-label>Language</mat-label>
+  <mat-select
+    [(ngModel)]="language"
+    name="language"
+    [compareWith]="compareObjects"
+    (selectionChange)="selectionChanged($event)"
+  >
+    <mat-option *ngFor="let language of languages" [value]="language">
+      {{ language.label }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
