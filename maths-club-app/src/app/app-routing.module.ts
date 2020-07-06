@@ -7,6 +7,7 @@ import { ProblemCardComponent } from "./components/problem-card/problem-card.com
 const routes: Routes = [
   { path: "", component: ProblemsListComponent },
   { path: "p/:slug", component: ProblemCardComponent },
+  { path: "p/:lang/:slug", component: ProblemCardComponent },
 ];
 
 @NgModule({

@@ -5,5 +5,28 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root",
 })
 export class ProblemService {
+  language: string = "en";
+
   constructor(private http: HttpClient) {}
+
+  // Get problem
+  async getProblem(slug) {
+    return await this.http
+      .get<string>(
+        `/assets/maths-club-pack/${this.language}/student/` + slug + `.md`,
+        {
+          responseType: "text" as any,
+        }
+      )
+      .toPromise();
+  }
+
+  // Set Language
+  setLanguage(lang) {
+    this.language = lang;
+  }
+
+  getLanguage(){
+    return this.language;
+  }
 }
