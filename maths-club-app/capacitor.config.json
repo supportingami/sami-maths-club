@@ -1,8 +1,9 @@
 {
-  "appId": "com.samimathsclubapp.app",
-  "appName": "sami-maths-club-app",
+  "appId": "com.example.samimathsclubapp",
+  "appName": "samimathsclubapp",
   "bundledWebRuntime": false,
   "npmClient": "yarn",
+  "linuxAndroidStudioPath": "/home/ace/android-studio-ide-193.6514223-linux/android-studio/bin/studio.sh",
   "webDir": "www",
   "plugins": {
     "SplashScreen": {
