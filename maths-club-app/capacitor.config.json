@@ -1,0 +1,13 @@
+{
+  "appId": "org.supportingami.samimathsclubapp",
+  "appName": "samimathsclubapp",
+  "bundledWebRuntime": false,
+  "npmClient": "yarn",
+  "webDir": "dist/sami-maths-club-app",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

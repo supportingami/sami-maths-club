@@ -4,9 +4,10 @@
   fxLayoutGap="16px grid"
 >
   <div
-    fxFlex="16%"
-    fxFlex.xs="100%"
+    fxFlex.lg="16%"
     fxFlex.xs="50%"
+    fxFlex.md="25%"
+    fxFlex.sm="33%"
     *ngFor="let problem of problems"
   >
     <mat-card class="problem-card" [routerLink]="[problem.slug]">
