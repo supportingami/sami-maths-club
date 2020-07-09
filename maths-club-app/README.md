@@ -1,5 +1,38 @@
 # SamiMathsClubApp
 
+## Running on android
+
+First you must add the android platform for the build
+
+```
+cd maths-club-app
+npx cap add android
+```
+
+Once the platform has been added, the app should be built and synced across
+From the app folder run:
+
+```
+npm run build
+npx cap sync
+```
+
+Or from the main folder
+
+```
+npm run app:build
+npm run app:sync
+```
+
+Finally open Android studio in the generated folder `maths-club-app/android`
+You should be able to build and run the app directly from android studio.
+
+## Running on IOS
+
+TODO
+
+# Angular Docs
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.3.
 
 ## Development server

@@ -6,12 +6,16 @@ This repo contains source code for the SAMI Maths Club App
 
 ## Contributing Problems
 
-Have a favourite maths puzzle or problem? 
+Have a favourite maths puzzle or problem?
 
-See the [Authors Documentation](./documentation/authors.md) for ways to include it in pack. 
+See the [Authors Documentation](./documentation/authors.md) for ways to include it in pack.
 
 ## Contributing Translations
 
 Want to translate problems into more languages?
 
 See the [Translators Documentation](./documentation/translators.md) to learn how to join our translations project.
+
+## App Development
+
+See the [Developer Documentation](./maths-club-app/README.md) for more information about running locally or on android.
