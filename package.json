@@ -7,7 +7,9 @@
     "postinstall": "npm run prepare && cd maths-club-app && yarn install",
     "prepare": "ts-node scripts/app-prepare.ts",
     "start": "npm run prepare && cd maths-club-app && npm run start",
-    "pdf:generate": "ts-node scripts/pdf-generate.ts"
+    "pdf:generate": "ts-node scripts/pdf-generate.ts",
+    "app": "cd maths-club-app && npm run --",
+    "app:build": "cd maths-club-app && npm run build"
   },
   "repository": {
     "type": "git",
