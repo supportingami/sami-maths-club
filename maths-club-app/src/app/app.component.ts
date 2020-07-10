@@ -1,7 +1,5 @@
 import { Component, ChangeDetectorRef, OnDestroy } from "@angular/core";
 import { MediaMatcher } from "@angular/cdk/layout";
-import { ActivatedRoute, Router, ActivationEnd } from "@angular/router";
-import { ProblemService } from "./services/problem.service";
 
 @Component({
   selector: "app-root",
@@ -10,17 +8,17 @@ import { ProblemService } from "./services/problem.service";
 })
 export class AppComponent implements OnDestroy {
   title = "SAMI Maths Club App";
-  mobileQuery: MediaQueryList;
+  mobileWidthQuery: MediaQueryList;
 
-  private mobileQueryListener: () => void;
+  private mobileWidthQueryListener: () => void;
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
-    this.mobileQuery = media.matchMedia("(max-width: 990px)");
-    this.mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this.mobileQueryListener);
+    this.mobileWidthQuery = media.matchMedia("(max-width: 990px)");
+    this.mobileWidthQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileWidthQuery.addListener(this.mobileWidthQueryListener);
   }
 
   ngOnDestroy() {
-    this.mobileQuery.removeListener(this.mobileQueryListener);
+    this.mobileWidthQuery.removeListener(this.mobileWidthQueryListener);
   }
 }

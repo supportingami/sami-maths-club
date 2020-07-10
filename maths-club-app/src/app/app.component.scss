@@ -1,4 +1,6 @@
 @import "~material-design-icons/iconfont/material-icons.css";
+// Layout adaped from:
+// https://v9.material.angular.io/components/sidenav/overview#creating-a-responsive-layout-for-mobile--desktop
 
 .container {
   display: flex;
@@ -15,6 +17,17 @@
   flex: 1;
 }
 
-.spacer {
-  flex: 1 1 auto;
+mat-sidenav {
+  width: 200px;
+}
+
+.is-mobile mat-sidenav-container {
+  /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+     `<body>` to be our scrolling element for mobile layouts. */
+  flex: 1 0 auto;
+}
+.is-mobile mat-toolbar {
+  position: fixed;
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  z-index: 2;
 }
