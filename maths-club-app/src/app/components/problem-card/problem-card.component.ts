@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { ProblemService } from "../../services/problem.service";
 import { ActivatedRoute } from "@angular/router";
 
@@ -6,6 +6,7 @@ import { ActivatedRoute } from "@angular/router";
   selector: "app-problem-card",
   templateUrl: "./problem-card.component.html",
   styleUrls: ["./problem-card.component.scss"],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ProblemCardComponent implements OnInit {
   problemText: string;
