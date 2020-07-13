@@ -1,4 +1,4 @@
-# Addition Squares
+# Additioner des carrés
 
 ## Introduction
 
