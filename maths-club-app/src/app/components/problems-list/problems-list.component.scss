@@ -1,17 +1,26 @@
+$min-item-width: 150px;
+$max-item-height: 250px;
+
 .problems-list-container {
-  display: flex;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-item-width, 1fr));
+  grid-template-rows: repeat(4, $max-item-height);
+  column-gap: 10px;
+  row-gap: 15px;
 }
 
 .problem-card {
-  width: 150px;
-  height: 200px;
-  margin-right: 10px;
-  margin-top: 10px;
-  margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
   cursor: pointer;
 }
 
-.problem-card > image {
-  width: 150px;
-  height: 150px;
+.problem-image {
+  width: 100%;
+}
+.problem-title {
+  margin: 0;
 }

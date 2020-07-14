@@ -1,15 +1,12 @@
-<div class="form">
-  <mat-form-field appearance="none">
-    <mat-select
-      class="select"
-      [(ngModel)]="language"
-      name="language"
-      [compareWith]="compareObjects"
-      (selectionChange)="selectionChanged($event)"
-    >
-      <mat-option *ngFor="let language of languages" [value]="language">
-        {{ language.value }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
+<mat-form-field style="width: 100px;">
+  <mat-select
+    [(ngModel)]="language"
+    name="language"
+    [compareWith]="compareObjects"
+    (selectionChange)="selectionChanged($event)"
+  >
+    <mat-option *ngFor="let language of languages" [value]="language">
+      {{ language.label }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

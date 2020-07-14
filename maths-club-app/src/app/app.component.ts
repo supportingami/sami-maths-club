@@ -1,26 +1,11 @@
-import { Component, ChangeDetectorRef, OnDestroy } from "@angular/core";
-import { MediaMatcher } from "@angular/cdk/layout";
-import { ActivatedRoute, Router, ActivationEnd } from "@angular/router";
-import { ProblemService } from "./services/problem.service";
+import { Component, ViewEncapsulation } from "@angular/core";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],
+  encapsulation: ViewEncapsulation.None,
 })
-export class AppComponent implements OnDestroy {
+export class AppComponent {
   title = "SAMI Maths Club App";
-  mobileQuery: MediaQueryList;
-
-  private mobileQueryListener: () => void;
-
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
-    this.mobileQuery = media.matchMedia("(max-width: 990px)");
-    this.mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this.mobileQueryListener);
-  }
-
-  ngOnDestroy() {
-    this.mobileQuery.removeListener(this.mobileQueryListener);
-  }
 }
