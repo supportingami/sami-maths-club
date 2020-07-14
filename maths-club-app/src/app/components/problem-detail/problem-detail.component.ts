@@ -24,7 +24,7 @@ export class ProblemDetailComponent implements OnInit {
     const slug = this.route.snapshot.params.slug;
     console.log("slug", slug);
     this.slug = slug;
-    const problemText = await this.problemService.getProblem(slug);
+    const problemText = await this.problemService.getProblem(slug, 'student');
     const formattedProblem = this.rewriteImageUrls(problemText);
     this.problemText = formattedProblem;
   }

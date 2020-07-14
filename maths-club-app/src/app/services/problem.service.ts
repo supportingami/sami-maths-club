@@ -12,11 +12,13 @@ export class ProblemService {
   }
 
   // Get problem
-  async getProblem(slug: string) {
+  async getProblem(slug: string, person: string) {
     console.log("getting problem", slug, this.language);
     return await this.http
       .get<string>(
-        `/assets/maths-club-pack/${this.language}/student/` + slug + `.md`,
+        `/assets/maths-club-pack/${this.language}/${person}/` +
+          slug +
+          `.md`,
         {
           responseType: "text" as any,
         }
