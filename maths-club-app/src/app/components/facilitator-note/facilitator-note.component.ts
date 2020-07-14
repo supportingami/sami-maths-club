@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { ProblemService } from "../../services/problem.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
-  selector: 'app-facilitator-note',
-  templateUrl: './facilitator-note.component.html',
-  styleUrls: ['./facilitator-note.component.scss']
+  selector: "app-facilitator-note",
+  templateUrl: "./facilitator-note.component.html",
+  styleUrls: ["./facilitator-note.component.scss"],
 })
 export class FacilitatorNoteComponent implements OnInit {
+  noteText: string;
+  constructor(
+    private problemService: ProblemService,
+    private route: ActivatedRoute
+  ) {}
 
-  constructor() { }
-
-  ngOnInit(): void {
+  async ngOnInit() {
+    const slug = this.route.snapshot.params.slug;
+    this.noteText = await this.problemService.getProblem(slug, "facilitator");
   }
-
 }
