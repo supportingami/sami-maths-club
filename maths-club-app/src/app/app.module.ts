@@ -7,7 +7,7 @@ import { FormsModule } from "@angular/forms";
 import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { AppComponent } from "./app.component";
-import { ProblemCardComponent } from "./components/problem-card/problem-card.component";
+import { ProblemDetailComponent } from "./components/problem-detail/problem-detail.component";
 import { ProblemsListComponent } from "./components/problems-list/problems-list.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
@@ -17,7 +17,7 @@ import { LanguageSwitcherComponent } from "./components/language-switcher/langua
 @NgModule({
   declarations: [
     AppComponent,
-    ProblemCardComponent,
+    ProblemDetailComponent,
     ProblemsListComponent,
     LanguageSwitcherComponent,
   ],

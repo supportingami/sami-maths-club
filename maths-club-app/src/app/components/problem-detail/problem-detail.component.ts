@@ -3,12 +3,12 @@ import { ProblemService } from "../../services/problem.service";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
-  selector: "app-problem-card",
-  templateUrl: "./problem-card.component.html",
-  styleUrls: ["./problem-card.component.scss"],
+  selector: "app-problem-detail",
+  templateUrl: "./problem-detail.component.html",
+  styleUrls: ["./problem-detail.component.scss"],
   encapsulation: ViewEncapsulation.None,
 })
-export class ProblemCardComponent implements OnInit {
+export class ProblemDetailComponent implements OnInit {
   problemText: string;
 
   constructor(

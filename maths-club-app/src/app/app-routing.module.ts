@@ -2,18 +2,16 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 
 import { ProblemsListComponent } from "./components/problems-list/problems-list.component";
-import { ProblemCardComponent } from "./components/problem-card/problem-card.component";
+import { ProblemDetailComponent } from "./components/problem-detail/problem-detail.component";
 
 const routes: Routes = [
   { path: ":lang", component: ProblemsListComponent },
-  { path: ":lang/:slug", component: ProblemCardComponent },
+  { path: ":lang/:slug", component: ProblemDetailComponent },
   { path: "", redirectTo: "en", pathMatch: "full" },
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { scrollPositionRestoration: "enabled" }),
-  ],
+  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration:'enabled'})],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
