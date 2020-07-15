@@ -1,4 +1,4 @@
-# SamiMathsClubApp
+# SAMI Maths Club App
 
 ## Running on android
 
