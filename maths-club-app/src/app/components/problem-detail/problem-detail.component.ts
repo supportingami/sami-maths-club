@@ -3,13 +3,15 @@ import { ProblemService } from "../../services/problem.service";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
-  selector: "app-problem-card",
-  templateUrl: "./problem-card.component.html",
-  styleUrls: ["./problem-card.component.scss"],
+  selector: "app-problem-detail",
+  templateUrl: "./problem-detail.component.html",
+  styleUrls: ["./problem-detail.component.scss"],
   encapsulation: ViewEncapsulation.None,
 })
-export class ProblemCardComponent implements OnInit {
+export class ProblemDetailComponent implements OnInit {
   problemText: string;
+  slug: string;
+  language: string;
 
   constructor(
     private problemService: ProblemService,
@@ -17,9 +19,12 @@ export class ProblemCardComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
+    this.language = this.problemService.getLanguage();
+
     const slug = this.route.snapshot.params.slug;
     console.log("slug", slug);
-    const problemText = await this.problemService.getProblem(slug);
+    this.slug = slug;
+    const problemText = await this.problemService.getProblem(slug, 'student');
     const formattedProblem = this.rewriteImageUrls(problemText);
     this.problemText = formattedProblem;
   }
