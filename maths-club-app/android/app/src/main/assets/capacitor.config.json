@@ -1,5 +1,5 @@
 {
-  "appId": "org.supportingami.samimathsclubapp",
+  "appId": "io.c2dev.samimathsclub",
   "appName": "samimathsclubapp",
   "bundledWebRuntime": false,
   "npmClient": "yarn",
