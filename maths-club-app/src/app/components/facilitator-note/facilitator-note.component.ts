@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { ProblemService } from "../../services/problem.service";
 import { ActivatedRoute } from "@angular/router";
 
@@ -6,6 +6,7 @@ import { ActivatedRoute } from "@angular/router";
   selector: "app-facilitator-note",
   templateUrl: "./facilitator-note.component.html",
   styleUrls: ["./facilitator-note.component.scss"],
+  encapsulation: ViewEncapsulation.None,
 })
 export class FacilitatorNoteComponent implements OnInit {
   noteText: string;

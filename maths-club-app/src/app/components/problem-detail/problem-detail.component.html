@@ -1,10 +1,6 @@
 <div class="problem-container">
   <markdown id="problemMarkdown" [data]="problemText" katex></markdown>
-  <button
-    mat-raised-button
-    color="primary"
-    [routerLink]="['/' + language + '/' + slug + '/notes/']"
-  >
+  <button mat-raised-button color="primary" [routerLink]="['notes']">
     Facilitator Notes
   </button>
 </div>
