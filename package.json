@@ -9,8 +9,7 @@
     "start": "npm run prepare && cd maths-club-app && npm run start",
     "pdf:generate": "ts-node scripts/pdf-generate.ts",
     "app": "cd maths-club-app && npm run --",
-    "app:build": "cd maths-club-app && npm run build",
-    "app:sync": "cd maths-club-app && npx cap sync"
+    "app:build": "cd maths-club-app && ng build --configuration=\"production\" && npx cap sync"
   },
   "repository": {
     "type": "git",

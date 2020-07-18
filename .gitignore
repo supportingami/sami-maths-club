@@ -4,3 +4,4 @@ maths-club-app/src/assets/maths-club-pack
 maths-club-pack/translations/*/
 **/package-lock.json
 pdfs
+**/*.jks

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">samimathsclubapp</string>
-    <string name="title_activity_main">samimathsclubapp</string>
-    <string name="package_name">org.supportingami.samimathsclubapp</string>
-    <string name="custom_url_scheme">org.supportingami.samimathsclubapp</string>
+  <string name="app_name">samimathsclub</string>
+  <string name="title_activity_main">samimathsclub</string>
+  <string name="package_name">io.c2dev.samimathsclub</string>
+  <string name="custom_url_scheme">io.c2dev.samimathsclub</string>
 </resources>

@@ -1,4 +1,4 @@
-package org.supportingami.samimathsclubapp;
+package io.c2dev.samimathsclub;
 
 import android.os.Bundle;
 
