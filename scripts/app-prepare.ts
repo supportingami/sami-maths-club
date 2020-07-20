@@ -41,13 +41,6 @@ function generateTranslationsMeta() {
     );
   }
 }
-// function generateAppProblemsList() {
-//   const allProblems = extractProblemList();
-//   fs.writeFileSync(
-//     `${APP_PACK_DIR}/ProblemsList.ts`,
-//     `export const ALL_PROBLEMS = ${JSON.stringify(allProblems)}`
-//   );
-// }
 
 /**
  * Copy images from main app pack folder and translated pack from translations problem.
@@ -103,18 +96,6 @@ function rewriteAppImageUrlsFromTranslation() {
         .replace("?raw=true", ""),
   });
 }
-
-/**
- * List all student versions in club pack dir, extract and return frontmeta as json
- * Additionally extract any title translations
- */
-// function extractProblemList() {
-//   const allProblems = recFindByExt(`${PACK_DIR}/content/student`, "md");
-//   const meta = allProblems.map((filepath: string) =>
-//     extractProblemMeta(filepath)
-//   );
-//   return translatedMeta.sort(problemSort);
-// }
 
 /**
  * Read markdown file and return content between ---   --- as json object
