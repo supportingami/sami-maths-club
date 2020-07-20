@@ -10,16 +10,44 @@ const TRANSLATIONS_DIR = "./translations";
 
 function main() {
   copyTranslationsForUpload();
+  generateTranslationsMeta();
   copyPackToApp();
-  generateAppProblemsList();
 }
-function generateAppProblemsList() {
-  const allProblems = extractProblemList();
-  fs.writeFileSync(
-    `${APP_PACK_DIR}/ProblemsList.ts`,
-    `export const ALL_PROBLEMS = ${JSON.stringify(allProblems)}`
-  );
+
+/**
+ * For each language list the problems available in student versions,
+ * Extract metadata from the base pack folder for the problem and populate
+ * a metadata.json object with the metadata and translated title extracted from
+ * translation text
+ */
+function generateTranslationsMeta() {
+  const langDirs = _listDirectories(TRANSLATIONS_DIR);
+  for (let lang of langDirs) {
+    const langFolder = `${TRANSLATIONS_DIR}/${lang}`;
+    const studentVersions = fs.readdirSync(`${langFolder}/student`);
+    const meta: IProblemMeta[] = studentVersions.map((filename: string) => {
+      const problemPath = `${langFolder}/student/${filename}`;
+      // metadata only stored in eng version
+      const enPath = `${PACK_DIR}/content/student/${filename}`;
+      return {
+        ...extractProblemMeta(enPath),
+        title: extractTranslatedTitle(problemPath),
+        hasNotes: fs.existsSync(`${langFolder}/facilitator/${filename}`),
+      };
+    });
+    fs.writeJSONSync(
+      `${TRANSLATIONS_DIR}/${lang}/metadata.json`,
+      meta.sort(problemSort)
+    );
+  }
 }
+// function generateAppProblemsList() {
+//   const allProblems = extractProblemList();
+//   fs.writeFileSync(
+//     `${APP_PACK_DIR}/ProblemsList.ts`,
+//     `export const ALL_PROBLEMS = ${JSON.stringify(allProblems)}`
+//   );
+// }
 
 /**
  * Copy images from main app pack folder and translated pack from translations problem.
@@ -78,23 +106,30 @@ function rewriteAppImageUrlsFromTranslation() {
 
 /**
  * List all student versions in club pack dir, extract and return frontmeta as json
+ * Additionally extract any title translations
  */
-function extractProblemList() {
-  const allFiles = recFindByExt(`${PACK_DIR}/content/student`, "md");
-  return allFiles
-    .map((filepath: string) => extractProblemMeta(filepath))
-    .sort(problemSort);
-}
+// function extractProblemList() {
+//   const allProblems = recFindByExt(`${PACK_DIR}/content/student`, "md");
+//   const meta = allProblems.map((filepath: string) =>
+//     extractProblemMeta(filepath)
+//   );
+//   return translatedMeta.sort(problemSort);
+// }
 
 /**
  * Read markdown file and return content between ---   --- as json object
  * Add additional slug field
  */
-function extractProblemMeta(filepath: string) {
+function extractProblemMeta(filepath: string): IProblemMeta {
   const fileText = fs.readFileSync(filepath, { encoding: "utf-8" });
   const attributes = fm(fileText).attributes as IProblemMeta;
   const slug = stripSpecialCharacters(attributes.title);
   return { ...attributes, slug };
+}
+
+function extractTranslatedTitle(filepath: string) {
+  const fileText = fs.readFileSync(filepath, { encoding: "utf-8" });
+  return fileText.split("\n")[0].replace(/#/g, "").trim();
 }
 /**
  * Find all .md files within a folder and remove content between ---  ---
@@ -134,10 +169,22 @@ function recFindByExt(base, ext, files?, result?) {
   return result;
 }
 
+/**
+ * Provide a list of all child directories of a given folder path (non-recursive)
+ */
+function _listDirectories(path: string) {
+  return fs
+    .readdirSync(path, { withFileTypes: true })
+    .filter((d) => d.isDirectory())
+    .map((d) => d.name);
+}
+
 main();
 
 interface IProblemMeta {
   title: string;
   type: "puzzle" | "game" | "computer";
   order: number;
+  slug: string;
+  hasNotes: boolean;
 }
