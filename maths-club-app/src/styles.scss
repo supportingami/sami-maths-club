@@ -9,3 +9,11 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+table,
+th,
+td {
+  border: 1px solid black;
+}
+table {
+  border-collapse: collapse;
+}
