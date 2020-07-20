@@ -17,3 +17,13 @@ td {
 table {
   border-collapse: collapse;
 }
+#markdownStyle {
+  img {
+    max-width: 500px;
+  }
+  @media only screen and (max-width: 500px) {
+    img {
+      max-width: 100%;
+    }
+  }
+}
