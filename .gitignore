@@ -2,6 +2,8 @@ node_modules
 # maths-club-pack assets automatically copied from top-level folder to assets
 maths-club-app/src/assets/maths-club-pack
 maths-club-pack/translations/*/
+translations/*/metadata.json
+translations/ach/
 **/package-lock.json
 pdfs
 **/*.jks
