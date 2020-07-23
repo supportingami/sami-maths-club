@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { ALL_PROBLEMS } from "src/assets/maths-club-pack/ProblemsList";
 import { ProblemService } from "../../services/problem.service";
 
 @Component({
@@ -8,11 +7,15 @@ import { ProblemService } from "../../services/problem.service";
   styleUrls: ["./problems-list.component.scss"],
 })
 export class ProblemsListComponent implements OnInit {
-  problems = ALL_PROBLEMS;
+  problems;
   language: string;
 
   constructor(private problemService: ProblemService) {}
   ngOnInit() {
     this.language = this.problemService.getLanguage();
+    this.problemService.getProblemList().then((res) => {
+      this.problems = res;
+      console.log("prol", this.problems);
+    });
   }
 }
