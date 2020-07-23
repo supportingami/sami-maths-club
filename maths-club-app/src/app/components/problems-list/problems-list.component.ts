@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ProblemService } from "../../services/problem.service";
+import { Router, NavigationEnd } from "@angular/router";
 
 @Component({
   selector: "app-problems",
@@ -9,7 +10,13 @@ import { ProblemService } from "../../services/problem.service";
 export class ProblemsListComponent implements OnInit {
   problems;
 
-  constructor(private problemService: ProblemService) {}
+  constructor(private problemService: ProblemService, private router: Router) {
+    this.router.events.subscribe((ev) => {
+      if (ev instanceof NavigationEnd) {
+        this.getProblemList();
+      }
+    });
+  }
   ngOnInit() {
     this.getProblemList();
   }
