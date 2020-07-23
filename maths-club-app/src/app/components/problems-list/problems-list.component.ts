@@ -8,11 +8,13 @@ import { ProblemService } from "../../services/problem.service";
 })
 export class ProblemsListComponent implements OnInit {
   problems;
-  language: string;
 
   constructor(private problemService: ProblemService) {}
   ngOnInit() {
-    this.language = this.problemService.getLanguage();
+    this.getProblemList();
+  }
+
+  getProblemList() {
     this.problemService.getProblemList().then((res) => {
       this.problems = res;
       console.log("prol", this.problems);
