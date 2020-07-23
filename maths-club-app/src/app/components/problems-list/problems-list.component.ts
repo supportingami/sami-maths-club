@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { ALL_PROBLEMS } from "src/assets/maths-club-pack/ProblemsList";
 import { ProblemService } from "../../services/problem.service";
+import { Router, NavigationEnd } from "@angular/router";
 
 @Component({
   selector: "app-problems",
@@ -8,11 +8,23 @@ import { ProblemService } from "../../services/problem.service";
   styleUrls: ["./problems-list.component.scss"],
 })
 export class ProblemsListComponent implements OnInit {
-  problems = ALL_PROBLEMS;
-  language: string;
+  problems;
 
-  constructor(private problemService: ProblemService) {}
+  constructor(private problemService: ProblemService, private router: Router) {
+    this.router.events.subscribe((ev) => {
+      if (ev instanceof NavigationEnd) {
+        this.getProblemList();
+      }
+    });
+  }
   ngOnInit() {
-    this.language = this.problemService.getLanguage();
+    this.getProblemList();
+  }
+
+  getProblemList() {
+    this.problemService.getProblemList().then((res) => {
+      this.problems = res;
+      console.log("prol", this.problems);
+    });
   }
 }

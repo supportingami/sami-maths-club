@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
+
 @Injectable({
   providedIn: "root",
 })
@@ -21,6 +22,13 @@ export class ProblemService {
           responseType: "text" as any,
         }
       )
+      .toPromise();
+  }
+
+  // Get problem List
+  async getProblemList() {
+    return await this.http
+      .get<string>(`/assets/maths-club-pack/${this.language}/metadata.json`)
       .toPromise();
   }
 
