@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from "@angular/core";
-
+import { AppService } from "./services/app.service";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -7,5 +7,5 @@ import { Component, ViewEncapsulation } from "@angular/core";
   encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
-  title = "SAMI Maths Club App";
+  constructor(public appService: AppService) {}
 }
