@@ -1,6 +1,21 @@
-<div class="problem-container">
-  <markdown id="markdownStyle" [data]="problemText" katex></markdown>
-  <button mat-raised-button color="primary" [routerLink]="['notes']">
-    Facilitator Notes
-  </button>
+<div
+  class="problem-container"
+  *ngIf="problemService.activeProblem$ | async as problem"
+>
+  <markdown
+    id="markdownStyle"
+    [data]="problem.facilitatorVersionText"
+    katex
+  ></markdown>
+  <div
+    class="facilitator-notes-container"
+    *ngIf="problem.hasFacilitatorVersion"
+  >
+    <p style="flex: 1; margin-right: 5px;">
+      Want to check your solution or help others with the problem?
+    </p>
+    <button mat-stroked-button [routerLink]="['notes']">
+      See Facilitator Notes
+    </button>
+  </div>
 </div>

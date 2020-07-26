@@ -2,7 +2,7 @@
   <mat-card
     class="problem-card"
     [routerLink]="[problem.slug]"
-    *ngFor="let problem of problems"
+    *ngFor="let problem of problemService.problems$ | async"
   >
     <h2 class="problem-title">{{ problem.title }}</h2>
     <img

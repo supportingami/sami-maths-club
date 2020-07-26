@@ -32,7 +32,10 @@ function generateTranslationsMeta() {
       return {
         ...extractProblemMeta(enPath),
         title: extractTranslatedTitle(problemPath),
-        hasNotes: fs.existsSync(`${langFolder}/facilitator/${filename}`),
+        hasStudentVersion: fs.existsSync(`${langFolder}/student/${filename}`),
+        hasFacilitatorVersion: fs.existsSync(
+          `${langFolder}/facilitator/${filename}`
+        ),
       };
     });
     fs.writeJSONSync(
@@ -167,5 +170,6 @@ interface IProblemMeta {
   type: "puzzle" | "game" | "computer";
   order: number;
   slug: string;
-  hasNotes: boolean;
+  hasStudentVersion: boolean;
+  hasFacilitatorVersion: boolean;
 }

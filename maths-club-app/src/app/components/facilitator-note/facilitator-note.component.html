@@ -1,3 +1,8 @@
-<div>
-  <div markdown id="markdownStyle" [data]="noteText" katex></div>
+<div *ngIf="problemService.activeProblem$ | async as problem">
+  <div
+    markdown
+    id="markdownStyle"
+    [data]="problem.facilitatorVersionText"
+    katex
+  ></div>
 </div>
