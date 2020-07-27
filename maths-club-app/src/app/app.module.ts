@@ -15,6 +15,7 @@ import { MaterialModule } from "./material.module";
 import { LanguageSwitcherComponent } from "./components/language-switcher/language-switcher.component";
 import { FacilitatorNoteComponent } from './components/facilitator-note/facilitator-note.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { AppTermsComponent } from './components/app-terms/app-terms.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
     LanguageSwitcherComponent,
     FacilitatorNoteComponent,
     PrivacyPolicyComponent,
+    AppTermsComponent,
   ],
   imports: [
     BrowserModule,
