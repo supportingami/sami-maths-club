@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialModule } from "./material.module";
 import { LanguageSwitcherComponent } from "./components/language-switcher/language-switcher.component";
 import { FacilitatorNoteComponent } from './components/facilitator-note/facilitator-note.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { FacilitatorNoteComponent } from './components/facilitator-note/facilita
     ProblemsListComponent,
     LanguageSwitcherComponent,
     FacilitatorNoteComponent,
+    PrivacyPolicyComponent,
   ],
   imports: [
     BrowserModule,
