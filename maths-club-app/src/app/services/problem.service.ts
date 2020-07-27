@@ -33,13 +33,19 @@ export class ProblemService {
     this._subscribeToRouteChanges();
   }
 
-  private _subscribeToRouteChanges() {
-    this.appService.routeParams$.subscribe(async () => {
-      await this.listProblems();
-      if (this.slug) {
-        await this.setActiveProblem(this.slug);
-      }
-    });
+  /**
+   * Read the list of problems from the metadata.json file for the current language
+   * and emit only those with student versions for subscription
+   */
+  private async listProblems() {
+    // notify that the problems are not yet loaded
+    this.problems$.next(undefined);
+    const url = `/assets/maths-club-pack/${this.language}/metadata.json`;
+    const problems = await this.http.get<IProblemMeta[]>(url).toPromise();
+    // filter out problems which do not have a student and facilitator version and emit
+    this.problems$.next(
+      problems.filter((p) => p.hasFacilitatorVersion && p.hasStudentVersion)
+    );
   }
 
   // Update the current active problem by slug
@@ -70,21 +76,22 @@ export class ProblemService {
   ) {
     const url = `/assets/maths-club-pack/${this.language}/${version}/${slug}.md`;
     const res = await this.http.get(url, { responseType: "text" }).toPromise();
-    return res;
+    return this.rewriteImageUrls(res);
   }
 
-  /**
-   * Read the list of problems from the metadata.json file for the current language
-   * and emit only those with student versions for subscription
-   */
-  public async listProblems() {
-    // notify that the problems are not yet loaded
-    this.problems$.next(undefined);
-    const url = `/assets/maths-club-pack/${this.language}/metadata.json`;
-    const problems = await this.http.get<IProblemMeta[]>(url).toPromise();
-    // filter out problems which do not have a student and facilitator version and emit
-    this.problems$.next(
-      problems.filter((p) => p.hasFacilitatorVersion && p.hasStudentVersion)
+  private _subscribeToRouteChanges() {
+    this.appService.routeParams$.subscribe(async () => {
+      await this.listProblems();
+      if (this.slug) {
+        await this.setActiveProblem(this.slug);
+      }
+    });
+  }
+
+  private rewriteImageUrls(problemText: string) {
+    return problemText.replace(
+      /\.\.\/\.\.\/images/g,
+      "assets/maths-club-pack/images"
     );
   }
 }
