@@ -1,14 +1,14 @@
 import { Component, ViewEncapsulation } from "@angular/core";
 import { AppService } from "./services/app.service";
 import { RouterOutlet } from "@angular/router";
-import { slideInAnimation } from "./route-animations";
+import { slideInAnimation, fadeOnChange } from "./route-animations";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],
   encapsulation: ViewEncapsulation.None,
-  animations: [slideInAnimation],
+  animations: [slideInAnimation, fadeOnChange],
 })
 export class AppComponent {
   constructor(public appService: AppService) {}

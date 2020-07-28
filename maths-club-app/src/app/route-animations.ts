@@ -9,54 +9,46 @@ import {
   keyframes,
 } from "@angular/animations";
 
-export const slideInAnimation =
-  trigger('routeAnimations', [
-    transition('* <=> *', [
-      style({ position: 'relative' }),
-      query(':enter, :leave', [
+export const fadeOnChange = trigger("fadeOnChange", [
+  transition("* <=> *", [
+    animate("0.3s", keyframes([style({ opacity: 0 }), style({ opacity: 1 })])),
+  ]),
+]);
+
+export const slideInAnimation = trigger("routeAnimations", [
+  transition("* => left", slideTo("left")),
+  transition("* => right", slideTo("right")),
+  transition("right => *", slideTo("left")),
+  transition("left => *", slideTo("right")),
+]);
+
+function slideTo(direction: "left" | "right") {
+  const optional = { optional: true };
+  return [
+    query(
+      ":enter, :leave",
+      [
         style({
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%'
-        })
-      ]),
-      query(':enter', [
-        style({ left: '-100%' })
-      ]),
-      query(':leave', animateChild()),
-      group([
-        query(':leave', [
-          animate('300ms ease-out', style({ left: '100%' }))
-        ]),
-        query(':enter', [
-          animate('300ms ease-out', style({ left: '0%' }))
-        ])
-      ]),
-      query(':enter', animateChild()),
+          position: "absolute",
+          [direction]: 0,
+          width: "100%",
+        }),
+      ],
+      optional
+    ),
+    query(":enter", [style({ [direction]: "-100%" })]),
+    group([
+      query(
+        ":leave",
+        [animate("600ms ease", style({ [direction]: "100%" }))],
+        optional
+      ),
+      query(":enter", [animate("600ms ease", style({ [direction]: "0%" }))]),
     ]),
-    transition('* <=> FacilitatorNotePage', [
-      style({ position: 'relative' }),
-      query(':enter, :leave', [
-        style({
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%'
-        })
-      ]),
-      query(':enter', [
-        style({ left: '-100%' })
-      ]),
-      query(':leave', animateChild()),
-      group([
-        query(':leave', [
-          animate('200ms ease-out', style({ left: '100%' }))
-        ]),
-        query(':enter', [
-          animate('300ms ease-out', style({ left: '0%' }))
-        ])
-      ]),
-      query(':enter', animateChild()),
-    ])
-  ]);
+    // Normalize the page style... Might not be necessary
+
+    // Required only if you have child animations on the page
+    // query(':leave', animateChild()),
+    // query(':enter', animateChild()),
+  ];
+}

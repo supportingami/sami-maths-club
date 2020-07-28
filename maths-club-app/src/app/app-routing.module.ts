@@ -13,17 +13,17 @@ const routes: Routes = [
   {
     path: ":lang",
     component: ProblemsListComponent,
-    data: { animation: "ProblemListPage" },
+    data: { animation: "left" },
   },
   {
     path: ":lang/:slug",
     component: ProblemDetailComponent,
-    data: { animation: "ProblemDetailPage" },
+    data: { animation: "center" },
   },
   {
     path: ":lang/:slug/notes",
     component: FacilitatorNoteComponent,
-    data: { animation: "FacilitatorNotePage" },
+    data: { animation: "right" },
   },
 
   { path: "", redirectTo: "en", pathMatch: "full" },

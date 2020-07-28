@@ -16,9 +16,11 @@
       <button mat-icon-button (click)="snav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <span style="flex: 1; text-align: center;">{{
-        appService.title$ | async
-      }}</span>
+      <span
+        style="flex: 1; text-align: center;"
+        [@fadeOnChange]="appService.title$ | async"
+        >{{ appService.title$ | async }}</span
+      >
       <app-language-switcher></app-language-switcher>
     </mat-toolbar>
     <main [@routeAnimations]="prepareRoute(outlet)" class="content">
