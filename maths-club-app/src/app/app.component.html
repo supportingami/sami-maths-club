@@ -5,6 +5,10 @@
         <mat-icon>home</mat-icon>
         Problems
       </a>
+      <div class="bottom-items">
+        <a mat-list-item routerLink="privacy">Privacy Policy</a>
+        <a mat-list-item routerLink="app-terms">Terms and Conditions</a>
+      </div>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -17,6 +21,8 @@
       }}</span>
       <app-language-switcher></app-language-switcher>
     </mat-toolbar>
-    <router-outlet></router-outlet>
+    <main [@routeAnimations]="prepareRoute(outlet)" class="content">
+      <router-outlet #outlet="outlet"></router-outlet>
+    </main>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -4,11 +4,28 @@ import { Routes, RouterModule } from "@angular/router";
 import { ProblemsListComponent } from "./components/problems-list/problems-list.component";
 import { ProblemDetailComponent } from "./components/problem-detail/problem-detail.component";
 import { FacilitatorNoteComponent } from "./components/facilitator-note/facilitator-note.component";
+import { PrivacyPolicyComponent } from "./components/privacy-policy/privacy-policy.component";
+import { AppTermsComponent } from "./components/app-terms/app-terms.component";
 
 const routes: Routes = [
-  { path: ":lang", component: ProblemsListComponent },
-  { path: ":lang/:slug", component: ProblemDetailComponent },
-  { path: ":lang/:slug/notes", component: FacilitatorNoteComponent },
+  { path: "privacy", component: PrivacyPolicyComponent },
+  { path: "app-terms", component: AppTermsComponent },
+  {
+    path: ":lang",
+    component: ProblemsListComponent,
+    data: { animation: "ProblemListPage" },
+  },
+  {
+    path: ":lang/:slug",
+    component: ProblemDetailComponent,
+    data: { animation: "ProblemDetailPage" },
+  },
+  {
+    path: ":lang/:slug/notes",
+    component: FacilitatorNoteComponent,
+    data: { animation: "FacilitatorNotePage" },
+  },
+
   { path: "", redirectTo: "en", pathMatch: "full" },
 ];
 
