@@ -10,9 +10,21 @@ import { AppTermsComponent } from "./components/app-terms/app-terms.component";
 const routes: Routes = [
   { path: "privacy", component: PrivacyPolicyComponent },
   { path: "app-terms", component: AppTermsComponent },
-  { path: ":lang", component: ProblemsListComponent },
-  { path: ":lang/:slug", component: ProblemDetailComponent },
-  { path: ":lang/:slug/notes", component: FacilitatorNoteComponent },
+  {
+    path: ":lang",
+    component: ProblemsListComponent,
+    data: { animation: "ProblemListPage" },
+  },
+  {
+    path: ":lang/:slug",
+    component: ProblemDetailComponent,
+    data: { animation: "ProblemDetailPage" },
+  },
+  {
+    path: ":lang/:slug/notes",
+    component: FacilitatorNoteComponent,
+    data: { animation: "FacilitatorNotePage" },
+  },
 
   { path: "", redirectTo: "en", pathMatch: "full" },
 ];
