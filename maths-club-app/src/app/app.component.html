@@ -11,10 +11,13 @@
       </div>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content *ngIf="appService.routeParams$ | async as params">
     <mat-toolbar color="primary">
-      <button mat-icon-button (click)="snav.toggle()">
+      <button mat-icon-button (click)="snav.toggle()" *ngIf="!params.slug">
         <mat-icon>menu</mat-icon>
+      </button>
+      <button mat-icon-button (click)="appService.goBack()" *ngIf="params.slug">
+        <mat-icon>arrow_back</mat-icon>
       </button>
       <span
         style="flex: 1; text-align: center;"

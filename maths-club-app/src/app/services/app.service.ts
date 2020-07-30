@@ -20,6 +20,10 @@ export class AppService {
     this.title$.next(title);
   }
 
+  goBack() {
+    this.router.navigate([".."], { relativeTo: this.route, replaceUrl: true });
+  }
+
   /**
    * As the service sits outside the router-outlet, workaround to access
    * params that would otherwise only be passed down to children
@@ -27,6 +31,8 @@ export class AppService {
   private _subscribeToRouteChanges() {
     this.router.events.subscribe((e) => {
       if (e instanceof NavigationEnd) {
+        // update activated route to reflect routed component tree
+        this.route = this.route.root.firstChild;
         const params = this.route.root.firstChild.snapshot
           .params as IRouteParams;
         this.routeParams$.next(params);
