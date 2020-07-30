@@ -1,6 +1,7 @@
 <div
   class="problem-container"
   *ngIf="problemService.activeProblem$ | async as problem"
+  [@fadeOnLoad]="problemService.activeProblem$ | async"
 >
   <markdown
     id="markdownStyle"
