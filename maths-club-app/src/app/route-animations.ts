@@ -3,6 +3,7 @@ import {
   transition,
   style,
   query,
+  state,
   group,
   animateChild,
   animate,
@@ -14,7 +15,30 @@ export const fadeOnChange = trigger("fadeOnChange", [
     animate("0.3s", keyframes([style({ opacity: 0 }), style({ opacity: 1 })])),
   ]),
 ]);
+export const fadeOnLoad = trigger("fadeOnLoad", [
+  transition("* <=> *", [
+    animate("0.8s", keyframes([style({ opacity: 0 }), style({ opacity: 2 })])),
+  ]),
+]);
 
+export const fader = trigger("routeAnimations", [
+  transition("* <=> *", [
+    query(
+      ":enter, :leave",
+      [
+        style({
+          position: "absolute",
+          opacity: 0,
+        }),
+      ],
+      { optional: true }
+    ),
+    query(":enter", [animate("0.6s", style({ opacity: 1 }))], {
+      optional: true,
+    }),
+  ]),
+]);
+/*
 export const slideInAnimation = trigger("routeAnimations", [
   transition("* => left", slideTo("left")),
   transition("* => right", slideTo("right")),
@@ -52,3 +76,4 @@ function slideTo(direction: "left" | "right") {
     // query(':enter', animateChild()),
   ];
 }
+*/
