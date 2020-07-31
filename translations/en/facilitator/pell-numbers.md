@@ -5,7 +5,7 @@
 This activity starts with trial and error to find some values of a and b that work. Set out any correct answers that students get in a table like this, putting the smallest solutions at the top.
 
 | b | a | Answer |
-| --| --| -------|
+| ------| ------| -------|
 |   |   |        |
 |   |   |        |
 |   |   |        |
@@ -32,13 +32,13 @@ You can find the next for a by adding the previous answer for a and the new valu
 e.g. **29 = 12+17** and **41=29+17**
 
 You can also find new values for **a** and **b** by adding together twice the previous term and the term before that. 
-
+$\sqrt{a}$
 e.g. **29=2x12+5**   and **41 = 2x17+7**
 
-Mathematically, for the **b** column, this is written as **b_n=〖2b〗_(n-1)+b_(n-2)**  where **b_0=0 and b_(1=) 1.**
+Mathematically, for the **b** column, this is written as **$b_n$=$2b_(n-1)$+$b_(n-2)$**  where **$b_0$=0 and $b_1$=1.**
 
-**a/b** for each row gives an approximation to \sqrt{a} **√2**. The approximation gets better as you go down the table. But it will never be perfect no matter how long you do this for!
+**$\frac{a}{b}$** for each row gives an approximation to **$\sqrt{2}$**. The approximation gets better as you go down the table. But it will never be perfect no matter how long you do this for!
 
 ## Extension
-Try doing the activity again but starting with **√3=a/b.** More info can be found at https://en.wikipedia.org/wiki/Pell_number. Thanks to Kevin Buzzard from Imperial College for introducing SAMI to the activity.
+Try doing the activity again but starting with **$\sqrt{3}$=$\frac{a}{b}$.** More info can be found at https://en.wikipedia.org/wiki/Pell_number. Thanks to Kevin Buzzard from Imperial College for introducing SAMI to the activity.
 
