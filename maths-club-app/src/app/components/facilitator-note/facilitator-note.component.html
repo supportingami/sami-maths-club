@@ -1,4 +1,7 @@
-<div *ngIf="problemService.activeProblem$ | async as problem">
+<div
+  class="markdown-container"
+  *ngIf="problemService.activeProblem$ | async as problem"
+>
   <div
     markdown
     id="markdownStyle"

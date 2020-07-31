@@ -9,13 +9,29 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+/* Markdown child content styling */
 table,
 th,
 td {
   border: 1px solid black;
+  padding: 5px;
 }
 table {
   border-collapse: collapse;
+}
+th {
+  background: #494848;
+  color: white;
+}
+// add pseudo element to ensure empty cells fill minimum height
+td:first-child::after {
+  content: "";
+  display: inline-block;
+  vertical-align: top;
+  min-height: 1em;
+}
+td {
+  min-width: 50px;
 }
 #markdownStyle {
   img {
