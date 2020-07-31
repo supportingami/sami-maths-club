@@ -1,6 +1,6 @@
-# Paths
+# Chemins
 
-1.How many ways are there from A to B in the grid if you can only walk along the lines and only walk right or down each time? How about from A to C? How about from A to any other point?
+1.Vous ne pouvez marcher que le long des lignes, et vous n'avez pas le droit de retourner sur vos pas. Il existe combien de chemins de A à B dans le réseau? De A à C? Finalement, il existe combien de chemins qui commence à A?
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/paths.png?raw=true)
 
