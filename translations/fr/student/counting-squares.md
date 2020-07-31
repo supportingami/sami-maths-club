@@ -1,9 +1,9 @@
-# Counting Squares
+# Compter les Carrés
 
-How many different squares can you make by joining dots on a 5x5 grid?
+Combien de carrés pouvez vous dessiner en joignant des points sur une la grille?
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/counting-squares-1.png?raw=true)
 
-(hint - squares can be different sizes and rotations!)
+(Indice: Les carrés peuvent avoir des tailles et des rotations différentes.)
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/counting-squares-2.jpg?raw=true)
