@@ -4,6 +4,6 @@ Go through all 9 dots using only four straight lines without taking your pen off
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/9-dots.png?raw=true)
 
-You may not go back over a line you have already drawn
+Vous ne pouvez pas revenir sur une ligne que vous avez déjà tracée.
 
-(Do not look at the facilitator notes until you are sure you have the solution.)
+(Ne vérifiez pas les réponses ou les notes du facilitateur tant que vous n'aurez pas la solution!)
