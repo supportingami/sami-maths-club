@@ -1,10 +1,10 @@
-# Pell Numbers
+# Suite de Pell
 
-It can be proven that there are no integer (whole number) solutions to
+On peut prouver qu'il n'existe aucune solution entière (nombre entier) pour
 
 $\sqrt{2}=\frac{a}{b}$
 
-So there are no integer solutions to
+Il n'y a donc aucune solution entière pour
 
 $2b^2 - a^2 = 0$
 
