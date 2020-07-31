@@ -11,9 +11,9 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@master
       - name: Install Dependencies
-        run: cd maths-club-app && npm install
+        run: cd maths-club-app && yarn install
       - name: Build
-        run: cd maths-club app && npm run build:prod
+        run: cd maths-club-app && npm run build:prod
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
         with:
