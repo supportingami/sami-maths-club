@@ -1,19 +1,19 @@
-# Balls and Books
+# Billes et Livres
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/balls-and-books-1.png?raw=true)
 
-1.You have a bag of 5 balls, all of different colors. You take two balls out of the bag.
+1.Vous avez un sac de cinq billes. Vous prenez deux billes au hasard.
 
-How many different possible outcomes are there?
+Il existe combien de combinaisons différentes?
 
-What if you add another ball of a new color to the bag (so you have 6)? What about 7 balls?
+Que se passe-t-il si on ajoute une nouvelle bille d'une couleur différente? Et si on avait sept billes?
 
-Is there a similar problem you've already solved?
+Est-ce que vous connaissez un problème similaire?
 
-2.You have 2 blue books and 3 green books. The blue books all look the same and the green books all look the same.
+2.Vous avez 2 livres bleus et 3 livres verts. Les livres bleus ont la même apparence, et les livres verts ont la même apparence.
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/balls-and-books-2.png?raw=true)
 
-How many ways are there to line them up in the shelf?
+Il existe combien de possibilities pour les ranger sur l'étagère?
 
-What if there are 4 green books? 5 green books?
+Et si on avait 4 livres verts? 5 livres verts?
