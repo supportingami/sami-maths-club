@@ -8,10 +8,10 @@ Il n'y a donc aucune solution entière pour
 
 $2b^2 - a^2 = 0$
 
-But can you find positive integer values of a and b that _nearly_ work? That give the answer 1 or -1?
+Mais, pouvez-vous trouver des solutions entières positives qui fonctionnent _presque_, qui donne la réponse 1 ou -1?
 
 $2b^2 - a^2 = \pm1$
 
-Can you find a pattern to all your solutions?
+Pouvez-vous trouver un modèle pour toutes vos solutions?
 
-What does $\frac{a}{b}$ give a good approximation to?
+A quoi correspond $\frac{a}{b}$ en guise d'approximation?
