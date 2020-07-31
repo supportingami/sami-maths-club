@@ -1,18 +1,18 @@
 import { Component, ViewEncapsulation } from "@angular/core";
 import { AppService } from "./services/app.service";
 import { RouterOutlet } from "@angular/router";
-import { fader, fadeOnChange } from "./route-animations";
+import { slideTransition } from "./animations";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],
   encapsulation: ViewEncapsulation.None,
-  animations: [fader, fadeOnChange],
+  animations: [slideTransition],
 })
 export class AppComponent {
   constructor(public appService: AppService) {}
-  prepareRoute(outlet: RouterOutlet) {
+  getRouteAnimationState(outlet: RouterOutlet) {
     return (
       outlet &&
       outlet.activatedRouteData &&

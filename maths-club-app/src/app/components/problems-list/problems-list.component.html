@@ -1,8 +1,12 @@
-<div class="problems-list-container">
+<div
+  class="problems-list-container"
+  [@fadeChildren]
+  *ngIf="problemService.problems$ | async as problems"
+>
   <mat-card
     class="problem-card"
     [routerLink]="[problem.slug]"
-    *ngFor="let problem of problemService.problems$ | async"
+    *ngFor="let problem of problems"
   >
     <h2 class="problem-title">{{ problem.title }}</h2>
     <img
