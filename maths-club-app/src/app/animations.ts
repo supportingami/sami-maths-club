@@ -37,7 +37,7 @@ export const fadeChildren = trigger("fadeChildren", [
       ":enter",
       [
         style({ opacity: 0, transform: "translateY(50px)" }),
-        stagger(-30, [
+        stagger(30, [
           animate("300ms ease-out", style({ opacity: 1, transform: "none" })),
         ]),
       ],
