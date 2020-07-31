@@ -18,6 +18,8 @@ export class FacilitatorNoteComponent {
 
   onMarkdownReady() {
     this.markdownReady = true;
+    // as markdown can be ready before page fully initialised complete manually trigger
+    // change detection to avoid change detection errors
     this.cdr.detectChanges();
   }
 }
