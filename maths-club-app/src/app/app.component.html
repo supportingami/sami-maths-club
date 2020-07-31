@@ -19,14 +19,10 @@
       <button mat-icon-button (click)="appService.goBack()" *ngIf="params.slug">
         <mat-icon>arrow_back</mat-icon>
       </button>
-      <span
-        style="flex: 1; text-align: center;"
-        [@fadeOnChange]="appService.title$ | async"
-        >{{ appService.title$ | async }}</span
-      >
+      <span style="flex: 1; text-align: center;">SAMI Maths Club</span>
       <app-language-switcher></app-language-switcher>
     </mat-toolbar>
-    <main [@routeAnimations]="prepareRoute(outlet)" class="content">
+    <main [@slideTransition]="getRouteAnimationState(outlet)" class="content">
       <router-outlet #outlet="outlet"></router-outlet>
     </main>
   </mat-sidenav-content>

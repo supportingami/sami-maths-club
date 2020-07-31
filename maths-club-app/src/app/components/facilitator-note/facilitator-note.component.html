@@ -2,10 +2,12 @@
   class="markdown-container"
   *ngIf="problemService.activeProblem$ | async as problem"
 >
-  <div
-    markdown
-    id="markdownStyle"
-    [data]="problem.facilitatorVersionText"
-    katex
-  ></div>
+  <div [@fadeInOut]="markdownReady ? 'in' : 'out'">
+    <markdown
+      id="markdownStyle"
+      [data]="problem.facilitatorVersionText"
+      katex
+      (ready)="onMarkdownReady()"
+    ></markdown>
+  </div>
 </div>
