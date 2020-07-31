@@ -11,17 +11,15 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@master
       - name: Install Dependencies
-        run: npm install
-        working-directory: ./maths-club-app
+        run: cd maths-club-app && npm install
       - name: Build
         run: npm run build:prod
-        working-directory: ./maths-club-app
+            working-directory: ./maths-club-app
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
-        working-directory: ./maths-club-app
         with:
-          name: dist
-          path: dist
+          name: maths-club-app/dist
+          path: maths-club-app/dist
   deploy:
     name: Deploy
     needs: build
