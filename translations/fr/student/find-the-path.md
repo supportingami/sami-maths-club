@@ -1,13 +1,13 @@
-# Find the path
+# Trouver le Chemin
 
-By moving up, down, left or right, make a path from the Start to the Finish.
+En se déplaçant vers le haut, vers le bas, vers la gauche, ou vers la droite, trouvez un chemin depuis le début jusqu'à la fin.
 
-Add up all the numbers you pass through.
+Faites la somme des chiffres du chemin.
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/find-the-path.png?raw=true)
 
-Can you make exactly 53?
+Pouvez-vous trouver un chemin où la somme égale 53?
 
-What is the smallest possible number?
+Quelle est la somme la plus petite possible?
 
-Can you make exactly 60?
+Pouvez-vous trouver un chemin où la somme égale 60?
