@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "sami-maths-club"
+  },
+  "targets": {
+    "sami-maths-club": {
+      "hosting": {
+        "staging": [
+          "sami-maths-club-staging"
+        ],
+        "production": [
+          "sami-maths-club"
+        ]
+      }
+    }
   }
 }
