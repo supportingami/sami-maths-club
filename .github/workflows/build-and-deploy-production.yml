@@ -1,0 +1,40 @@
+name: Build and Deploy Production
+on:
+  push:
+    branches:
+      - cc/ci-tests
+jobs:
+  staging:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Setup Cache
+        uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Dependencies
+        run: yarn install
+      - name: App Build
+        run: npm run app:build
+      - name: Generate Android Signed Bundle
+        uses: r0adkll/sign-android-release@v1
+        with:
+          releaseDirectory: maths-club-app/android/app/build/outputs/apk/release
+          signingKeyBase64: ${{ secrets.ANDROID_SIGNING_KEY_BASE64 }}
+          alias: ${{ secrets.ANDROID_KEY_ALIAS }}
+          keyStorePassword: ${{ secrets.ANDROID_KEY_STORE_PASSWORD }}
+          keyPassword: ${{ secrets.ANDROID_KEY_PASSWORD }}
+      - name: Upload Bundle Release Artificat
+        uses: actions/upload-artifact@v2
+        with:
+          path: maths-club-app/android/app/build/outputs/apk/release
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting:staging
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          PROJECT_PATH: maths-club-app
