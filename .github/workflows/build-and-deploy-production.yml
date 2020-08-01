@@ -25,7 +25,7 @@ jobs:
           java-version: 1.8
       - name: Generate Android Build
         # create release app bundle (aab) and app assemble (apk)
-        run: ./maths-club-app/android/gradlew clean :app:bundleRelease :app:assembleRelease
+        run: cd maths-club-app/android && ./gradlew clean :app:bundleRelease :app:assembleRelease
       - name: Sign Android Bundle
         uses: r0adkll/sign-android-release@v1
         with:
