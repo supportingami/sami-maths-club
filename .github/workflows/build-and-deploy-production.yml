@@ -17,13 +17,13 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - name: Install Dependencies
         run: yarn install
-      - name: App Build
+      - name: Build App
         run: npm run app:build
       - name: Generate Android Build
         uses: vgaidarji/android-github-actions-build@v1.0.1
         with:
           # create release app bundle (aab) and app assemble (apk)
-          args: "./gradlew clean :app:bundleRelease :app:assembleRelease"
+          args: "./maths-club-app/android/gradlew clean :app:bundleRelease :app:assembleRelease"
       - name: Sign Android Bundle
         uses: r0adkll/sign-android-release@v1
         with:

@@ -8,5 +8,6 @@ translations/ach/
 pdfs
 # ignore keystore and converted keystore text file
 **/*.jks**
+.gradle
 .firebase
 
