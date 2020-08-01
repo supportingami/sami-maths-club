@@ -19,10 +19,15 @@ jobs:
         run: yarn install
       - name: App Build
         run: npm run app:build
-      - name: Generate Android Signed Bundle
+      - name: Generate Android Build
+        uses: vgaidarji/android-github-actions-build@v1.0.1
+        with:
+          # create release app bundle (aab) and app assemble (apk)
+          args: "./gradlew clean :app:bundleRelease :app:assembleRelease"
+      - name: Sign Android Bundle
         uses: r0adkll/sign-android-release@v1
         with:
-          releaseDirectory: maths-club-app/android/app/build/outputs/apk/release
+          releaseDirectory: maths-club-app/android/app/build/outputs/bundle/release
           signingKeyBase64: ${{ secrets.ANDROID_SIGNING_KEY_BASE64 }}
           alias: ${{ secrets.ANDROID_KEY_ALIAS }}
           keyStorePassword: ${{ secrets.ANDROID_KEY_STORE_PASSWORD }}
@@ -30,11 +35,11 @@ jobs:
       - name: Upload Bundle Release Artificat
         uses: actions/upload-artifact@v2
         with:
-          path: maths-club-app/android/app/build/outputs/apk/release
-      - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only hosting:staging
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          PROJECT_PATH: maths-club-app
+          path: maths-club-app/android/app/build/outputs/bundle/release
+    #   - name: Deploy to Firebase
+    #     uses: w9jds/firebase-action@master
+    #     with:
+    #       args: deploy --only hosting:production
+    #     env:
+    #       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+    #       PROJECT_PATH: maths-club-app
