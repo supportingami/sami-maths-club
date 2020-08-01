@@ -37,7 +37,16 @@ jobs:
       - name: Upload Bundle Release Artificat
         uses: actions/upload-artifact@v2
         with:
-          path: maths-club-app/android/app/build/outputs/bundle/release
+          # release file env path added in previous step
+          path: ${{ env.SIGNED_RELEASE_FILE}}
+      - name: Upload to Google play
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJson: ${{ GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: io.c2dev.samimathsclub
+          releaseFile: ${{ env.SIGNED_RELEASE_FILE}}
+          track: alpha
+          #whatsNewDirectory: /distribution/whatsnew
     #   - name: Deploy to Firebase
     #     uses: w9jds/firebase-action@master
     #     with:
