@@ -6,5 +6,8 @@ translations/*/metadata.json
 translations/ach/
 **/package-lock.json
 pdfs
-**/*.jks
+# ignore keystore and converted keystore text file
+**/*.jks**
+.gradle
 .firebase
+
