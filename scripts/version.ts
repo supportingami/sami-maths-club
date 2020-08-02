@@ -20,17 +20,8 @@ function updateGradleBuild(oldVersionName: string, newVersionName: string) {
   const oldVersionCode = _generateVersionCode(oldVersionName);
   const newVersionCode = _generateVersionCode(newVersionName);
   const match = gradleBuildFile.match(oldVersionCode);
-  console.log("match", match);
   gradleBuildFile = gradleBuildFile.replace(oldVersionCode, newVersionCode);
   gradleBuildFile = gradleBuildFile.replace(oldVersionName, newVersionName);
-  console.log(
-    "gradle replace",
-    oldVersionCode,
-    newVersionCode,
-    oldVersionName,
-    newVersionName
-  );
-  console.log(gradleBuildFile);
   fs.writeFileSync(APP_BUILD_GRADLE, gradleBuildFile, { encoding: "utf-8" });
 }
 
@@ -48,8 +39,8 @@ async function promptNewVersion(currentVersion: string) {
     {
       message: `Specify a version number (current: ${currentVersion})`,
       name: "version",
-      //   validate: (v) =>
-      //     v > currentVersion ? true : "Version number must be increased",
+      validate: (v) =>
+        v > currentVersion ? true : "Version number must be increased",
     },
   ]);
   return version;
