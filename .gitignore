@@ -11,3 +11,5 @@ pdfs
 .gradle
 .firebase
 
+#ignore google-services-json file
+maths-club-app/android/app/google-services.json
