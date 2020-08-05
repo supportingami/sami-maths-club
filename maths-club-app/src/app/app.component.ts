@@ -42,6 +42,7 @@ export class AppComponent implements OnInit {
       "registration",
       (token: PushNotificationToken) => {
         alert("Push registration success, token:" + token.value);
+        console.log("Token Value", token.value);
       }
     );
 
