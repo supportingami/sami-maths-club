@@ -10,7 +10,7 @@ import {
   PushNotificationActionPerformed,
 } from "@capacitor/core";
 
-const { PushNotifications } = Plugins;
+const { PushNotifications, Modals } = Plugins;
 
 @Component({
   selector: "app-root",
@@ -53,7 +53,13 @@ export class AppComponent implements OnInit {
     PushNotifications.addListener(
       "pushNotificationReceived",
       (notification: PushNotification) => {
-        alert("Push received: " + JSON.stringify(notification));
+       // alert("Push received: " + JSON.stringify(notification));
+       console.log("Push Received: ", notification);
+
+       let alertRet = Modals.alert({
+         title: notification.title,
+         message: notification.body
+       })
       }
     );
 
