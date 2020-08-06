@@ -1,10 +1,11 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
+import PACKAGE_JSON from "../../package.json";
 
 export const environment = {
   production: false,
-  APP_VERSION: require("../../package.json").version,
+  APP_VERSION: PACKAGE_JSON.version,
 };
 
 /*
