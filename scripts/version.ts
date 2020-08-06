@@ -19,7 +19,6 @@ function updateGradleBuild(oldVersionName: string, newVersionName: string) {
   });
   const oldVersionCode = _generateVersionCode(oldVersionName);
   const newVersionCode = _generateVersionCode(newVersionName);
-  const match = gradleBuildFile.match(oldVersionCode);
   gradleBuildFile = gradleBuildFile.replace(oldVersionCode, newVersionCode);
   gradleBuildFile = gradleBuildFile.replace(oldVersionName, newVersionName);
   fs.writeFileSync(APP_BUILD_GRADLE, gradleBuildFile, { encoding: "utf-8" });
