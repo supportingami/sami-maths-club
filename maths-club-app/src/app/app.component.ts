@@ -9,6 +9,7 @@ import {
   PushNotificationToken,
   PushNotificationActionPerformed,
 } from "@capacitor/core";
+import { environment } from "src/environments/environment";
 
 const { PushNotifications, Modals } = Plugins;
 
@@ -20,6 +21,7 @@ const { PushNotifications, Modals } = Plugins;
   animations: [slideTransition],
 })
 export class AppComponent implements OnInit {
+  version = environment.APP_VERSION;
   constructor(public appService: AppService) {}
   getRouteAnimationState(outlet: RouterOutlet) {
     return (
@@ -53,13 +55,13 @@ export class AppComponent implements OnInit {
     PushNotifications.addListener(
       "pushNotificationReceived",
       (notification: PushNotification) => {
-       // alert("Push received: " + JSON.stringify(notification));
-       console.log("Push Received: ", notification);
+        // alert("Push received: " + JSON.stringify(notification));
+        console.log("Push Received: ", notification);
 
-       let alertRet = Modals.alert({
-         title: notification.title,
-         message: notification.body
-       })
+        let alertRet = Modals.alert({
+          title: notification.title,
+          message: notification.body,
+        });
       }
     );
 
