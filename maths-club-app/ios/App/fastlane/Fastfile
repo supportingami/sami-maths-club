@@ -30,7 +30,8 @@ platform :ios do
   private_lane :build_project do
     match(
       type: "appstore",
-      readonly: is_ci,
+      # readonly: is_ci,
+      readonly: true,
       keychain_name: "ci_keychain",
       keychain_password: "ci_keychain",
       git_basic_authorization: Base64.strict_encode64(ENV["FASTLANE_MATCH_GITHUB_AUTH"])
