@@ -32,7 +32,7 @@ jobs:
           sudo gem install fastlane -NV
       - name: Run fastlane
         run: |
-          cd maths-club-app/io/App
+          cd maths-club-app/ios/App
           fastlane ios ci_beta --verbose
         env:
           # created when first initialising match certs
