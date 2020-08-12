@@ -33,7 +33,7 @@ platform :ios do
       readonly: is_ci,
       keychain_name: "ci_keychain",
       keychain_password: "ci_keychain",
-      git_basic_authorization: ENV["FASTLANE_MATCH_GITHUB_AUTH"]
+      git_basic_authorization: Base64.strict_encode64(ENV["FASTLANE_MATCH_GITHUB_AUTH"])
       
     )
     update_project_provisioning(
