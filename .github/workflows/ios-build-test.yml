@@ -20,6 +20,7 @@ jobs:
       # - name: Build App
       #   run: npm run app:build
       - name: Setup environment
+      # TODO - look at other signing options, e.g. https://medium.com/well-red/github-actions-fastlane-ios-1f6d43cce726
         run: |
           echo $P12_BASE64 | base64 --decode > ios-build.p12
           echo $MOBILEPROVISION_BASE64 | base64 --decode > ios-build.mobileprovision
@@ -28,10 +29,10 @@ jobs:
           $P12_BASE64: ${{secrets.IOS_P12_BASE64}}
           $MOBILEPROVISION_BASE64: ${{secrets.IOS_PROVISION_BASE64}}
       - name: Install and run fastlane
-        uses: maierj/fastlane-action@v1.4.0
-        with:
-          lane: "ci"
-          subdirectory: "maths-club-app/ios/App"
+        run: |
+          cd maths-club-app/ios/App
+          sudo gem install fastlane -NV
+          fastlane ci
       - name: Upload Release Asset
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
