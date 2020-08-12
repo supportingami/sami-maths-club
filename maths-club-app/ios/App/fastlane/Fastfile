@@ -29,8 +29,10 @@ platform :ios do
     upload_to_testflight(
       ipa:"app.ipa",
       skip_waiting_for_build_processing: true,
+      # NOTE - this should not be the main app account holder but one onlywith
+      # app manager and certificates access to avoid 2fa
+      # and use application specific password insted
       username: 'chris@c2dev.co.uk',
-      apple_id:'apps@c2dev.co.uk'
     )
   end
 
