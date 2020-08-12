@@ -29,7 +29,7 @@ platform :ios do
 
   private_lane :build_project do
     puts "encoding, with env"
-    puts ENV
+    puts ENV.keys
     github_auth = Base64.strict_encode64(ENV["FASTLANE_MATCH_GITHUB_AUTH"])
     puts github_auth
     match(
