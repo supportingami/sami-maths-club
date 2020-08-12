@@ -19,14 +19,16 @@ platform :ios do
   desc "CI - Setup Keychain"
   # Adapted from https://github.com/yukiarrr/ios-build-action/blob/master/fastlane/Fastfile
   # and https://medium.com/well-red/github-actions-fastlane-ios-1f6d43cce726
-  
+
   lane :ci_beta do
   # TODO - ensure env configured properly: https://docs.fastlane.tools/actions/ensure_env_vars/
     setup_project
     build_project
     cleanup_project
-    upload_to_testflight
-  end 
+    upload_to_testflight(
+      ipa:"app.ipa"
+    )
+  end
 
   private_lane :build_project do
     match(
@@ -48,9 +50,9 @@ platform :ios do
       scheme: "App",
       configuration: "Release",
       workspace: "App.xcworkspace",
-      output_name: "my-app.ipa",
+      output_name: "app.ipa",
     )
- end   
+ end
 
   private_lane :setup_project do
   # TODO - create pw and share across steps
@@ -63,8 +65,8 @@ platform :ios do
       unlock: true,
       timeout: 3600,
       lock_when_sleeps: false
-    ) 
-  end 
+    )
+  end
 
   private_lane :cleanup_project do
     delete_keychain(
