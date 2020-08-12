@@ -18,32 +18,54 @@ default_platform(:ios)
 platform :ios do
   desc "CI - Setup Keychain"
   # Adapted from https://github.com/yukiarrr/ios-build-action/blob/master/fastlane/Fastfile
-  lane :ci do
-    keychain_password = SecureRandom.uuid
+  # and https://medium.com/well-red/github-actions-fastlane-ios-1f6d43cce726
+  
+  lane :ci_beta do
+    setup_project
+    build_project
+    cleanup_project
+    upload_to_testflight
+  end 
+
+  private_lane :build_project do
+    match(
+      type: "appstore",
+      readonly: is_ci,
+      keychain_name: "ci_keychain",
+      keychain_password: "ci_keychain",
+      git_basic_authorization: ENV["FASTLANE_MATCH_GITHUB_AUTH"]
+      
+    )
+    update_project_provisioning(
+      xcodeproj: "App.xcodeproj",
+      profile: "ios-build.mobileprovision",
+      target_filter: "App",
+      build_configuration: "Release",
+    )
+    build_app(
+      scheme: "App",
+      configuration: "Release",
+      workspace: "App.xcworkspace",
+      output_name: "my-app.ipa",
+    )
+ end   
+
+  private_lane :setup_project do
+  # TODO - create pw and share across steps
+  # keychain_password = SecureRandom.uuid
     create_keychain(
-      name: "ios-build.keychain",
-      password: 'keychain_password',
+      name: "ci_keychain",
+      password: "ci_keychain",
       default_keychain: true,
       unlock: true,
       timeout: 3600,
-      lock_when_sleeps: false,
-      require_create: true
-    )
-    import_certificate(
-      certificate_path: "ios-build.p12",
-      # certificate_password: ENV["CERTIFICATE_PASSWORD"],
-      keychain_name: "ios-build.keychain",
-      keychain_password: 'keychain_password',
-      log_output: true
-    )
-    install_provisioning_profile(
-      path: "ios-build.mobileprovision"
-    )
-    disable_automatic_code_signing
-    build_app(workspace: "App.xcworkspace", scheme: "App")
-    upload_to_testflight
+      lock_when_sleeps: false
+    ) 
+  end 
+
+  private_lane :cleanup_project do
     delete_keychain(
-      name: "ios-build.keychain"
+      name: "ci_keychain"
     )
   end
 

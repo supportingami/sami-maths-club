@@ -20,28 +20,23 @@ jobs:
       # - name: Build App
       #   run: npm run app:build
       - name: Setup environment
-      # TODO - look at other signing options, e.g. https://medium.com/well-red/github-actions-fastlane-ios-1f6d43cce726
+      # TODO - look at other signing options, e.g. 
         run: |
           cd maths-club-app/ios/App
-          echo $P12_BASE64 | base64 --decode > ios-build.p12
           echo $MOBILEPROVISION_BASE64 | base64 --decode > ios-build.mobileprovision
-          ls
         env:
-          $P12_BASE64: ${{secrets.IOS_P12_BASE64}}
           $MOBILEPROVISION_BASE64: ${{secrets.IOS_PROVISION_BASE64}}
-      # TODO - possibly could use https://github.com/maierj/fastlane-action to ensure consistent bundler env
       - name: Install and run fastlane
         run: |
           cd maths-club-app/ios/App
           sudo gem install fastlane -NV
-          fastlane ci
-      # - name: Upload Release Asset
-      #   id: upload-release-asset
-      #   uses: actions/upload-release-asset@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-      #     asset_path: ./maths-club-app/ios/App/build.ipa
-      #     asset_name: build.ipa
-      #     asset_content_type: application/zip
+          fastlane ios ci_beta
+        env:
+          # created when first initialising match certs
+          $MATCH_PASSWORD: ${{secrets.FASTFILE_MATCH_PASSWORD}}
+          # apple dev account pw, used to generate/refresh/verify certs (not required if readonly mode?)
+          $FASTLANE_PASSWORD: ${{secrets.IOS_DEVACCOUNT_PW}}
+          # Base64.strict_encode64("git_username:git_personal_access_token_for_match_repo")
+          $FASTLANE_MATCH_GITHUB_AUTH: ${{secrets.FASTLANE_MATCH_GITHUB_AUTH}} 
+          # Generated from appleid.apple.com/account/manage (login to avoid 2fa)
+          $FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD}}

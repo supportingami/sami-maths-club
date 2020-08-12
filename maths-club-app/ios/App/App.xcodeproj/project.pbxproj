@@ -382,6 +382,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.c2dev.samimathsclub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "b6bec850-3f86-4770-9c65-fde4052d6c75";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore io.c2dev.samimathsclub";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = USE_PUSH;
 				SWIFT_VERSION = 5.0;
