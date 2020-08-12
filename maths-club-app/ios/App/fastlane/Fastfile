@@ -21,6 +21,7 @@ platform :ios do
   # and https://medium.com/well-red/github-actions-fastlane-ios-1f6d43cce726
   
   lane :ci_beta do
+  # TODO - ensure env configured properly: https://docs.fastlane.tools/actions/ensure_env_vars/
     setup_project
     build_project
     cleanup_project
@@ -30,10 +31,11 @@ platform :ios do
   private_lane :build_project do
     match(
       type: "appstore",
-      # readonly: is_ci,
-      readonly: true,
+      # TODO - consider if worth allowing ci to refresh/generate certs
+      readonly: is_ci,
       keychain_name: "ci_keychain",
       keychain_password: "ci_keychain",
+      # TODO - could save in env already encoded (previous bug thought not possible but should be)
       git_basic_authorization: Base64.strict_encode64(ENV["FASTLANE_MATCH_GITHUB_AUTH"])
     )
     update_project_provisioning(
@@ -53,6 +55,7 @@ platform :ios do
   private_lane :setup_project do
   # TODO - create pw and share across steps
   # keychain_password = SecureRandom.uuid
+  # TODO - consider using https://docs.fastlane.tools/actions/setup_ci/
     create_keychain(
       name: "ci_keychain",
       password: "ci_keychain",
