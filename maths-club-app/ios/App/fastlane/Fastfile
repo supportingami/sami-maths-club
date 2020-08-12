@@ -28,7 +28,10 @@ platform :ios do
   end 
 
   private_lane :build_project do
+    puts "encoding"
+    puts ENV["FASTLANE_MATCH_GITHUB_AUTH"]
     github_auth = Base64.strict_encode64(ENV["FASTLANE_MATCH_GITHUB_AUTH"])
+    puts github_auth
     match(
       type: "appstore",
       # readonly: is_ci,
