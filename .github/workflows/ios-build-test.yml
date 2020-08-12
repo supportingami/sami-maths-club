@@ -25,7 +25,7 @@ jobs:
           cd maths-club-app/ios/App
           echo $MOBILEPROVISION_BASE64 | base64 --decode > ios-build.mobileprovision
         env:
-          $MOBILEPROVISION_BASE64: ${{secrets.IOS_PROVISION_BASE64}}
+          MOBILEPROVISION_BASE64: ${{secrets.IOS_PROVISION_BASE64}}
       - name: Install fastlane
         run: |
           cd maths-club-app/ios/App
