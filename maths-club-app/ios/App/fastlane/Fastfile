@@ -29,7 +29,7 @@ platform :ios do
     upload_to_testflight(
       ipa:"app.ipa",
       skip_waiting_for_build_processing: true,
-      username: 'chris@c2dev.co.uk'
+      username: 'chris@c2dev.co.uk',
       apple_id:'apps@c2dev.co.uk'
     )
   end
