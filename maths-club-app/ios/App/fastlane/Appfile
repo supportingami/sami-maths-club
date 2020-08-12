@@ -1,5 +1,7 @@
 app_identifier("io.c2dev.samimathsclub") # The bundle identifier of your app
-apple_id("apps@c2dev.co.uk") # Your Apple email address
+# NOTE - this should not be the main app account holder but one onlywith
+# app manager and certificates access to avoid 2fa
+apple_id("chris@c2dev.co.uk") # Your Apple email address
 
 itc_team_id("120871574") # App Store Connect Team ID
 team_id("RWK54FS6K5") # Developer Portal Team ID
