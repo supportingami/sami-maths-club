@@ -25,7 +25,7 @@ platform :ios do
     setup_project
     build_project
     cleanup_project
-    puts ENV("FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD")
+    puts ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"]
     upload_to_testflight(
       ipa:"app.ipa",
       skip_waiting_for_build_processing: true,
