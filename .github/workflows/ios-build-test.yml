@@ -26,10 +26,13 @@ jobs:
           echo $MOBILEPROVISION_BASE64 | base64 --decode > ios-build.mobileprovision
         env:
           $MOBILEPROVISION_BASE64: ${{secrets.IOS_PROVISION_BASE64}}
-      - name: Install and run fastlane
+      - name: Install fastlane
         run: |
           cd maths-club-app/ios/App
           sudo gem install fastlane -NV
+      - name: Run fastlane
+        run: |
+          cd maths-club-app/io/App
           fastlane ios ci_beta --verbose
         env:
           # created when first initialising match certs
