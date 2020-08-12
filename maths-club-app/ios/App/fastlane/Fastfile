@@ -20,9 +20,6 @@ platform :ios do
   # Adapted from https://github.com/yukiarrr/ios-build-action/blob/master/fastlane/Fastfile
   lane :ci do
     keychain_password = SecureRandom.uuid
-    delete_keychain(
-      name: "ios-build.keychain"
-    )
     create_keychain(
       name: "ios-build.keychain",
       password: 'keychain_password',
