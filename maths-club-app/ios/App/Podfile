@@ -14,7 +14,7 @@ def capacitor_pods
   # Do not delete
 end
 
-target 'SAMI Maths Club' do
+target 'App' do
   capacitor_pods
   # Add your Pods here
 end
