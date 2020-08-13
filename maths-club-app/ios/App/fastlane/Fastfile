@@ -29,9 +29,12 @@ platform :ios do
     upload_to_testflight(
       ipa:"app.ipa",
       skip_waiting_for_build_processing: true,
+      # taken from app store entry - required to avoid 2fa (different to Appfile apple_id)
+      apple_id:'1527293312',
       # NOTE - this should not be the main app account holder but one onlywith
       # app manager and certificates access to avoid 2fa
       # and use application specific password insted
+      # # e.g. https://circleci.com/docs/2.0/deploying-ios/#app-store-connect
       username: 'chris@c2dev.co.uk',
     )
   end
@@ -61,8 +64,8 @@ platform :ios do
  end
 
   private_lane :setup_project do
-  # TODO - create pw and share across steps
-  # keychain_password = SecureRandom.uuid
+  # TODO - create pw and share across steps (use export to share across ruby env)
+  # export KEYCHAIN_PASSWORD = SecureRandom.uuid
   # TODO - consider using https://docs.fastlane.tools/actions/setup_ci/
     create_keychain(
       name: "ci_keychain",
