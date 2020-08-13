@@ -22,10 +22,10 @@ platform :ios do
 
   lane :ci_beta do
   # TODO - ensure env configured properly: https://docs.fastlane.tools/actions/ensure_env_vars/
+    puts ENV.keys
     setup_project
     build_project
     cleanup_project
-    puts ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"]
     upload_to_testflight(
       ipa:"app.ipa",
       skip_waiting_for_build_processing: true,
