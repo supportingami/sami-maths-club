@@ -1,3 +1,9 @@
+---
+title: Making Squares
+type: problem
+order: 12
+---
+
 # Making Squares
 
 This is a game for 2 players (or 2 teams)  
