@@ -28,11 +28,22 @@ platform :ios do
   
   lane :ci_beta do
   # TODO - ensure env configured properly: https://docs.fastlane.tools/actions/ensure_env_vars/
+    puts ENV.keys
     setup_project
     build_project
     cleanup_project
-    upload_to_testflight
-  end 
+    upload_to_testflight(
+      ipa:"app.ipa",
+      skip_waiting_for_build_processing: true,
+      # taken from app store entry - required to avoid 2fa (different to Appfile apple_id)
+      apple_id:'1527293312',
+      # NOTE - this should not be the main app account holder but one onlywith
+      # app manager and certificates access to avoid 2fa
+      # and use application specific password insted
+      # # e.g. https://circleci.com/docs/2.0/deploying-ios/#app-store-connect
+      username: 'chris@c2dev.co.uk',
+    )
+  end
 
   private_lane :build_project do
     match(
@@ -54,13 +65,13 @@ platform :ios do
       scheme: "App",
       configuration: "Release",
       workspace: "App.xcworkspace",
-      output_name: "my-app.ipa",
+      output_name: "app.ipa",
     )
- end   
+ end
 
   private_lane :setup_project do
-  # TODO - create pw and share across steps
-  # keychain_password = SecureRandom.uuid
+  # TODO - create pw and share across steps (use export to share across ruby env)
+  # export KEYCHAIN_PASSWORD = SecureRandom.uuid
   # TODO - consider using https://docs.fastlane.tools/actions/setup_ci/
     create_keychain(
       name: "ci_keychain",
@@ -69,8 +80,8 @@ platform :ios do
       unlock: true,
       timeout: 3600,
       lock_when_sleeps: false
-    ) 
-  end 
+    )
+  end
 
   private_lane :cleanup_project do
     delete_keychain(

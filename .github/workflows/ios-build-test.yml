@@ -37,7 +37,8 @@ jobs:
         env:
           # created when first initialising match certs
           MATCH_PASSWORD: ${{secrets.FASTFILE_MATCH_PASSWORD}}
-          # apple dev account pw, used to generate/refresh/verify certs (not required if readonly mode?)
+          # apple account pw, used to generate/refresh/verify certs
+          # should match app manager username (as specified in fastfile), not main account holder 
           FASTLANE_PASSWORD: ${{secrets.IOS_DEVACCOUNT_PW}}
           # basic auth creds: "git_username:git_personal_access_token_for_match_repo"
           FASTLANE_MATCH_GITHUB_AUTH: ${{secrets.FASTLANE_MATCH_GITHUB_AUTH}}
