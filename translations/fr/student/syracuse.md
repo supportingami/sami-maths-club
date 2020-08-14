@@ -2,7 +2,7 @@
 
 On appelle suite de Syracuse une suite d'entiers définie de la manière suivante: on d'un nombre entier quelconque plus grand que zéro, et:
 
-1. s'il est pair, on le divise par 2;
+* s'il est pair, on le divise par 2;
 * s'il est impair, on le multiplie par 3 et on ajoute 1.
 
 Après que le nombre 1 a été atteint, on termine la suite.
