@@ -1,8 +1,7 @@
 name: Build IOS
 on:
-  push:
-    branches:
-      - ios
+  release:
+    types: [published]
 jobs:
   ios:
     name: Build IOS
