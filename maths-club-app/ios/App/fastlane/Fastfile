@@ -19,6 +19,12 @@ platform :ios do
   desc "CI - Setup Keychain"
   # Adapted from https://github.com/yukiarrr/ios-build-action/blob/master/fastlane/Fastfile
   # and https://medium.com/well-red/github-actions-fastlane-ios-1f6d43cce726
+
+  lane :appetize do
+    build_and_upload_to_appetize(
+      api_token: ENV["APPETIZE_API_TOKEN"]
+    )
+  end
   
   lane :ci_beta do
   # TODO - ensure env configured properly: https://docs.fastlane.tools/actions/ensure_env_vars/
