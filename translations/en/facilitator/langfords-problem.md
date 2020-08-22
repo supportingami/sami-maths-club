@@ -14,7 +14,7 @@ Adding in the 5s makes this impossible
 
 Imagine the ten numbers are written in this line:
 
-![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/langford's-problem-1.png?raw=true)  
+![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/langfords-problem-1.png?raw=true)  
 
 The two 1s would have to be on the same colour lines to have one number between them.   
 
@@ -23,7 +23,7 @@ The two 2s would have to be on different colour lines to have two numbers betwee
 The two 3s would be on the same colour, 4s on different colours and 5s on the same colour.  
 So
 
-![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/langford's-problem-2.png?raw=true)  
+![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/langfords-problem-2.png?raw=true)  
 
 There are five reds and five blues available in the line, but the best you can do with these constraints are 6 blues and 4 reds, or 6 reds and 4 blues. You cannot have five of each, so there is no way to fill in the numbers 1122334455.
 
