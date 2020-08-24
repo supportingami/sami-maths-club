@@ -1,9 +1,7 @@
 name: Build and Deploy Release
 on:
-  push:
-    # triggered on creation of tag prefixed with 'v', e.g. v2.0.1
-    tags:
-      - v*
+  release:
+    types: [published]
 jobs:
   staging:
     name: Build and Deploy
@@ -24,6 +22,11 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
+        # use data stored in secretes to populate google-services.json
+      - name: Write Google Services Json
+        run: cd maths-club-app/android && echo $GOOGLE_SERVICES_JSON > app/google-services.json
+        env:
+          GOOGLE_SERVICES_JSON: ${{secrets.GOOGLE_SERVICES_JSON}}
       - name: Generate Android Build
         # create release app bundle (aab) and app assemble (apk)
         run: cd maths-club-app/android && ./gradlew clean :app:bundleRelease :app:assembleRelease
@@ -46,7 +49,7 @@ jobs:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
           packageName: io.c2dev.samimathsclub
           releaseFile: ${{ env.SIGNED_RELEASE_FILE}}
-          track: alpha
+          track: beta
           #whatsNewDirectory: /distribution/whatsnew
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
