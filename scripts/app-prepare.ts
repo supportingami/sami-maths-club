@@ -107,6 +107,9 @@ function rewriteAppImageUrlsFromTranslation() {
 function extractProblemMeta(filepath: string): IProblemMeta {
   const fileText = fs.readFileSync(filepath, { encoding: "utf-8" });
   const attributes = fm(fileText).attributes as IProblemMeta;
+  if (Object.keys(attributes).length === 0) {
+    throw new Error(`No Metadata Specified at top of ${filepath}`);
+  }
   const slug = stripSpecialCharacters(attributes.title);
   return { ...attributes, slug };
 }

@@ -1,3 +1,10 @@
+---
+title: Syracuse
+slug: syracuse
+type: problem
+order: 100
+---
+
 # Syracuse's Conjecture
 
 A Syracuse sequence is a sequence of whole numbers defined in the following way: start from any whole number bigger than zero, and:
