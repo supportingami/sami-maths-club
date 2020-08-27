@@ -4,14 +4,37 @@ import inquirer from "inquirer";
 const PACKAGE_PATH = "package.json";
 const APP_PACKAGE_PATH = "maths-club-app/package.json";
 const APP_BUILD_GRADLE = "maths-club-app/android/app/build.gradle";
+const APP_PLIST = "maths-club-app/ios/App/App/Info.plist";
 
 async function main() {
   const oldVersion = fs.readJSONSync(PACKAGE_PATH).version;
   const newVersion = await promptNewVersion(oldVersion);
   updatePackageJson(newVersion);
   updateGradleBuild(oldVersion, newVersion);
+  updateIOSPlist(newVersion);
 }
 main();
+
+/**
+ *
+ */
+function updateIOSPlist(newVersionName: string) {
+  let plistFile = fs.readFileSync(APP_PLIST, { encoding: "utf-8" });
+  const match = plistFile.match(
+    /<key>CFBundleShortVersionString<\/key>[^]+?<string>([\d\.]*)<\/string>/
+  );
+  if (match && match[0] && match[1]) {
+    const oldVersionName = match[1];
+    plistFile = plistFile.replace(
+      match[0],
+      match[0].replace(oldVersionName, newVersionName)
+    );
+    fs.writeFileSync(APP_PLIST, plistFile, { encoding: "utf-8" });
+  } else {
+    console.log("no match found, could not update version", match);
+  }
+  return;
+}
 
 function updateGradleBuild(oldVersionName: string, newVersionName: string) {
   let gradleBuildFile = fs.readFileSync(APP_BUILD_GRADLE, {

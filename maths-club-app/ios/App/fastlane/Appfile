@@ -1,0 +1,9 @@
+app_identifier("io.c2dev.samimathsclub") # The bundle identifier of your app
+# Apple email - NOTE, should not be main account holder but one with manage acces
+# e.g. https://circleci.com/docs/2.0/deploying-ios/#app-store-connect
+apple_id("chris@c2dev.co.uk")
+itc_team_id("120871574") # App Store Connect Team ID
+team_id("RWK54FS6K5") # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile

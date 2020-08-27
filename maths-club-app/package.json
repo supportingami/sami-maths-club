@@ -1,6 +1,6 @@
 {
   "name": "sami-maths-club-app",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -26,6 +26,7 @@
     "@capacitor/android": "2.2.1",
     "@capacitor/cli": "^2.2.1",
     "@capacitor/core": "^2.2.1",
+    "@capacitor/ios": "2.2.1",
     "material-design-icons": "^3.0.1",
     "ngx-markdown": "^9.1.1",
     "rxjs": "~6.5.4",
