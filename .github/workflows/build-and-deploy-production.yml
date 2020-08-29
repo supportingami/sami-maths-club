@@ -112,6 +112,9 @@ jobs:
         with:
           name: maths-club-app-ios
           path: ios
+      - name: debug
+        run: |
+          ls / && ls /Users/runner/work    
       - name: Setup environment
         run: |
           cd ios/App
