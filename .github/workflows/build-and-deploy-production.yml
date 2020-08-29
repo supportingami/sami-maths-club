@@ -1,0 +1,44 @@
+name: Build and Deploy Production
+on:
+  push:
+    branches:
+      - cc/ci-tests
+jobs:
+  Build:
+    name: Build Production
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Setup Cache
+        uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Dependencies
+        run: yarn install
+      - name: Build
+        run: cd maths-club-app && npm run build:prod
+      - name: Upload Build Folder Artificact
+        uses: actions/upload-artifact@v2
+        with:
+          # release file env path added in previous step
+          path: maths-club-app/dist
+  Deploy_Firebase:
+    name: Firebase Deploy
+    continue-on-error: true
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Download Build Folder Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: my-artifact
+          path: maths-club-app/dist
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+        args: deploy --only hosting:staging
+        env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        PROJECT_PATH: maths-club-app
