@@ -19,7 +19,6 @@ jobs:
       - name: Build App
         run: npm run app:build
       - name: Setup environment
-        # TODO - look at other signing options, e.g.
         run: |
           cd maths-club-app/ios/App
           echo $MOBILEPROVISION_BASE64 | base64 --decode > ios-build.mobileprovision

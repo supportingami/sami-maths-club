@@ -4,7 +4,7 @@ on:
     branches:
       - cc/ci-tests
 jobs:
-  build:
+  build_dist:
     name: Build Production
     runs-on: ubuntu-latest
     steps:
@@ -24,8 +24,8 @@ jobs:
         with:
           name: dist
           path: maths-club-app/dist
-  deploy_firebase:
-    needs: [build]
+  deploy_web:
+    needs: [build_dist]
     name: Deploy to Firebase Production
     runs-on: ubuntu-latest
     continue-on-error: true
@@ -44,3 +44,80 @@ jobs:
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           PROJECT_PATH: maths-club-app
+  build_deploy_android:
+    needs: [build_dist]
+    name: Deploy to Play Store Alpha Track
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: dist
+          path: maths-club-app/dist
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+          # use data stored in secretes to populate google-services.json
+      - name: Write Google Services Json
+        run: cd maths-club-app/android && echo $GOOGLE_SERVICES_JSON > app/google-services.json
+        env:
+          GOOGLE_SERVICES_JSON: ${{secrets.GOOGLE_SERVICES_JSON}}
+      - name: Generate Android Build
+        # create release app bundle (aab) and app assemble (apk)
+        run: cd maths-club-app/android && ./gradlew clean :app:bundleRelease :app:assembleRelease
+      - name: Sign Android Bundle
+        uses: r0adkll/sign-android-release@v1
+        with:
+          releaseDirectory: maths-club-app/android/app/build/outputs/bundle/release
+          signingKeyBase64: ${{ secrets.ANDROID_SIGNING_KEY_BASE64 }}
+          alias: ${{ secrets.ANDROID_KEY_ALIAS }}
+          keyStorePassword: ${{ secrets.ANDROID_KEY_STORE_PASSWORD }}
+          keyPassword: ${{ secrets.ANDROID_KEY_PASSWORD }}
+      - name: Upload to Google play
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: io.c2dev.samimathsclub
+          releaseFile: ${{ env.SIGNED_RELEASE_FILE}}
+          track: beta
+          #whatsNewDirectory: /distribution/whatsnew
+  build_deploy_ios:
+    needs: [build_dist]
+    name: Deploy to IOS Testflight
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: dist
+          path: maths-club-app/dist
+      - name: Setup environment
+        run: |
+          cd maths-club-app/ios/App
+          echo $MOBILEPROVISION_BASE64 | base64 --decode > ios-build.mobileprovision
+        env:
+          MOBILEPROVISION_BASE64: ${{secrets.IOS_PROVISION_BASE64}}
+      - name: Install fastlane
+        run: |
+          cd maths-club-app/ios/App
+          sudo gem install fastlane -NV
+      - name: Run fastlane
+        run: |
+          cd maths-club-app/ios/App
+          fastlane ios ci_beta --verbose
+        env:
+          # created when first initialising match certs
+          MATCH_PASSWORD: ${{secrets.FASTFILE_MATCH_PASSWORD}}
+          # apple account pw, used to generate/refresh/verify certs
+          # should match app manager username (as specified in fastfile), not main account holder
+          FASTLANE_PASSWORD: ${{secrets.IOS_DEVACCOUNT_PW}}
+          # basic auth creds: "git_username:git_personal_access_token_for_match_repo"
+          FASTLANE_MATCH_GITHUB_AUTH: ${{secrets.FASTLANE_MATCH_GITHUB_AUTH}}
+          # Generated from appleid.apple.com/account/manage (login to avoid 2fa)
+          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD}}
