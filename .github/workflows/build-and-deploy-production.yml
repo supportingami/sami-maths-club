@@ -25,18 +25,18 @@ jobs:
         with:
           name: web
           path: |
-          maths-club-app
-          !maths-club-app/node_modules
+            maths-club-app
+            !maths-club-app/node_modules
       - name: Store Android Artifact
         uses: actions/upload-artifact@v2
         with:
-        name: android
-        path: maths-club-app/android
+          name: android
+          path: maths-club-app/android
       - name: Store IOS Artifact
         uses: actions/upload-artifact@v2
         with:
-        name: ios
-        path: maths-club-app/ios        
+          name: ios
+          path: maths-club-app/ios
   deploy_web:
     needs: [build_dist]
     name: Deploy to Firebase Production
@@ -99,21 +99,20 @@ jobs:
       - name: Download Build Artifact
         uses: actions/download-artifact@v2
         with:
-          name: dist
-          path: maths-club-app/dist
+          name: ios
       - name: Setup environment
         run: |
-          cd maths-club-app/ios/App
+          cd App
           echo $MOBILEPROVISION_BASE64 | base64 --decode > ios-build.mobileprovision
         env:
           MOBILEPROVISION_BASE64: ${{secrets.IOS_PROVISION_BASE64}}
       - name: Install fastlane
         run: |
-          cd maths-club-app/ios/App
+          cd App
           sudo gem install fastlane -NV
       - name: Run fastlane
         run: |
-          cd maths-club-app/ios/App
+          cd App
           fastlane ios ci_beta --verbose
         env:
           # created when first initialising match certs
