@@ -29,6 +29,7 @@ jobs:
             !maths-club-app/node_modules
             maths-club-app/node_modules/@capacitor            
   deploy_web:
+    if: false
     needs: [build_dist]
     name: Deploy to Firebase Production
     runs-on: ubuntu-latest
@@ -45,6 +46,7 @@ jobs:
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
   build_deploy_android:
+    if: false
     needs: [build_dist]
     name: Deploy to Play Store Alpha Track
     runs-on: ubuntu-latest
@@ -101,9 +103,6 @@ jobs:
         run: |
           cd ios/App
           sudo gem install fastlane -NV
-      - name: debug
-        run: |
-          ls /Users/runner/work/sami-maths-club/sami-maths-club/ios/App/Pods/Target Support Files/Pods-App
       - name: Run fastlane
         run: |
           sudo chmod -R 774 ./* && cd ios/App 
