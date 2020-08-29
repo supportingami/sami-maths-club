@@ -76,7 +76,7 @@ jobs:
           java-version: 1.8
           # use data stored in secretes to populate google-services.json
       - name: Write Google Services Json
-        run: echo $GOOGLE_SERVICES_JSON > app/google-services.json
+        run: echo $GOOGLE_SERVICES_JSON > android/app/google-services.json
         env:
           GOOGLE_SERVICES_JSON: ${{secrets.GOOGLE_SERVICES_JSON}}
       - name: Generate Android Build
@@ -85,7 +85,7 @@ jobs:
       - name: Sign Android Bundle
         uses: r0adkll/sign-android-release@v1
         with:
-          releaseDirectory: maths-club-app/android/app/build/outputs/bundle/release
+          releaseDirectory: android/app/build/outputs/bundle/release
           signingKeyBase64: ${{ secrets.ANDROID_SIGNING_KEY_BASE64 }}
           alias: ${{ secrets.ANDROID_KEY_ALIAS }}
           keyStorePassword: ${{ secrets.ANDROID_KEY_STORE_PASSWORD }}
