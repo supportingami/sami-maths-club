@@ -26,7 +26,8 @@ jobs:
           name: web
           path: |
             maths-club-app
-            !maths-club-app/node_modules
+            maths-club-app/dist
+            !maths-club-app/
       - name: Store Android Artifact
         uses: actions/upload-artifact@v2
         with:
@@ -74,7 +75,7 @@ jobs:
           GOOGLE_SERVICES_JSON: ${{secrets.GOOGLE_SERVICES_JSON}}
       - name: Generate Android Build
         # create release app bundle (aab) and app assemble (apk)
-        run: ./gradlew clean :app:bundleRelease :app:assembleRelease
+        run: chmod +x ./gradlew && ./gradlew clean :app:bundleRelease :app:assembleRelease
       - name: Sign Android Bundle
         uses: r0adkll/sign-android-release@v1
         with:
