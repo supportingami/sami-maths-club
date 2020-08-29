@@ -20,25 +20,13 @@ jobs:
       - name: Build
         run: npm run app:build
         # Store various folders as artifacts for use by other jobs
-      - name: Store Web Artifact
+      - name: Store Build Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: maths-club-app-base
+          name: maths-club-app
           path: |
-            maths-club-app/dist
-            maths-club-app/*.*
-      - name: Store Android Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: maths-club-app-android
-          path: |
-            maths-club-app/android
-      - name: Store IOS Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: maths-club-app-ios
-          path: |
-            maths-club-app/ios
+            maths-club-app
+            !maths-club-app/node_modules
   deploy_web:
     needs: [build_dist]
     name: Deploy to Firebase Production
@@ -48,7 +36,7 @@ jobs:
       - name: Download Build Artifact
         uses: actions/download-artifact@v2
         with:
-          name: maths-club-app-base
+          name: maths-club-app
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
@@ -61,15 +49,10 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
-      - name: Download Base Artifact
+      - name: Download Build Artifact
         uses: actions/download-artifact@v2
         with:
-          name: maths-club-app-base
-      - name: Download Android Artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: maths-club-app-android
-          path: android
+          name: maths-club-app
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1
         with:
@@ -103,15 +86,10 @@ jobs:
     name: Deploy to IOS Testflight
     runs-on: macOS-latest
     steps:
-      - name: Download Base Artifact
+      - name: Download Build Artifact
         uses: actions/download-artifact@v2
         with:
-          name: maths-club-app-base
-      - name: Download IOS Artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: maths-club-app-ios
-          path: ios
+          name: maths-club-app
       - name: Setup environment
         run: |
           cd ios/App
