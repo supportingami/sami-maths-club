@@ -36,7 +36,10 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ios
-          path: maths-club-app/ios
+          #   Note - include dist as isn't bundled in ios folder like android
+          path: |
+            maths-club-app/dist
+            maths-club-app/ios
   deploy_web:
     needs: [build_dist]
     name: Deploy to Firebase Production
@@ -100,27 +103,16 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: ios
-      - name: Debug
-        run: |
-          ls /
-          ls /Users
-          ls /Users/runner
-          ls /Users/runner/work
-          ls /Users/runner/work/sami-maths-club
-          ls /Users/runner/work/sami-maths-club/sami-maths-club
-          ls /Users/runner/work/sami-maths-club/sami-maths-club/App
-          ls /Users/runner/work/sami-maths-club/sami-maths-club/App/Pods
-          ls /Users/runner/work/sami-maths-club/sami-maths-club/App/Pods/Target Support Files
-          ls /Users/runner/work/sami-maths-club/sami-maths-club/App/Pods/Target Support Files/Pods-App
+          path: maths-club-app
       - name: Setup environment
         run: |
-          cd App
+          cd maths-club-app/ios/App
           echo $MOBILEPROVISION_BASE64 | base64 --decode > ios-build.mobileprovision
         env:
           MOBILEPROVISION_BASE64: ${{secrets.IOS_PROVISION_BASE64}}
       - name: Install fastlane
         run: |
-          cd App
+          cd maths-club-app/ios/App
           sudo gem install fastlane -NV
       - name: Run fastlane
         run: |
