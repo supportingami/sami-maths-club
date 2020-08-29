@@ -23,22 +23,21 @@ jobs:
       - name: Store Web Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: web
+          name: maths-club-app-base
           path: |
             maths-club-app/dist
             maths-club-app/*.*
       - name: Store Android Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: android
-          path: maths-club-app/android
+          name: maths-club-app-base-android
+          path: |
+            maths-club-app/android
       - name: Store IOS Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: ios
-          #   Note - include dist as isn't bundled in ios folder like android
+          name: maths-club-app-ios
           path: |
-            maths-club-app/dist
             maths-club-app/ios
   deploy_web:
     needs: [build_dist]
@@ -49,7 +48,7 @@ jobs:
       - name: Download Build Artifact
         uses: actions/download-artifact@v2
         with:
-          name: web
+          name: maths-club-app-base
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
@@ -62,10 +61,15 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
-      - name: Download Build Artifact
+      - name: Download Base Artifact
         uses: actions/download-artifact@v2
         with:
-          name: android
+          name: maths-club-app-base
+      - name: Download Android Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: maths-club-app-android
+          path: android
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1
         with:
@@ -99,24 +103,28 @@ jobs:
     name: Deploy to IOS Testflight
     runs-on: macOS-latest
     steps:
-      - name: Download Build Artifact
+      - name: Download Base Artifact
         uses: actions/download-artifact@v2
         with:
-          name: ios
-          path: maths-club-app
+          name: maths-club-app-base  
+      - name: Download IOS Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: maths-club-app-ios
+          path: ios
       - name: Setup environment
         run: |
-          cd maths-club-app/ios/App
+          cd ios/App
           echo $MOBILEPROVISION_BASE64 | base64 --decode > ios-build.mobileprovision
         env:
           MOBILEPROVISION_BASE64: ${{secrets.IOS_PROVISION_BASE64}}
       - name: Install fastlane
         run: |
-          cd maths-club-app/ios/App
+          cd ios/App
           sudo gem install fastlane -NV
       - name: Run fastlane
         run: |
-          sudo chmod -R 774 App/* && cd App
+          cd ios/App && sudo chmod -R 774 ./*
           fastlane ios ci_beta --verbose
         env:
           # created when first initialising match certs
