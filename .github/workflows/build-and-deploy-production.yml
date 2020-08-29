@@ -30,7 +30,7 @@ jobs:
       - name: Store Android Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: maths-club-app-base-android
+          name: maths-club-app-android
           path: |
             maths-club-app/android
       - name: Store IOS Artifact
