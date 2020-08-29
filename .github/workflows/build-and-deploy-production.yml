@@ -25,9 +25,8 @@ jobs:
         with:
           name: web
           path: |
-            maths-club-app
             maths-club-app/dist
-            !maths-club-app/
+            maths-club-app/*.*
       - name: Store Android Artifact
         uses: actions/upload-artifact@v2
         with:
@@ -113,7 +112,7 @@ jobs:
           sudo gem install fastlane -NV
       - name: Run fastlane
         run: |
-          cd App
+          sudo chmod -R 774 App/* && cd App
           fastlane ios ci_beta --verbose
         env:
           # created when first initialising match certs
