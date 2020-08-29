@@ -106,7 +106,7 @@ jobs:
       - name: Download Base Artifact
         uses: actions/download-artifact@v2
         with:
-          name: maths-club-app-base  
+          name: maths-club-app-base
       - name: Download IOS Artifact
         uses: actions/download-artifact@v2
         with:
@@ -114,7 +114,7 @@ jobs:
           path: ios
       - name: debug
         run: |
-          ls / && ls /Users/runner/work && ls /Users/runner/work/sami-maths-club   
+          ls && ls /Users/runner/work/sami-maths-club/sami-maths-club/
       - name: Setup environment
         run: |
           cd ios/App
