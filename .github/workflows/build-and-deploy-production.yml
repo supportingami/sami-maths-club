@@ -112,9 +112,6 @@ jobs:
         with:
           name: maths-club-app-ios
           path: ios
-      - name: debug
-        run: |
-          ls && ls /Users/runner/work/sami-maths-club/sami-maths-club/
       - name: Setup environment
         run: |
           cd ios/App
@@ -125,6 +122,9 @@ jobs:
         run: |
           cd ios/App
           sudo gem install fastlane -NV
+      - name: debug
+        run: |
+          ls /Users/runner/work/sami-maths-club/sami-maths-club/ios/App/Pods/Target Support Files/Pods-App
       - name: Run fastlane
         run: |
           sudo chmod -R 774 ./* && cd ios/App 
