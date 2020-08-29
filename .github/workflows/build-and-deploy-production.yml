@@ -4,7 +4,7 @@ on:
     branches:
       - cc/ci-tests
 jobs:
-  Build:
+  build:
     name: Build Production
     runs-on: ubuntu-latest
     steps:
@@ -24,8 +24,9 @@ jobs:
         with:
           # release file env path added in previous step
           path: maths-club-app/dist
-  Deploy_Firebase:
-    name: Firebase Deploy
+  deploy_firebase:
+    needs: [build]
+    name: Deploy to Firebase Production
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
