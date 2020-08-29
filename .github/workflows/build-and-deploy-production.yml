@@ -26,6 +26,7 @@ jobs:
           path: maths-club-app/dist
   Deploy_Firebase:
     name: Firebase Deploy
+    runs-on: ubuntu-latest
     continue-on-error: true
     steps:
       - name: Checkout Repo
