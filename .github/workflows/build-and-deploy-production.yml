@@ -127,7 +127,7 @@ jobs:
           sudo gem install fastlane -NV
       - name: Run fastlane
         run: |
-          cd ios/App && sudo chmod -R 774 ./*
+          sudo chmod -R 774 ./* && cd ios/App 
           fastlane ios ci_beta --verbose
         env:
           # created when first initialising match certs
