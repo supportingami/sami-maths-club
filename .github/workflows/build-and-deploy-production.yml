@@ -18,7 +18,7 @@ jobs:
       - name: Install Dependencies
         run: yarn install
       - name: Build
-        run: cd maths-club-app && npm run build:prod
+        run: npm run app:build
         # Store various folders as artifacts for use by other jobs
       - name: Store Web Artifact
         uses: actions/upload-artifact@v2
@@ -100,6 +100,18 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: ios
+      - name: Debug
+        run: |
+          ls /
+          ls /Users
+          ls /Users/runner
+          ls /Users/runner/work
+          ls /Users/runner/work/sami-maths-club
+          ls /Users/runner/work/sami-maths-club/sami-maths-club
+          ls /Users/runner/work/sami-maths-club/sami-maths-club/App
+          ls /Users/runner/work/sami-maths-club/sami-maths-club/App/Pods
+          ls /Users/runner/work/sami-maths-club/sami-maths-club/App/Pods/Target Support Files
+          ls /Users/runner/work/sami-maths-club/sami-maths-club/App/Pods/Target Support Files/Pods-App
       - name: Setup environment
         run: |
           cd App
