@@ -3,6 +3,7 @@ import * as path from "path";
 import { replaceInFileSync } from "replace-in-file";
 import fm from "front-matter";
 import { stripSpecialCharacters } from "./utils/string.utils";
+import { IProblemMeta } from "../maths-club-app/src/app/models/problem.models";
 
 const PACK_DIR = "./maths-club-pack";
 const APP_PACK_DIR = "./maths-club-app/src/assets/maths-club-pack";
@@ -38,10 +39,7 @@ function generateTranslationsMeta() {
         ),
       };
     });
-    fs.writeJSONSync(
-      `${TRANSLATIONS_DIR}/${lang}/metadata.json`,
-      meta.sort(problemSort)
-    );
+    fs.writeJSONSync(`${TRANSLATIONS_DIR}/${lang}/metadata.json`, meta);
   }
 }
 
@@ -131,12 +129,6 @@ function removeProblemMeta(folderBase: string) {
 }
 
 /**
- * Sort alphabetically by type (e.g. problem/game) and then by order field
- */
-const problemSort = (a: IProblemMeta, b: IProblemMeta) =>
-  a.type === b.type ? a.order - b.order : a.type > b.type ? 1 : -1;
-
-/**
  * find files by a given extension recursively, returning full paths
  * */
 function recFindByExt(base, ext, files?, result?) {
@@ -167,12 +159,3 @@ function _listDirectories(path: string) {
 }
 
 main();
-
-interface IProblemMeta {
-  title: string;
-  type: "puzzle" | "game" | "computer";
-  order: number;
-  slug: string;
-  hasStudentVersion: boolean;
-  hasFacilitatorVersion: boolean;
-}

@@ -4,6 +4,8 @@ import { BehaviorSubject } from "rxjs";
 import { IProblemMeta, IProblem } from "../models/problem.models";
 import { AppService } from "./app.service";
 import { Router, ActivatedRoute } from "@angular/router";
+import startOfWeek from "date-fns/startOfWeek";
+import { WEEKLY_PROBLEMS } from "../data/weeklyProblems";
 
 @Injectable({
   providedIn: "root",
@@ -29,23 +31,38 @@ export class ProblemService {
   }
 
   private async init() {
-    await this.listProblems();
+    await this.getProblemList();
     this._subscribeToRouteChanges();
+  }
+
+  private getFeaturedProblem(
+    problems: IProblemMeta[]
+  ): { index: number; featured: IProblemMeta } {
+    const problemWeek = startOfWeek(new Date()).toISOString().substring(0, 10);
+    const weeklyProblemSlug = WEEKLY_PROBLEMS[problemWeek];
+    const index = problems.findIndex((p) => p.slug === weeklyProblemSlug);
+    // TODO - if problem doesn't exist pick a suitable replacement
+    return { index, featured: problems[index] };
   }
 
   /**
    * Read the list of problems from the metadata.json file for the current language
    * and emit only those with student versions for subscription
    */
-  private async listProblems() {
+  private async getProblemList() {
     // notify that the problems are not yet loaded
     this.problems$.next(undefined);
     const url = `/assets/maths-club-pack/${this.language}/metadata.json`;
-    const problems = await this.http.get<IProblemMeta[]>(url).toPromise();
+    let problems = await this.http.get<IProblemMeta[]>(url).toPromise();
+    const { index } = this.getFeaturedProblem(problems);
+    if (index !== -1) {
+      problems[index] = { ...problems[index], featured: true };
+    }
+    problems = problems
+      .filter((p) => p.hasFacilitatorVersion && p.hasStudentVersion)
+      .sort((a, b) => (a.featured ? -1 : a.added > b.added ? -1 : 1));
     // filter out problems which do not have a student and facilitator version and emit
-    this.problems$.next(
-      problems.filter((p) => p.hasFacilitatorVersion && p.hasStudentVersion)
-    );
+    this.problems$.next(problems);
   }
 
   // Update the current active problem by slug
@@ -81,7 +98,7 @@ export class ProblemService {
 
   private _subscribeToRouteChanges() {
     this.appService.routeParams$.subscribe(async () => {
-      await this.listProblems();
+      await this.getProblemList();
       if (this.slug) {
         await this.setActiveProblem(this.slug);
       }

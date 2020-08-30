@@ -2,7 +2,7 @@
 title: Matchstick Puzzles
 type: problem
 printOrder: 30
-added: 2020-07
+added: 2020-08
 ---
 
 # Matchstick Puzzles  
