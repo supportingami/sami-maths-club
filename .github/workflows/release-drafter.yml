@@ -12,7 +12,7 @@ jobs:
     env:
       APP_VERSION: "0.0.0"
     steps:
-      # Extract current version number from package.json
+      # Extract current version number from package.json and set it as the APP_VERSION env variable
       - name: checkout
         uses: actions/checkout@master
       - name: get_version
@@ -25,3 +25,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           name: v${{env.APP_VERSION}}
+          tag: v${{env.APP_VERSION}}
