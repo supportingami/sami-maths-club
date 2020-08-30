@@ -16,6 +16,7 @@ $max-item-height: 250px;
   text-align: center;
   justify-content: center;
   cursor: pointer;
+  position: relative;
 }
 
 .problem-image {
@@ -23,4 +24,13 @@ $max-item-height: 250px;
 }
 .problem-title {
   margin: 0;
+}
+.featured-problem {
+  position: absolute;
+  top: 8px;
+  width: calc(100% - 2px);
+  left: 0px;
+  padding: 1px;
+  background: #ffa41d;
+  color: white;
 }
