@@ -31,9 +31,6 @@ platform :ios do
   lane :ci_beta do
   # TODO - ensure env configured properly: https://docs.fastlane.tools/actions/ensure_env_vars/
     puts ENV.keys
-    cocoapods(
-      clean_install: true,
-    )
     setup_project
     build_project
     cleanup_project
