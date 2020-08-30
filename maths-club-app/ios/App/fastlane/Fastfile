@@ -16,8 +16,6 @@
 default_platform(:ios)
 
 platform :ios do
-  desc "CI - Setup Keychain"
-
 
   # local build and upload to appetize
   lane :local_appetize do
@@ -30,10 +28,12 @@ platform :ios do
   # CI beta build and deploy to app store testflight
   # Adapted from https://github.com/yukiarrr/ios-build-action/blob/master/fastlane/Fastfile
   # and https://medium.com/well-red/github-actions-fastlane-ios-1f6d43cce726
-  
   lane :ci_beta do
   # TODO - ensure env configured properly: https://docs.fastlane.tools/actions/ensure_env_vars/
     puts ENV.keys
+    cocoapods(
+      clean_install: true,
+    )
     setup_project
     build_project
     cleanup_project
@@ -54,7 +54,7 @@ platform :ios do
     match(
       type: "appstore",
       # TODO - consider if worth allowing ci to refresh/generate certs
-      readonly: is_ci,
+      readonly: true,
       keychain_name: "ci_keychain",
       keychain_password: "ci_keychain",
       # TODO - could save in env already encoded (previous bug thought not possible but should be)

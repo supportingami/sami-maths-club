@@ -16,11 +16,11 @@ or alternatively using `brew install fastlane`
 
 # Available Actions
 ## iOS
-### ios deploy_appetize
+### ios local_appetize
 ```
-fastlane ios deploy_appetize
+fastlane ios local_appetize
 ```
-CI - Setup Keychain
+
 ### ios ci_beta
 ```
 fastlane ios ci_beta
