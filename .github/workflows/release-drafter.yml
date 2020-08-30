@@ -23,4 +23,5 @@ jobs:
       - uses: release-drafter/release-drafter@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RESOLVED_VERSION: ${{env.APP_VERSION}}
+        with:
+          name: v${{env.APP_VERSION}}
