@@ -101,7 +101,7 @@ jobs:
       - name: Install Dependencies
         run: |
           cd ios/App
-          sudo bundle install
+          sudo bundle update
           sudo pod install
       - name: Run fastlane
         run: |
