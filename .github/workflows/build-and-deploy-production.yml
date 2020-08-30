@@ -20,7 +20,7 @@ jobs:
         run: yarn install
       - name: Build
         run: npm run app:build
-        # Store various folders as artifacts for use by other jobs
+        # Store various folders as artifacts for use by other jobs (ignore node modules except those needed by capacitor)
       - name: Store Build Artifact
         uses: actions/upload-artifact@v2
         with:
@@ -42,7 +42,7 @@ jobs:
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
-          args: deploy --only hosting:staging
+          args: deploy --only hosting:production
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
   build_deploy_android:
@@ -98,13 +98,14 @@ jobs:
           echo $MOBILEPROVISION_BASE64 | base64 --decode > ios-build.mobileprovision
         env:
           MOBILEPROVISION_BASE64: ${{secrets.IOS_PROVISION_BASE64}}
-      - name: Install fastlane
+      - name: Install Dependencies
         run: |
           cd ios/App
           sudo bundle install
+          sudo pod install
       - name: Run fastlane
         run: |
-          sudo chmod -R 774 ./* && cd ios/App 
+          cd ios/App 
           bundle exec fastlane ios ci_beta --verbose
         env:
           # created when first initialising match certs
