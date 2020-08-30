@@ -1,7 +1,8 @@
 ---
 title: Magic Cards
 type: problem
-order: 19
+printOrder: 19
+added: 2020-08
 ---
 
 # Magic Cards

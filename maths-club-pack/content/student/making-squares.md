@@ -1,7 +1,8 @@
 ---
 title: Making Squares
 type: problem
-order: 12
+printOrder: 12
+added: 2020-07
 ---
 
 # Making Squares

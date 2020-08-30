@@ -1,7 +1,8 @@
 ---
 title: River Crossing
 type: problem
-order: 32
+printOrder: 32
+added: 2020-08
 ---
 
 # River Crossing  

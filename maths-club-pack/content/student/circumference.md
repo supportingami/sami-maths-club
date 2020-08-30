@@ -1,7 +1,8 @@
 ---
 title: Circumference
 type: problem
-order: 29
+printOrder: 29
+added: 2020-08
 ---
 
 # Circumference

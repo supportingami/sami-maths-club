@@ -1,7 +1,8 @@
 ---
 title: Adding to 15
 type: problem
-order: 3
+printOrder: 3
+added: 2020-07
 ---
 
 # Adding to 15

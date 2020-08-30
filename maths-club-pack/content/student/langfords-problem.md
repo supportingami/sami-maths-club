@@ -1,7 +1,8 @@
 ---
 title: Langford's Problem
 type: problem
-order: 23
+printOrder: 23
+added: 2020-08
 ---
 
 # Langford's Problem

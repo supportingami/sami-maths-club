@@ -1,7 +1,8 @@
 ---
 title: Domino Tilings
 type: problem
-order: 26
+printOrder: 26
+added: 2020-08
 ---
 
 # Domino Tilings

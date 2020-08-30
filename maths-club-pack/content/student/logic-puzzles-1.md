@@ -2,7 +2,8 @@
 title: Logic Puzzles 1
 slug: logic-puzzles-1
 type: problem
-order: 12
+printOrder: 12
+added: 2020-07
 ---
 
 # Logic Puzzles 1

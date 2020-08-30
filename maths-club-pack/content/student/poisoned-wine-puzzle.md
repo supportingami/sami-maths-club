@@ -1,7 +1,8 @@
 ---
 title: Poisoned Wine Puzzle
 type: problem
-order: 18
+printOrder: 18
+added: 2020-08
 ---
 
 # Poisoned Wine Puzzle

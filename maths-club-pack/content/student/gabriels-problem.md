@@ -1,7 +1,8 @@
 ---
 title: Gabriel's Problem
 type: problem
-order: 31
+printOrder: 31
+added: 2020-08
 ---
 
 # Gabriel's Problem  

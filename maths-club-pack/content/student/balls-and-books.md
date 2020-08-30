@@ -1,7 +1,8 @@
 ---
 title: Balls and Books
 type: problem
-order: 32
+printOrder: 32
+added: 2020-07
 ---
 
 # Balls and Books

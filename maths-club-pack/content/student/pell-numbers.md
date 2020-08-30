@@ -2,7 +2,8 @@
 title: Pell Numbers
 slug: pell-numbers
 type: problem
-order: 31
+printOrder: 31
+added: 2020-07
 ---
 
 # Pell Numbers

@@ -1,7 +1,8 @@
 ---
 title: Russian Multiplication
 type: problem
-order: 20
+printOrder: 20
+added: 2020-08
 ---
 
 # Russian Multiplication

@@ -2,7 +2,8 @@
 title: Geometry Puzzle 1
 slug: geometry-puzzle-1
 type: problem
-order: 13
+printOrder: 13
+added: 2020-08
 ---
 
 # Geometry Puzzle 1

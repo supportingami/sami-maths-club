@@ -1,7 +1,8 @@
 ---
 title: Treasure Hunt
 type: problem
-order: 34
+printOrder: 34
+added: 2020-08
 ---
 
 # Treasure Hunt  

@@ -1,7 +1,8 @@
 ---
 title: Collatz Conjecture
 type: problem
-order: 27
+printOrder: 27
+added: 2020-08
 ---
 
 # Collatz Conjecture  
