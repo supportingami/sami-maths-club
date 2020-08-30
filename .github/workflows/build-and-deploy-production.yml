@@ -1,3 +1,4 @@
+# Create production builds for web, ios and android, and deploy to relevant providers
 name: Build and Deploy Production
 on:
   push:
@@ -27,9 +28,8 @@ jobs:
           path: |
             maths-club-app
             !maths-club-app/node_modules
-            maths-club-app/node_modules/@capacitor            
+            maths-club-app/node_modules/@capacitor
   deploy_web:
-    if: false
     needs: [build_dist]
     name: Deploy to Firebase Production
     runs-on: ubuntu-latest
@@ -46,7 +46,6 @@ jobs:
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
   build_deploy_android:
-    if: false
     needs: [build_dist]
     name: Deploy to Play Store Alpha Track
     runs-on: ubuntu-latest
@@ -102,11 +101,12 @@ jobs:
       - name: Install fastlane
         run: |
           cd ios/App
-          sudo gem install fastlane -NV
+          sudo gem install bundler
+          sudo bundle install
       - name: Run fastlane
         run: |
           sudo chmod -R 774 ./* && cd ios/App 
-          fastlane ios ci_beta --verbose
+          bundle exec fastlane ios ci_beta --verbose
         env:
           # created when first initialising match certs
           MATCH_PASSWORD: ${{secrets.FASTFILE_MATCH_PASSWORD}}
@@ -117,3 +117,8 @@ jobs:
           FASTLANE_MATCH_GITHUB_AUTH: ${{secrets.FASTLANE_MATCH_GITHUB_AUTH}}
           # Generated from appleid.apple.com/account/manage (login to avoid 2fa)
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD}}
+
+        #   TODO - could also consider publishing to appetize or similar
+        # NOTE - would require building debug apk/ipa
+        # NOTE - could be called from another workflow via https://github.com/marketplace/actions/workflow-dispatch
+        # NOTE - could persist apk/ipa across workflows via https://jfrog.com/artifactory
