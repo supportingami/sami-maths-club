@@ -101,7 +101,6 @@ jobs:
       - name: Install fastlane
         run: |
           cd ios/App
-          sudo gem install bundler
           sudo bundle install
       - name: Run fastlane
         run: |
