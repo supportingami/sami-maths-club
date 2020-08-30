@@ -1,3 +1,4 @@
+# Create production builds for web and deploy to relevant providers
 name: Build and Deploy Staging
 on:
   push:
