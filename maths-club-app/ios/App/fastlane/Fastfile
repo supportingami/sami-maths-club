@@ -54,7 +54,7 @@ platform :ios do
     match(
       type: "appstore",
       # TODO - consider if worth allowing ci to refresh/generate certs
-      readonly: true,
+      readonly: is_ci,
       keychain_name: "ci_keychain",
       keychain_password: "ci_keychain",
       # TODO - could save in env already encoded (previous bug thought not possible but should be)
