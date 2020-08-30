@@ -46,7 +46,7 @@ jobs:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
   build_deploy_android:
     needs: [build_dist]
-    name: Deploy to Play Store Alpha Track
+    name: Deploy to Play Store Beta Track
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
