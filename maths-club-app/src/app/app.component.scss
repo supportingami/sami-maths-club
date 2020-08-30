@@ -15,6 +15,14 @@ mat-sidenav-content {
   position: absolute;
   bottom: 0;
 }
+.nav-title {
+  flex: 1;
+  text-align: center;
+  margin-right: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 
 #version {
   padding: 5px 16px;
