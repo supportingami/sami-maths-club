@@ -39,14 +39,9 @@ export class ProblemService {
   private getFeaturedProblem(
     problems: IProblemMeta[]
   ): { index: number; featured: IProblemMeta } {
-    const problemWeek = startOfWeek(new Date(), {
-      weekStartsOn: 0,
-      locale: {
-        code: "en-US",
-      },
-    })
-      .toISOString()
-      .substring(0, 10);
+    // set hour to avoid confusion with midnight day
+    const today = new Date().setHours(9);
+    const problemWeek = startOfWeek(today).toISOString().substring(0, 10);
     const weeklyProblemSlug = WEEKLY_PROBLEMS[problemWeek];
     const index = problems.findIndex((p) => p.slug === weeklyProblemSlug);
     // TODO - if problem doesn't exist pick a suitable replacement
