@@ -5,6 +5,7 @@ import { IProblemMeta, IProblem } from "../models/problem.models";
 import { AppService } from "./app.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import startOfWeek from "date-fns/startOfWeek";
+import * as Sentry from "@sentry/angular";
 import { WEEKLY_PROBLEMS } from "../data/weeklyProblems";
 
 @Injectable({
@@ -42,6 +43,11 @@ export class ProblemService {
     const weeklyProblemSlug = WEEKLY_PROBLEMS[problemWeek];
     const index = problems.findIndex((p) => p.slug === weeklyProblemSlug);
     // TODO - if problem doesn't exist pick a suitable replacement
+    if (index === -1) {
+      Sentry.captureMessage("Unable to load weekly problem", {
+        extra: { problems, problemWeek, WEEKLY_PROBLEMS },
+      });
+    }
     return { index, featured: problems[index] };
   }
 
