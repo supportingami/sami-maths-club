@@ -4,7 +4,7 @@ import { BehaviorSubject } from "rxjs";
 import { IProblemMeta, IProblem } from "../models/problem.models";
 import { AppService } from "./app.service";
 import { Router, ActivatedRoute } from "@angular/router";
-import startOfWeek from "date-fns/startOfWeek";
+import startOfISOWeek from "date-fns/startOfWeek";
 import * as Sentry from "@sentry/angular";
 import { WEEKLY_PROBLEMS } from "../data/weeklyProblems";
 
@@ -39,9 +39,9 @@ export class ProblemService {
   private getFeaturedProblem(
     problems: IProblemMeta[]
   ): { index: number; featured: IProblemMeta } {
-    // set hour to avoid confusion with midnight day
-    const today = new Date().setHours(9);
-    const problemWeek = startOfWeek(today).toISOString().substring(0, 10);
+    // use iso weeks to avoid timezone confusion when converting to isostring
+    const start = startOfISOWeek(new Date());
+    const problemWeek = start.toISOString().substring(0, 10);
     const weeklyProblemSlug = WEEKLY_PROBLEMS[problemWeek];
     const index = problems.findIndex((p) => p.slug === weeklyProblemSlug);
     // TODO - if problem doesn't exist pick a suitable replacement
@@ -68,7 +68,9 @@ export class ProblemService {
     }
     problems = problems
       .filter((p) => p.hasFacilitatorVersion && p.hasStudentVersion)
-      .sort((a, b) => (a.featured ? -1 : a.added > b.added ? -1 : 1));
+      .sort((a, b) => {
+        return a.featured ? -1 : b.featured ? 1 : a.added > b.added ? -1 : 1;
+      });
     // filter out problems which do not have a student and facilitator version and emit
     this.problems$.next(problems);
   }
