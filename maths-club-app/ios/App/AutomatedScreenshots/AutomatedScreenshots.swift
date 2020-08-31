@@ -46,7 +46,7 @@ class AutomatedScreenshots: XCTestCase {
         snapshot("1-Launch-Screen")
         // check for element names with inspector
         let problemCard = app.otherElements["apple-teaser"]
-        let expectation = existsExpectation(problemCard)
+        let expectation = existsExpectation(object: problemCard)
         waitForExpectation(expectation, 30)
         problemCard.tap()
 
@@ -66,7 +66,7 @@ class AutomatedScreenshots: XCTestCase {
       return ()
     }
 
-    func existsExpectation(object:Any){
+    func existsExpectation(object: Any) -> XCTNSPredicateExpectation{
       return XCTNSPredicateExpectation(
           predicate: NSPredicate(format: "exists == true"),  object: object)
     }
