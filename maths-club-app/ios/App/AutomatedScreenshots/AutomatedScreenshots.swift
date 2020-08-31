@@ -47,7 +47,7 @@ class AutomatedScreenshots: XCTestCase {
         // check for element names with inspector
         let problemCard = app.otherElements["apple-teaser"]
         let expectation = existsExpectation(object: problemCard)
-        waitForExpectation(expectation, 30)
+        waitForExpectation(expectation: expectation, time: 30)
         problemCard.tap()
 
         snapshot("2-Problem-Screen")
