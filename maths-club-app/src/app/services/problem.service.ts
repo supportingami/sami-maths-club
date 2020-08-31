@@ -4,7 +4,6 @@ import { BehaviorSubject } from "rxjs";
 import { IProblemMeta, IProblem } from "../models/problem.models";
 import { AppService } from "./app.service";
 import { Router, ActivatedRoute } from "@angular/router";
-import startOfISOWeek from "date-fns/startOfWeek";
 import * as Sentry from "@sentry/angular";
 import { WEEKLY_PROBLEMS } from "../data/weeklyProblems";
 
@@ -36,21 +35,22 @@ export class ProblemService {
     this._subscribeToRouteChanges();
   }
 
-  private getFeaturedProblem(
-    problems: IProblemMeta[]
-  ): { index: number; featured: IProblemMeta } {
-    // use iso weeks to avoid timezone confusion when converting to isostring
-    const start = startOfISOWeek(new Date());
-    const problemWeek = start.toISOString().substring(0, 10);
-    const weeklyProblemSlug = WEEKLY_PROBLEMS[problemWeek];
-    const index = problems.findIndex((p) => p.slug === weeklyProblemSlug);
+  /**
+   * Go through the list of featured problems and select problem selected for
+   * the current week (finds problem for next week and returns one previous)
+   * Return as the index of the problems passed
+   */
+  private getFeaturedProblem(problems: IProblemMeta[]): { index: number } {
+    const today = new Date().toISOString().substring(0, 10);
+    const index = Object.keys(WEEKLY_PROBLEMS).findIndex((d) => today <= d) - 1;
+    const weeklySlug = Object.values(WEEKLY_PROBLEMS)[index];
     // TODO - if problem doesn't exist pick a suitable replacement
-    if (index === -1) {
+    if (index < 0) {
       Sentry.captureMessage("Unable to load weekly problem", {
-        extra: { problems, problemWeek, WEEKLY_PROBLEMS },
+        extra: { index, date: new Date(), today, WEEKLY_PROBLEMS },
       });
     }
-    return { index, featured: problems[index] };
+    return { index: problems.findIndex((p) => p.slug === weeklySlug) };
   }
 
   /**
@@ -66,12 +66,13 @@ export class ProblemService {
     if (index !== -1) {
       problems[index] = { ...problems[index], featured: true };
     }
+    // filter out problems which do not have a student and facilitator version and emit
     problems = problems
       .filter((p) => p.hasFacilitatorVersion && p.hasStudentVersion)
       .sort((a, b) => {
         return a.featured ? -1 : b.featured ? 1 : a.added > b.added ? -1 : 1;
       });
-    // filter out problems which do not have a student and facilitator version and emit
+    // allow time to finish any previous animations
     this.problems$.next(problems);
   }
 
