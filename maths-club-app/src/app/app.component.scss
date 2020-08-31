@@ -1,5 +1,8 @@
 @import "~material-design-icons/iconfont/material-icons.css";
 
+:host {
+  display: contents;
+}
 mat-sidenav-container {
   height: 100%;
 }
@@ -7,10 +10,12 @@ mat-sidenav-container {
 mat-sidenav {
   width: 200px;
 }
-
-mat-sidenav-content {
-  overflow-x: hidden;
+mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
 }
+
 .bottom-items {
   position: absolute;
   bottom: 0;
@@ -28,4 +33,12 @@ mat-sidenav-content {
   padding: 5px 16px;
   opacity: 0.5;
   text-align: left;
+}
+// IOS Style Safe Areas - viewport-fit=cover fills notch space, so add padding as required
+.safe-padding-top {
+  padding-top: env(safe-area-inset-top) !important;
+}
+.safe-padding-side {
+  padding-left: env(safe-area-inset-left) !important ;
+  padding-right: env(safe-area-inset-right) !important;
 }
