@@ -21,6 +21,11 @@ or alternatively using `brew install fastlane`
 fastlane ios local_appetize
 ```
 
+### ios screenshots
+```
+fastlane ios screenshots
+```
+
 ### ios ci_beta
 ```
 fastlane ios ci_beta

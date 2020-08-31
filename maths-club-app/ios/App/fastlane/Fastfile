@@ -25,6 +25,10 @@ platform :ios do
     )
   end
 
+  lane :screenshots do
+    capture_screenshots
+  end
+
   # CI beta build and deploy to app store testflight
   # Adapted from https://github.com/yukiarrr/ios-build-action/blob/master/fastlane/Fastfile
   # and https://medium.com/well-red/github-actions-fastlane-ios-1f6d43cce726
