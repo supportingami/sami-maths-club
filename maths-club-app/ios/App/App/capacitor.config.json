@@ -12,5 +12,6 @@
   "cordova": {},
   "ios": {
     "contentInset": "automatic",
-    "clipToBounds": "true" }
+    "clipToBounds": "true"
+  }
 }

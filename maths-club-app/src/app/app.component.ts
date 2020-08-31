@@ -24,9 +24,7 @@ export class AppComponent {
   ) {
     // this.notifications.init()
     if (Capacitor.isNative) {
-      StatusBar.setOverlaysWebView({
-        overlay: true,
-      });
+      // native code here
     }
   }
   getRouteAnimationState(outlet: RouterOutlet) {

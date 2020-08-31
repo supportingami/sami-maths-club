@@ -5,8 +5,9 @@ html,
 body {
   height: 100%;
   // attempt fix for ios safe view areas.. possibly covered in capacitor.config.json contentInset
-  // padding: env(safe-area-inset-top, 10px) env(safe-area-inset-right, 10px)
-  //   env(safe-area-inset-bottom, 10px) env(safe-area-inset-left, 10px);
+  // appears too big gap at status-bar - now added as padding to mat-toolbar instead
+  // padding: env(safe-area-inset-top) env(safe-area-inset-right)
+  //   env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 body {
   margin: 0;

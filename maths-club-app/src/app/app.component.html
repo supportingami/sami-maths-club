@@ -1,5 +1,5 @@
 <mat-sidenav-container>
-  <mat-sidenav #snav mode="over">
+  <mat-sidenav #snav mode="over" class="safe-padding-top safe-padding-side">
     <mat-nav-list>
       <a mat-list-item routerLink="/">
         <mat-icon>home</mat-icon>
@@ -13,7 +13,7 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content *ngIf="appService.routeParams$ | async as params">
-    <mat-toolbar color="primary">
+    <mat-toolbar color="primary" class="safe-padding-top safe-padding-side">
       <button mat-icon-button (click)="snav.toggle()" *ngIf="!params.slug">
         <mat-icon>menu</mat-icon>
       </button>
@@ -23,7 +23,7 @@
       <span class="nav-title">SAMI Maths Club</span>
       <app-language-switcher></app-language-switcher>
     </mat-toolbar>
-    <main [@slideTransition]="getRouteAnimationState(outlet)" class="content">
+    <main [@slideTransition]="getRouteAnimationState(outlet)" class="content safe-padding-top safe-padding-side">
       <router-outlet #outlet="outlet"></router-outlet>
     </main>
   </mat-sidenav-content>

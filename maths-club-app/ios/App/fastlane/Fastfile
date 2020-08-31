@@ -71,7 +71,7 @@ platform :ios do
     )
  end
 
-  private_lane :setup_project do
+  private_lane :setup_keychain do
   # TODO - create pw and share across steps (use export to share across ruby env)
   # export KEYCHAIN_PASSWORD = SecureRandom.uuid
   # TODO - consider using https://docs.fastlane.tools/actions/setup_ci/
