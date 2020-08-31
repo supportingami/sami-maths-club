@@ -7,6 +7,7 @@
     class="problem-card"
     [routerLink]="[problem.slug]"
     *ngFor="let problem of problems"
+    [attr.aria-label]="problem.slug"
   >
     <h2 class="problem-title">{{ problem.title }}</h2>
     <div class="featured-problem" *ngIf="problem.featured">Weekly Problem</div>

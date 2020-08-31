@@ -29,18 +29,22 @@ class AutomatedScreenshots: XCTestCase {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
-            
-            
+
+
 
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     func takeScreenshots(){
         let app = XCUIApplication()
+        sleep(20)
         snapshot("1-Launch-Screen")
-        sleep(10)
+        sleep(20)
         snapshot("2-Home-Screen")
-        
+        // TODO - navigate screens
+        // https://forum.ionicframework.com/t/how-to-find-certain-components-in-uitests/131483/6
+        // https://stackoverflow.com/questions/39646998/access-app-buttons-in-xcode-uitest-without-having-any-usable-text-for-referencin
+        // https://medium.com/mobile-quality/automated-ui-testing-for-ios-apps-cfe128ae6411
     }
 
     func testLaunchPerformance() {

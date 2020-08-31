@@ -27,6 +27,7 @@ platform :ios do
 
   lane :screenshots do
     capture_screenshots
+    # TODO - get android screenshots: https://docs.fastlane.tools/getting-started/android/screenshots/
   end
 
   # CI beta build and deploy to app store testflight
