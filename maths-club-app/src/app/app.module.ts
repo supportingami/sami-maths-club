@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule, ErrorHandler } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
 import { MarkdownModule } from "ngx-markdown";
@@ -13,9 +13,10 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { MaterialModule } from "./material.module";
 import { LanguageSwitcherComponent } from "./components/language-switcher/language-switcher.component";
-import { FacilitatorNoteComponent } from './components/facilitator-note/facilitator-note.component';
-import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
-import { AppTermsComponent } from './components/app-terms/app-terms.component';
+import { FacilitatorNoteComponent } from "./components/facilitator-note/facilitator-note.component";
+import { PrivacyPolicyComponent } from "./components/privacy-policy/privacy-policy.component";
+import { AppTermsComponent } from "./components/app-terms/app-terms.component";
+import * as Sentry from "@sentry/angular";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,14 @@ import { AppTermsComponent } from './components/app-terms/app-terms.component';
     FlexLayoutModule,
     MaterialModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: ErrorHandler,
+      useValue: Sentry.createErrorHandler({
+        showDialog: false,
+      }),
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

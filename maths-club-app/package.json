@@ -27,6 +27,8 @@
     "@capacitor/cli": "^2.2.1",
     "@capacitor/core": "^2.2.1",
     "@capacitor/ios": "2.2.1",
+    "@sentry/angular": "^5.22.3",
+    "@sentry/tracing": "^5.22.3",
     "date-fns": "^2.16.0",
     "material-design-icons": "^3.0.1",
     "ngx-markdown": "^9.1.1",
