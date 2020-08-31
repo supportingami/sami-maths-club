@@ -35,7 +35,7 @@ platform :ios do
   lane :ci_beta do
   # TODO - ensure env configured properly: https://docs.fastlane.tools/actions/ensure_env_vars/
     puts ENV.keys
-    setup_project
+    setup_keychain
     build_project
     cleanup_project
     upload_to_testflight(
