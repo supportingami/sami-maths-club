@@ -58,10 +58,12 @@ class AutomatedScreenshots: XCTestCase {
     }
 
     func waitForExpectation(expectation:XCTestExpectation, time: Double, safe: Bool = false) {
-      let result: XCTWaiter.Result =XCTWaiter().wait(for: [expectation], timeout: time)
+      let result: XCTWaiter.Result = XCTWaiter().wait(for: [expectation], timeout: time)
       if !safe && result != .completed {
         // if expectation is strict and was not fulfilled
         XCTFail("Condition was not satisfied during \(time) seconds")
+      }
+      return ()
     }
 
     func existsExpectation(object:Any){
