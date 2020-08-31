@@ -10,6 +10,11 @@ mat-sidenav-container {
 mat-sidenav {
   width: 200px;
 }
+mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
 
 mat-sidenav-content {
   display: contents;
@@ -33,12 +38,10 @@ mat-sidenav-content {
   text-align: left;
 }
 // IOS Style Safe Areas - viewport-fit=cover fills notch space, so add padding as required
-.safe-padding-top{
-  padding-top: env(safe-area-inset-top)!important 
+.safe-padding-top {
+  padding-top: env(safe-area-inset-top) !important;
 }
-.safe-padding-side{
-  padding-left: env(safe-area-inset-left)!important ;
-  padding-right: env(safe-area-inset-right) !important
+.safe-padding-side {
+  padding-left: env(safe-area-inset-left) !important ;
+  padding-right: env(safe-area-inset-right) !important;
 }
-
-
