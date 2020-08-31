@@ -12,7 +12,7 @@ mat-sidenav {
 }
 
 mat-sidenav-content {
-  overflow-x: hidden;
+  display: contents;
 }
 .bottom-items {
   position: absolute;
