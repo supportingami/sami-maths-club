@@ -32,3 +32,13 @@ mat-sidenav-content {
   opacity: 0.5;
   text-align: left;
 }
+// IOS Style Safe Areas - viewport-fit=cover fills notch space, so add padding as required
+.safe-padding-top{
+  padding-top: env(safe-area-inset-top)!important 
+}
+.safe-padding-side{
+  padding-left: env(safe-area-inset-left)!important ;
+  padding-right: env(safe-area-inset-right) !important
+}
+
+
