@@ -25,27 +25,12 @@ class AutomatedScreenshots: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-        func testExample() {
+    func testExample() {
         // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-
-
-
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
-    func takeScreenshots(){
-        let app = XCUIApplication()
-        sleep(20)
-        snapshot("1-Launch-Screen")
-        sleep(20)
-        snapshot("2-Home-Screen")
-        // TODO - navigate screens
-        // https://forum.ionicframework.com/t/how-to-find-certain-components-in-uitests/131483/6
-        // https://stackoverflow.com/questions/39646998/access-app-buttons-in-xcode-uitest-without-having-any-usable-text-for-referencin
-        // https://medium.com/mobile-quality/automated-ui-testing-for-ios-apps-cfe128ae6411
-    }
+
 
     func testLaunchPerformance() {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
@@ -54,5 +39,33 @@ class AutomatedScreenshots: XCTestCase {
                 XCUIApplication().launch()
             }
         }
+    }
+    // all functions starting with 'test' will be excuted
+    func testTakeScreenshots(){
+        let app = XCUIApplication()
+        snapshot("1-Launch-Screen")
+        // check for element names with inspector
+        let problemCard = app.otherElements["apple-teaser"]
+        let expectation = existsExpectation(problemCard)
+        waitForExpectation(expectation, 30)
+        problemCard.tap()
+
+        snapshot("2-Problem-Screen")
+        // TODO - navigate screens
+        // https://forum.ionicframework.com/t/how-to-find-certain-components-in-uitests/131483/6
+        // https://stackoverflow.com/questions/39646998/access-app-buttons-in-xcode-uitest-without-having-any-usable-text-for-referencin
+        // https://medium.com/mobile-quality/automated-ui-testing-for-ios-apps-cfe128ae6411
+    }
+
+    func waitForExpectation(expectation:XCTestExpectation, time: Double, safe: Bool = false) {
+      let result: XCTWaiter.Result =XCTWaiter().wait(for: [expectation], timeout: time)
+      if !safe && result != .completed {
+        // if expectation is strict and was not fulfilled
+        XCTFail("Condition was not satisfied during \(time) seconds")
+    }
+
+    func existsExpectation(object:Any){
+      return XCTNSPredicateExpectation(
+          predicate: NSPredicate(format: "exists == true"),  object: object)
     }
 }
