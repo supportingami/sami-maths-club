@@ -1,11 +1,10 @@
 $min-item-width: 150px;
-$max-item-height: 250px;
+$max-item-height: 150px;
 
 .problems-list-container {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax($min-item-width, 1fr));
-  grid-template-rows: repeat(4, $max-item-height);
   column-gap: 10px;
   row-gap: 15px;
 }
@@ -17,20 +16,28 @@ $max-item-height: 250px;
   justify-content: center;
   cursor: pointer;
   position: relative;
+  height: $max-item-height;
 }
 
 .problem-image {
   width: 100%;
+  flex: 1;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .problem-title {
   margin: 0;
 }
 .featured-problem {
   position: absolute;
-  top: 8px;
+  bottom: 0px;
+  height: 2em;
+  line-height: 2em;
   width: calc(100% - 2px);
   left: 0px;
   padding: 1px;
   background: #ffa41d;
   color: white;
+  font-size: 1.2em;
 }

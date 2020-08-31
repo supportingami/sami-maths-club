@@ -6,6 +6,9 @@ import { slideTransition } from "./animations";
 import { environment } from "src/environments/environment";
 import { NotificationService } from "./services/notification.service";
 
+import { Plugins, Capacitor } from "@capacitor/core";
+const { StatusBar } = Plugins;
+
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -20,6 +23,11 @@ export class AppComponent {
     public notifications: NotificationService
   ) {
     // this.notifications.init()
+    if (Capacitor.isNative) {
+      StatusBar.setOverlaysWebView({
+        overlay: true,
+      });
+    }
   }
   getRouteAnimationState(outlet: RouterOutlet) {
     return (

@@ -10,10 +10,11 @@
   >
     <h2 class="problem-title">{{ problem.title }}</h2>
     <div class="featured-problem" *ngIf="problem.featured">Weekly Problem</div>
-    <img
+    <div
       class="problem-image"
-      [src]="['/assets/maths-club-pack/cover_images/' + problem.slug + '.svg']"
-      [alt]="problem.title"
-    />
+      [style.background-image]="
+        'url(/assets/maths-club-pack/cover_images/' + problem.slug + '.svg)'
+      "
+    ></div>
   </mat-card>
 </div>
