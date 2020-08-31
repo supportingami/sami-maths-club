@@ -1,7 +1,8 @@
 ---
 title: Fence Around A Field
 type: problem
-order: 15
+printOrder: 15
+added: 2020-08
 ---
 
 # Fence Around A Field 

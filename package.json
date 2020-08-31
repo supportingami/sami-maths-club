@@ -7,7 +7,8 @@
     "postinstall": "npm run prepare && cd maths-club-app && yarn install",
     "prepare": "ts-node scripts/app-prepare.ts",
     "start": "npm run prepare && cd maths-club-app && npm run start",
-    "pdf:generate": "ts-node scripts/pdf-generate.ts",
+    "pack:generatePDF": "ts-node scripts/pdf-generate.ts",
+    "pack:generateWeeklyList": "ts-node scripts/weekly-problem.ts",
     "app": "cd maths-club-app && npm run --",
     "app:build": "cd maths-club-app && npm run build:prod && npx cap sync",
     "app:version": "ts-node scripts/version.ts"

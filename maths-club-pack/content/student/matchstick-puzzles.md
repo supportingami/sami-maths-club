@@ -1,7 +1,8 @@
 ---
 title: Matchstick Puzzles
 type: problem
-order: 30
+printOrder: 30
+added: 2020-08
 ---
 
 # Matchstick Puzzles  

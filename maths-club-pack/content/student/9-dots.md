@@ -1,7 +1,8 @@
 ---
 title: 9 Dots
 type: problem
-order: 5
+printOrder: 5
+added: 2020-07
 ---
 
 # 9 Dots

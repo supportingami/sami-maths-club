@@ -1,7 +1,8 @@
 ---
 title: Coconut Trader
 type: problem
-order: 33
+printOrder: 33
+added: 2020-08
 ---
 
 # Coconut Trader  

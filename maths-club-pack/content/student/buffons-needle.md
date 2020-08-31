@@ -1,7 +1,8 @@
 ---
 title: Buffon's Needle
 type: problem
-order: 2
+printOrder: 2
+added: 2020-07
 ---
 
 # Buffon’s Needle

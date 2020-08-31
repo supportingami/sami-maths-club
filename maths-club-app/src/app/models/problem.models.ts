@@ -3,10 +3,12 @@
 export interface IProblemMeta {
   title: string;
   type: "puzzle" | "game" | "computer";
-  order: number;
+  printOrder: number;
+  added: string;
   slug: string;
   hasStudentVersion: boolean;
   hasFacilitatorVersion: boolean;
+  featured?: boolean;
 }
 
 // Loaded problems will also have text for student or facilitator versions

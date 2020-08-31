@@ -1,7 +1,8 @@
 ---
 title: Coin Game
 type: problem
-order: 24
+printOrder: 24
+added: 2020-08
 ---
 
 # Coin Game

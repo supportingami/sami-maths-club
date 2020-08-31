@@ -1,7 +1,8 @@
 ---
 title: Addition Squares
 type: problem
-order: 4
+printOrder: 4
+added: 2020-07
 ---
 
 # Addition Squares

@@ -2,7 +2,8 @@
 title: Counting Squares
 slug: counting-squares
 type: problem
-order: 9
+printOrder: 9
+added: 2020-07
 ---
 
 # Counting Squares

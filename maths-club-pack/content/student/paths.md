@@ -2,7 +2,8 @@
 title: Paths
 slug: paths
 type: problem
-order: 36
+printOrder: 36
+added: 2020-07
 ---
 
 # Paths

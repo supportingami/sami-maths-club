@@ -1,7 +1,8 @@
 ---
 title: Apple Teaser
 type: problem
-order: 28
+printOrder: 28
+added: 2020-08
 ---
 
 # Apple Teaser  

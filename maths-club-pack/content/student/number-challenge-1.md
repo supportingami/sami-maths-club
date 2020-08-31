@@ -1,7 +1,8 @@
 ---
 title: Number Challenge 1
 type: problem
-order: 17
+printOrder: 17
+added: 2020-07
 ---
 
 # Number Challenge 1
