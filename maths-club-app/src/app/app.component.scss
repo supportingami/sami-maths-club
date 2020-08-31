@@ -1,5 +1,8 @@
 @import "~material-design-icons/iconfont/material-icons.css";
 
+:host {
+  display: contents;
+}
 mat-sidenav-container {
   height: 100%;
 }

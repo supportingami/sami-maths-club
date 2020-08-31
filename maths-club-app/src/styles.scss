@@ -4,8 +4,9 @@
 html,
 body {
   height: 100%;
-  margin-top: env(safe-area-inset-top);
-  margin-bottom: env(safe-area-inset-bottom);
+  // attempt fix for ios safe view areas
+  padding: env(safe-area-inset-top, 10px) env(safe-area-inset-right, 10px)
+    env(safe-area-inset-bottom, 10px) env(safe-area-inset-left, 10px);
 }
 body {
   margin: 0;
