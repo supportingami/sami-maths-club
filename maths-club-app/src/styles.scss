@@ -41,6 +41,7 @@ td {
   img {
     max-width: 500px;
   }
+  // avoid code blocks adding horizontal scroll space
   code {
     white-space: pre-line;
   }
