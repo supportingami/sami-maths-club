@@ -105,7 +105,8 @@ end
 
 platform :android do
   lane :screenshots do
-    capture_screenshots
+    gradle(task: 'bundle', build_type: 'Release', project_dir: '../android')
+    capture_android_screenshots
   end
 
 
