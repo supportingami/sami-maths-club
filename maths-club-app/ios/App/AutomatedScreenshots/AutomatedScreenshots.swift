@@ -72,11 +72,12 @@ class AutomatedScreenshots: XCTestCase {
       waitForExpectation(expectation: problemCardExpectation, time: 30)
     }
 
-    func testStaticTextAccess(){
+    func testStaticTextsAccess(){
       let app = XCUIApplication()
-      let text = app.staticText["static-text"]
+      let text = app.staticTexts["static-text"]
       let expectation = existsExpectation(object: text)
       waitForExpectation(expectation: expectation, time: 30)
+      // XCTAssertEqual("Expected string", myLabel.label)
     }
     func testStaticTextAccess2(){
       let app = XCUIApplication()
@@ -91,7 +92,7 @@ class AutomatedScreenshots: XCTestCase {
     // func link test(){
       // might work baseed just on text... ?
       // app.links.["your link text"].press(forDuration: 0.1)
-    }
+    // }
     // func testScreenshot1(){
     //   let app = XCUIApplication()
     //   // for divs, can access if aria-label provided
