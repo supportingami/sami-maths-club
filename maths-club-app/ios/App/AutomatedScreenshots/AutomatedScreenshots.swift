@@ -116,7 +116,7 @@ class AutomatedScreenshots: XCTestCase {
 
     func testScreenshots(){
       let app = XCUIApplication()
-      let el = waitForEl("apple-teaser")
+      let el = waitForEl(ariaLabel: "apple-teaser")
       snapshot("1-Home-Screen")
       el.tap()
       snapshot("2a-Problem-Tap")
