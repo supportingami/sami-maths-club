@@ -105,8 +105,10 @@ end
 
 platform :android do
   lane :screenshots do
-    gradle(task: 'bundle', build_type: 'Release', project_dir: '../android')
-    capture_android_screenshots
+    gradle(task: 'assemble', build_type: 'Debug', project_dir: '../android')
+    capture_android_screenshots(
+      tests_package_name: "io.c2dev.samimathsclub.ScreenshotTest"
+    )
   end
 
 
