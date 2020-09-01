@@ -47,16 +47,17 @@ class AutomatedScreenshots: XCTestCase {
         let problemCardExpectation = existsExpectation(object: problemCard)
         waitForExpectation(expectation: problemCardExpectation, time: 30)
         snapshot("1-Home-Screen")
-        let facilitatorNotesButton = app.otherElements["facilitator-notes"]
+        let facilitatorNotesButton = app.buttons["facilitator-notes"]
         let facilitatorNotesExpectation = existsExpectation(object: facilitatorNotesButton)
         waitForExpectation(expectation: facilitatorNotesExpectation, time: 30)
         snapshot("2-Problem-Screen")
         facilitatorNotesButton.tap()
         snapshot("3-Notes-Screen")
-
+        // https://masilotti.com/ui-testing-cheat-sheet/#how-to-tap-links-in-a-web-view
         // https://forum.ionicframework.com/t/how-to-find-certain-components-in-uitests/131483/6
         // https://stackoverflow.com/questions/39646998/access-app-buttons-in-xcode-uitest-without-having-any-usable-text-for-referencin
         // https://medium.com/mobile-quality/automated-ui-testing-for-ios-apps-cfe128ae6411
+        // https://stackoverflow.com/questions/46373411/is-it-possible-to-xctest-text-fields-in-a-webview
     }
 
     func waitForExpectation(expectation:XCTestExpectation, time: Double, safe: Bool = false) {
