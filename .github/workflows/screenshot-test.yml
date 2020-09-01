@@ -55,9 +55,36 @@ jobs:
       - name: Upload Screenshots
         uses: actions/upload-artifact@v2
         with:
-          name: screenshots
+          name: screenshots_ios
           path: |
             ios/App/screenshots
+  android_screenshot:
+    needs: [build_dist]
+    name: Create Android Screenshots
+    runs-on: macos-latest
+    steps:
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: maths-club-app
+      - name: Generate debug android build
+        # create release app bundle (aab) and app assemble (apk)
+        run: cd android && chmod +x ./gradlew && ./gradlew clean :app:assembleDebug    
+      - name: Generate Screenshots
+        # https://github.com/marketplace/actions/android-emulator-runner
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          profile: Nexus 6
+        run: |
+          cd ci
+          sudo gem install bundler && sudo bundle install
+          bundle exec fastlane screengrab --verbose
+      - name: Upload Screenshots
+        uses: actions/upload-artifact@v2
+        with:
+          name: screenshots_android
+          path: |
+            ci/fastlane/metadata/android
 
         #   TODO - could also consider publishing to appetize or similar
         # NOTE - would require building debug apk/ipa

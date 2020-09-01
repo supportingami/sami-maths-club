@@ -36,22 +36,45 @@ class ScreenshotTest {
   fun initialize() {
     onWebView().forceJavascriptEnabled()
   }
-  @Test fun headerDisplayed(){
-    Log.d(TAG,"Start Test 1")
-    val el =  onWebView().withElement(findElement(Locator.TAG_NAME, "h2"))
-//    el.check(webMatches(getText(), containsString("19 Parenting")))
+  @Test fun screenshot(){
+    val problemEl = onWebView().withElement(findElement(Locator.CSS_SELECTOR, "mat-card[aria-label=\"apple-teaser\"]"))
+    Thread.sleep(1000)
     Screengrab.screenshot("1-Home");
-
+    problemEl.perform(webClick()).check(webMatches(getCurrentUrl(), containsString("/apple-teaser")))
+    Thread.sleep(1000)
+    Screengrab.screenshot("2-Problem");
+    val notesEl = onWebView().withElement(findElement(Locator.CSS_SELECTOR, "button[aria-label=\"facilitator-notes\"]"))
+    notesEl.perform(webClick()).check(webMatches(getCurrentUrl(), containsString("/apple-teaser/notes")))
+    Thread.sleep(1000)
+    Screengrab.screenshot("3-Notes");
 
   }
-  @Test fun canGoToTopicsPage(){
-    Log.d(TAG,"Start Test 2")
-    val el =  onWebView().withElement(findElement(Locator.TAG_NAME, "h2"))
-    Log.d(TAG,el.toString())
-    el.perform(webClick()).check(webMatches(getCurrentUrl(), containsString("/pell-numbers")))
-//    val el = onWebView().withElement(findElement(Locator.CSS_SELECTOR, "span[class=\"/nav-title\"]"))
-//    el.perform((webClick())).check(webMatches(getCurrentUrl(), containsString("/topics")))
-  }
+//  @Test fun headerDisplayed(){
+//    Log.d(TAG,"Start Test 1")
+////    val el =  onWebView().withElement(findElement(Locator.TAG_NAME, "h2"))
+//    val el =  onWebView().withElement(findElement(Locator.CSS_SELECTOR, "span[class=\"nav-title\""))
+//    el.check(webMatches(getText(), containsString("SAMI Maths Club")))
+//
+//  }
+//  @Test fun canLoadProblem(){
+//    Log.d(TAG,"Start Test 2")
+//    val el =  onWebView().withElement(findElement(Locator.CSS_SELECTOR, "mat-card[aria-label=\"apple-teaser\"]"))
+//    Log.d(TAG,el.toString())
+//    Screengrab.screenshot("2-Home-Screen");
+//    el.perform(webClick()).check(webMatches(getCurrentUrl(), containsString("/apple-teaser")))
+//
+//  }
+//  @Test fun canLoadNotes(){
+//    clickProblem("apple-teaser")
+//    Thread.sleep(5000)
+//    val notesEl = onWebView().withElement(findElement(Locator.CSS_SELECTOR, "button[aria-label=\"facilitator-notes\"]"))
+//    notesEl.perform(webClick()).check(webMatches(getCurrentUrl(), containsString("/apple-teaser/notes")))
+//  }
+//  private fun clickProblem(slug: String){
+//    val el =  onWebView().withElement(findElement(Locator.CSS_SELECTOR, "mat-card[aria-label=\"$slug\"]"))
+//    el.perform(webClick()).check(webMatches(getCurrentUrl(), containsString("/apple-teaser")))
+//  }
+
 
   private fun childAtPosition(
     parentMatcher: Matcher<View>, position: Int): Matcher<View> {

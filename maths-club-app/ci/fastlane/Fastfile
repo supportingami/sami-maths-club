@@ -102,17 +102,16 @@ platform :ios do
   end
 end
 
-
+# NOTE - currently build handled manually so lanes not in use
+# (instead just call android_screenshots directly)
 platform :android do
   lane :screenshots do
     gradle(task: 'assemble', build_type: 'Debug', project_dir: '../android')
-    capture_android_screenshots(
-      tests_package_name: "io.c2dev.samimathsclub.ScreenshotTest"
-    )
+    capture_android_screenshots
   end
 
 
-
+  # TODO - write files from text (can likely echo cat with base64 pipe)
   lane :beta do
     setup_keystore()
     properties = {

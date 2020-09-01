@@ -41,6 +41,7 @@ dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
   //  Testing (overrides many of the above)
+  //  TODO - should be moved to separate build for test package
   androidTestImplementation 'tools.fastlane:screengrab:2.0.0'
   // Core library
   androidTestImplementation 'androidx.test:core:1.2.0'
