@@ -121,3 +121,11 @@ jobs:
         # NOTE - would require building debug apk/ipa
         # NOTE - could be called from another workflow via https://github.com/marketplace/actions/workflow-dispatch
         # NOTE - could persist apk/ipa across workflows via https://jfrog.com/artifactory
+  cleanup:
+    runs-on: ubuntu-latest
+    name: Delete intermediary artifacts
+    steps:
+      - uses: geekyeggo/delete-artifact@v1
+        with:
+          name: maths-club-app
+          failOnError: false
