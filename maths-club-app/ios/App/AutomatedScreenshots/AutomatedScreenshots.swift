@@ -43,15 +43,17 @@ class AutomatedScreenshots: XCTestCase {
     // all functions starting with 'test' will be excuted
     func testTakeScreenshots(){
         let app = XCUIApplication()
-        snapshot("1-Launch-Screen")
-        // check for element names with inspector
         let problemCard = app.otherElements["apple-teaser"]
-        let expectation = existsExpectation(object: problemCard)
-        waitForExpectation(expectation: expectation, time: 30)
-        problemCard.tap()
-
+        let problemCardExpectation = existsExpectation(object: problemCard)
+        waitForExpectation(expectation: problemCardExpectation, time: 30)
+        snapshot("1-Home-Screen")
+        let facilitatorNotesButton = app.otherElements["facilitator-notes"]
+        let facilitatorNotesExpectation = existsExpectation(object: facilitatorNotesButton)
+        waitForExpectation(expectation: facilitatorNotesExpectation, time: 30)
         snapshot("2-Problem-Screen")
-        // TODO - navigate screens
+        facilitatorNotesButton.tap()
+        snapshot("3-Notes-Screen")
+
         // https://forum.ionicframework.com/t/how-to-find-certain-components-in-uitests/131483/6
         // https://stackoverflow.com/questions/39646998/access-app-buttons-in-xcode-uitest-without-having-any-usable-text-for-referencin
         // https://medium.com/mobile-quality/automated-ui-testing-for-ios-apps-cfe128ae6411
