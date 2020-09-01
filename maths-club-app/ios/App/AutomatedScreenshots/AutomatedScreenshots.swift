@@ -65,20 +65,6 @@ class AutomatedScreenshots: XCTestCase {
       snapshot("3-Notes")
     }
 
-    func testNotes1(){
-      let problemEl = waitForEl(ariaLabel: "apple-teaser")
-      problemEl.tap()
-      let notesEl = waitForEl(ariaLabel: "facilitator-notes", accessor: "button")
-      notesEl.tap()
-    }
-    func testNotes2(){
-      let problemEl = waitForEl(ariaLabel: "apple-teaser")
-      problemEl.tap()
-      let notesEl = waitForEl(ariaLabel: "facilitator-notes")
-      notesEl.tap()
-    }
-
-
     func waitForEl(ariaLabel: String, accessor: String = "other") -> XCUIElement {
       let app = XCUIApplication()
       // list of accessors https://www.hackingwithswift.com/articles/148/xcode-ui-testing-cheat-sheet

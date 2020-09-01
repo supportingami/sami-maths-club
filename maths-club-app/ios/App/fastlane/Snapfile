@@ -4,9 +4,9 @@
 # https://github.com/actions/virtual-environments/tree/main/images/macos
 devices([
   "iPhone 8 Plus", #(5.5 inch)
-  # "iPhone 11 Pro Max", #(6.5 inch)
-  # "iPad Pro (11-inch) (2nd generation)",
-  # "iPad Pro (12.9-inch) (4th generation)",
+  "iPhone 11 Pro Max", #(6.5 inch)
+  "iPad Pro (11-inch) (2nd generation)",
+  "iPad Pro (12.9-inch) (4th generation)",
 
   # "iPhone 8", #(4.7inch)
   # "iPhone 11", #(6.1 inch)

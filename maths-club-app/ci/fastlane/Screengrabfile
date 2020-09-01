@@ -10,7 +10,7 @@ locales(['en-US'])
 # clear all previously generated screenshots in your local output directory before creating new ones
 clear_previous_screenshots(true)
 # Restarts the adb daemon using adb root to allow access to screenshots directories on device. Use if getting 'Permission denied' errors
-use_adb_root(false)
+# use_adb_root(true)
 
 # Clean status bar: https://docs.fastlane.tools/actions/capture_android_screenshots/#clean-status-bar
 
