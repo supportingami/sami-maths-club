@@ -65,13 +65,13 @@ class AutomatedScreenshots: XCTestCase {
       snapshot("3-Notes")
     }
 
-    function testNotes1(){
+    func testNotes1(){
       let problemEl = waitForEl(ariaLabel: "apple-teaser")
       problemEl.tap()
       let notesEl = waitForEl(ariaLabel: "facilitator-notes", accessor: "button")
       notesEl.tap()
     }
-    function testNotes2(){
+    func testNotes2(){
       let problemEl = waitForEl(ariaLabel: "apple-teaser")
       problemEl.tap()
       let notesEl = waitForEl(ariaLabel: "facilitator-notes")
