@@ -19,3 +19,4 @@ maths-club-app/ios/App/*.mobileprovision
 maths-club-app/ios/App/fastlane/report.xml
 maths-club-app/ci/play-store-service-account.json
 maths-club-app/ci/fastlane/metadata
+.idea

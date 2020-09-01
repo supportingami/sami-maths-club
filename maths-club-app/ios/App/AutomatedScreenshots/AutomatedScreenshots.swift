@@ -53,32 +53,41 @@ class AutomatedScreenshots: XCTestCase {
         // *** https://useyourloaf.com/blog/ui-testing-quick-guide/ ***
     }
     func testDivAccess1(){
+      let app = XCUIApplication()
       let problemCard = app.otherElements["test-div"]
       let problemCardExpectation = existsExpectation(object: problemCard)
       waitForExpectation(expectation: problemCardExpectation, time: 30)
     }
     func testButtonAccess1(){
+      let app = XCUIApplication()
       let problemCard = app.buttons["test-button"]
       let problemCardExpectation = existsExpectation(object: problemCard)
       waitForExpectation(expectation: problemCardExpectation, time: 30)
     }
     func testButtonAccess2(){
+      let app = XCUIApplication()
       let problemCard = app.otherElements["test-button"]
+      let problemCardExpectation = existsExpectation(object: problemCard)
+      waitForExpectation(expectation: problemCardExpectation, time: 30)
+    }
+
+    func testStaticTextAccess(){
+      let app = XCUIApplication()
+      let text = app.staticText["static-text"]
+      let expectation = existsExpectation(object: text)
+      waitForExpectation(expectation: expectation, time: 30)
+    }
+    func testStaticTextAccess2(){
+      let app = XCUIApplication()
+      let problemCard = app.otherElements["static-text"]
       let problemCardExpectation = existsExpectation(object: problemCard)
       waitForExpectation(expectation: problemCardExpectation, time: 30)
     }
     // func testUrlAccess(){
 
     // }
-    func testStaticTextAccess(){
-      let text = app.staticText["static-text"]
-      let expectation = existsExpectation(object: text)
-      waitForExpectation(expectation: expectation, time: 30)
-    }
-    func testStaticTextAccess2(){
-      let problemCard = app.otherElements["static-text"]
-      let problemCardExpectation = existsExpectation(object: problemCard)
-      waitForExpectation(expectation: problemCardExpectation, time: 30)
+    // func link test(){
+      // app.links
     }
     // func testScreenshot1(){
     //   let app = XCUIApplication()
