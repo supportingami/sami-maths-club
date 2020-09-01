@@ -42,23 +42,65 @@ class AutomatedScreenshots: XCTestCase {
     }
     // all functions starting with 'test' will be excuted
     func testTakeScreenshots(){
-        let app = XCUIApplication()
-        let problemCard = app.otherElements["apple-teaser"]
-        let problemCardExpectation = existsExpectation(object: problemCard)
-        waitForExpectation(expectation: problemCardExpectation, time: 30)
-        snapshot("1-Home-Screen")
-        let facilitatorNotesButton = app.buttons["facilitator-notes"]
-        let facilitatorNotesExpectation = existsExpectation(object: facilitatorNotesButton)
-        waitForExpectation(expectation: facilitatorNotesExpectation, time: 30)
-        snapshot("2-Problem-Screen")
-        facilitatorNotesButton.tap()
-        snapshot("3-Notes-Screen")
+
         // https://masilotti.com/ui-testing-cheat-sheet/#how-to-tap-links-in-a-web-view
         // https://forum.ionicframework.com/t/how-to-find-certain-components-in-uitests/131483/6
         // https://stackoverflow.com/questions/39646998/access-app-buttons-in-xcode-uitest-without-having-any-usable-text-for-referencin
         // https://medium.com/mobile-quality/automated-ui-testing-for-ios-apps-cfe128ae6411
         // https://stackoverflow.com/questions/46373411/is-it-possible-to-xctest-text-fields-in-a-webview
+        // https://stackoverflow.com/questions/41442932/ios-xcuitests-access-element-by-accessibility
+        // https://developer.apple.com/documentation/xctest/xcuielement/1500791-descendants
+        // *** https://useyourloaf.com/blog/ui-testing-quick-guide/ ***
     }
+    func testDivAccess1(){
+      let problemCard = app.otherElements["test-div"]
+      let problemCardExpectation = existsExpectation(object: problemCard)
+      waitForExpectation(expectation: problemCardExpectation, time: 30)
+    }
+    func testButtonAccess1(){
+      let problemCard = app.buttons["test-button"]
+      let problemCardExpectation = existsExpectation(object: problemCard)
+      waitForExpectation(expectation: problemCardExpectation, time: 30)
+    }
+    func testButtonAccess2(){
+      let problemCard = app.otherElements["test-button"]
+      let problemCardExpectation = existsExpectation(object: problemCard)
+      waitForExpectation(expectation: problemCardExpectation, time: 30)
+    }
+    // func testUrlAccess(){
+
+    // }
+    func testStaticTextAccess(){
+      let text = app.staticText["static-text"]
+      let expectation = existsExpectation(object: text)
+      waitForExpectation(expectation: expectation, time: 30)
+    }
+    func testStaticTextAccess2(){
+      let problemCard = app.otherElements["static-text"]
+      let problemCardExpectation = existsExpectation(object: problemCard)
+      waitForExpectation(expectation: problemCardExpectation, time: 30)
+    }
+    // func testScreenshot1(){
+    //   let app = XCUIApplication()
+    //   // for divs, can access if aria-label provided
+    //   let problemCard = app.otherElements["apple-teaser"]
+    //   let problemCardExpectation = existsExpectation(object: problemCard)
+    //   waitForExpectation(expectation: problemCardExpectation, time: 30)
+    //   snapshot("1-Home-Screen")
+    //   problemCard.tap()
+    // }
+    // func testScreenshot2(){
+    //   testScreenshot1()
+    //   let facilitatorNotesButton = app.buttons["facilitator-notes"]
+    //   let facilitatorNotesExpectation = existsExpectation(object: facilitatorNotesButton)
+    //   waitForExpectation(expectation: facilitatorNotesExpectation, time: 30)
+    //   snapshot("2-Problem-Screen")
+    //   facilitatorNotesButton.tap()
+    // }
+    // func testScreenshot(3){
+    //   testScreenshot2()
+    //   snapshot("3-Notes-Screen")
+    // }
 
     func waitForExpectation(expectation:XCTestExpectation, time: Double, safe: Bool = false) {
       let result: XCTWaiter.Result = XCTWaiter().wait(for: [expectation], timeout: time)

@@ -19,3 +19,14 @@
     ></div>
   </mat-card>
 </div>
+<div>
+  <button (click)="testClick('button test-button')" aria-label="test-button">
+    test-button
+  </button>
+  <h1 (click)="testClick('h1 static-text')" aria-label="static-text">
+    static-text
+  </h1>
+  <div (click)="testClick('div aria-label=test-div')" aria-label="test-div">
+    test-div
+  </div>
+</div>
