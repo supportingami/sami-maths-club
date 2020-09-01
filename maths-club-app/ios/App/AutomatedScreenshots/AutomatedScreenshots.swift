@@ -52,38 +52,76 @@ class AutomatedScreenshots: XCTestCase {
         // https://developer.apple.com/documentation/xctest/xcuielement/1500791-descendants
         // https://medium.com/@pilot34/work-with-sfsafariviewcontroller-or-wkwebview-in-xcode-ui-tests-8b14fd281a1f
         // *** https://useyourloaf.com/blog/ui-testing-quick-guide/ ***
+        // *** https://www.hackingwithswift.com/articles/148/xcode-ui-testing-cheat-sheet ***
     }
     func testDivAccess1(){
-      let app = XCUIApplication()
-      let problemCard = app.otherElements["test-div"]
-      let problemCardExpectation = existsExpectation(object: problemCard)
-      waitForExpectation(expectation: problemCardExpectation, time: 30)
+      let el = waitForEl(ariaLabel: "test-div")
+      // let app = XCUIApplication()
+      // let problemCard = app.otherElements["test-div"]
+      // let problemCardExpectation = existsExpectation(object: problemCard)
+      // waitForExpectation(expectation: problemCardExpectation, time: 30)
     }
     func testButtonAccess1(){
-      let app = XCUIApplication()
-      let problemCard = app.buttons["test-button"]
-      let problemCardExpectation = existsExpectation(object: problemCard)
-      waitForExpectation(expectation: problemCardExpectation, time: 30)
+      let el = waitForEl(ariaLabel: "test-button",accessor: "button")
+      // let app = XCUIApplication()
+      // let problemCard = app.buttons["test-button"]
+      // let problemCardExpectation = existsExpectation(object: problemCard)
+      // waitForExpectation(expectation: problemCardExpectation, time: 30)
     }
     func testButtonAccess2(){
-      let app = XCUIApplication()
-      let problemCard = app.otherElements["test-button"]
-      let problemCardExpectation = existsExpectation(object: problemCard)
-      waitForExpectation(expectation: problemCardExpectation, time: 30)
+      let el = waitForEl(ariaLabel: "test-button")
+      // let app = XCUIApplication()
+      // let problemCard = app.otherElements["test-button"]
+      // let problemCardExpectation = existsExpectation(object: problemCard)
+      // waitForExpectation(expectation: problemCardExpectation, time: 30)
     }
 
-    func testStaticTextsAccess(){
-      let app = XCUIApplication()
-      let text = app.staticTexts["static-text"]
-      let expectation = existsExpectation(object: text)
-      waitForExpectation(expectation: expectation, time: 30)
+    func testStaticTextAccess(){
+      let el = waitForEl(ariaLabel: "static-text",accessor: "staticText")
+      // let app = XCUIApplication()
+      // let text = app.staticTexts["static-text"]
+      // let expectation = existsExpectation(object: text)
+      // waitForExpectation(expectation: expectation, time: 30)
       // XCTAssertEqual("Expected string", myLabel.label)
     }
     func testStaticTextAccess2(){
+      let el = waitForEl(ariaLabel: "static-text")
+      // let app = XCUIApplication()
+      // let problemCard = app.otherElements["static-text"]
+      // let problemCardExpectation = existsExpectation(object: problemCard)
+      // waitForExpectation(expectation: problemCardExpectation, time: 30)
+    }
+
+
+
+
+    func waitForEl(ariaLabel: String, accessor: String = "other") -> XCUIElement {
       let app = XCUIApplication()
-      let problemCard = app.otherElements["static-text"]
-      let problemCardExpectation = existsExpectation(object: problemCard)
-      waitForExpectation(expectation: problemCardExpectation, time: 30)
+      // list of accessors https://www.hackingwithswift.com/articles/148/xcode-ui-testing-cheat-sheet
+      // most web elements seem to respond to 'otherElements'
+      let el: XCUIElement
+      if accessor == "button" {
+        el = app.buttons[ariaLabel]
+      }
+      else if accessor == "staticText" {
+        el = app.staticTexts[ariaLabel]
+      }
+      else {
+        el = app.otherElements[ariaLabel]
+      }
+      let expectation = existsExpectation(object: el)
+      waitForExpectation(expectation: expectation, time: 30)
+      return el
+    }
+
+    func testScreenshots(){
+      let app = XCUIApplication()
+      let el = waitForEl("apple-teaser")
+      snapshot("1-Home-Screen")
+      el.tap()
+      snapshot("2a-Problem-Tap")
+      sleep(2)
+      snapshot("2b-Problem-Tap-Sleep")
     }
     // func testUrlAccess(){
 
