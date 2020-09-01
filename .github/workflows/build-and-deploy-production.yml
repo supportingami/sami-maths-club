@@ -10,6 +10,7 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@master
+        # TODO - consider gradle/swift caches as well - https://github.com/actions/cache/blob/main/examples.md#java---gradle
       - name: Setup Cache
         uses: actions/cache@v2
         with:
@@ -85,7 +86,7 @@ jobs:
   build_deploy_ios:
     needs: [build_dist]
     name: Deploy to IOS Testflight
-    runs-on: macOS-latest
+    runs-on: macos-latest
     steps:
       - name: Download Build Artifact
         uses: actions/download-artifact@v2

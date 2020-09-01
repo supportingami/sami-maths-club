@@ -69,16 +69,17 @@ jobs:
           name: maths-club-app
       - name: Generate debug android build
         # create release app bundle (aab) and app assemble (apk)
-        run: cd android && chmod +x ./gradlew && ./gradlew clean :app:assembleDebug    
+        run: cd android && chmod +x ./gradlew && ./gradlew clean :app:assembleDebug
+      - name: Install Dependencies
+        run: |
+          cd ci
+          sudo gem install bundler && sudo bundle install
       - name: Generate Screenshots
         # https://github.com/marketplace/actions/android-emulator-runner
         uses: reactivecircus/android-emulator-runner@v2
         with:
           profile: Nexus 6
-        run: |
-          cd ci
-          sudo gem install bundler && sudo bundle install
-          bundle exec fastlane screengrab --verbose
+          script: cd ci && bundle exec fastlane screengrab --verbose   
       - name: Upload Screenshots
         uses: actions/upload-artifact@v2
         with:
