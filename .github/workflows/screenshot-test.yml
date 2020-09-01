@@ -95,6 +95,7 @@ jobs:
         # https://github.com/marketplace/actions/android-emulator-runner
         uses: reactivecircus/android-emulator-runner@v2
         with:
+          api-level: 29
           profile: Nexus 6
           script: cd ci && bundle exec fastlane screengrab --verbose
       - name: Upload Screenshots

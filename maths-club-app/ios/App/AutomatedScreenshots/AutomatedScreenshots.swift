@@ -60,9 +60,22 @@ class AutomatedScreenshots: XCTestCase {
       snapshot("2-Problem")
       // not always required as snapshot waits for animations to end, but just in case
       // sleep(1)
-      let notesEl = waitForEl(ariaLabel: "apple-teaser", accessor: "button")
+      let notesEl = waitForEl(ariaLabel: "facilitator-notes", accessor: "button")
       notesEl.tap()
       snapshot("3-Notes")
+    }
+
+    function testNotes1(){
+      let problemEl = waitForEl(ariaLabel: "apple-teaser")
+      problemEl.tap()
+      let notesEl = waitForEl(ariaLabel: "facilitator-notes", accessor: "button")
+      notesEl.tap()
+    }
+    function testNotes2(){
+      let problemEl = waitForEl(ariaLabel: "apple-teaser")
+      problemEl.tap()
+      let notesEl = waitForEl(ariaLabel: "facilitator-notes")
+      notesEl.tap()
     }
 
 
