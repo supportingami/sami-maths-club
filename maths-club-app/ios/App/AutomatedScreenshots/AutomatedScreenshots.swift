@@ -50,6 +50,7 @@ class AutomatedScreenshots: XCTestCase {
         // https://stackoverflow.com/questions/46373411/is-it-possible-to-xctest-text-fields-in-a-webview
         // https://stackoverflow.com/questions/41442932/ios-xcuitests-access-element-by-accessibility
         // https://developer.apple.com/documentation/xctest/xcuielement/1500791-descendants
+        // https://medium.com/@pilot34/work-with-sfsafariviewcontroller-or-wkwebview-in-xcode-ui-tests-8b14fd281a1f
         // *** https://useyourloaf.com/blog/ui-testing-quick-guide/ ***
     }
     func testDivAccess1(){
@@ -86,8 +87,10 @@ class AutomatedScreenshots: XCTestCase {
     // func testUrlAccess(){
 
     // }
+    // TODO work locally to print debugDescription and see all elements with identifiers
     // func link test(){
-      // app.links
+      // might work baseed just on text... ?
+      // app.links.["your link text"].press(forDuration: 0.1)
     }
     // func testScreenshot1(){
     //   let app = XCUIApplication()
