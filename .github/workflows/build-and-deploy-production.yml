@@ -122,6 +122,8 @@ jobs:
         # NOTE - could be called from another workflow via https://github.com/marketplace/actions/workflow-dispatch
         # NOTE - could persist apk/ipa across workflows via https://jfrog.com/artifactory
   cleanup:
+    # NOTE - this will only run if previous action successful, so either ensure passes, or move to cron job
+    needs: [build_deploy_ios]
     runs-on: ubuntu-latest
     name: Delete intermediary artifacts
     steps:
