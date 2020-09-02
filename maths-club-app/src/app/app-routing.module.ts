@@ -6,10 +6,12 @@ import { ProblemDetailComponent } from "./components/problem-detail/problem-deta
 import { FacilitatorNoteComponent } from "./components/facilitator-note/facilitator-note.component";
 import { PrivacyPolicyComponent } from "./components/privacy-policy/privacy-policy.component";
 import { AppTermsComponent } from "./components/app-terms/app-terms.component";
+import { ContactComponent } from "./components/contact/contact.component";
 
 const routes: Routes = [
   { path: "privacy", component: PrivacyPolicyComponent },
   { path: "app-terms", component: AppTermsComponent },
+  { path: "contact", component: ContactComponent },
   {
     path: ":lang",
     component: ProblemsListComponent,

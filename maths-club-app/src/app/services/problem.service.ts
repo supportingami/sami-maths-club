@@ -61,7 +61,14 @@ export class ProblemService {
     // notify that the problems are not yet loaded
     this.problems$.next(undefined);
     const url = `/assets/maths-club-pack/${this.language}/metadata.json`;
-    let problems = await this.http.get<IProblemMeta[]>(url).toPromise();
+    let problems = await this.http
+      .get<IProblemMeta[]>(url)
+      .toPromise()
+      // redirect if language metadata not available
+      .catch(() => {
+        this.router.navigate(["/"]);
+        return [];
+      });
     const { index } = this.getFeaturedProblem(problems);
     if (index !== -1) {
       problems[index] = { ...problems[index], featured: true };
@@ -109,7 +116,9 @@ export class ProblemService {
 
   private _subscribeToRouteChanges() {
     this.appService.routeParams$.subscribe(async () => {
-      await this.getProblemList();
+      if (this.language) {
+        await this.getProblemList();
+      }
       if (this.slug) {
         await this.setActiveProblem(this.slug);
       }
