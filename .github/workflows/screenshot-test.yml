@@ -62,7 +62,7 @@ jobs:
     needs: [build_dist]
     name: Create Android Screenshots
     runs-on: macos-latest
-    # TODO - fix job to pass
+    timeout-minutes: 25
     continue-on-error: true
     steps:
       - name: Download Build Artifact
@@ -78,10 +78,10 @@ jobs:
       #     key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
       #     restore-keys: |
       #       ${{ runner.os }}-gradle-
-      - name: Set up JDK 1.8
+      - name: Set up JDK 14
         uses: actions/setup-java@v1
         with:
-          java-version: 1.8
+          java-version: 14
           # use data stored in secretes to populate google-services.json
       - name: Write Google Services Json
         run: echo $GOOGLE_SERVICES_JSON > android/app/google-services.json
@@ -97,8 +97,9 @@ jobs:
         # https://github.com/marketplace/actions/android-emulator-runner
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 29
-          profile: Nexus 6
+          api-level: 28
+          arch: x86_64
+          profile: Nexus 5X
           script: cd ci && bundle exec fastlane screengrab --verbose
       - name: Upload Screenshots
         uses: actions/upload-artifact@v2
