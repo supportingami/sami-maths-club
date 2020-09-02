@@ -100,7 +100,7 @@ jobs:
           api-level: 28
           arch: x86_64
           profile: Nexus 5X
-          script: cd ci && bundle exec fastlane screengrab --verbose
+          script: cd ci && fastlane screengrab --verbose
       - name: Upload Screenshots
         uses: actions/upload-artifact@v2
         with:
