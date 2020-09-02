@@ -8,9 +8,11 @@ import androidx.test.espresso.web.assertion.WebViewAssertions.webMatches
 import androidx.test.espresso.web.model.Atoms.getCurrentUrl
 import androidx.test.espresso.web.webdriver.DriverAtoms.*
 import androidx.test.espresso.web.webdriver.Locator
+import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.filters.LargeTest
+
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
-import androidx.test.runner.AndroidJUnit4
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
@@ -30,7 +32,7 @@ val TAG = "APP_TEST";
 class ScreenshotTest {
 
   @get:Rule
-  val activityRule = ActivityTestRule(MainActivity::class.java)
+  val activitySenario = ActivityScenarioRule(MainActivity::class.java)
   // http://junit.sourceforge.net/javadoc/org/junit/Before.html
   @Before
   fun initialize() {
