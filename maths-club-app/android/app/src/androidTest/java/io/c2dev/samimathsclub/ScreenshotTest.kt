@@ -39,7 +39,7 @@ class ScreenshotTest {
     onWebView().forceJavascriptEnabled()
   }
   // Add longer timeout to test (when running on CI can be slow to respond)
-  @Test(timeout = 30000) fun screenshot(){
+  @Test(timeout = 60000) fun screenshot(){
     val problemEl = onWebView().withElement(findElement(Locator.CSS_SELECTOR, "mat-card[aria-label=\"apple-teaser\"]"))
     Thread.sleep(1000)
     Screengrab.screenshot("1-Home");
