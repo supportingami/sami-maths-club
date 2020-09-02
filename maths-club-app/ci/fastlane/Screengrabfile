@@ -1,7 +1,6 @@
 # run directly (after build) via `sudo fastlane screengrab --verbose`
 
 app_package_name('io.c2dev.samimathsclub')
-# tests_package_name('io.c2dev.samimathsclub.test')
 use_tests_in_packages(['io.c2dev.samimathsclub'])
 app_apk_path('../android/app/build/outputs/apk/debug/app-debug.apk')
 tests_apk_path('../android/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk')
