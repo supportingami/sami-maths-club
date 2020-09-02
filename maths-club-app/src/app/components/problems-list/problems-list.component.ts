@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { ProblemService } from "../../services/problem.service";
 import { fadeChildren } from "src/app/animations";
+import * as Sentry from "@sentry/angular";
 
 @Component({
   selector: "app-problems",
@@ -10,4 +11,11 @@ import { fadeChildren } from "src/app/animations";
 })
 export class ProblemsListComponent {
   constructor(public problemService: ProblemService) {}
+
+  /**
+   * Temporary function used for debugging automated tests
+   */
+  testClick(identifier: string) {
+    Sentry.captureMessage(`[${identifier}] UI Test Interaction Recorded`);
+  }
 }

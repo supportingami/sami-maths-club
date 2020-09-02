@@ -27,7 +27,6 @@ platform :ios do
 
   lane :screenshots do
     capture_screenshots
-    # TODO - get android screenshots: https://docs.fastlane.tools/getting-started/android/screenshots/
   end
 
   # CI beta build and deploy to app store testflight
@@ -98,7 +97,36 @@ platform :ios do
 
   desc "Push a new beta build to TestFlight"
   lane :beta do
-    build_app(workspace: "App.xcworkspace", scheme: "App")
-    upload_to_testflight
+    build_app(workspace: "../ios/App/App.xcworkspace", scheme: "App")
+    # upload_to_testflight
   end
+end
+
+# NOTE - currently build handled manually so lanes not in use
+# (instead just call android_screenshots directly)
+platform :android do
+  lane :screenshots do
+    gradle(task: 'assemble', build_type: 'Debug', project_dir: '../android')
+    capture_android_screenshots
+  end
+
+
+  # TODO - write files from text (can likely echo cat with base64 pipe)
+  lane :beta do
+    setup_keystore()
+    properties = {
+        "android.injected.signing.store.file" => "../sami-app-keystore.jks",
+        "android.injected.signing.store.password" => "sami-app",
+        "android.injected.signing.key.alias" => "sami-app",
+        "android.injected.signing.key.password" => "sami-app",
+    }
+    gradle(task: 'bundle', build_type: 'Release', project_dir: '../android', properties: properties)
+    gradle(task: 'assemble', build_type: 'Release', project_dir: '../android', properties: properties)
+  end
+
+  private_lane :setup_keystore do
+    sh("ls ./")
+  end
+
+
 end

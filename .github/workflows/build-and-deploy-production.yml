@@ -10,6 +10,7 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@master
+        # TODO - consider gradle/swift caches as well - https://github.com/actions/cache/blob/main/examples.md#java---gradle
       - name: Setup Cache
         uses: actions/cache@v2
         with:
@@ -85,7 +86,7 @@ jobs:
   build_deploy_ios:
     needs: [build_dist]
     name: Deploy to IOS Testflight
-    runs-on: macOS-latest
+    runs-on: macos-latest
     steps:
       - name: Download Build Artifact
         uses: actions/download-artifact@v2
@@ -120,3 +121,13 @@ jobs:
         # NOTE - would require building debug apk/ipa
         # NOTE - could be called from another workflow via https://github.com/marketplace/actions/workflow-dispatch
         # NOTE - could persist apk/ipa across workflows via https://jfrog.com/artifactory
+  cleanup:
+    # NOTE - this will only run if previous action successful, so either ensure passes, or move to cron job
+    needs: [build_deploy_ios]
+    runs-on: ubuntu-latest
+    name: Delete intermediary artifacts
+    steps:
+      - uses: geekyeggo/delete-artifact@v1
+        with:
+          name: maths-club-app
+          failOnError: false

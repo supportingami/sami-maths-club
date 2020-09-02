@@ -1,0 +1,20 @@
+# run directly (after build) via `sudo fastlane screengrab --verbose`
+
+app_package_name('io.c2dev.samimathsclub')
+use_tests_in_packages(['io.c2dev.samimathsclub'])
+app_apk_path('../android/app/build/outputs/apk/debug/app-debug.apk')
+tests_apk_path('../android/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk')
+test_instrumentation_runner('androidx.test.runner.AndroidJUnitRunner')
+
+
+locales(['en-US'])
+
+# clear all previously generated screenshots in your local output directory before creating new ones
+clear_previous_screenshots(true)
+# Restarts the adb daemon using adb root to allow access to screenshots directories on device. Use if getting 'Permission denied' errors
+# use_adb_root(true)
+
+# Clean status bar: https://docs.fastlane.tools/actions/capture_android_screenshots/#clean-status-bar
+
+# For more information about all available options run
+#   fastlane screengrab --help

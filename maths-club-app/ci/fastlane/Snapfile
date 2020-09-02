@@ -1,0 +1,43 @@
+# Uncomment the lines below you want to change by removing the # in the beginning
+
+# Devices available to github actions (for current 'latest' target)
+# https://github.com/actions/virtual-environments/tree/main/images/macos
+devices([
+  "iPhone 8 Plus", #(5.5 inch)
+  "iPhone 11 Pro Max", #(6.5 inch)
+  "iPad Pro (11-inch) (2nd generation)",
+  "iPad Pro (12.9-inch) (4th generation)",
+
+  # "iPhone 8", #(4.7inch)
+  # "iPhone 11", #(6.1 inch)
+  # "iPhone 11 Pro", #(5.8 inch)
+  # "iPhone SE (2nd generation)" ,
+  # "iPad Pro (9.7-inch)",
+  # "iPad (7th generation)",
+  # "iPad Air (3rd generation)",
+])
+
+languages([
+   "en-US",
+#   "de-DE",
+#   "it-IT",
+#   ["pt", "pt_BR"] # Portuguese with Brazilian locale
+])
+
+# The name of the scheme which contains the UI Tests
+scheme("AutomatedScreenshots")
+
+# Where should the resulting screenshots be stored?
+output_directory("./screenshots")
+
+# remove the '#' to clear all previously generated screenshots before creating new ones
+clear_previous_screenshots(true)
+
+# Remove the '#' to set the status bar to 9:41 AM, and show full battery and reception.
+override_status_bar(true)
+
+# Arguments to pass to the app on launch. See https://docs.fastlane.tools/actions/snapshot/#launch-arguments
+# launch_arguments(["-favColor red"])
+
+# For more information about all available options run
+# fastlane action snapshot
