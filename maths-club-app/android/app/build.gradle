@@ -8,8 +8,8 @@ android {
         applicationId "io.c2dev.samimathsclub"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 2004006
-        versionName "2.4.6"
+        versionCode 2005000
+        versionName "2.5.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
