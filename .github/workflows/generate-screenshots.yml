@@ -1,9 +1,8 @@
 # Create production builds for web, ios and android, and deploy to relevant providers
 name: Generate Screenshots
 on:
-  push:
-    branches:
-      - cc/screenshots
+  release:
+    types: [published]
 jobs:
   build_dist:
     name: Build Production
@@ -107,6 +106,7 @@ jobs:
           name: screenshots_android
           path: |
             ci/fastlane/metadata/android
+
 
         #   TODO - could also consider publishing to appetize or similar
         # NOTE - would require building debug apk/ipa
