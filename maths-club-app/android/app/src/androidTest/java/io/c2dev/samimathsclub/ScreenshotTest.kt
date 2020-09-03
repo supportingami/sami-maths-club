@@ -8,9 +8,11 @@ import androidx.test.espresso.web.assertion.WebViewAssertions.webMatches
 import androidx.test.espresso.web.model.Atoms.getCurrentUrl
 import androidx.test.espresso.web.webdriver.DriverAtoms.*
 import androidx.test.espresso.web.webdriver.Locator
+import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.filters.LargeTest
+
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
-import androidx.test.runner.AndroidJUnit4
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
@@ -30,14 +32,14 @@ val TAG = "APP_TEST";
 class ScreenshotTest {
 
   @get:Rule
-  val activityRule = ActivityTestRule(MainActivity::class.java)
+  val activitySenario = ActivityScenarioRule(MainActivity::class.java)
   // http://junit.sourceforge.net/javadoc/org/junit/Before.html
   @Before
   fun initialize() {
     onWebView().forceJavascriptEnabled()
   }
   // Add longer timeout to test (when running on CI can be slow to respond)
-  @Test(timeout = 30000) fun screenshot(){
+  @Test(timeout = 60000) fun screenshot(){
     val problemEl = onWebView().withElement(findElement(Locator.CSS_SELECTOR, "mat-card[aria-label=\"apple-teaser\"]"))
     Thread.sleep(1000)
     Screengrab.screenshot("1-Home");
