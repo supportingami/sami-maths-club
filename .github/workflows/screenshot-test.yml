@@ -62,7 +62,7 @@ jobs:
     needs: [build_dist]
     name: Create Android Screenshots
     runs-on: macos-latest
-    timeout-minutes: 25
+    timeout-minutes: 35
     continue-on-error: true
     steps:
       - name: Download Build Artifact
