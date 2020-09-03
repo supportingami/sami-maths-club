@@ -1,6 +1,6 @@
 {
   "name": "sami-maths-club",
-  "version": "2.4.5",
+  "version": "2.4.6",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "pack:generateWeeklyList": "ts-node scripts/weekly-problem.ts",
     "app": "cd maths-club-app && npm run --",
     "app:build": "cd maths-club-app && npm run build:prod && npx cap sync",
-    "app:version": "ts-node scripts/version.ts"
+    "version": "ts-node scripts/version.ts"
   },
   "repository": {
     "type": "git",
