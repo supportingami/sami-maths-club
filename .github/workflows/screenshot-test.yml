@@ -64,6 +64,9 @@ jobs:
     runs-on: macos-latest
     timeout-minutes: 35
     continue-on-error: true
+    strategy:
+      matrix:
+        profile: ["Nexus 5X", "Nexus 7", "Nexus 10"]
     steps:
       - name: Download Build Artifact
         uses: actions/download-artifact@v2
@@ -82,7 +85,6 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-          # use data stored in secretes to populate google-services.json
       - name: Write Google Services Json
         run: echo $GOOGLE_SERVICES_JSON > android/app/google-services.json
         env:
@@ -93,26 +95,14 @@ jobs:
         run: |
           cd ci
           sudo gem install bundler && sudo bundle install
-      - name: Generate Nexus 5X Screenshots
+      - name: Generate Nexus Screenshots
         uses: reactivecircus/android-emulator-runner@v2
+        continue-on-error: true
+        timeout-minutes: 25
         with:
           api-level: 28
           arch: x86_64
-          profile: Nexus 5X
-          script: cd ci && bundle exec fastlane run screengrab --verbose
-      - name: Generate Nexus 7 Screenshots
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 28
-          arch: x86_64
-          profile: Nexus 7
-          script: cd ci && bundle exec fastlane run screengrab --verbose
-      - name: Generate Nexus 10 Screenshots
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 28
-          arch: x86_64
-          profile: Nexus 10
+          profile: ${{ matrix.profile }}
           script: cd ci && bundle exec fastlane run screengrab --verbose
       - name: Upload Screenshots
         uses: actions/upload-artifact@v2
