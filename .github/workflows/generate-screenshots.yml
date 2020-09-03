@@ -1,9 +1,8 @@
 # Create production builds for web, ios and android, and deploy to relevant providers
 name: Generate Screenshots
 on:
-  push:
-    branches:
-      - cc/screenshots
+  release:
+    types: [published]
 jobs:
   build_dist:
     name: Build Production
