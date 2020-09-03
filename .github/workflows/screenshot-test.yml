@@ -93,13 +93,26 @@ jobs:
         run: |
           cd ci
           sudo gem install bundler && sudo bundle install
-      - name: Generate Screenshots
-        # https://github.com/marketplace/actions/android-emulator-runner
+      - name: Generate Nexus 5X Screenshots
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 28
           arch: x86_64
           profile: Nexus 5X
+          script: cd ci && bundle exec fastlane run screengrab --verbose
+      - name: Generate Nexus 7 Screenshots
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 28
+          arch: x86_64
+          profile: Nexus 7
+          script: cd ci && bundle exec fastlane run screengrab --verbose
+      - name: Generate Nexus 10 Screenshots
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 28
+          arch: x86_64
+          profile: Nexus 10
           script: cd ci && bundle exec fastlane run screengrab --verbose
       - name: Upload Screenshots
         uses: actions/upload-artifact@v2
@@ -107,6 +120,7 @@ jobs:
           name: screenshots_android
           path: |
             ci/fastlane/metadata/android
+
 
         #   TODO - could also consider publishing to appetize or similar
         # NOTE - would require building debug apk/ipa
