@@ -33,6 +33,7 @@ jobs:
     needs: [build_dist]
     name: Create IOS Screenshots
     runs-on: macos-latest
+    continue-on-error: true
     steps:
       - name: Download Build Artifact
         uses: actions/download-artifact@v2
@@ -58,68 +59,67 @@ jobs:
           name: screenshots_ios
           path: |
             ios/App/screenshots
-  android_screenshot:
-    needs: [build_dist]
-    name: Create Android Screenshots
-    runs-on: macos-latest
-    timeout-minutes: 35
-    continue-on-error: true
-    strategy:
-      matrix:
-        profile: ["Nexus 5X", "Nexus 7", "Nexus 10"]
-    steps:
-      - name: Download Build Artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: maths-club-app
-      # - name: Setup Cache
-      #   uses: actions/cache@v2
-      #   with:
-      #     path: |
-      #       ~/.gradle/caches
-      #       ~/.gradle/wrapper
-      #     key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-gradle-
-      - name: Set up JDK 1.8
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.8
-      - name: Write Google Services Json
-        run: echo $GOOGLE_SERVICES_JSON > android/app/google-services.json
-        env:
-          GOOGLE_SERVICES_JSON: ${{secrets.GOOGLE_SERVICES_JSON}}
-      - name: Generate debug android and test builds
-        run: cd android && chmod +x ./gradlew && ./gradlew clean :app:assembleDebug :app:assembleDebugAndroidTest
-      - name: Install Dependencies
-        run: |
-          cd ci
-          sudo gem install bundler && sudo bundle install
-      - name: Generate Nexus Screenshots
-        uses: reactivecircus/android-emulator-runner@v2
-        continue-on-error: true
-        timeout-minutes: 25
-        with:
-          api-level: 28
-          arch: x86_64
-          profile: ${{ matrix.profile }}
-          script: cd ci && bundle exec fastlane run screengrab --verbose
-      - name: Upload Screenshots
-        uses: actions/upload-artifact@v2
-        with:
-          name: screenshots_android
-          path: |
-            ci/fastlane/metadata/android
+  # android_screenshot:
+  #   needs: [build_dist]
+  #   name: Create Android Screenshots
+  #   runs-on: macos-latest
+  #   timeout-minutes: 35
+  #   continue-on-error: true
+  #   strategy:
+  #     matrix:
+  #       profile: ["Nexus 5X", "Nexus 7", "Nexus 10"]
+  #   steps:
+  #     - name: Download Build Artifact
+  #       uses: actions/download-artifact@v2
+  #       with:
+  #         name: maths-club-app
+  #     # - name: Setup Cache
+  #     #   uses: actions/cache@v2
+  #     #   with:
+  #     #     path: |
+  #     #       ~/.gradle/caches
+  #     #       ~/.gradle/wrapper
+  #     #     key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+  #     #     restore-keys: |
+  #     #       ${{ runner.os }}-gradle-
+  #     - name: Set up JDK 1.8
+  #       uses: actions/setup-java@v1
+  #       with:
+  #         java-version: 1.8
+  #     - name: Write Google Services Json
+  #       run: echo $GOOGLE_SERVICES_JSON > android/app/google-services.json
+  #       env:
+  #         GOOGLE_SERVICES_JSON: ${{secrets.GOOGLE_SERVICES_JSON}}
+  #     - name: Generate debug android and test builds
+  #       run: cd android && chmod +x ./gradlew && ./gradlew clean :app:assembleDebug :app:assembleDebugAndroidTest
+  #     - name: Install Dependencies
+  #       run: |
+  #         cd ci
+  #         sudo gem install bundler && sudo bundle install
+  #     - name: Generate Nexus Screenshots
+  #       uses: reactivecircus/android-emulator-runner@v2
+  #       continue-on-error: true
+  #       timeout-minutes: 25
+  #       with:
+  #         api-level: 28
+  #         arch: x86_64
+  #         profile: ${{ matrix.profile }}
+  #         script: cd ci && bundle exec fastlane run screengrab --verbose
+  #     - name: Upload Screenshots
+  #       uses: actions/upload-artifact@v2
+  #       with:
+  #         name: screenshots_android
+  #         path: |
+  #           ci/fastlane/metadata/android
 
-
-        #   TODO - could also consider publishing to appetize or similar
-        # NOTE - would require building debug apk/ipa
-        # NOTE - could be called from another workflow via https://github.com/marketplace/actions/workflow-dispatch
-        # NOTE - could persist apk/ipa across workflows via https://jfrog.com/artifactory
+  #   TODO - could also consider publishing to appetize or similar
+  # NOTE - would require building debug apk/ipa
+  # NOTE - could be called from another workflow via https://github.com/marketplace/actions/workflow-dispatch
+  # NOTE - could persist apk/ipa across workflows via https://jfrog.com/artifactory
   # TODO - upload screenshots to relevant services
   cleanup:
     # NOTE - this will only run if previous action successful, so either ensure passes, or move to cron job
-    needs: [android_screenshot]
+    needs: [ios_screenshot]
     runs-on: ubuntu-latest
     name: Delete intermediary artifacts
     steps:
