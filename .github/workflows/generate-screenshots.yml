@@ -32,6 +32,7 @@ jobs:
     needs: [build_dist]
     name: Create IOS Screenshots
     runs-on: macos-latest
+    continue-on-error: true
     steps:
       - name: Download Build Artifact
         uses: actions/download-artifact@v2
@@ -61,7 +62,7 @@ jobs:
     needs: [build_dist]
     name: Create Android Screenshots
     runs-on: macos-latest
-    timeout-minutes: 35
+    timeout-minutes: 45
     continue-on-error: true
     strategy:
       matrix:
@@ -110,15 +111,14 @@ jobs:
           path: |
             ci/fastlane/metadata/android
 
-
-        #   TODO - could also consider publishing to appetize or similar
-        # NOTE - would require building debug apk/ipa
-        # NOTE - could be called from another workflow via https://github.com/marketplace/actions/workflow-dispatch
-        # NOTE - could persist apk/ipa across workflows via https://jfrog.com/artifactory
+  #   TODO - could also consider publishing to appetize or similar
+  # NOTE - would require building debug apk/ipa
+  # NOTE - could be called from another workflow via https://github.com/marketplace/actions/workflow-dispatch
+  # NOTE - could persist apk/ipa across workflows via https://jfrog.com/artifactory
   # TODO - upload screenshots to relevant services
   cleanup:
     # NOTE - this will only run if previous action successful, so either ensure passes, or move to cron job
-    needs: [android_screenshot]
+    needs: [android_screenshot, ios_screenshot]
     runs-on: ubuntu-latest
     name: Delete intermediary artifacts
     steps:

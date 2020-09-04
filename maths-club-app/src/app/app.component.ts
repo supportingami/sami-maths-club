@@ -6,7 +6,7 @@ import { slideTransition } from "./animations";
 import { environment } from "src/environments/environment";
 import { NotificationService } from "./services/notification.service";
 
-import { Plugins, Capacitor } from "@capacitor/core";
+import { Plugins, Capacitor, StatusBarStyle } from "@capacitor/core";
 const { StatusBar } = Plugins;
 
 @Component({
@@ -24,7 +24,8 @@ export class AppComponent {
   ) {
     // this.notifications.init()
     if (Capacitor.isNative) {
-      // native code here
+      // Light text for dark backgrounds.
+      StatusBar.setStyle({ style: StatusBarStyle.Dark });
     }
   }
   getRouteAnimationState(outlet: RouterOutlet) {
