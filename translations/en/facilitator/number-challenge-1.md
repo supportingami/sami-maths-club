@@ -12,13 +12,11 @@ The solutions are **not important**, it is about the thinking process learners g
 
 1. The first two numbers add up to 11 so we can try different pairs. If they were 5 and 6 then the other number would have to be 12 or 13 but then none of the pairs add up to 22, so it's wrong. If we keep trying values we see that the first numbers can only be 3 and 8 and the other number will be 14 which works with all the information. However, if the numbers were bigger this would take much longer.  
 
-    A better way is to use **algebra** and **simultaneous equations.** Let the three numbers be x, y and z , and . If the first pair is x and y , then we know that x + y =13. If the second pair is x and z  then,  x + z = 17  and the last pair must be y  and z so y + z = 22. This gives us three simultaneous equations:
-  x + y = 11 ;  x + z = 17    ;   y + z = 22  
+    A better way is to use **algebra** and **simultaneous equations.** Let the three numbers be x, y and z , and . If the first pair is x and y , then we know that x + y =13. If the second pair is x and z  then,  x + z = 17  and the last pair must be y  and z so y + z = 22. This gives us three simultaneous equations:   
+        
+        x + y = 11; x + z = 17; y + z = 22  
   
-   Equation 2 - Equation 1 gives: z - y = 6 . Now add this to Equation 3 to get 2z = 28. 
-Which means z = 14 . Using the original equations we can then work out that  x = 3 
-
-      and y = 8.
+   Equation 2 - Equation 1 gives: z - y = 6 . Now add this to Equation 3 to get 2z = 28.Which means z = 14 . Using the original equations we can then work out that  x = 3 and y = 8.
 
    Now try the question if the totals were 73, 140 and 109. Which method is faster now?
 
@@ -34,8 +32,7 @@ Which means z = 14 . Using the original equations we can then work out that  x =
 
       Do the same and you will see it's not possible to have a 2 or a 4 between the 1s. You can solve it from there.
 
-3.  99 + $\frac{9}{9}$ = 99 +1 = 100 or even $\frac{99}{99}$ = 100.  
-   This question requires some creativity!
+3.  99 + $\frac{9}{9}$ = 99 +1 = 100 or even $\frac{99}{99}$ = 100. This question requires some creativity!
 
     
 
