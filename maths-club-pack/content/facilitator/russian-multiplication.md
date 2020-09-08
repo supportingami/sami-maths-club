@@ -19,7 +19,7 @@ It will work for any two numbers. An insight into why it always works can be giv
 
 (taken from http://mathforum.org/dr.math/faq/faq.peasant.html)   
 
-Binary numbers are numbers written in base two instead of base ten. This means that place value depends on powers of two instead of powers of ten: instead of ones, tens, and hundreds places, base two has a ones place, a twos place, a fours place, and so on. For example, fourteen in base two is 1110:  
+Binary numbers are numbers written in [base two](https://mathforum.org/dr.math/faq/faq.bases.html) instead of base ten. This means that place value depends on powers of two instead of powers of ten: instead of ones, tens, and hundreds places, base two has a ones place, a twos place, a fours place, and so on. For example, fourteen in base two is 1110:  
 
         1110 (base 2)
   
@@ -77,7 +77,7 @@ We are trying to multiply 12 by 13. One way to do this would be to use long mult
 
 
 
-Notice that we are adding 2*13 and 10*13 to get our final answer. This works because of the distributive property:  
+Notice that we are adding 2*13 and 10*13 to get our final answer. This works because of the [distributive property]():  
 
         12 * 13  
 
