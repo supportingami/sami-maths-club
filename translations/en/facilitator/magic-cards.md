@@ -1,11 +1,12 @@
 # Magic Cards
 
-## Introduction
+## Introduction   
+
 Place the cards randomly on the desk and ask a student to find all the cards with their birth date on (e.g. they might be born on the 12th of November 2005 so they would be looking for all the cards with a 12 on it).   
 
 Ask them to tell you the colour of all the cards that their number is on.  
 
-Then all you need to do is add together the top left number of each of those cards and it will instantly tell you what date they were born on.  
+Then all you need to do is add together the **top left number** of each of those cards and it will instantly tell you what date they were born on.  
 
 Do this a few times with the students. They can pick any new number for you to guess.
 Then ask them to work out how you are doing it so quickly.   
