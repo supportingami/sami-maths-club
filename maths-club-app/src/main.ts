@@ -6,14 +6,13 @@ import { environment } from "./environments/environment";
 
 import * as Sentry from "@sentry/angular";
 
-Sentry.init({
-  dsn:
-    "https://42bfde52d006481a8ccb51e308937929@o157757.ingest.sentry.io/5411348",
-  integrations: [],
-});
-
 if (environment.production) {
   enableProdMode();
+  Sentry.init({
+    dsn:
+      "https://42bfde52d006481a8ccb51e308937929@o157757.ingest.sentry.io/5411348",
+    integrations: [],
+  });
 }
 
 platformBrowserDynamic()
