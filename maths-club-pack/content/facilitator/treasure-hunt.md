@@ -4,9 +4,11 @@
 
 There are two different approaches to this puzzle. You can assume that:  
 
-•Each chest contains the treasure, or that  
+* Each chest contains the treasure, or that  
 
-•Each statement is true and consider the four cases that arise.
+* Each statement is true    
+
+and consider the four cases that arise.
 
 The way a student structures their answer will play a big part in how easy they find the answer.
 

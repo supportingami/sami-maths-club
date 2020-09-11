@@ -1,6 +1,6 @@
 # Making squares
 
-## Introduction.
+## Introduction
 
 This game is a great way to practice using coordinates and develop geometrical reasoning (understanding of shapes). It might be a good idea to play the game once altogether, splitting the class into two teams. Each team takes it in turns to mark a point on the game grid until one team can join four of their own points together and make a square. A typical game on a smaller grid might look like:
 

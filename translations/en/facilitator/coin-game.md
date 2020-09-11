@@ -11,7 +11,7 @@ Watch students closely when they start filling in the table to ensure they are o
 
 ## Solution
 
-Which of the following scores are impossible in this game and why? 5-2, 7-4, 6-2,  
+*Which of the following scores are impossible in this game and why? 5-2, 7-4, 6-2,*  
 
 5-2 is possible.  
 
@@ -19,9 +19,9 @@ Which of the following scores are impossible in this game and why? 5-2, 7-4, 6-2
 
 6-2 is impossible because the game would have stopped before it got to this stage. Player 1 would have already won some time before.  
 
-Think of ways the game could end in a tie - Either 5-5, 6-4 or 4-6  
+*Think of ways the game could end in a tie* - Either 5-5, 6-4 or 4-6  
 
-What is the chance of winning this game?  
+*What is the chance of winning this game?* 
 
 The easiest way to fill in the table is to start in the top left corner, and each square is the sum of the number immediately to the left and immediately above. E.g. The numbers
 
