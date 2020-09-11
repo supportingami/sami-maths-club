@@ -10,15 +10,15 @@ The key to this question is to realise that you should take all the coconuts fro
 
 <ins>Emptying the first sack<ins>
 
-You currently have three sacks so at each checkpoint you must give three coconuts each time. That means that the sack will be empty after 30 ÷ 3 = 10 checkpoints.You throw away this empty sack.  
+You currently have three sacks so at each checkpoint you must give **three** coconuts each time. That means that the sack will be empty after 30 ÷ 3 = 10 checkpoints.You throw away this empty sack.  
 
 <ins>Emptying the second sack<ins>
 
-You now have two sacks left so at each checkpoint you must give two coconuts each time. That means that the sack will be empty after 30 ÷ 2 = 15 checkpoints. You throw away this empty sack.  
+You now have two sacks left so at each checkpoint you must give **two** coconuts each time. That means that the sack will be empty after 30 ÷ 2 = 15 checkpoints. You throw away this empty sack.  
 
 <ins>Emptying the third sack<ins>  
 
-You now have one sack left so at each checkpoint you must give one coconut each time. You have already passed 10 + 5 = 15 checkpoints, which means you have five checkpoints left. That means you must give
+You now have one sack left so at each checkpoint you must give **one** coconut each time. You have already passed 10 + 5 = 15 checkpoints, which means you have five checkpoints left. That means you must give
 out 5 × 1 = 5 coconuts from your final bag.  
 
 Therefore, you are left with 30 − 5 = 25 coconuts to sell at the market.

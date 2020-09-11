@@ -14,7 +14,12 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content *ngIf="appService.routeParams$ | async as params">
-    <mat-toolbar color="primary" class="safe-padding-top safe-padding-side">
+    <!-- Additional div to cover notch area on some iphones -->
+    <div
+      id="iosNotchCover"
+      class="safe-padding-top mat-toolbar mat-primary"
+    ></div>
+    <mat-toolbar color="primary" class="safe-padding-side">
       <button mat-icon-button (click)="snav.toggle()" *ngIf="!params.slug">
         <mat-icon>menu</mat-icon>
       </button>

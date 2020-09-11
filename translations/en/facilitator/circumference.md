@@ -38,7 +38,8 @@ Like how this was worked out in question 1, the amount of extra rope needed is t
 
 ## Extension
 
-Extension – something to think about, not work out!
+**Extension – something to think about, not work out!**   
+   
 What is even more interesting is what happens when the rope is lifted by a single point. The rope around the bottom of the earth is taut but now there is a large clearance at the top. For an additional 2 metres length of rope, the distance from the earth’s surface to the peak of the rope would be enough to fit **two Statue of Liberty’s underneath it!**  
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/circumference-5.png?raw=true)
