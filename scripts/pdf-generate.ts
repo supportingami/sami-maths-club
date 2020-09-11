@@ -12,7 +12,10 @@ import * as fs from "fs-extra";
   const browser = await playwright["chromium"].launch();
   const context = await browser.newContext();
   const page = await context.newPage();
-  await page.goto("http://localhost:4200/p/adding-to-15");
-  await page.pdf({ path: `pdfs/adding-to-15-student.pdf` });
+  const lang = "en";
+  const slug = "counting-chickens";
+  await page.goto(`http://localhost:4200/${lang}/${slug}`);
+  await page.waitForTimeout(1000)
+  await page.pdf({ path: `pdfs/${slug}-student.pdf` });
   await browser.close();
 })();
