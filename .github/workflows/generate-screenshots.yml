@@ -32,6 +32,8 @@ jobs:
     needs: [build_dist]
     name: Create IOS Screenshots
     runs-on: macos-latest
+    timeout-minutes: 35
+    continue-on-error: true
     steps:
       - name: Download Build Artifact
         uses: actions/download-artifact@v2
