@@ -1,6 +1,5 @@
 ---
 title: IQ Challenge 1
-slug: iq-challenge-1
 type: problem
 printOrder: 8
 added: 2020-07

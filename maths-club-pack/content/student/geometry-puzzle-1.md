@@ -1,6 +1,5 @@
 ---
 title: Geometry Puzzle 1
-slug: geometry-puzzle-1
 type: problem
 printOrder: 13
 added: 2020-08

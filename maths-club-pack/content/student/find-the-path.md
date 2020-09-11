@@ -1,6 +1,5 @@
 ---
 title: Find the path
-slug: find-the-path
 type: problem
 printOrder: 6
 added: 2020-07

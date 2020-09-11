@@ -1,7 +1,8 @@
 ---
 title: Picture Puzzles 1
 type: problem
-order: 41
+printOrder: 41
+added: 2020-09
 ---
 
 # Picture Puzzles 1 

@@ -1,6 +1,5 @@
 ---
 title: Counting Squares
-slug: counting-squares
 type: problem
 printOrder: 9
 added: 2020-07

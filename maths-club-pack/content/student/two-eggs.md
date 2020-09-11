@@ -1,7 +1,8 @@
 ---
 title: Two Eggs
 type: problem
-order: 35
+printOrder: 35
+added: 2020-09
 ---
 
 # Two Eggs

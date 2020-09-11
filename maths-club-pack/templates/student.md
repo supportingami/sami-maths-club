@@ -1,7 +1,8 @@
 ---
 title: Some Title # match from pack
 type: problem|game|computer # delete as appropriate
-order: 99 # try to match order in pack
+printOrder: 99 # try to match order in pack
+added: 2020-09 # used to show recent problems first in the pack, can include day but not required
 ---
 
 # Title Goes Here

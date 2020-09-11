@@ -1,6 +1,5 @@
 ---
 title: Paths
-slug: paths
 type: problem
 printOrder: 36
 added: 2020-07

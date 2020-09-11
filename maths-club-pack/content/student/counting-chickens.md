@@ -1,7 +1,8 @@
 ---
 title: Counting Chickens
 type: problem
-order: 36
+printOrder: 36
+added: 2020-09
 ---
 
 # Counting Chickens

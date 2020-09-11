@@ -1,7 +1,8 @@
 ---
 title: Special Numbers
 type: problem
-order: 41
+printOrder: 41
+added: 2020-09
 ---
 
 # Special Numbers 

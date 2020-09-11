@@ -1,7 +1,8 @@
 ---
 title: Scales and Weights
 type: problem
-order: 40
+printOrder: 40
+added: 2020-09
 ---
 
 # Scales and Weights

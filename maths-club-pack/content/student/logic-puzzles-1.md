@@ -1,6 +1,5 @@
 ---
 title: Logic Puzzles 1
-slug: logic-puzzles-1
 type: problem
 printOrder: 12
 added: 2020-07

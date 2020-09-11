@@ -1,7 +1,8 @@
 ---
 title: Frog Party
 type: problem
-order: 37
+printOrder: 37
+added: 2020-09
 ---
 
 # Frog Party

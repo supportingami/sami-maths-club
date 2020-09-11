@@ -1,7 +1,8 @@
 ---
 title: Monkey Business
 type: problem
-order: 38
+printOrder: 38
+added: 2020-09
 ---
 
 # Monkey Business

@@ -1,6 +1,5 @@
 ---
 title: Pell Numbers
-slug: pell-numbers
 type: problem
 printOrder: 31
 added: 2020-07

@@ -1,7 +1,8 @@
 ---
 title: Locks and Keys
 type: problem
-order: 39
+printOrder: 39
+added: 2020-09
 ---
 
 # Locks and Keys
