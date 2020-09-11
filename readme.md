@@ -2,6 +2,12 @@
 
 This repo contains source code for the SAMI Maths Club App
 
+![screenshots](documentation/images/app-screenshots.png)
+
+Download for Android from [Google Play](https://play.google.com/store/apps/details?id=io.c2dev.samimathsclub),
+iOS on [App Store](https://apps.apple.com/app/sami-maths-club/id1527293312),
+or [Use Online](http://mathsclub.samicharity.co.uk/)
+
 # Get Involved
 
 ## Contributing Problems
