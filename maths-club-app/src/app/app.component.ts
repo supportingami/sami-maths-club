@@ -7,6 +7,7 @@ import { environment } from "src/environments/environment";
 import { NotificationService } from "./services/notification.service";
 
 import { Plugins, Capacitor, StatusBarStyle } from "@capacitor/core";
+import { AnalyticsService } from "./services/analytics.service";
 const { StatusBar } = Plugins;
 
 @Component({
@@ -20,11 +21,13 @@ export class AppComponent {
   version = environment.APP_VERSION;
   constructor(
     public appService: AppService,
-    public notifications: NotificationService
+    notifications: NotificationService,
+    analytics: AnalyticsService
   ) {
     // this.notifications.init()
     if (Capacitor.isNative) {
       // Light text for dark backgrounds.
+      analytics.init();
       StatusBar.setStyle({ style: StatusBarStyle.Dark });
     }
   }

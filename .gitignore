@@ -13,6 +13,7 @@ pdfs
 
 # IOS and Android files
 maths-club-app/android/app/google-services.json
+maths-club-app/android/app/debug
 maths-club-app/ios/App/*.zip
 maths-club-app/ios/App/*.ipa
 maths-club-app/ios/App/*.mobileprovision
@@ -20,3 +21,4 @@ maths-club-app/ios/App/fastlane/report.xml
 maths-club-app/ci/play-store-service-account.json
 maths-club-app/ci/fastlane/metadata
 .idea
+

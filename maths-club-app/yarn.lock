@@ -1034,6 +1034,13 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@capacitor-community/firebase-analytics@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@capacitor-community/firebase-analytics/-/firebase-analytics-0.2.0.tgz#9ee4c579429db67a166d57cff692c004bdf11cdb"
+  integrity sha512-hVTCvixad3gbWZRt7X/wqPaf6JFRao0cVgbjfaQjfAe+ieko1BqQq3aa09MJa7QLvyap/aQhHHcdf6VTQD1VZw==
+  dependencies:
+    "@capacitor/core" latest
+
 "@capacitor/android@2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-2.2.1.tgz#20b722d634cb7b9e12aa6612e22f1f37dbbc57ca"
@@ -1060,6 +1067,13 @@
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-2.2.1.tgz#20f07d35c4af3650eed90cbfd0d5c260cbb59ba5"
   integrity sha512-Qbx+4woY24Ixb74zizaKAJur/gpFDwdZAZbZtXIc5yNhyaD13XLyqwLm5LTI1CKw7Vc7xoENUaWLqNQYtr6v2g==
+  dependencies:
+    tslib "^1.9.0"
+
+"@capacitor/core@latest":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-2.4.1.tgz#d47db023d4b98fd62f8f829d2a046d0c1f0e5352"
+  integrity sha512-/OTDYTztAri04SNC+pIsSiIVG8ryjKkt3kG+aupoiHI1xankLJxGbcw5Z3aVZmhmMmJpk2nda2LC9Kc3Y0bA2w==
   dependencies:
     tslib "^1.9.0"
 
