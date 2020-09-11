@@ -41,8 +41,8 @@ export class ProblemService {
    * Return as the index of the problems passed
    */
   private getFeaturedProblem(problems: IProblemMeta[]): { index: number } {
-    const today = new Date().toISOString().substring(0, 10);
-    const index = Object.keys(WEEKLY_PROBLEMS).findIndex((d) => today <= d) - 1;
+    const today = this._formatDateAsString(new Date());
+    const index = Object.keys(WEEKLY_PROBLEMS).findIndex((d) => today < d) - 1;
     const weeklySlug = Object.values(WEEKLY_PROBLEMS)[index];
     // TODO - if problem doesn't exist pick a suitable replacement
     if (index < 0) {
@@ -123,6 +123,19 @@ export class ProblemService {
         await this.setActiveProblem(this.slug);
       }
     });
+  }
+
+  /**
+   * Takes a date object and returns in format yyyy-mm-dd
+   * Similar to .toIsoString slice, but retains local timezone
+   */
+  private _formatDateAsString(d = new Date()) {
+    return (
+      d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate())
+    );
+    function pad(n) {
+      return n < 10 ? "0" + n : n;
+    }
   }
 
   private rewriteImageUrls(problemText: string) {
