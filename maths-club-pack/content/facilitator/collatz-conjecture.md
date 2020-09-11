@@ -19,16 +19,17 @@ finally gets to 1. The number just before, 96, only takes 12 steps!
 
 A computer or tablet would be very useful to try and find very long sequences. Here are some instructions for GeoGebra, which you can find online (https://www.geogebra.org/classic/spreadsheet) or it may be installed on the tablet and you do not need the internet.  
 
-You will need to use the Mod command:  
+You will need to use the Mod command:   
 
-![](../../images/collatz-conjecture-2.png)
+Mod[ &lt;Dividend Number&gt; , &lt;Divisor&gt;Number ]
+
 
 to check if the number is even. Mod is short for Modulo and gives the remainder when you do a division.
 e.g. Mod[10,3] would be 1 because there is 1 leftover when you divide 10 by 3.  
 
 You will also need the If command:  
 
-![](../../images/collatz-conjecture-3.png)
+If[ &lt;Condition&gt; , &lt;Then&gt; , &lt;Else&gt; ]
 
 
 to choose what to do if it is even and what to do if it is odd.  
