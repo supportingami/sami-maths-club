@@ -1,6 +1,7 @@
-import { Injectable } from "@angular/core";
+import { Inject, Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
+import { DOCUMENT } from '@angular/common';
 
 @Injectable({
   providedIn: "root",
@@ -12,7 +13,7 @@ export class AppService {
   title$ = new BehaviorSubject<string>("SAMI Maths Club");
   routeParams$ = new BehaviorSubject<IRouteParams>({ lang: "en" });
 
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(private router: Router, private route: ActivatedRoute, @Inject(DOCUMENT) private document: Document) {
     this._processRouteChanges();
   }
 
@@ -42,7 +43,7 @@ export class AppService {
           this.setMenubarTitle();
         }
         // scroll to top of sidenav-content on page
-        document.querySelector(".mat-sidenav-content").scrollTop = 0;
+        this.document.querySelector(".mat-sidenav-content").scrollTop = 0;
       }
     });
   }

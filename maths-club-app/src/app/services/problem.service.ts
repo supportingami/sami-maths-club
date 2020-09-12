@@ -121,6 +121,8 @@ export class ProblemService {
       }
       if (this.slug) {
         await this.setActiveProblem(this.slug);
+      } else {
+        this.activeProblem$.next(undefined);
       }
     });
   }

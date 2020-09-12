@@ -54,6 +54,8 @@ class AutomatedScreenshots: XCTestCase {
 
     func testScreenshots(){
       let app = XCUIApplication()
+      let consentEl = waitForEl(ariaLabel: "privacy-consent-false", accessor: "button")
+      problemEl.tap()
       let problemEl = waitForEl(ariaLabel: "apple-teaser")
       snapshot("1-Home-Screen")
       problemEl.tap()

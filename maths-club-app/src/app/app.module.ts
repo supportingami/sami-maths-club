@@ -17,7 +17,8 @@ import { FacilitatorNoteComponent } from "./components/facilitator-note/facilita
 import { PrivacyPolicyComponent } from "./components/privacy-policy/privacy-policy.component";
 import { AppTermsComponent } from "./components/app-terms/app-terms.component";
 import * as Sentry from "@sentry/angular";
-import { ContactComponent } from './components/contact/contact.component';
+import { ContactComponent } from "./components/contact/contact.component";
+import { AnalyticsConsentComponent } from "./components/analytics-consent";
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ContactComponent } from './components/contact/contact.component';
     PrivacyPolicyComponent,
     ContactComponent,
     AppTermsComponent,
+    AnalyticsConsentComponent,
   ],
   imports: [
     BrowserModule,

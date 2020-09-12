@@ -2,6 +2,7 @@ import * as fs from "fs-extra";
 import * as path from "path";
 import { replaceInFileSync } from "replace-in-file";
 import fm from "front-matter";
+import sharp from "sharp";
 import { stripSpecialCharacters } from "./utils/string.utils";
 import { IProblemMeta } from "../maths-club-app/src/app/models/problem.models";
 
@@ -9,10 +10,10 @@ const PACK_DIR = "./maths-club-pack";
 const APP_PACK_DIR = "./maths-club-app/src/assets/maths-club-pack";
 const TRANSLATIONS_DIR = "./translations";
 
-function main() {
+async function main() {
   copyTranslationsForUpload();
   generateTranslationsMeta();
-  copyPackToApp();
+  await copyPackToApp();
 }
 
 /**
@@ -47,12 +48,27 @@ function generateTranslationsMeta() {
  * Copy images from main app pack folder and translated pack from translations problem.
  * Convert urls from translations before copy to use relative paths instead of absolute urls
  */
-function copyPackToApp() {
+async function copyPackToApp() {
   fs.emptyDirSync(APP_PACK_DIR);
   fs.copySync(TRANSLATIONS_DIR, APP_PACK_DIR);
   rewriteAppImageUrlsFromTranslation();
+  await addJPGCoverImages();
   fs.copySync(`${PACK_DIR}/cover_images`, `${APP_PACK_DIR}/cover_images`);
   fs.copySync(`${PACK_DIR}/images`, `${APP_PACK_DIR}/images`);
+}
+
+/**
+ * Convert svg cover images to png to use withing SEO and notifications
+ */
+async function addJPGCoverImages() {
+  const covers = fs.readdirSync(`${PACK_DIR}/cover_images`);
+  for (let cover of covers) {
+    const svgPath = `${PACK_DIR}/cover_images/${cover}`;
+    const pngPath = svgPath.replace(".svg", ".png");
+    if (!fs.existsSync(pngPath)) {
+      await sharp(svgPath).png().toFile(pngPath);
+    }
+  }
 }
 
 /**
@@ -158,4 +174,6 @@ function _listDirectories(path: string) {
     .map((d) => d.name);
 }
 
-main();
+main()
+  .then(() => process.exit(0))
+  .catch((err) => process.exit(1));
