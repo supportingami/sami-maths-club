@@ -25,9 +25,10 @@ export class AppComponent {
     analytics: AnalyticsService
   ) {
     // this.notifications.init()
+    analytics.init();
     if (Capacitor.isNative) {
       // Light text for dark backgrounds.
-      analytics.init();
+
       StatusBar.setStyle({ style: StatusBarStyle.Dark });
     }
   }
