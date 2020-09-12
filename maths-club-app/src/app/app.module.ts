@@ -18,6 +18,7 @@ import { PrivacyPolicyComponent } from "./components/privacy-policy/privacy-poli
 import { AppTermsComponent } from "./components/app-terms/app-terms.component";
 import * as Sentry from "@sentry/angular";
 import { ContactComponent } from "./components/contact/contact.component";
+import { AnalyticsConsentComponent } from "./components/analytics-consent";
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ContactComponent } from "./components/contact/contact.component";
     PrivacyPolicyComponent,
     ContactComponent,
     AppTermsComponent,
+    AnalyticsConsentComponent,
   ],
   imports: [
     BrowserModule,
