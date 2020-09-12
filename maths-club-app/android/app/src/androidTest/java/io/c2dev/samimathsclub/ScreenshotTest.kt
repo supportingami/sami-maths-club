@@ -40,6 +40,10 @@ class ScreenshotTest {
   }
   // Add longer timeout to test (when running on CI can be slow to respond)
   @Test(timeout = 60000) fun screenshot(){
+    //  dismiss analytics consent
+    val consentEl = onWebView().withElement(findElement(Locator.CSS_SELECTOR, "button[aria-label=\"privacy-consent-true\"]"))
+    consentEl.perform((webClick()))
+    //
     val problemEl = onWebView().withElement(findElement(Locator.CSS_SELECTOR, "mat-card[aria-label=\"apple-teaser\"]"))
     Thread.sleep(1000)
     Screengrab.screenshot("1-Home");

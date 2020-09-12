@@ -11,12 +11,22 @@ import { Component } from "@angular/core";
       </p>
     </mat-dialog-content>
     <mat-dialog-actions align="end">
+      <!-- currently only used for ci -->
+      <button
+        mat-stroked-button
+        [mat-dialog-close]="false"
+        cdkFocusInitial
+        aria-label="privacy-consent-false"
+        style="opacity:0; cursor:auto"
+      > Do not track
+      </button>
+
       <button
         color="primary"
         mat-stroked-button
         [mat-dialog-close]="true"
         cdkFocusInitial
-        aria-label="privacy-consent"
+        aria-label="privacy-consent-true"
       >
         I agree, let's go!
       </button>
