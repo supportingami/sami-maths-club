@@ -44,7 +44,9 @@ export class AnalyticsService {
   async verifyUserAnalyticsConsent(): Promise<boolean> {
     return new Promise(async (resolve) => {
       const userConsented = localStorage.getItem("analytics_user_consented");
-      if (userConsented) {
+      const isBot =
+         /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent)
+      if (userConsented || isBot) {
         resolve(userConsented==='true' ? true : false);
       } else {
         const dialog = this.dialog.open(AnalyticsConsentComponent, {
