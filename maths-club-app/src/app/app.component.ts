@@ -8,6 +8,7 @@ import { NotificationService } from "./services/notification.service";
 
 import { Plugins, Capacitor, StatusBarStyle } from "@capacitor/core";
 import { AnalyticsService } from "./services/analytics.service";
+import { SeoService } from "./services/seo.service";
 const { StatusBar } = Plugins;
 
 @Component({
@@ -22,7 +23,8 @@ export class AppComponent {
   constructor(
     public appService: AppService,
     notifications: NotificationService,
-    analytics: AnalyticsService
+    analytics: AnalyticsService,
+    seo: SeoService
   ) {
     // this.notifications.init()
     analytics.init();
@@ -30,6 +32,8 @@ export class AppComponent {
       // Light text for dark backgrounds.
 
       StatusBar.setStyle({ style: StatusBarStyle.Dark });
+    } else {
+      seo.init();
     }
   }
   getRouteAnimationState(outlet: RouterOutlet) {
