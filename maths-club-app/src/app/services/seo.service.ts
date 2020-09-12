@@ -39,7 +39,6 @@ export class SeoService {
 
   updateImage(src: string) {
     src = `${location.origin}/assets/${src}`;
-    console.log("updating image", src);
     this.meta.updateTag({ name: "og:image", content: src });
     this.meta.updateTag({ name: "twitter:image", content: src });
     const favIcon: HTMLLinkElement = this.document.querySelector("#appIcon");
