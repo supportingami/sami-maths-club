@@ -18,6 +18,10 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - name: Install Dependencies
         run: yarn install
+      - name: Populate Config
+        run: echo $FIREBASE_CONFIG_JSON > maths-club-app/src/environments/firebaseConfig.json
+        env:
+          FIREBASE_CONFIG_JSON: ${{secrets.FIREBASE_CONFIG_JSON}}
       - name: Build
         run: npm run app:build
         # Store various folders as artifacts for use by other jobs (ignore node modules except those needed by capacitor)
@@ -116,6 +120,7 @@ jobs:
           FASTLANE_MATCH_GITHUB_AUTH: ${{secrets.FASTLANE_MATCH_GITHUB_AUTH}}
           # Generated from appleid.apple.com/account/manage (login to avoid 2fa)
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD}}
+
 
         #   TODO - could also consider publishing to appetize or similar
         # NOTE - would require building debug apk/ipa
