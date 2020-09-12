@@ -11,7 +11,7 @@ export class SeoService {
     private title: Title,
     private meta: Meta,
     private problemService: ProblemService,
-    @Inject(DOCUMENT) private document: any
+    @Inject(DOCUMENT) private document: any,
   ) {}
 
   init() {
@@ -26,7 +26,7 @@ export class SeoService {
   }
 
   updateOgUrl(url: string) {
-    url = `${location.origin}/url`;
+    url = `${this.document.location.origin}/url`;
     this.meta.updateTag({ name: "og:url", content: url });
     this.meta.updateTag({ name: "twitter:url", content: url });
   }
@@ -38,7 +38,7 @@ export class SeoService {
   }
 
   updateImage(src: string) {
-    src = `${location.origin}/assets/${src}`;
+    src = `${this.document.location.origin}/assets/${src}`;
     this.meta.updateTag({ name: "og:image", content: src });
     this.meta.updateTag({ name: "twitter:image", content: src });
     const favIcon: HTMLLinkElement = this.document.querySelector("#appIcon");
