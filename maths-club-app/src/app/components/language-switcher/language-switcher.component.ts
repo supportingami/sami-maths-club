@@ -1,7 +1,8 @@
-import { Component } from "@angular/core";
+import { Component, Inject } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { AppService } from "src/app/services/app.service";
 import { MatSelectChange } from "@angular/material/select";
+import { DOCUMENT } from '@angular/common';
 
 interface Language {
   value: string;
@@ -22,7 +23,8 @@ export class LanguageSwitcherComponent {
   constructor(
     private appService: AppService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    @Inject(DOCUMENT) private document: any,
   ) {
     this.appService.routeParams$.subscribe((params) => {
       if (params.lang !== this.language?.value) {
@@ -35,7 +37,7 @@ export class LanguageSwitcherComponent {
     const oldLang = this.appService.routeParams$.value.lang;
     const selected: Language = e.value;
     const newLang = selected.value;
-    const newUrl = window.location.pathname.replace(oldLang, newLang);
+    const newUrl = this.document.location.pathname.replace(oldLang, newLang);
     this.router.navigate([newUrl], {
       relativeTo: this.route,
       replaceUrl: true,
