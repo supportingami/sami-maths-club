@@ -2,6 +2,7 @@ node_modules
 # maths-club-pack assets automatically copied from top-level folder to assets
 maths-club-app/src/assets/maths-club-pack
 maths-club-pack/translations/*/
+maths-club-pack/cover_images/jpgs
 translations/*/metadata.json
 translations/ach/
 **/package-lock.json
@@ -23,3 +24,5 @@ maths-club-app/ci/fastlane/metadata
 .idea
 
 maths-club-app/src/environments/firebaseConfig.json
+.vscode/settings.json
+maths-club-app/firebase-debug.log
