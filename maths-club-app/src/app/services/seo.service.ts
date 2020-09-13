@@ -47,7 +47,7 @@ export class SeoService {
   private setDefaultMeta() {
     this.updateMeta({
       title: "SAMI Maths Club",
-      image: "/icon.png",
+      image: "/assets/seo.jpg",
       url: "/",
       favicon: `/assets/favicon.svg`,
       description:

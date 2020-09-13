@@ -15,7 +15,6 @@ import { JSDOM } from "jsdom";
  * Adapted from https://medium.com/@jalalio/dynamic-og-tags-in-your-statically-firebase-hosted-polymer-app-476f18428b8b
  **/
 export const seoHost = functions.https.onRequest((req, res) => {
-  const baseURL = "https://mathsclub.samicharity.co.uk";
   const userAgent = req.headers["user-agent"];
   let indexHTML = fs.readFileSync("assets/index.html").toString();
 
@@ -32,11 +31,12 @@ export const seoHost = functions.https.onRequest((req, res) => {
       );
       const meta = allMeta.find((m) => m.slug === slug);
       if (meta) {
+        const baseURL = `${req.protocol}://${req.hostname}`;
         const defaultDescription = `Here's a problem for you to try! If you get stuck there are also notes for facilitators included`;
         const dom = new JSDOM(indexHTML);
         let { document } = dom.window;
         document = updateMeta(document, {
-          url: `${baseURL}/${slug}`,
+          url: `${baseURL}${req.originalUrl}`,
           title: `SAMI Maths Club - ${meta.title}`,
           description: meta.description || defaultDescription,
           // Note - could be replaced with externally hosted image (e.g. cloudinary)
@@ -53,7 +53,7 @@ export const seoHost = functions.https.onRequest((req, res) => {
 
 const isBot = (userAgent: string = "") => {
   // match most common bots, e.g. googlebot
-  return /bot|baiduspider|facebookexternalhit|crawler|spider|crawling|slurp/i.test(
+  return /bot|baiduspider|facebookexternalhit|crawler|spider|crawling|metainspector|whatsapp|slurp/i.test(
     userAgent
   );
 };
