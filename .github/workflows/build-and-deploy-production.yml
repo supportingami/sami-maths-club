@@ -3,9 +3,6 @@ name: Build and Deploy Production
 on:
   release:
     types: [published]
-  push:
-    branches:
-      - ci/fixes
 jobs:
   build_dist:
     name: Build Production and Deploy Web
