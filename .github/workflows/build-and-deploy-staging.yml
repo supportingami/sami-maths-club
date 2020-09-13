@@ -20,6 +20,8 @@ jobs:
         run: yarn install
       - name: Populate Config
         run: echo $FIREBASE_CONFIG_JSON > maths-club-app/src/environments/firebaseConfig.json
+        env:
+          FIREBASE_CONFIG_JSON: ${{secrets.FIREBASE_CONFIG_JSON}}
       - name: Build
         run: cd maths-club-app && npm run build:prod
       - name: Deploy to Firebase
