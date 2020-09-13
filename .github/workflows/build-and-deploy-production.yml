@@ -32,6 +32,7 @@ jobs:
           path: |
             maths-club-app
             !maths-club-app/node_modules
+            !maths-club-app/functions/node_modules
             maths-club-app/node_modules/@capacitor
   deploy_web:
     needs: [build_dist]
