@@ -59,14 +59,45 @@ async function copyPackToApp() {
 
 /**
  * Convert svg cover images to png to use withing SEO and notifications
+ * Default target 1200 x 627 for, but keeping content square in center
+ * TODO - just include as part of production deployment with other web seo functions
+ * TODO - perhaps push to cdn like cloudinary instead of hosting self
  */
 async function addJPGCoverImages() {
-  const covers = fs.readdirSync(`${PACK_DIR}/cover_images`);
+  const covers = fs
+    .readdirSync(`${PACK_DIR}/cover_images`, {
+      withFileTypes: true,
+    })
+    .filter((c) => c.isFile())
+    .map((c) => c.name);
+  fs.ensureDirSync(`${PACK_DIR}/cover_images/jpgs`);
+  const background = { r: 255, g: 255, b: 255 };
+  const width = 1200;
+  const padding = 20;
+  const height = 627;
   for (let cover of covers) {
     const svgPath = `${PACK_DIR}/cover_images/${cover}`;
-    const pngPath = svgPath.replace(".svg", ".png");
-    if (!fs.existsSync(pngPath)) {
-      await sharp(svgPath).png().toFile(pngPath);
+    const jpgPath = svgPath
+      .replace(".svg", ".jpg")
+      .replace("cover_images", "cover_images/jpgs");
+    if (!fs.existsSync(jpgPath)) {
+      await sharp(svgPath)
+        .jpeg()
+        .flatten({ background })
+        .resize(width - 2 * padding, height - 2 * padding, {
+          fit: "contain",
+          background,
+        })
+        // add padding
+        .extend({
+          top: padding,
+          left: padding,
+          right: padding,
+          bottom: padding,
+          background,
+        })
+        .toFile(jpgPath)
+        .catch((err) => console.log("err", err, cover));
     }
   }
 }
