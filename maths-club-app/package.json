@@ -8,8 +8,7 @@
     "build:prod": "ng build --configuration=\"production\"",
     "test": "ng test",
     "lint": "eslint \"**/*.{js,ts}\" --quiet --fix",
-    "e2e": "ng e2e",
-    "postinstall": "cd functions && yarn install"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
