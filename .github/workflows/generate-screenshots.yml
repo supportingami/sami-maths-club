@@ -35,6 +35,7 @@ jobs:
             maths-club-app
             !maths-club-app/node_modules
             maths-club-app/node_modules/@capacitor
+            maths-club-app/node_modules/@capacitor-community
   ios_screenshot:
     needs: [build_dist]
     name: Create IOS Screenshots

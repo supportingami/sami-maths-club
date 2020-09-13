@@ -19,8 +19,7 @@
       "rewrites": [
         {
           "source": "**",
-          "function": "seoHost"
-          // "destination": "/index.html"
+          "destination": "/index.html"
         }
       ]
     }

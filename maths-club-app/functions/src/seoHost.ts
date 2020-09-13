@@ -16,6 +16,7 @@ import { JSDOM } from "jsdom";
  **/
 export const seoHost = functions.https.onRequest((req, res) => {
   const userAgent = req.headers["user-agent"];
+  // TODO - find way to manage different indexes for different deploy targets
   let indexHTML = fs.readFileSync("assets/index.html").toString();
 
   /**

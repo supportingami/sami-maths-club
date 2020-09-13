@@ -8,7 +8,7 @@ on:
       - ci/fixes
 jobs:
   build_dist:
-    name: Build Production
+    name: Build Production and Deploy Web
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -27,6 +27,13 @@ jobs:
           FIREBASE_CONFIG_JSON: ${{secrets.FIREBASE_CONFIG_JSON}}
       - name: Build
         run: npm run app:build
+      - name: Deploy to Firebase
+        continue-on-error: true
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only "hosting:production,functions"
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         # Store various folders as artifacts for use by other jobs (ignore node modules except those needed by capacitor)
       - name: Store Build Artifact
         uses: actions/upload-artifact@v2
@@ -36,22 +43,7 @@ jobs:
             maths-club-app
             !maths-club-app/node_modules
             maths-club-app/node_modules/@capacitor
-  deploy_web:
-    needs: [build_dist]
-    name: Deploy to Firebase Production
-    runs-on: ubuntu-latest
-    continue-on-error: true
-    steps:
-      - name: Download Build Artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: maths-club-app
-      - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only "hosting:production,functions"
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+            maths-club-app/node_modules/@capacitor-community
   build_deploy_android:
     needs: [build_dist]
     name: Deploy to Play Store Beta Track
