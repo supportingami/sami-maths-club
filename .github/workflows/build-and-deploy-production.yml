@@ -28,7 +28,7 @@ jobs:
         continue-on-error: true
         uses: w9jds/firebase-action@master
         with:
-          args: deploy --only "hosting:production,functions"
+          args: deploy
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         # Store various folders as artifacts for use by other jobs (ignore node modules except those needed by capacitor)
