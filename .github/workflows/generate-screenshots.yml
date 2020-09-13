@@ -3,6 +3,9 @@ name: Generate Screenshots
 on:
   release:
     types: [published]
+  push:
+    branches:
+      - ci/fixes-2
 jobs:
   build_dist:
     name: Build Production
@@ -48,6 +51,7 @@ jobs:
         run: |
           cd ios/App
           echo $MOBILEPROVISION_BASE64 | base64 --decode > ios-build.mobileprovision
+          echo $GOOGLE_SERVICES_PLIST > App/GoogleService-Info.plist
         env:
           MOBILEPROVISION_BASE64: ${{secrets.IOS_PROVISION_BASE64}}
       - name: Install Dependencies
