@@ -6,12 +6,18 @@ import { ProblemService } from "./problem.service";
 @Injectable({
   providedIn: "root",
 })
+/**
+ * Automatically update tags and metadata when navigating the app for use in SEO
+ * Changes browser tab titles and favicon, and provides various og: and social card meta
+ * NOTE - Only works in the browser, for server-side (e.g. bots) require SSR or API
+ * (see seoHost.ts in functions for current implementation)
+ */
 export class SeoService {
   constructor(
     private title: Title,
     private meta: Meta,
     private problemService: ProblemService,
-    @Inject(DOCUMENT) private document: any,
+    @Inject(DOCUMENT) private document: Document
   ) {}
 
   init() {
@@ -19,50 +25,60 @@ export class SeoService {
     this._subscribeToProblemUpdates();
   }
 
-  updateTitle(title: string) {
+  updateMeta = (update: IMetaUpdate) => {
+    let { url, title, description, image, favicon } = update;
     this.title.setTitle(title);
     this.meta.updateTag({ name: "title", content: title });
-    this.meta.updateTag({ name: "twitter:title", content: title });
-  }
-
-  updateOgUrl(url: string) {
-    url = `${this.document.location.origin}/url`;
-    this.meta.updateTag({ name: "og:url", content: url });
-    this.meta.updateTag({ name: "twitter:url", content: url });
-  }
-
-  updateDescription(desc: string) {
-    this.meta.updateTag({ name: "description", content: desc });
-    this.meta.updateTag({ name: "og:description", content: desc });
-    this.meta.updateTag({ name: "twitter:description", content: desc });
-  }
-
-  updateImage(src: string) {
-    src = `${this.document.location.origin}/assets/${src}`;
-    this.meta.updateTag({ name: "og:image", content: src });
-    this.meta.updateTag({ name: "twitter:image", content: src });
-    const favIcon: HTMLLinkElement = this.document.querySelector("#appIcon");
-    favIcon.href = src;
-  }
+    this.meta.updateTag({ property: "twitter:title", content: title });
+    this.meta.updateTag({ property: "og:url", content: url });
+    this.meta.updateTag({ property: "twitter:url", content: url });
+    this.meta.updateTag({ name: "description", content: description });
+    this.meta.updateTag({ property: "og:description", content: description });
+    this.meta.updateTag({
+      property: "twitter:description",
+      content: description,
+    });
+    this.meta.updateTag({ property: "og:image", content: image });
+    this.meta.updateTag({ property: "twitter:image", content: image });
+    const favIcon: HTMLLinkElement = this.document.querySelector("#svgIcon");
+    favIcon.href = favicon;
+  };
 
   private setDefaultMeta() {
-    this.updateTitle("SAMI Maths Club");
-    this.updateOgUrl("/");
-    this.updateImage("icon.png");
-    this.updateDescription(
-      "SAMI Maths Club is a collection of mathematical problems and puzzles to support mathematical thinking, problem solving, and a love of mathematics!"
-    );
+    this.updateMeta({
+      title: "SAMI Maths Club",
+      image: "/icon.png",
+      url: "/",
+      favicon: `/assets/favicon.svg`,
+      description:
+        "A collection of mathematical problems and puzzles to support mathematical thinking, problem solving, and a love of mathematics!",
+    });
   }
 
   private _subscribeToProblemUpdates() {
     this.problemService.activeProblem$.subscribe((p) => {
       if (p) {
-        this.updateTitle(p.title);
-        this.updateDescription(p.studentVersionText);
-        this.updateImage(`maths-club-pack/cover_images/${p.slug}.png`);
+        const { origin, href } = this.document.location;
+        this.updateMeta({
+          title: p.title,
+          image: `/assets/maths-club-pack/cover_images/jpgs/${p.slug}.jpg`,
+          url: `${origin}/${href}`,
+          favicon: `/assets/maths-club-pack/cover_images/${p.slug}.svg`,
+          // TODO - include problem description meta
+          description: defaultDescription,
+        });
       } else {
         this.setDefaultMeta();
       }
     });
   }
 }
+interface IMetaUpdate {
+  url: string;
+  title: string;
+  favicon: string;
+  description?: string;
+  image: string;
+}
+
+const defaultDescription = `Here's a problem for you to try! If you get stuck there are also notes for facilitators included`;
