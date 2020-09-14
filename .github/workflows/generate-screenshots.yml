@@ -3,9 +3,6 @@ name: Generate Screenshots
 on:
   release:
     types: [published]
-  push:
-    branches:
-      - ci/fixes-2
 jobs:
   build_dist:
     name: Build Production
