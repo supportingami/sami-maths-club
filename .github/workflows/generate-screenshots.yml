@@ -48,8 +48,10 @@ jobs:
         run: |
           cd ios/App
           echo $MOBILEPROVISION_BASE64 | base64 --decode > ios-build.mobileprovision
+          echo $GOOGLE_SERVICES_PLIST_BASE64 | base64 --decode > App/GoogleService-Info.plist
         env:
           MOBILEPROVISION_BASE64: ${{secrets.IOS_PROVISION_BASE64}}
+          GOOGLE_SERVICES_PLIST_BASE64: ${{secrets.GOOGLE_SERVICES_PLIST_BASE64}}
       - name: Install Dependencies
         run: |
           cd ios/App
