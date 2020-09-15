@@ -31,12 +31,10 @@ export class AnalyticsService {
         if (environment.FIREBASE_CONFIG) {
           await Analytics.initializeFirebase(environment.FIREBASE_CONFIG);
           this._subscribeToRouteChanges();
+        } else {
+          console.info("No analytics settings configured, skipping");
         }
-        else{
-          console.info('No analytics settings configured, skipping')
-        }
-      }
-      else{
+      } else {
         this._subscribeToRouteChanges();
       }
     }
@@ -44,29 +42,33 @@ export class AnalyticsService {
   async verifyUserAnalyticsConsent(): Promise<boolean> {
     return new Promise(async (resolve) => {
       const userConsented = localStorage.getItem("analytics_user_consented");
-      const isBot =
-         /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent)
-      if (userConsented || isBot) {
-        resolve(userConsented==='true' ? true : false);
+      if (userConsented || this.isBot(navigator.userAgent)) {
+        resolve(userConsented === "true" ? true : false);
       } else {
         const dialog = this.dialog.open(AnalyticsConsentComponent, {
           width: "350px",
           disableClose: true,
           autoFocus: false,
         });
-        dialog.afterClosed().subscribe((consented:boolean) => {
+        dialog.afterClosed().subscribe((consented: boolean) => {
           // persist opt-in (currently only opt-out for ci testing)
-          if(consented){
+          if (consented) {
             localStorage.setItem("analytics_user_consented", `${consented}`);
           }
-          resolve(consented)
+          resolve(consented);
         });
       }
     });
   }
+  private isBot = (userAgent: string = "") => {
+    // match most common bots, e.g. googlebot
+    return /bot|baiduspider|facebookexternalhit|crawler|spider|crawling|metainspector|whatsapp|insomnia|slurp|lighthouse/i.test(
+      userAgent
+    );
+  };
 
   private _subscribeToRouteChanges() {
-    console.info('Analytics enabled')
+    console.info("Analytics enabled");
     this.router.events.subscribe(async (e) => {
       if (e instanceof NavigationEnd) {
         Analytics.setScreenName({

@@ -65,7 +65,7 @@ const updateProblemTags = (
 
 const isBot = (userAgent: string = "") => {
   // match most common bots, e.g. googlebot
-  return /bot|baiduspider|facebookexternalhit|crawler|spider|crawling|metainspector|whatsapp|insomnia|slurp/i.test(
+  return /bot|baiduspider|facebookexternalhit|crawler|spider|crawling|metainspector|whatsapp|insomnia|slurp|lighthouse/i.test(
     userAgent
   );
 };
