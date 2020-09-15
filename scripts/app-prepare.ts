@@ -3,8 +3,10 @@ import * as path from "path";
 import { replaceInFileSync } from "replace-in-file";
 import fm from "front-matter";
 import sharp from "sharp";
+import { SitemapStream, streamToPromise } from "sitemap";
 import { stripSpecialCharacters } from "./utils/string.utils";
 import { IProblemMeta } from "../maths-club-app/src/app/models/problem.models";
+import { Readable } from "stream";
 
 const PACK_DIR = "./maths-club-pack";
 const APP_PACK_DIR = "./maths-club-app/src/assets/maths-club-pack";
@@ -13,6 +15,8 @@ const TRANSLATIONS_DIR = "./translations";
 async function main() {
   copyTranslationsForUpload();
   generateTranslationsMeta();
+  // TODO - move sitemap generation to web deploy scripts
+  await generateSitemap();
   await copyPackToApp();
 }
 
@@ -100,6 +104,26 @@ async function addJPGCoverImages() {
         .catch((err) => console.log("err", err, cover));
     }
   }
+}
+
+/**
+ * Generate a list of all problems and format as sitemap
+ * NOTE - currently only problems in english recorded
+ */
+async function generateSitemap() {
+  const links = fs
+    .readJSONSync(`${TRANSLATIONS_DIR}/en/metadata.json`)
+    .map((p) => ({ url: `/en/${p.slug}`, changefreq: "yearly", priority: 1 }));
+  const stream = new SitemapStream({
+    hostname: "https://mathsclub.samicharity.co.uk",
+  });
+  // Return a promise that resolves with your XML string
+  const sitemap = await streamToPromise(
+    Readable.from(links).pipe(stream)
+  ).then((data) => data.toString());
+  fs.writeFileSync(`maths-club-app/src/sitemap.xml`, sitemap, {
+    encoding: "utf8",
+  });
 }
 
 /**
