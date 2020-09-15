@@ -25,6 +25,8 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
+              "src/robots.txt",
+              "src/sitemap.xml",
               "src/assets",
               {
                 "glob": "_redirects",
@@ -98,6 +100,8 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
+              "src/robots.txt",
+              "src/sitemap.xml",
               "src/assets",
               {
                 "glob": "_redirects",
