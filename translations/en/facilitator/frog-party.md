@@ -15,18 +15,12 @@ There are many ways to solve this, and it is possible to have a party on every s
 There are lots of ways you can make this problem more challenging and interesting,
 which include:   
 
-  - Add more lily pads, is it still possible with 6, 10 or N?   
+ |Statement|Picture|
+|---|---|
+|Add more lily pads, is it still possible with 6, 10 or N?|![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/frog-party-4.png?raw=true)|
+| Choose one of the frogs to be the Queen frog, who must be at the top of the party|![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/frog-party-5.png?raw=true)|
+|Swap one of the frogs for a lazy toad, who refuses to move. Is it still possible?|![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/frog-party-6.png?raw=true)|
 
-    ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/frog-party-4.png?raw=true)
-
-- Choose one of the frogs to be the Queen frog, who must be at the top of the
-party   
-
-    ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/frog-party-5.png?raw=true)   
-
-- Swap one of the frogs for a lazy toad, who refuses to move. Is it still possible?   
-
-    ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/frog-party-6.png?raw=true)   
 
 Note, the strategy used in the second solution of working from the inside out also works
 for any number of lily pads!
