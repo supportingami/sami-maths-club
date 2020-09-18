@@ -56,13 +56,13 @@ Why are these not the best approaches? How can you make them optimal in their wo
 
 We should start by dropping an egg from the 14<sup>th</sup> floor. Can you think about why before reading on?   
 
-**What happens if the egg breaks from the 14 th floor?**   
+**What happens if the egg breaks from the 14<sup>th</sup> floor?**   
 
 If the egg breaks from being dropped from the 14<sup>th</sup> floor, then it would break from every floor above this. We should then check the 1<sup>st</sup> floor, then the 2<sup>nd</sup> floor, all the way up to the 13<sup>th</sup> floor (13 floors). In the worst-case scenario, we would have to check 14 floors in total: 14, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13.   
 
 ![](../../images/two-eggs-3.png)   
 
-**What happens if the egg does not break from the 14 th floor?**   
+**What happens if the egg does not break from the 14<sup>th</sup> floor?**   
 
 If the egg did not break from being dropped from the 14<sup>th</sup> floor, then it would not break from any floor
 below this. Then we would check the 27 <sup>th</sup> floor next. This is because if it breaks at the 27<sup>th</sup> floor, we would only have to check all the floors from the 15<sup>th</sup> to the 26<sup>th</sup> one (12 floors). Start by checking the 15<sup>th</sup> floor,then the 16<sup>th</sup> floor, all the way up to the 26<sup>th</sup> floor. In the worst-case scenario, we would again have to check 14 floors in total: 14, 27, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26.   
