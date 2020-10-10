@@ -1,20 +1,20 @@
 ---
 title: Make Many
 type: problem
-order: 42
+printOrder: 42
+added: 2020-10
 ---
 
 # Make Many
 
 **<u style="color:green;">Task 1</u>**
 
-
 How many different three digit numbers can you make
-using only the numbers 100, 2 and 3 at most once and as many of the operators + − × ÷ and brackets as you like?   
+using only the numbers 100, 2 and 3 at most once and as many of the operators + − × ÷ and brackets as you like?
 
-e.g. 100 ×(2+3) = 500   
+e.g. 100 ×(2+3) = 500
 
-100 x 3 = 300   
+100 x 3 = 300
 
 100 + 3 + 2 =105
 

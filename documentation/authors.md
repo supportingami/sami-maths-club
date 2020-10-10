@@ -37,3 +37,16 @@ Mathematical notation can be renderred using the [Katex](https://katex.org/) typ
 ## Submitting Problems
 
 Once you have student and facilitator versions of your problem you can either email them to [admin@supportingami.org](mailto:admin@supportingami.org?subject=SAMI%20Maths%20Club%20Resources), or create a pull request to add them to the `maths-club-pack/content` folder
+
+# Review Checklist
+
+Once a submission has been added the following should be done by reviewers/developers:
+
+- [ ] Ensure student and facilitator versions exist, and match template format
+- [ ] Check images are reasonable size
+- [ ] Add top metadata to student version
+- [ ] Create cover image svg
+- [ ] Add to weekly problem list
+- [ ] Notify translators
+- [ ] Set release to publish live
+- [ ] Notify and thank authors
