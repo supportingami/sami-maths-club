@@ -39,7 +39,7 @@ Square numbers are the only ones which do not, e.g. 16 has factors (1x16, 2x8, *
 
 **So we just need to work out how many square numbers there are between 1 and 1000?**   
 
-If we think about the larges square number less than 1000, **<span style="color:brown">30x30=900, 31x31=961,</span> <span style="color:red">32x32=1024</span>**  
+If we think about the larges square number less than 1000, **<u style="color:brown">30x30=900, 31x31=961,</u>  <u style="color:red">32x32=1024 </u>**  
 
 So there will be **31 switches left on**! (switch numbers 1, 4, 9, 16, 25, 36, ... , 900, 961)   
 

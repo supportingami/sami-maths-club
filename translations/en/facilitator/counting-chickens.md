@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This activity looks at the interesting concept of having a circle with n points on its perimeter and what happens when you joint those points up.   
+This activity looks at the interesting concept of having a circle with *n* points on its perimeter and what happens when you joint those points up.   
 
 Three examples are given on the question sheet so students can see how to visualize the problems. The activity questions rely on students being able to develop on these primary examples to solve more complicated cases. The extension looks at spotting a pattern and developing a rule.   
 

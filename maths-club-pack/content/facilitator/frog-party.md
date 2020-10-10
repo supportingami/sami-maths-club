@@ -15,18 +15,12 @@ There are many ways to solve this, and it is possible to have a party on every s
 There are lots of ways you can make this problem more challenging and interesting,
 which include:   
 
-  - Add more lily pads, is it still possible with 6, 10 or N?   
+ |Statement|Picture|
+|---|---|
+|Add more lily pads, is it still possible with 6, 10 or N?|![](../../images/frog-party-4.png)|
+| Choose one of the frogs to be the Queen frog, who must be at the top of the party|![](../../images/frog-party-5.png)|
+|Swap one of the frogs for a lazy toad, who refuses to move. Is it still possible?|![](../../images/frog-party-6.png)|
 
-    ![](../../images/frog-party-4.png)
-
-- Choose one of the frogs to be the Queen frog, who must be at the top of the
-party   
-
-    ![](../../images/frog-party-5.png)   
-
-- Swap one of the frogs for a lazy toad, who refuses to move. Is it still possible?   
-
-    ![](../../images/frog-party-6.png)   
 
 Note, the strategy used in the second solution of working from the inside out also works
 for any number of lily pads!
