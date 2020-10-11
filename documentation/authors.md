@@ -46,7 +46,7 @@ Once a submission has been added the following should be done by reviewers/devel
 - [ ] Check images are reasonable size
 - [ ] Add top metadata to student version
 - [ ] Create cover image svg
-- [ ] Add to weekly problem list
+- [ ] Add to weekly problem list (verify only appended, not changed order)
 - [ ] Notify translators
 - [ ] Set release to publish live
 - [ ] Notify and thank authors

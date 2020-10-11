@@ -22,7 +22,7 @@ function main() {
   }
   fs.writeFileSync(
     "maths-club-app/src/app/data/weeklyProblems.ts",
-    `export const WEEKLY_PROBLEMS = ${JSON.stringify(weeklyProblems)}`
+    `export const WEEKLY_PROBLEMS = ${JSON.stringify(weeklyProblems, null, 2)}`
   );
 }
 main();

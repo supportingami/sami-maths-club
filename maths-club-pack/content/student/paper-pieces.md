@@ -2,7 +2,7 @@
 title: Paper pieces
 type: game
 printOrder: 7
-added: 2020-07
+added: 2020-10
 ---
 
 # Paper Pieces
