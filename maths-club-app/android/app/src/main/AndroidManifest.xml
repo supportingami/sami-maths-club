@@ -10,6 +10,13 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
 
+      <intent-filter android:autoVerify="true">
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:scheme="https" android:host="mathsclub.samicharity.co.uk" />
+    </intent-filter>
+
       <intent-filter>
         <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
@@ -38,7 +45,7 @@
 
   <!-- Allows changing locales -->
   <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
-  
+
   <!-- Camera, Photos, input file -->
   <!-- <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->

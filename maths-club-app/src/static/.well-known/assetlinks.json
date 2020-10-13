@@ -1,0 +1,22 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "io.c2dev.samimathsclub",
+      "sha256_cert_fingerprints": [
+        "59:59:BA:A7:9E:5F:56:17:6A:06:AC:93:D3:D8:2F:4A:13:6A:0A:A5:4F:F3:E9:7F:68:3E:45:AD:C7:16:2C:EB"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "io.c2dev.samimathsclub",
+      "sha256_cert_fingerprints": [
+        "B1:D4:F5:29:29:D8:58:DD:99:2D:61:B6:A0:02:D3:62:31:09:E8:DB:C5:53:80:8E:D2:46:3E:3A:C4:33:66:3A"
+      ]
+    }
+  }
+]
