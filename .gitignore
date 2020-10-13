@@ -27,4 +27,4 @@ maths-club-app/src/environments/firebaseConfig.json
 .vscode/settings.json
 maths-club-app/firebase-debug.log
 maths-club-app/ios/App/App/GoogleService-Info.plist
-maths-club-app/src/sitemap.xml
+maths-club-app/src/static/sitemap.xml

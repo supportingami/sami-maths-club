@@ -121,7 +121,7 @@ async function generateSitemap() {
   const sitemap = await streamToPromise(
     Readable.from(links).pipe(stream)
   ).then((data) => data.toString());
-  fs.writeFileSync(`maths-club-app/src/sitemap.xml`, sitemap, {
+  fs.writeFileSync(`maths-club-app/src/static/sitemap.xml`, sitemap, {
     encoding: "utf8",
   });
 }
