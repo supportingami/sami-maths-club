@@ -53,7 +53,7 @@ jobs:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
   build_deploy_android:
     needs: [build_dist]
-    name: Deploy to Play Store Beta Track
+    name: Deploy to Play Store Internal Track
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
@@ -87,7 +87,7 @@ jobs:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
           packageName: io.c2dev.samimathsclub
           releaseFile: ${{ env.SIGNED_RELEASE_FILE}}
-          track: beta
+          track: internal
           #whatsNewDirectory: /distribution/whatsnew
   build_deploy_ios:
     needs: [build_dist]
@@ -124,7 +124,6 @@ jobs:
           FASTLANE_MATCH_GITHUB_AUTH: ${{secrets.FASTLANE_MATCH_GITHUB_AUTH}}
           # Generated from appleid.apple.com/account/manage (login to avoid 2fa)
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD}}
-
 
         #   TODO - could also consider publishing to appetize or similar
         # NOTE - would require building debug apk/ipa
