@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation, ChangeDetectorRef, OnInit } from "@angular/core";
 import { ProblemService } from "src/app/services/problem.service";
 import { fadeInOut } from "src/app/animations";
-import { Plugins } from '@capacitor/core';
+import { Capacitor, Plugins } from '@capacitor/core';
 const { Share } = Plugins;
 
 @Component({
@@ -13,6 +13,8 @@ const { Share } = Plugins;
 })
 export class ProblemDetailComponent implements OnInit {
   markdownReady = false;
+  isNative = Capacitor.isNative;
+  
   constructor(
     public problemService: ProblemService,
     private cdr: ChangeDetectorRef
@@ -31,17 +33,20 @@ export class ProblemDetailComponent implements OnInit {
     this.cdr.detectChanges();
   }
 
+
   
   async share(){
-    await Share.share({
-      title: this.problemService.activeProblem$.value.title,
-      text: this.problemService.activeProblem$.value.title,
-      url: `https://mathsclub.samicharity.co.uk/en/${this.problemService.activeProblem$.value.slug}`,
-      dialogTitle: 'Share with buddies'
-    }).then((success)=>{
-      console.log("shared")
-    }).catch((err)=>{
-      console.log("an error occureed")
-    })
+    if(Capacitor.isNative){
+      await Share.share({
+        title: this.problemService.activeProblem$.value.title,
+        text: "Here's a problem for you to try! If you get stuck there are also notes for facilitators included",
+        url: `https://mathsclub.samicharity.co.uk/en/${this.problemService.activeProblem$.value.slug}`,
+        dialogTitle: 'Share'
+      }).then((success)=>{
+        console.log("shared")
+      }).catch((err)=>{
+        console.log("an error occureed")
+      })
+    }   
   }
 }
