@@ -38,6 +38,8 @@ export class AppComponent {
       // SEO only relevant whe not native
       seo.init();
     }
+    //exit on back
+    this.exitOnBack();
   }
   getRouteAnimationState(outlet: RouterOutlet) {
     return (
@@ -60,5 +62,10 @@ export class AppComponent {
         }
       });
     });
+  }
+  exitOnBack(){
+    if(Capacitor.isNative){
+      App.addListener('backButton', App.exitApp)
+    }
   }
 }
