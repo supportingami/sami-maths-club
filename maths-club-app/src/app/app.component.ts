@@ -1,6 +1,6 @@
-import { Component, NgZone, ViewEncapsulation } from "@angular/core";
+import { Component, NgZone, ViewEncapsulation} from "@angular/core";
 import { AppService } from "./services/app.service";
-import { Router, RouterOutlet } from "@angular/router";
+import {  Router, RouterOutlet} from "@angular/router";
 import { slideTransition } from "./animations";
 
 import { environment } from "src/environments/environment";
@@ -10,7 +10,6 @@ import { Plugins, Capacitor, StatusBarStyle } from "@capacitor/core";
 import { AnalyticsService } from "./services/analytics.service";
 import { SeoService } from "./services/seo.service";
 const { StatusBar, App } = Plugins;
-
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -26,7 +25,7 @@ export class AppComponent {
     analytics: AnalyticsService,
     seo: SeoService,
     private zone: NgZone,
-    private router: Router
+    private router: Router,
   ) {
     // this.notifications.init()
     analytics.init();
@@ -37,9 +36,7 @@ export class AppComponent {
     } else {
       // SEO only relevant whe not native
       seo.init();
-    }
-    //exit on back
-    this.exitOnBack();
+    }    
   }
   getRouteAnimationState(outlet: RouterOutlet) {
     return (
@@ -62,10 +59,5 @@ export class AppComponent {
         }
       });
     });
-  }
-  exitOnBack(){
-    if(Capacitor.isNative){
-      App.addListener('backButton', App.exitApp)
-    }
   }
 }
