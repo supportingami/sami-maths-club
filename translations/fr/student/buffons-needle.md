@@ -1,4 +1,4 @@
-# Aiguille de Buffon
+# Aiguille du Buffon
 
 Si vous laissez tomber un petit cure-dents sur la grille ci-dessous, quelle est la probabilité qu'il franchisse une ligne?
 
