@@ -2,11 +2,11 @@
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/balls-and-books-1.png?raw=true)
 
-1.Vous avez un sac de cinq billes. Vous prenez deux billes au hasard.
+1.Vous avez un sac de 5 billes, toutes de couleurs différentes. Vous prenez deux billes au hasard.
 
 Il existe combien de combinaisons différentes?
 
-Que se passe-t-il si on ajoute une nouvelle bille d'une couleur différente? Et si on avait sept billes?
+Que se passe-t-il si on ajoute une nouvelle bille d'une couleur différente? Et si on avait sept (7) billes?
 
 Est-ce que vous connaissez un problème similaire?
 
