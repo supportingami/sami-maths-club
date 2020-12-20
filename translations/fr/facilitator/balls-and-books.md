@@ -1,27 +1,27 @@
-# Balls and Books
+# Balles et livres
 
 ## Introduction
 
-This is a follow-up to “Handshakes”. The idea is to show different ways of thinking about a problem, and realize how seemingly different problems can be related to each other. You should encourage students to be systematic and decide on a precise and ordered way to describe what has been selected.
+Ceci fait suite à « Poignées de main ». L’idée est de montrer différentes façons de penser à un problème, et de réaliser comment les problèmes apparemment différents peuvent être liés les uns aux autres. Vous devez encourager les élèves à être systématiques et à décider d'une manière précise et ordonnée de décrire ce qui a été sélectionné.
 
 ## Solution
 
-1. There are different ways to approach the first problem. One is trying to list all the possible combinations. A good question to ask is: **how to write down a single combination?** One could write down two letters, the letters being the initials of the colors (e.g. BY for “blue and yellow”). Or assign numbers to the colors and write down these.
+1. Il existe différentes manières d'aborder le premier problème. On essaie de lister toutes les combinaisons possibles. Une bonne question à poser est: ** comment écrire une seule combinaison? ** On pourrait écrire deux lettres, les lettres étant les initiales des couleurs (par exemple BY pour «bleu et jaune»). Ou attribuez des numéros aux couleurs et notez-les.
 
-Another way is to draw each of the balls on paper, and connect possible pairs (this way it is clear that the problem is the same as the handshake problem).
+Une autre façon est de dessiner chacune des balles sur papier et de connecter les paires possibles (De cette façon, il est clair que le problème est le même que le problème de la poignée de main).
 
-Either way, one obtains <u>**10 different combinations**</u> for 5 balls. (12, 13, 14, 15, 23, 24, 25, 34, 35, 45).
+Dans tous les cas, on obtient <u>** 10 combinaisons différentes **</u> pour 5 balles. (12, 13, 14, 15, 23, 24, 25, 34, 35, 45).
 
-To solve the problem for more balls, one can ask the following question: **Which new combinations arise when adding another ball?** The new ball can be combined with any of the 5 previous balls, giving 10+5=15 solutions for 6 balls. Similarly, we get 15+6=21 solutions for 7 balls.
+Pour résoudre le problème de plusieurs balles, on peut se poser la question suivante: ** Quelles nouvelles combinaisons se présentent lors de l'ajout d'une autre balle? ** La nouvelle balle peut être combinée avec l'une des 5 balles précédentes, ce qui donne 10 + 5 = 15 solutions pour 6 balles. De même, nous obtenons 15 + 6 = 21 solutions pour 7 balles.
 
-A different way of solving this problem is realizing that each of the 5 balls can be combined with each of the other 4 balls, giving 5\*4=20 combinations. However, doing this we get each combination twice (e.g. we get 12 and 21, which are the same). So we need to divide the answer by 2 to get 20/2=10.
+Une manière différente de résoudre ce problème consiste à réaliser que chacune des 5 balles peut être combinée avec chacune des 4 autres balles, ce qui donne 5 \ * 4 = 20 combinaisons. Cependant, en faisant cela, nous obtenons chaque combinaison deux fois (par exemple, nous obtenons 12 et 21, qui sont identiques). Nous devons donc diviser la réponse par 2 pour obtenir 20/2 = 10.
 
-2. Again, ask the two questions: **How to write down a single combination?** The most obvious way is to write down a string of letters representing the color, e.g. (BGGBG).
+2. Encore une fois, posez les deux questions: ** Comment écrire une seule combinaison? ** Le moyen le plus évident est d'écrire une chaîne de lettres représentant la couleur, par ex. (BGGBG).
 
-A different way is to write down the two positions where the 2 blue books are. In the example, they would be in positions 1 and 4, so write 14. This is less obvious and it's fine if the students don't find it. If they do however, they will see that this problem is the same as the first one, and so there are **10 possibilities!**
+Une manière différente est d'écrire les deux positions où se trouvent les 2 livres bleus. Dans l'exemple, ils seraient aux positions 1 et 4, alors écrivez 14. C'est moins évident et c'est pas mal si les élèves ne le trouvent pas. S'ils le trouvent, cependant, ils verront que ce problème est le même que le premier, et qu'il y a donc ** 10 possibilités! **
 
-**Which new combinations arise when adding a 4th green book?** There are two kinds of line-ups to consider: Those where the last book is green, and where it is red. If the last book is green, then removing it gives us a line-up for 2 red and 3 green books. We already know there are 10 of them! If the last book is red, then there are 5 different possible positions for the other red book. Thus there are 10+5 combinations for 2 red and 4 green books. Similarly, 21 for 2 red and 5 green books.
+** Quelles nouvelles combinaisons surviennent lors de l'ajout d'un 4ème livre vert? ** Il y a deux types de files à considérer: ceux où le dernier livre est vert et ceux où il est rouge. Si le dernier livre est vert, le retirer nous donne une liste de 2 livres rouges et 3 livres verts. Nous savons déjà qu'il y en a 10 ! Si le dernier livre est rouge, alors il y a 5 positions différentes possibles pour l'autre livre rouge. Il y a donc 10+5 combinaisons pour 2 livres rouges et 4 livres verts. De même, 21 pour 2 livres rouges et 5 livres verts.
 
 ## Extension
 
-Consider the first problem again, but this time taking 3 balls out each time. Try to decide a general rule or formula for any of the problems (e.g. picking 2 balls from N in a bag)
+Considérez à nouveau le premier problème, mais cette fois en retirant 3 balles à chaque fois. Essayez de décider d'une règle générale ou d'une formule pour l'un des problèmes (par exemple, choisir 2 balles de N dans un sac)
