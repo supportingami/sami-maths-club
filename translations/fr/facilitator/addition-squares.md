@@ -2,18 +2,18 @@
 
 ## Introduction
 
-The secret to this problem relies on the fact that different base number systems can be used in mathematics. Consider how when we record time, the next minute after 10:59 is 11:00. Minutes count up till 60 before we restart from 0. We call this modular arithmetic, in the case of time we operate with modulo 60.
+La clé pour résoudre ce problème dépend des différentes bases de systèmes numériques qui peuvent être utilisées en maths. Considérez comment lorsqu’on note le temps, la minute après 10h59 est 11h00. Les minutes s’ajoutent jusqu’à 60 avant de recommencer à 0. Nous appelons ceci arithmétique modulaire. Dans ce cas, nous opérons avec modulo 60.
 
 ## Solution
 
-The missing number is 10. This is an addition square modulo 12. This means that after doing the normal addition we take away as many multiples of 12 as we can before the number is less than 12. So 11 + 11 = 22 and when we take away 12 we get 10. Try it for the other additions to see that they follow this rule.
+Le nombre manquant est 10. Ceci est en plus d’un carré modulo 12. Ceci veut dire qu’après avoir fait l’addition normale nous enlevons le plus grand multiple de 12 possible pour trouver un nombre inférieur à 12. Donc 11 + 11 = 22 et lorsque nous enlevons 12 nous avons 10. Essayez avec les autres additions et voyez si elles suivent cette règle aussi.
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/addition-squares-3.png?raw=true)
 
-The second square is doing addition modulo 7. So the missing number is 10 because 5 + 5 = 10 and when we take away 7 from 10 we get 3.
+Le deuxième carré est l'addition modulo 7. Donc le nombre manquant est 10 parce que 5 + 5 = 10 et quand nous enlevons 7 de 10 nous obtenons 3.
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/addition-squares-4.png?raw=true)
 
 ## Extension
 
-Where do we use this type of mathematics in the real world? Can you create your own puzzles using modular arithmetic?
+Où utilisons-nous ce type de mathématiques dans le monde réel? Pouvez-vous créer votre propre puzzle qui utilise de l’arithmétique modulaire?
