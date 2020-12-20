@@ -1,19 +1,19 @@
-# 9 Dots
+# 9 Points
 
 ## Introduction
 
-This problem is quite difficult and usually takes people a long time to solve. You have to think a bit differently to get the solution. Whether you find the solution or not, is not important. What's important is the thinking process you go through trying to solve the problem.
+Ce problème est assez difficile et prend souvent beaucoup de temps à résoudre. Il faut réfléchir un peu différemment afin de trouver la solution. Peu importe si on trouve ou non la solution. L’important c’est sa manière de réfléchir lorsqu’on essaye de résoudre le problème.
 
-Often in school maths, you know what to do as soon as you see the problem. Here, you are faced with something new and the only thing you can do is try and make guesses. Then, you can improve on your guesses and try something different. Making many incorrect attempts is a good thing because you can understand why they don't work and improve on them.
+Souvent, dans les maths à l’école, on sait immédiatement quoi faire. Ici, on est mis en face de quelque chose nouveau où on ne peut que deviner. Ensuite, on peut améliorer ce qu’on a deviné et essayer autre chose. Faire de nombreuses tentatives incorrectes est une bonne chose puisqu’on peut ensuite comprendre pourquoi elles ne fonctionnent pas afin de les améliorer.
 
-We have included the solution here just as a check. But there is no value in just looking at the answer without trying to solve the problem first. The satisfaction of solving the puzzle on your own is much greater than someone telling you the solution.
+Nous avons inclus la solution ci-dessous si vous voulez vérifier. Cependant, il n’y a aucune valeur à regarder la réponse sans avoir d’abord essayé de résoudre le problème. La satisfaction gagnée en résolvant le problème seul est bien meilleure que si quelqu’un vous dit la solution.
 
 ## Solution
 
-The secret here is to pay close attention to what is and what is not stated in the question. There is nothing to stop your line extending outside of the shape like so:
+Le secret ici est de faire très attention à ce qui est et n’est pas dit dans la question. Rien n’empêche la ligne de s’étendre hors de la figure comme ceci:
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/9-dots-2.png?raw=true)
 
-## Extension
+## Travail supplémentaire
 
-You could try find the minimum number of lines it takes to draw through a 4 x 4 dotted grid
+Vous pouvez essayer de trouver le plus petit nombre de lignes nécessaire pour remplir un carré de points 4x4.
