@@ -1,21 +1,20 @@
-# Counting Squares
+# Comptage des Carrés
 
 ## Introduction
 
-This problem rewards those who can work systematically and devise a strategy to ensure that no squares are left out. You should let the learners at first try the problem and see if they get different answers, ask them to try and figure out why this is and explain their solutions to each other. This will be hard to do unless learners have come up with ways to record their findings. If learners are struggling you may want to get them to actually cut out different sized squares that they can manipulate on their board to assist with counting and record results in a table.
+Ce problème récompense ceux qui sont capables de travailler systématiquement et d'élaborer une stratégie pour s'assurer qu'aucune carré n'est laissée de côté. Vous devriez d'abord laisser les apprenants essayer le problème et voir s'ils obtiennent des réponses différentes, demandez-leur d'essayer de comprendre pourquoi et d'expliquer leurs solutions les unes aux autres. Cela sera difficile à faire à moins que les apprenants n'aient trouvé des moyens d'enregistrer leurs résultats. Si les apprenants ont des difficultés, vous voudrez peut-être leur demander de découper des carrés de différentes tailles qu'ils peuvent manipuler sur leur tableau pour aider à compter et enregistrer les résultats dans un tableau.
 
 ## Solution
 
-There are **50 squares**, made up as follows:
+Il y a **50 carrés**, constitué comme suit:
 
-Non-rotated: 16 one by one, 9 two by two, 4 three by three, 1 four by four
+Sans rotation: 16 un par un, 9 deux par deux, 4 trois par trois, 1 quatre par quatre
 
-Rotated: 9 + 8 + 2 + 1 (varying sizes) ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/counting-squares-3.png?raw=true)
+Rotation: 9 + 8 + 2 + 1 (différentes tailles) ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/counting-squares-3.png?raw=true)
 
 ## Extension
 
-Instead of using a 5x5 dotted grid you can try other sizes and see if it is possible to generalize to nxn  
-(note, there is a formula but it uses n4 (n to the power 4) so it may not be immediately obvious.
+Au lieu d'utiliser une grille pointillée 5x5, vous pouvez essayer d'autres tailles et voir s'il est possible de généraliser à nxn <0 /> (notez qu'il existe une formule, mais elle utilise n4 (n à la puissance 4) donc cela peut ne pas être immédiatement évident.
 
-Below are the solutions for the first 6 grid sizes (from 2x2 up to 7x7)  
+Voici les solutions pour les 6 premières tailles de grille (de 2x2 à 7x7)  
 1, 6, 20, 50, 105, 196
