@@ -1,24 +1,24 @@
-# Find The Path
+# Trouver le chemin
 
 ## Introduction
 
-For this task students must be prepared to make several attempts before they get the solution. Remind students that getting an incorrect path is not bad. Students should be able to improve on incorrect paths and learn from them to get to the solutions.
+Pour cette tâche, les élèves doivent être prêts à faire plusieurs essais avant d'obtenir la solution. Rappelez aux élèves qu'obtenir un chemin incorrect n'est pas mal. Les élèves devraient être capables de s'améliorer sur des chemins incorrects et de les utiliser pour trouver les solutions.
 
 ## Solution
 
-**Can you make exactly 53?**  
-There is more than one way to make 53. Here is one path:  
-5 + 7 + 6 + 6 + 9 + 4 + 5 + 7 + 4 = 53 ![image description](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/find-the-path-2.png?raw=true) Can you find any others?
+** Pouvez-vous faire exactement 53? **  
+Il y a plus d'une façon de faire 53. Voici un chemin:   
+5 + 7 + 6 + 6 + 9 + 4 + 5 + 7 + 4 = 53 ![image description](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/find-the-path-2.png?raw=true) Pouvez-vous en trouver d'autres?
 
-**Can you make exactly 60?**  
-One way to make 60 is:  
-5 + 5 + 8 + 6 + 9 + 9 + 7 + 7 + 4 = 60 ![image description](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/find-the-path-3.png?raw=true)
+** Pouvez-vous faire exactement 60? **  
+Une façon de faire 60 est:   
+5 + 5 + 8 + 6 + 9 + 9 + 7 + 7 + 4 = 60 ![description de l'image](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/find-the-path-3.png?raw=true)
 
-**What is the smallest possible number you can get?**  
-Students need to be systematic when creating paths and have a good system of recording their paths and their lengths.
+** Quel est le plus petit nombre possible que vous puissiez obtenir? **  
+Les élèves doivent être systématiques lors de la création des chemins et ils doivent avoir un bon système d'enregistrement de leurs chemins et de leurs longueurs.
 
-The shortest path length is 48. There are different ways to get 48. Here is one way. ![image description](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/find-the-path-4.png?raw=true) Can you find any others?
+La longueur de chemin la plus courte est de 48. Il existe des manières différentes d'obtenir 48. Voici une voie. ![image description](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/find-the-path-4.png?raw=true) Pouvez-vous en trouver d'autres?
 
 ## Extension
 
-Are there any ways that the problem can be extended or other problems that arise from it? Solutions are not necessary here.
+Y a-t-il des moyens d'étendre le problème, ou est-ce qu'il y d'autres problèmes qui en découlent? Les solutions ne sont pas nécessaires ici.
