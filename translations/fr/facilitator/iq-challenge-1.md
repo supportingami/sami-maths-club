@@ -1,22 +1,22 @@
-# IQ Challenge
+# Défi QI
 
 ## Introduction
-IQ challenges encourage people to think in different ways. The most important thing when doing these is to not let learners immediately give their answers to each other, instead let everybody attempt all the questions and then discuss with each other and the class later.
+Les défis de QI encouragent les gens à penser de manières différentes. Le plus important c'est de ne pas laisser les apprenants partager immédiatement leurs réponses, mais plutôt de laisser tout le monde essayer toutes les questions et ensuite discuter entre eux et avec la classe plus tard.
 
 ## Solution
-1. The answers and rules for the first question are as follows:
+1. Les réponses et les règles pour la première question sont les suivantes:
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/iq-challenge-one-3.png?raw=true)
 
 
-2. The second question needs you to find a way that you can relate the three outer numbers to the inner number. If you add the two larger numbers and subtract the smaller, the answer is 3 times the middle number. Therefore missing number is 11:
+2. La deuxième question nécessite que vous trouviez un moyen de relier les trois nombres extérieurs au nombre intérieur. Si vous ajoutez les deux plus grands nombres et soustrayez le plus petit, la réponse est 3 fois le nombre du milieu. Par conséquent, le nombre manquant est 11:
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/iq-challenge-one-4.png?raw=true)
 
-3. The third question challenges visualization and special awareness skills. Learners may find it easier to break the solution down into several parts. The answer is 50:
+3. La troisième question remet en question la visualisation et les compétences de sensibilisation particulières. Les apprenants peuvent trouver plus facile de diviser la solution en plusieurs parties. La réponse est 50:
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/iq-challenge-one-5.png?raw=true)
 
 
 ## Extension
-Learners could design some of their own challenges to give each other. They could also try to grade the difficulty of their challenges as easy, medium or hard.  
+Les apprenants pourraient concevoir certains de leurs propres défis à considérer entre eux. Ils pourraient également essayer de classer la difficulté de leurs défis comme facile, moyenne ou difficile.  
