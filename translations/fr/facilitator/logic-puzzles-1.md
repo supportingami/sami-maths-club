@@ -1,16 +1,16 @@
-# Logic Puzzles 1
+# Casse-tête logique 1
 
 ## Introduction
-Puzzles encourage people to think in different ways. These puzzles rely more on **thinking** than knowledge, so any learner can attempt them. There may be many right answers, and different approaches to the problems. Most important is not to let learners give their answers to each other, let everybody attempt all the questions and then discuss later.
+Les énigmes encouragent les gens à penser de manières différentes. Ces énigmes reposent davantage sur la ** réflexion ** que sur les connaissances, donc tout apprenant peut les essayer. Il peut y avoir de nombreuses bonnes réponses et différentes approches aux problèmes. Le plus important est de ne pas laisser les apprenants partager leurs réponses, et de laisser tout le monde tenter toutes les questions et ensuite discuter plus tard.
 
-Find the solutions is **not important**, it is about the thinking process learners go through in trying.
+Trouver les solutions n'est ** pas important **, il s'agit du processus de réflexion que les apprenants traversent en essayant.
 
 ## Solutions
-1.  First, fill the 3 litre jug so it is full. Pour the 3 litres into the 5 litre jug. Then fill the 3 litre jug again. Pour this into the 5 litre jug. When the 5 litre jug becomes full, you will have 1 litre left in the 3 litre jug.
+1.  Tout d'abord, remplissez la carafe de 3 litres pour qu'elle soit pleine. Versez les 3 litres dans la carafe de 5 litres. Remplissez ensuite à nouveau la carafe de 3 litres. Versez-le dans la carafe de 5 litres. Lorsque la carafe de 5 litres est pleine, il vous reste 1 litre dans la carafe de 3 litres.
 
-2.  Light both ends of the first rope and one end of the second rope. Once the first rope has burnt, light the other end of the second rope. Once the second rope has burnt, 45 minutes will have passed. Why? If you light both ends one of the first rope it will take 30 minutes to burn completely. After this, the second rope will need a further 30 minutes to burn, so if you light the other end as well, it will take 15 minutes to burn completely. Overall this will take 45 minutes.
+2.  Allumez les deux extrémités de la première corde et une extrémité de la deuxième corde. Une fois que la première corde est brûlée, allumez l'autre extrémité de la deuxième corde. Une fois que la deuxième corde est brûlée, 45 minutes se seront écoulées. Pourquoi? Si vous allumez les deux extrémités de la première corde, il faudra 30 minutes pour brûler complètement. Ensuite, la deuxième corde aura besoin de 30 minutes supplémentaires pour brûler, donc si vous allumez également l'autre extrémité, cela prendra 15 minutes pour brûler complètement. Globalement, cela prendra 45 minutes.
 
-3.  First, fill the 5 litre bucket so it is full. Pour 3 litres into the 3 litre bucket. The 5 litre bucket now contains 2 litres. Empty the 3 litre bucket and pour the 2 litres into the empty 3 litre bucket. Now fill the 5 litre bucket. You now have 2 + 5 = 7 litres in the buckets! (There may be many different ways to do this, any is correct if you have followed the rules!)
+3.  Tout d'abord, remplissez le seau de 5 litres pour qu'il soit plein. Verser 3 litres dans le seau de 3 litres. Le seau de 5 litres contient maintenant 2 litres. Vider le seau de 3 litres et verser les 2 litres dans le seau vide de 3 litres. Remplissez maintenant le seau de 5 litres. Vous avez maintenant 2 + 5 = 7 litres dans les seaux! (Il peut y avoir plusieurs façons de le faire, toutes sont correctes si vous avez suivi les règles!)
 
 ## Extension
-What are all the different amounts we can measure using the 5 litre and 3 litre buckets? What about for 4 litre and 2 litre buckets? What is the difference here? Get students to come up with their own bucket and water puzzles. Make sure they check that they are possible! Try different size buckets or even add another bucket.
+Quelles sont les différentes quantités que nous pouvons mesurer avec les seaux de 5 litres et 3 litres? Qu'en est-il des seaux de 4 litres et 2 litres? Quelle est la différence ici? Proposez aux élèves d'inventer leur propre énigmes en utilisant des seaux et de l'eau. Assurez-vous qu'ils vérifient qu'ils sont possibles! Essayez des seaux de tailles différentes ou même ajoutez un autre seau.
