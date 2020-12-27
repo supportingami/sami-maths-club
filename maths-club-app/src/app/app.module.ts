@@ -4,7 +4,6 @@ import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
 import { MarkdownModule } from "ngx-markdown";
 import { FormsModule } from "@angular/forms";
-import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { AppComponent } from "./app.component";
 import { ProblemDetailComponent } from "./components/problem-detail/problem-detail.component";
@@ -38,9 +37,7 @@ import { AnalyticsConsentComponent } from "./components/analytics-consent";
     HttpClientModule,
     MarkdownModule.forRoot(),
     BrowserAnimationsModule,
-
     FormsModule,
-    FlexLayoutModule,
     MaterialModule,
   ],
   providers: [
