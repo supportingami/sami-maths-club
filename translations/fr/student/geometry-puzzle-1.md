@@ -4,7 +4,7 @@
 
 Nous ajoutons ensuite un mètre à la longueur de la chaîne de sorte que maintenant la chaîne plane au-dessus de l'équateur, toujours dans un cercle.
 
-Quelle est la taille de l'écart entre l'équateur et le morceau de chaîne ? Assez pour mettre un bout de papier sous ? Un chat? Une voiture?
+Quelle est la taille de l'écart entre l'équateur et le morceau de chaîne ? Assez pour mettre un bout de papier dessous ? Un chat? Une voiture?
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/geometry-puzzle-one-1.png?raw=true)
 
@@ -15,5 +15,3 @@ Quelle est la taille de l'écart entre l'équateur et le morceau de chaîne ? As
 3. Un fermier veut planter 10 arbres en cinq rangées, avec quatre arbres par rangée. Comment peuvent-ils le faire?
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/geometry-puzzle-one-3.png?raw=true)
-
-
