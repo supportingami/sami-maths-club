@@ -48,7 +48,7 @@ jobs:
           path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - name: Install Dependencies
-        run: yarn install --production
+        run: yarn install --silent
       - name: Sync capacitor plugins
         run: npx cap sync ios
       - name: Setup environment
@@ -93,7 +93,7 @@ jobs:
           path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - name: Install Dependencies
-        run: yarn install --production
+        run: yarn install --silent
       - name: Sync capacitor plugins
         run: npx cap sync android
       # - name: Setup Cache
