@@ -31,9 +31,6 @@ jobs:
           path: |
             maths-club-app
             !maths-club-app/node_modules
-            maths-club-app/node_modules/@capacitor
-            maths-club-app/node_modules/@capacitor-community
-            maths-club-app/node_modules/.bin
   ios_screenshot:
     needs: [build_dist]
     name: Create IOS Screenshots
@@ -45,8 +42,15 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: maths-club-app
+      - name: Setup Cache
+        uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Dependencies
+        run: yarn install --production
       - name: Sync capacitor plugins
-        run: yarn global add @capacitor/cli @capacitor/core && npx cap sync android
+        run: npx cap sync ios
       - name: Setup environment
         run: |
           cd ios/App
@@ -83,8 +87,15 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: maths-club-app
+      - name: Setup Cache
+        uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Dependencies
+        run: yarn install --production
       - name: Sync capacitor plugins
-        run: yarn global add @capacitor/cli @capacitor/core && npx cap sync android
+        run: npx cap sync android
       # - name: Setup Cache
       #   uses: actions/cache@v2
       #   with:

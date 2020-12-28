@@ -36,7 +36,6 @@ jobs:
           path: |
             maths-club-app
             !maths-club-app/node_modules
-            maths-club-app/node_modules/@capacitor-community
   deploy_web:
     needs: [build_dist]
     name: Deploy to Firebase Production
@@ -64,8 +63,15 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: maths-club-app
+      - name: Setup Cache
+        uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Dependencies
+        run: yarn install --production          
       - name: Sync capacitor plugins
-        run: yarn global add @capacitor/cli @capacitor/core && npx cap sync android
+        run:  npx cap sync android
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1
         with:
@@ -103,9 +109,15 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: maths-club-app
+      - name: Setup Cache
+        uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Dependencies
+        run: yarn install --production
       - name: Sync capacitor plugins
-        # add capacitor globally to save need to install all other node modules ahead of sync
-        run: yarn global add @capacitor/cli @capacitor/core && npx cap sync android
+        run: npx cap sync ios
       - name: Setup environment
         run: |
           cd ios/App
