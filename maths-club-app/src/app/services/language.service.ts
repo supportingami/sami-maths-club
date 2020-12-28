@@ -1,6 +1,7 @@
 import { DOCUMENT } from "@angular/common";
 import { Inject, Injectable } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { BehaviorSubject } from "rxjs";
 import { AppService } from "./app.service";
 
 export type ILanguageCode = "en" | "fr";
@@ -15,7 +16,7 @@ export const LANGUAGE_MAPPING: { [code in ILanguageCode]: string } = {
 })
 export class LanguageService {
   /** Language code corresponding to current active language */
-  activeLanguage: ILanguageCode;
+  activeLanguage$ = new BehaviorSubject<ILanguageCode>(null);
 
   constructor(
     @Inject(DOCUMENT) private document: any,
@@ -23,25 +24,28 @@ export class LanguageService {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.setLanguage(localStorage.getItem("sami_maths_club_language") as any);
     this._subscribeToRouteLanguageChanges();
+    const userLang = localStorage.getItem("sami_maths_club_language");
+    if (userLang) {
+      this.setLanguage(userLang as ILanguageCode);
+    }
   }
 
-  public setLanguage(languageCode: ILanguageCode) {
+  public setLanguage(languageCode: ILanguageCode = "en") {
     if (LANGUAGE_MAPPING[languageCode]) {
       localStorage.setItem("sami_maths_club_language", languageCode);
-      this.activeLanguage = languageCode;
       const { pathname } = this.document.location;
       if (pathname === "/") {
         this.router.navigate([languageCode]);
       } else {
         const oldLang = this.appService.routeParams$.value?.lang;
-        const newUrl = pathname.replace(oldLang, this.activeLanguage);
+        const newUrl = pathname.replace(oldLang, languageCode);
         this.router.navigate([newUrl], {
           relativeTo: this.route,
           replaceUrl: true,
         });
       }
+      this.activeLanguage$.next(languageCode);
     }
   }
 
@@ -50,7 +54,7 @@ export class LanguageService {
    */
   _subscribeToRouteLanguageChanges() {
     this.appService.routeParams$.subscribe((params) => {
-      if (params.lang && params.lang !== this.activeLanguage) {
+      if (params.lang && params.lang !== this.activeLanguage$.value) {
         this.setLanguage(params.lang as ILanguageCode);
       }
     });

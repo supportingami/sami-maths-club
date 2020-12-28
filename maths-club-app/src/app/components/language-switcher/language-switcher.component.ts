@@ -22,7 +22,7 @@ export class LanguageSwitcherComponent {
 
   selectionChanged(e: MatSelectChange) {
     const selected: ILanguageCode = e.value;
-    if (selected !== this.languageService.activeLanguage) {
+    if (selected !== this.languageService.activeLanguage$.value) {
       this.languageService.setLanguage(selected);
     }
   }

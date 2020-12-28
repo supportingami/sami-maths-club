@@ -1,6 +1,6 @@
 <mat-form-field style="max-width: 100px">
   <mat-select
-    [value]="languageService.activeLanguage"
+    [value]="languageService.activeLanguage$ | async"
     (selectionChange)="selectionChanged($event)"
   >
     <mat-option
