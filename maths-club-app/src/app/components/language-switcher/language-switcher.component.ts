@@ -1,13 +1,10 @@
-import { Component, Inject } from "@angular/core";
-import { Router, ActivatedRoute } from "@angular/router";
-import { AppService } from "src/app/services/app.service";
+import { Component } from "@angular/core";
 import { MatSelectChange } from "@angular/material/select";
-import { DOCUMENT } from '@angular/common';
-
-interface Language {
-  value: string;
-  label: string;
-}
+import {
+  LANGUAGE_MAPPING,
+  LanguageService,
+  ILanguageCode,
+} from "src/app/services/language.service";
 
 @Component({
   selector: "app-language-switcher",
@@ -15,40 +12,18 @@ interface Language {
   styleUrls: ["./language-switcher.component.scss"],
 })
 export class LanguageSwitcherComponent {
-  languages: Language[] = [
-    { value: "en", label: "English" },
-    { value: "fr", label: "Français" },
-  ];
-  language: Language;
-  constructor(
-    private appService: AppService,
-    private router: Router,
-    private route: ActivatedRoute,
-    @Inject(DOCUMENT) private document: any,
-  ) {
-    this.appService.routeParams$.subscribe((params) => {
-      if (params.lang !== this.language?.value) {
-        this.setCurrentLanguage(params.lang);
-      }
-    });
+  languagesCodes: ILanguageCode[];
+  languageLabels = LANGUAGE_MAPPING;
+  constructor(public languageService: LanguageService) {}
+
+  ngOnInit() {
+    this.languagesCodes = Object.keys(LANGUAGE_MAPPING) as ILanguageCode[];
   }
 
   selectionChanged(e: MatSelectChange) {
-    const oldLang = this.appService.routeParams$.value.lang;
-    const selected: Language = e.value;
-    const newLang = selected.value;
-    const newUrl = this.document.location.pathname.replace(oldLang, newLang);
-    this.router.navigate([newUrl], {
-      relativeTo: this.route,
-      replaceUrl: true,
-    });
-  }
-
-  setCurrentLanguage(languageCode: string = "en") {
-    this.language = this.languages.find((l) => l.value === languageCode);
-  }
-
-  compareObjects(o1: Language, o2: Language) {
-    return o1 && o2 && o1.value === o2.value;
+    const selected: ILanguageCode = e.value;
+    if (selected !== this.languageService.activeLanguage) {
+      this.languageService.setLanguage(selected);
+    }
   }
 }

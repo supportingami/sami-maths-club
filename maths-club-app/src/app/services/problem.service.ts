@@ -2,10 +2,11 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject } from "rxjs";
 import { IProblemMeta, IProblem } from "../models/problem.models";
-import { AppService } from "./app.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import * as Sentry from "@sentry/angular";
 import { WEEKLY_PROBLEMS } from "../data/weeklyProblems";
+import { LanguageService } from "./language.service";
+import { AppService } from "./app.service";
 
 @Injectable({
   providedIn: "root",
@@ -16,6 +17,7 @@ export class ProblemService {
 
   constructor(
     private http: HttpClient,
+    private languageService: LanguageService,
     private appService: AppService,
     private router: Router,
     private route: ActivatedRoute
@@ -24,7 +26,7 @@ export class ProblemService {
   }
 
   get language() {
-    return this.appService.routeParams$.value.lang;
+    return this.languageService.activeLanguage;
   }
   get slug() {
     return this.appService.routeParams$.value.slug;

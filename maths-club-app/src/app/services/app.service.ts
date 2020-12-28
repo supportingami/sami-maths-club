@@ -1,7 +1,7 @@
 import { Inject, Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT } from "@angular/common";
 
 @Injectable({
   providedIn: "root",
@@ -11,9 +11,13 @@ import { DOCUMENT } from '@angular/common';
  */
 export class AppService {
   title$ = new BehaviorSubject<string>("SAMI Maths Club");
-  routeParams$ = new BehaviorSubject<IRouteParams>({ lang: "en" });
+  routeParams$ = new BehaviorSubject<IRouteParams>({});
 
-  constructor(private router: Router, private route: ActivatedRoute, @Inject(DOCUMENT) private document: Document) {
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    @Inject(DOCUMENT) private document: Document
+  ) {
     this._processRouteChanges();
   }
 
@@ -49,6 +53,6 @@ export class AppService {
   }
 }
 interface IRouteParams {
-  lang: string;
+  lang?: string;
   slug?: string;
 }
