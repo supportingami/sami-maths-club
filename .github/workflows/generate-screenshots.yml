@@ -33,6 +33,7 @@ jobs:
             !maths-club-app/node_modules
             maths-club-app/node_modules/@capacitor
             maths-club-app/node_modules/@capacitor-community
+            maths-club-app/node_modules/.bin
   ios_screenshot:
     needs: [build_dist]
     name: Create IOS Screenshots
@@ -45,7 +46,7 @@ jobs:
         with:
           name: maths-club-app
       - name: Sync capacitor plugins
-        run: npx cap sync ios
+        run: yarn global add @capacitor/cli @capacitor/core && npx cap sync android
       - name: Setup environment
         run: |
           cd ios/App
@@ -83,7 +84,7 @@ jobs:
         with:
           name: maths-club-app
       - name: Sync capacitor plugins
-        run: npx cap sync android
+        run: yarn global add @capacitor/cli @capacitor/core && npx cap sync android
       # - name: Setup Cache
       #   uses: actions/cache@v2
       #   with:
