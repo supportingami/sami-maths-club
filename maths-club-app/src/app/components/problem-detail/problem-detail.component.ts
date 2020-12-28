@@ -33,7 +33,7 @@ export class ProblemDetailComponent {
         title: this.problemService.activeProblem$.value.title,
         text:
           "Here's a problem for you to try! If you get stuck there are also notes for facilitators included",
-        url: `https://mathsclub.samicharity.co.uk/en/${this.problemService.activeProblem$.value.slug}`,
+        url: `https://mathsclub.samicharity.co.uk${location.pathname}`,
         dialogTitle: "Share",
       })
         .then((success) => {
