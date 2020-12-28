@@ -6,11 +6,8 @@
 
 2.Comment pouvez-vous écrire un chemin de A à B comme une séquence de 10 lettres ? Ou comme un ensemble de 4 nombres ?
 
-
-Ne les essayez qu'après avoir résolu 1 et 2 :
-
+N'essayez les questions suivantes qu'après avoir résolu 1 et 2 :
 
 3.Combien de façons y a-t-il pour aligner 4 livres bleus et 6 livres verts sur votre étagère?
-
 
 4.Si vous prenez 3 boules dans un sac de 7 boules différentes, combien y a-t-il de résultats différents possibles?

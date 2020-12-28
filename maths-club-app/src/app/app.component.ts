@@ -9,8 +9,8 @@ import { NotificationService } from "./services/notification.service";
 import { Plugins, Capacitor, StatusBarStyle } from "@capacitor/core";
 import { AnalyticsService } from "./services/analytics.service";
 import { SeoService } from "./services/seo.service";
+import { LanguageService } from "./services/language.service";
 const { StatusBar, App } = Plugins;
-
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -48,13 +48,11 @@ export class AppComponent {
   }
   private configureDeepLinks() {
     App.addListener("appUrlOpen", (data: any) => {
-      console.log("deeplink appUrlOpen", data);
       this.zone.run(() => {
         const slug = data.url.replace(
           "https://mathsclub.samicharity.co.uk/",
           ""
         );
-        console.log("navigating to slug", slug);
         if (slug) {
           this.router.navigateByUrl(slug);
         }
