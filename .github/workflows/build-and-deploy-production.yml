@@ -22,8 +22,8 @@ jobs:
         run: echo $FIREBASE_CONFIG_JSON > maths-club-app/src/environments/firebaseConfig.json
         env:
           FIREBASE_CONFIG_JSON: ${{secrets.FIREBASE_CONFIG_JSON}}
-      - name: Build
-        run: npm run app:build
+      - name: Build and Copy
+        run: cd maths-club-app && npm run build:prod && npx cap copy
         # Store various folders as artifacts for use by other jobs (ignore node modules except those needed by capacitor)
       - name: Store Build Artifact
         uses: actions/upload-artifact@v2
