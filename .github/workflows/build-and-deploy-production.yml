@@ -23,17 +23,19 @@ jobs:
         env:
           FIREBASE_CONFIG_JSON: ${{secrets.FIREBASE_CONFIG_JSON}}
       - name: Build and Copy
-        run: cd maths-club-app && npm run build:prod && npx cap copy
+        run: cd maths-club-app && npm run build:prod
         # Store various folders as artifacts for use by other jobs (ignore node modules except those needed by capacitor)
       - name: Store Build Artifact
         uses: actions/upload-artifact@v2
         with:
           name: maths-club-app
+          # save maths-club-app main folder alongside capacitor modules (and cli)
           path: |
             maths-club-app
             !maths-club-app/node_modules
             maths-club-app/node_modules/@capacitor
             maths-club-app/node_modules/@capacitor-community
+            maths-club-app/node_modules/.bin
   deploy_web:
     needs: [build_dist]
     name: Deploy to Firebase Production
@@ -61,6 +63,8 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: maths-club-app
+      - name: Sync capacitor plugins
+        run: npx cap sync android
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1
         with:
@@ -98,6 +102,8 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: maths-club-app
+      - name: Sync capacitor plugins
+        run: npx cap sync ios
       - name: Setup environment
         run: |
           cd ios/App
