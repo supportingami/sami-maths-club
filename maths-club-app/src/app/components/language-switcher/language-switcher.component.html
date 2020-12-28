@@ -1,12 +1,13 @@
-<mat-form-field style="max-width: 100px;">
+<mat-form-field style="max-width: 100px">
   <mat-select
-    [(ngModel)]="language"
-    name="language"
-    [compareWith]="compareObjects"
+    [value]="languageService.activeLanguage$ | async"
     (selectionChange)="selectionChanged($event)"
   >
-    <mat-option *ngFor="let language of languages" [value]="language">
-      {{ language.label }}
+    <mat-option
+      *ngFor="let languageCode of languagesCodes"
+      [value]="languageCode"
+    >
+      {{ languageLabels[languageCode] }}
     </mat-option>
   </mat-select>
 </mat-form-field>

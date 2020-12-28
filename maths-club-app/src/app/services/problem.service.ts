@@ -2,10 +2,11 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject } from "rxjs";
 import { IProblemMeta, IProblem } from "../models/problem.models";
-import { AppService } from "./app.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import * as Sentry from "@sentry/angular";
 import { WEEKLY_PROBLEMS } from "../data/weeklyProblems";
+import { ILanguageCode, LanguageService } from "./language.service";
+import { AppService } from "./app.service";
 
 @Injectable({
   providedIn: "root",
@@ -16,6 +17,7 @@ export class ProblemService {
 
   constructor(
     private http: HttpClient,
+    private languageService: LanguageService,
     private appService: AppService,
     private router: Router,
     private route: ActivatedRoute
@@ -23,15 +25,14 @@ export class ProblemService {
     this.init();
   }
 
-  get language() {
-    return this.appService.routeParams$.value.lang;
-  }
   get slug() {
     return this.appService.routeParams$.value.slug;
   }
+  get language() {
+    return this.languageService.activeLanguage$.value;
+  }
 
   private async init() {
-    await this.getProblemList();
     this._subscribeToRouteChanges();
   }
 
@@ -57,10 +58,10 @@ export class ProblemService {
    * Read the list of problems from the metadata.json file for the current language
    * and emit only those with student versions for subscription
    */
-  private async getProblemList() {
+  private async getProblemList(language: ILanguageCode) {
     // notify that the problems are not yet loaded
     this.problems$.next(undefined);
-    const url = `/assets/maths-club-pack/${this.language}/metadata.json`;
+    const url = `/assets/maths-club-pack/${language}/metadata.json`;
     let problems = await this.http
       .get<IProblemMeta[]>(url)
       .toPromise()
@@ -115,11 +116,11 @@ export class ProblemService {
   }
 
   private _subscribeToRouteChanges() {
-    this.appService.routeParams$.subscribe(async () => {
-      if (this.language) {
-        await this.getProblemList();
+    this.appService.routeParams$.subscribe(async (params) => {
+      if (params.lang) {
+        await this.getProblemList(params.lang as any);
       }
-      if (this.slug) {
+      if (params.slug) {
         await this.setActiveProblem(this.slug);
       } else {
         this.activeProblem$.next(undefined);

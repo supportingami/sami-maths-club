@@ -1,6 +1,6 @@
-# 9 points
+# 9 Points
 
-Parcourez les 9 points en utilisant seulement quatre lignes droites sans enlever votre stylet de la page.
+Trouver un moyen de lier les 9 points en dessinant des lignes droites sans lever le crayon, en utilisant le moins de lignes droites possibles.
 
 ![](https://github.com/supportingami/sami-maths-club/blob/master/maths-club-pack/images/9-dots.png?raw=true)
 

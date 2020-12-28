@@ -7,7 +7,15 @@
   margin-top: 2em;
   border-top: 4px solid #dedede;
   padding: 2em 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+}
+.facilitator-notes-button {
+  width: 100%;
+  max-width: 500px;
+  padding: 16px;
+  font-size: large;
+  mat-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 32px;
+  }
 }
