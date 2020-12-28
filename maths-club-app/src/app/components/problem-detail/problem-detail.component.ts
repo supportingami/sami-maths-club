@@ -28,20 +28,18 @@ export class ProblemDetailComponent {
   }
 
   async share() {
-    if (Capacitor.isNative) {
-      await Share.share({
-        title: this.problemService.activeProblem$.value.title,
-        text:
-          "Here's a problem for you to try! If you get stuck there are also notes for facilitators included",
-        url: `https://mathsclub.samicharity.co.uk${location.pathname}`,
-        dialogTitle: "Share",
+    await Share.share({
+      title: this.problemService.activeProblem$.value.title,
+      text:
+        "Here's a problem for you to try! If you get stuck there are also notes for facilitators included",
+      url: `https://mathsclub.samicharity.co.uk${location.pathname}`,
+      dialogTitle: "Share",
+    })
+      .then((success) => {
+        console.log("shared", success);
       })
-        .then((success) => {
-          console.log("shared", success);
-        })
-        .catch((err) => {
-          console.log("an error occureed", err);
-        });
-    }
+      .catch((err) => {
+        console.log("an error occureed", err);
+      });
   }
 }
