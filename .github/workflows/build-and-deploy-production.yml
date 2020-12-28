@@ -109,7 +109,7 @@ jobs:
       - name: Install Dependencies
         run: |
           cd ios/App
-          sudo gem install bundler && sudo bundle install && pod install
+          sudo gem install bundler && sudo gem install cocoapods && sudo bundle install && pod install
       - name: Run fastlane
         run: |
           cd ios/App 
