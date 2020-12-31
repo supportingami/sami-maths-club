@@ -10,6 +10,8 @@ import { Plugins, Capacitor, StatusBarStyle } from "@capacitor/core";
 import { AnalyticsService } from "./services/analytics.service";
 import { SeoService } from "./services/seo.service";
 import { LanguageService } from "./services/language.service";
+import { MatBottomSheet } from "@angular/material/bottom-sheet";
+import { AppOpenTargetComponent } from "./components/app-open-target";
 const { StatusBar, App } = Plugins;
 @Component({
   selector: "app-root",
@@ -26,7 +28,8 @@ export class AppComponent {
     analytics: AnalyticsService,
     seo: SeoService,
     private zone: NgZone,
-    private router: Router
+    private router: Router,
+    private _bottomSheet: MatBottomSheet
   ) {
     // this.notifications.init()
     analytics.init();
@@ -37,6 +40,7 @@ export class AppComponent {
     } else {
       // SEO only relevant whe not native
       seo.init();
+      this.toggleAppOpenTargetSheet();
     }
   }
   getRouteAnimationState(outlet: RouterOutlet) {
@@ -45,6 +49,18 @@ export class AppComponent {
       outlet.activatedRouteData &&
       outlet.activatedRouteData["animation"]
     );
+  }
+  /**
+   * Present a bottom sheet to encourage user to use native version of app if running
+   * on mobile
+   */
+  private toggleAppOpenTargetSheet() {
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+    if (isMobile && !Capacitor.isNative) {
+      this._bottomSheet.open(AppOpenTargetComponent);
+    }
   }
   private configureDeepLinks() {
     App.addListener("appUrlOpen", (data: any) => {

@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 
 import { MatButtonModule } from "@angular/material/button";
+import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
 import { MatCardModule } from "@angular/material/card";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatIconModule, MatIconRegistry } from "@angular/material/icon";
@@ -13,6 +14,7 @@ import { DomSanitizer } from "@angular/platform-browser";
 @NgModule({
   exports: [
     MatButtonModule,
+    MatBottomSheetModule,
     MatCardModule,
     MatDialogModule,
     MatIconModule,
@@ -24,7 +26,11 @@ import { DomSanitizer } from "@angular/platform-browser";
 })
 export class MaterialModule {
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
-    const customIcons = ["facilitator-notes", "facilitator-notes-outline"];
+    const customIcons = [
+      "facilitator-notes",
+      "facilitator-notes-outline",
+      "maths-club-logo",
+    ];
     customIcons.forEach((iconName) => {
       iconRegistry.addSvgIcon(
         `sami-${iconName}`,
