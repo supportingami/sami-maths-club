@@ -18,10 +18,12 @@ import { AppTermsComponent } from "./components/app-terms/app-terms.component";
 import * as Sentry from "@sentry/angular";
 import { ContactComponent } from "./components/contact/contact.component";
 import { AnalyticsConsentComponent } from "./components/analytics-consent";
+import { AppOpenTargetComponent } from "./components/app-open-target";
 
 @NgModule({
   declarations: [
     AppComponent,
+    AppOpenTargetComponent,
     ProblemDetailComponent,
     ProblemsListComponent,
     LanguageSwitcherComponent,
