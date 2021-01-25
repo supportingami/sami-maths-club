@@ -9,7 +9,7 @@ added: 2021-01
 
 The Prussian city of Konigsberg (now Kaliningrad, Russia) is divided into four landmasses by the river Pregel.
 
-<img src="../../images/konigsberg-bridges-1" width=700>
+<img src="../../images/konigsberg-bridges-1.png" width=700>
 
 You can see that there are seven bridges connecting these sections of the city.
 
