@@ -17,7 +17,7 @@ interesting for students to try and reason this logically (see Extension).
 
 The other four solutions, for the Tree, Boat, Spaceship, and Flower, are as follows:
 
-<img src="images/ShapeFilled.png" width=400>
+<img src="../../images/tetris-shapes-3.png" width=400>
 
 Note that there may be other solutions not given here, any which uses each block once is equally valid.
 
