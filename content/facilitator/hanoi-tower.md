@@ -10,7 +10,7 @@ For students to try out the problem, stacked blocks are likely the most readily 
 
 For three blocks, the tower can be moved to the rightmost platform in a minimum of 7 moves. The process is as follows:
 
-<img src="images/ThreeBlock.png" width=400>
+<img src="../../images/hanoi-tower-2.png" width=400>
 
 Notice how, after the fourth move, we make very similar moves to 1, 2 and 3 but in reverse order and reflected horizontally. So, instead of dismantling a tower on the left (as in 1, 2 and 3), we are rebuilding the tower on the right.
 
@@ -20,12 +20,12 @@ Using this may help you to work out how to move a tower of four or more blocks.
 
 For four blocks, the tower can be moved to the rightmost platform in a minimum of 15 moves:
 
-<img src="images/FourBlock.png" width=400>
+<img src="../../images/hanoi-tower-3" width=400>
 
 You may notice a pattern emerging. If we continue adding more blocks, the minimum number of
 moves required is as follows:
 
-<img src="images/GeneralBlock.png" width=400>
+<img src="../../images/hanoi-tower-4" width=400>
 
 You may notice that for some number of blocks $n$, if the minimum number of moves is $m$. Then the
 minimum number of moves for $n + 1$ blocks is $2m + 1$.  
