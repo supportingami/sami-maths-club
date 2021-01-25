@@ -82,11 +82,11 @@ Say that if we start with line $(a, b, c, d)$, this means that $a$ is in the top
 
 By rotating the square, we will not change the length of the sequence generated, and we can see therefore that the starting lines $(b, c, d, a)$, $(c, d, a, b)$ and $(d, a, b, c)$ will give sequences of the same length as that given by $(a, b, c, d)$.
 
-<img src="images/DiffySquareRotation.png" width=600>
+<img src="../images/diffy-squares-3.png" width=600>
 
 We could also reflect the square in any of its four lines of symmetry without changing the length of the resulting square. So the starting lines $(a, d, c, b)$, $(d, c, b, a)$, $(c, b, a, d)$ and $(b, a, d, c)$ will all give sequences of the same length as $(a, b, c, d)$.
 
-<img src="images/DiffySquareReflection.png" width=600>
+<img src="../images/diffy-squares-4.png" width=600>
 
 So for each starting line $(a, b, c, d)$ there are 8 lines in total using the numbers $a$, $b$, $c$ and $d$ which give sequences of the same length.
 
