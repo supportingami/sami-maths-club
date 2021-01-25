@@ -20,12 +20,12 @@ Using this may help you to work out how to move a tower of four or more blocks.
 
 For four blocks, the tower can be moved to the rightmost platform in a minimum of 15 moves:
 
-<img src="../../images/hanoi-tower-3" width=400>
+<img src="../../images/hanoi-tower-3.png" width=400>
 
 You may notice a pattern emerging. If we continue adding more blocks, the minimum number of
 moves required is as follows:
 
-<img src="../../images/hanoi-tower-4" width=400>
+<img src="../../images/hanoi-tower-4.png" width=400>
 
 You may notice that for some number of blocks $n$, if the minimum number of moves is $m$. Then the
 minimum number of moves for $n + 1$ blocks is $2m + 1$.  
