@@ -9,11 +9,11 @@ added: 2021-01
 
 Start by drawing an empty square:
 
-<img src="../../colouring-maps-1.png" width=200>
+<img src="../../images/colouring-maps-1.png" width=200>
 
 Create a *map* by dividing the square into seperate regions. For example:
 
-<img src="../../colouring-maps-2.png" width=200>
+<img src="../../images/colouring-maps-2.png" width=200>
 
 Now colour in your map such that there are no regions of the same colour which share an edge.
 
