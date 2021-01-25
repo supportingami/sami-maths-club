@@ -21,7 +21,7 @@ Create a Diffy Square by following this process:
 
 Here is an example, starting with the numbers 7, 15, 9 and 13:
 
-<img src="../images/DiffySquareExample.png" width="250">
+<img src="../../images/diffy-squares-1.png" width="250">
 
 We drew two smaller squares, so this sequence has length 2.
 
@@ -34,4 +34,4 @@ Tip: For longer sequences, it may be easier to write your sequences as a column 
 
 For our example of length 2, we could have written:
 
-<img src="images/DiffySquareColumnForm.png" width="200">
+<img src="../../images/diffy-squares-2.png" width="200">
