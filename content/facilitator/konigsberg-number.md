@@ -12,17 +12,17 @@ You could say that the ‘solution’ to this problem is to wait for the second 
 
 As mentioned, there is no solution to the problem as it is outlined in the question. To demonstrate this, it is helpful to reduce the situation to a mathematical structure called a *graph* (a different type of graph to what you are probably used to).
 
-<img src="../../images/konigsberg-number-2.png" width=100>
+<img src="../../images/konigsberg-bridges-2.png" width=100>
 
 We have replaced the sections of land with circles and the bridges with connecting lines. We usually refer to these circles as *vertices*, and the lines as *edges*.
 
 Say we start our walk on the middle vertex and walk to the top one, and then to the vertex on the right. Our path might look like this:
 
-<img src="../../images/konigsberg-number-3.png" width=100>
+<img src="../../images/konigsberg-bridges-3.png" width=100>
 
 Notice how, since we have walked both to and from the top vertex, we have used two of the edges connected to it. Similarly, once we leave the rightmost vertex, we will use another edge and so will have removed two of its connected edges:
 
-<img src="../../images/konigsberg-number-4.png" width=100>
+<img src="../../images/konigsberg-bridges-4.png" width=100>
 
 We can see that, as we walk, we always use pairs of edges connected to a particular vertex. The only time that this is not true is for the vertices that we begin and end on.
 
