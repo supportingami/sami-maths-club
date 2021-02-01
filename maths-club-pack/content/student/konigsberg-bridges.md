@@ -1,5 +1,5 @@
 ---
-title: Bridges of Konigsberg
+title: Konigsberg Bridges
 type: problem
 printOrder: 999
 added: 2021-01
