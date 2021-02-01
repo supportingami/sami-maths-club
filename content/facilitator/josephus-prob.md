@@ -55,6 +55,6 @@ the first turn will win).
 
 So, for a general game:
 - We subtract the highest power of two possible from the number of players, after this many turns the number of players remaining will be a power of two.
-- At this point, if $k$ is the difference between the number of players and the highest power of two, it will be the turn of Player $2k + 1$ (or the $(𝑘 + 1)$th odd number).
+- At this point, if $k$ is the difference between the number of players and the highest power of two, it will be the turn of Player $2k + 1$ (or the $(k + 1)$th odd number).
 
 This explains the pattern we noticed in the Solution section.
