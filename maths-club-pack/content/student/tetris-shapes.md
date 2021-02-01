@@ -1,7 +1,7 @@
 ---
 title: Tetris Shapes
-type: problem/game
-printOrder: n/a
+type: problem
+printOrder: 999
 added: 2021-01
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Bridges of Konigsberg
 type: problem
-printOrder: n/a
+printOrder: 999
 added: 2021-01
 ---
 
