@@ -21,22 +21,22 @@ jobs:
       - name: Setup Cache
         uses: actions/cache@v2
         with:
-          path: '**/node_modules'
+          path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - name: Install npm dependencies
         run: yarn install
       - name: Populate Config
-          run: echo $FIREBASE_CONFIG_JSON > maths-club-app/src/environments/firebaseConfig.json
-          env:
-            FIREBASE_CONFIG_JSON: ${{secrets.FIREBASE_CONFIG_JSON}}
+        run: echo $FIREBASE_CONFIG_JSON > maths-club-app/src/environments/firebaseConfig.json
+        env:
+          FIREBASE_CONFIG_JSON: ${{secrets.FIREBASE_CONFIG_JSON}}
       - name: Build and Copy
-        run: cd maths-club-app && npm run build:prod   
+        run: cd maths-club-app && npm run build:prod
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
           # the details of the service account need to be populated to github secrets
           # these must match the target projectId account
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
           expires: 30d
           projectId: sami-maths-club
-          entryPoint: './maths-club-app'
+          entryPoint: "./maths-club-app"
