@@ -2,7 +2,7 @@
 title: MiniMax
 type: problem
 printOrder: n/a
-added: 2021-01
+added: 2021-03
 ---
 
 # MiniMax Algorithm
