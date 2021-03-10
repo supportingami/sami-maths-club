@@ -19,7 +19,7 @@ Now colour in your map such that there are no regions of the same colour which s
 
 So here are two versions of a map which are both coloured correctly:
 
-<img src="../../images/colouring-maps-03.png" width=300>
+<img src="../../images/colouring-maps-03.png" width=290>
 
 However, this would not be a correct way to colour this map:
 
