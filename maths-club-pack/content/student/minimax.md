@@ -1,5 +1,5 @@
 ---
-title: MiniMax Algorithm
+title: MiniMax
 type: problem
 printOrder: n/a
 added: 2021-01
