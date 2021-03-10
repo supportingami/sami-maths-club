@@ -1,0 +1,42 @@
+# Create and deploy a build on all pull requests
+name: PR Preview
+on:
+  # use pull_request_target so that secrets accessible from fork
+  pull_request_target:
+    # Trigger when labels are changed or more commits added to a PR that contains labels
+    types: [labeled, synchronize]
+jobs:
+  build_and_preview:
+    # NOTE - as we are going to check out and build from forks we also need to add manual
+    # check that malicious code has not been inserted. This is handled by manually labelling the PR
+    # https://securitylab.github.com/research/github-actions-preventing-pwn-requests
+    if: contains(github.event.pull_request.labels.*.name, 'build-preview ✅')
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          # pull the repo from the pull request source, not the default local repo
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Setup Cache
+        uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install npm dependencies
+        run: yarn install
+      - name: Populate Config
+        run: echo $FIREBASE_CONFIG_JSON > maths-club-app/src/environments/firebaseConfig.json
+        env:
+          FIREBASE_CONFIG_JSON: ${{secrets.FIREBASE_CONFIG_JSON}}
+      - name: Build and Copy
+        run: cd maths-club-app && npm run build:prod
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          # the details of the service account need to be populated to github secrets
+          # these must match the target projectId account
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
+          expires: 30d
+          projectId: sami-maths-club
+          entryPoint: "./maths-club-app"
