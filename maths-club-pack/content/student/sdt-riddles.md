@@ -2,7 +2,7 @@
 title: SDT Riddles
 type: problem
 printOrder: n/a
-added: 2021-04
+added: 2021-05
 ---
 
 # Speed, Distance, Time Riddles
