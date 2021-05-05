@@ -43,4 +43,4 @@ Here is a diagram:
 
 <img src="../../images/where-on-earth-3.png" width=400>
 
-But how about a circle with circumference a third, or a quater, or a fifth of a kilometer? These would also work as we would travel around the circle three, four or five times before ending back where we started. In fact, we can choose any circle around the south pole which has a circumference of an *integer fraction* of 1km (which just means $\frac{1}{n}$ where *n* is a whole number), and by starting the journey 1km north of any point on this circle we will end in the same position that we started.
+But how about a circle with circumference a third, or a quater, or a fifth of a kilometer? These would also work as we would travel around the circle three, four or five times before ending back where we started. In fact, we can choose any circle around the south pole which has a circumference of an *integer fraction* of 1km (which just means $\frac{1}{n}$ where $\textit{n}$ is a whole number), and by starting the journey 1km north of any point on this circle we will end in the same position that we started.
