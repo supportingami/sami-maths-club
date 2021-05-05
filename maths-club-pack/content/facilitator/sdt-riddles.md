@@ -34,7 +34,7 @@ With three cars, you can follow a similar process and reach a maximum $\frac{11}
 *(I will leave the method to do this for you to find)*
 
 Using four cars, you can drive all of them out a quarter of the way untill they all have a half tank remaining. You can then collect the fuel into two full tanks in two cars and travel the remaining three quarters of the way as we showed above in the case with two cars.  
-*(There is actually a slightly more complicated method using four cars which can get you slightly further than the end of the desert, $\frac{25}{24} of the distance required. I will also leave this for you to find if you wish)*
+*(There is actually a slightly more complicated method using four cars which can get you slightly further than the end of the desert, $\frac{25}{24}$ of the distance required. I will also leave this for you to find if you wish)*
 
 ### Time
 
