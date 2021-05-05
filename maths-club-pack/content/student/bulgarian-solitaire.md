@@ -2,7 +2,7 @@
 title: Bulgarian Solitaire
 type: problem
 printOrder: n/a
-added: 2021-03
+added: 2021-05
 ---
 
 # Bulgarian Solitaire
