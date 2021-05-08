@@ -6,7 +6,8 @@ import { IProblemMeta } from "../maths-club-app/src/app/models/problem.models";
  * TODO - Ideally want to also ensure available in other languages if possible
  */
 function main() {
-  const startDate = new Date(2020, 7, 30);
+  // start from Sunday August 30th 2020, 9am (month index starts at 0)
+  const startDate = new Date(2020, 7, 30, 9, 0);
   const allProblems: IProblemMeta[] = fs.readJsonSync(
     "./translations/en/metadata.json"
   );
