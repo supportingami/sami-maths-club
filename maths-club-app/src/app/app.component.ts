@@ -9,7 +9,6 @@ import { NotificationService } from "./services/notification.service";
 import { Plugins, Capacitor, StatusBarStyle } from "@capacitor/core";
 import { AnalyticsService } from "./services/analytics.service";
 import { SeoService } from "./services/seo.service";
-import { LanguageService } from "./services/language.service";
 import { MatBottomSheet } from "@angular/material/bottom-sheet";
 import { AppOpenTargetComponent } from "./components/app-open-target";
 const { StatusBar, App } = Plugins;
