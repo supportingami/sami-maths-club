@@ -2,11 +2,26 @@ $min-item-width: 150px;
 $max-item-height: 150px;
 
 .problems-list-container {
-  width: 100%;
+  --spacing: 4px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax($min-item-width, 1fr));
-  column-gap: 10px;
-  row-gap: 15px;
+  column-gap: var(--spacing);
+  row-gap: var(--spacing);
+  padding: var(--spacing);
+  width: calc(100% - 2 * var(--spacing));
+
+  @media (min-width: 768px) {
+    --spacing: 16px;
+    column-gap: 16px;
+    row-gap: 16px;
+    padding: 16px;
+  }
+  @media (min-width: 1280px) {
+    --spacing: 32px;
+    column-gap: 32px;
+    row-gap: 32px;
+    padding: 32px;
+  }
 }
 
 .problem-card {
