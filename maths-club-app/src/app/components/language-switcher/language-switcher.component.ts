@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { MatSelectChange } from "@angular/material/select";
+import { MatLegacySelectChange as MatSelectChange } from "@angular/material/legacy-select";
 import {
   LANGUAGE_MAPPING,
   LanguageService,
