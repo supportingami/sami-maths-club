@@ -21,6 +21,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { DomSanitizer } from "@angular/platform-browser";
 import { LanguageSwitcherComponent } from "./components/language-switcher/language-switcher.component";
 import { MatButtonModule } from "@angular/material/button";
+import { AsyncPipe } from "@angular/common";
 
 const { StatusBar, App } = Plugins;
 @Component({
@@ -31,6 +32,7 @@ const { StatusBar, App } = Plugins;
   animations: [slideTransition],
   standalone: true,
   imports: [
+    AsyncPipe,
     RouterLink,
     MatButtonModule,
     MatBottomSheetModule,

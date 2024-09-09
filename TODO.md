@@ -40,8 +40,10 @@
 **Refactor**
 
 - [ ] all components standalone
+- [ ] typography
 - [ ] provide sentry error handler (see legacy app module)
 - [ ] lazy-load component routes
 - [ ] problems standalone repo (?)
 - [ ] material module imports to components (if standalone in mat 18)
+- [ ] async pipe -> signals
 - [ ] Dynamic links (deprecated?)

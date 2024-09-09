@@ -4,16 +4,13 @@
 //   provideHttpClient,
 //   withInterceptorsFromDi,
 // } from "@angular/common/http";
-// import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 // import * as Sentry from "@sentry/angular";
 
 // import { RouterModule } from "@angular/router";
 
 // @NgModule({
-//   imports: [
-//     BrowserAnimationsModule,
-//   ],
+
 //   providers: [
 //     {
 //       provide: ErrorHandler,
