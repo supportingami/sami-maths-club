@@ -1932,12 +1932,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/android@npm:2.4.7":
-  version: 2.4.7
-  resolution: "@capacitor/android@npm:2.4.7"
+"@capacitor/android@npm:6.1.2":
+  version: 6.1.2
+  resolution: "@capacitor/android@npm:6.1.2"
   peerDependencies:
-    "@capacitor/core": ~2.4.0
-  checksum: 10c0/bc3990699dde948aac1c28f82f2d282adb40cf0dc3ccff6285c8415de8f4f568d2b47a102a190823516b751274cbeb4d780dd2cdb87caf6d272ea011701e6d93
+    "@capacitor/core": ^6.1.0
+  checksum: 10c0/fa3539b31e9d733c60f4285f2dce42e1620b4e06bbf14dca1f1f40d33b5f1aa1721632c8ecf96dec656d75e14d032dacfa027bad772e61bcee9a2fd22d6b67d6
   languageName: node
   linkType: hard
 
@@ -1997,12 +1997,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/ios@npm:2.4.7":
-  version: 2.4.7
-  resolution: "@capacitor/ios@npm:2.4.7"
+"@capacitor/ios@npm:6.1.2":
+  version: 6.1.2
+  resolution: "@capacitor/ios@npm:6.1.2"
   peerDependencies:
-    "@capacitor/core": ~2.4.0
-  checksum: 10c0/4eb334f52d4ee17341e56273f043c1e1c18d2417eac4d69099c3d087d78bcd013176e3393d88bbcc2b25b27344af6b38bb6ef329b176cf40b26b8c0f2dd136ab
+    "@capacitor/core": ^6.1.0
+  checksum: 10c0/d07530608ec7be4eada11339f778e161a92fa7a3c8de36edcd6895e54ccd33c0d40b416e0ca3e26307957fa9c5b5bc57a034dabaa513615853972e459d42af44
   languageName: node
   linkType: hard
 
@@ -11637,12 +11637,12 @@ __metadata:
     "@angular/platform-browser-dynamic": "npm:^18.2.3"
     "@angular/router": "npm:^18.2.3"
     "@capacitor-community/firebase-analytics": "npm:^6.0.0"
-    "@capacitor/android": "npm:2.4.7"
+    "@capacitor/android": "npm:6.1.2"
     "@capacitor/app": "npm:^6.0.1"
     "@capacitor/cli": "npm:^6.1.2"
     "@capacitor/core": "npm:^6.1.2"
     "@capacitor/dialog": "npm:^6.0.1"
-    "@capacitor/ios": "npm:2.4.7"
+    "@capacitor/ios": "npm:6.1.2"
     "@capacitor/push-notifications": "npm:^6.0.2"
     "@capacitor/share": "npm:^6.0.2"
     "@capacitor/status-bar": "npm:^6.0.1"
