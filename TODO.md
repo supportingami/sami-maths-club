@@ -7,8 +7,12 @@
 - [ ] yarn
 - [ ] misc deps
 - [ ] nx
-- [ ] mat component migrations
-- [ ] angular signals
+
+**Content**
+
+- [ ] control flow migration
+- [ ] signals
+- [ ] mat component
 
 **Test**
 
