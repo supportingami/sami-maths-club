@@ -1,14 +1,17 @@
-<mat-form-field style="max-width: 100px">
+<mat-form-field
+  style="max-width: 140px"
+  subscriptSizing="dynamic"
+  color="primary"
+  appearance="fill"
+>
   <mat-select
     [value]="languageService.activeLanguage$ | async"
     (selectionChange)="selectionChanged($event)"
-    >
+  >
     @for (languageCode of languagesCodes; track languageCode) {
-      <mat-option
-        [value]="languageCode"
-        >
-        {{ languageLabels[languageCode] }}
-      </mat-option>
+    <mat-option [value]="languageCode">
+      {{ languageLabels[languageCode] }}
+    </mat-option>
     }
   </mat-select>
 </mat-form-field>

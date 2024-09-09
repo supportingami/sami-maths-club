@@ -1,3 +1,13 @@
 :host {
   display: block;
+  // remove default backgroun color
+  --mdc-filled-text-field-container-color: none;
+
+  // make text and arrow white
+  --mat-select-enabled-trigger-text-color: white;
+  --mat-select-enabled-arrow-color: white;
+
+  // remove small border under select input
+
+  --mdc-filled-text-field-active-indicator-height: 0;
 }
