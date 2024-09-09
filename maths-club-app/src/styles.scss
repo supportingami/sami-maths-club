@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./theme/my-theme.scss";
 
+// Include material design icons
+@import "~material-design-icons/iconfont/material-icons.css";
+
 html,
 body {
   height: 100%;

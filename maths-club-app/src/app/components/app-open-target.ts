@@ -1,11 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { MatBottomSheet } from "@angular/material/bottom-sheet";
+import { Component, inject } from "@angular/core";
+import { MatBottomSheetRef } from "@angular/material/bottom-sheet";
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
 
 /**
  * Show a link to open the app in native platform version, using dynamic app link
  */
 @Component({
   selector: "app-open-target",
+  standalone: true,
+  imports: [MatButtonModule, MatIconModule],
   template: `
     <div>
       <h2>Open With...</h2>
@@ -59,13 +63,14 @@ import { MatBottomSheet } from "@angular/material/bottom-sheet";
     `,
   ],
 })
-export class AppOpenTargetComponent implements OnInit {
+export class AppOpenTargetComponent {
   appDynamicLink = "https://samimathsclub.page.link/home";
-  constructor(private _bottomSheet: MatBottomSheet) {}
+
+  private _bottomSheetRef = inject<MatBottomSheetRef<AppOpenTargetComponent>>(
+    MatBottomSheetRef
+  );
 
   dismiss() {
-    this._bottomSheet.dismiss();
+    this._bottomSheetRef.dismiss();
   }
-
-  ngOnInit() {}
 }

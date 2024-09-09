@@ -1,5 +1,26 @@
 # SAMI Maths Club App
 
+## Pre-requisites
+
+- Install [Node JS](https://nodejs.org/en/download/package-manager)
+- Enable yarn package manager
+
+```sh
+corepack enable
+```
+
+- Install dependencies
+
+```sh
+yarn install
+```
+
+## Run on Web
+
+```sh
+yarn start
+```
+
 ## Running on android
 
 First you must add the android platform for the build

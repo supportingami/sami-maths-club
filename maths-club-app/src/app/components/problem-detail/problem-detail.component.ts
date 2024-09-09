@@ -1,8 +1,13 @@
 import { Component, ViewEncapsulation, ChangeDetectorRef } from "@angular/core";
 import { ProblemService } from "src/app/services/problem.service";
 import { fadeInOut } from "src/app/animations";
-import { Capacitor, Plugins } from "@capacitor/core";
-const { Share } = Plugins;
+import { Capacitor } from "@capacitor/core";
+import { Share } from "@capacitor/share";
+import { MarkdownModule } from "ngx-markdown";
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
+import { RouterLink } from "@angular/router";
+import { AsyncPipe } from "@angular/common";
 
 @Component({
   selector: "app-problem-detail",
@@ -10,10 +15,18 @@ const { Share } = Plugins;
   styleUrls: ["./problem-detail.component.scss"],
   encapsulation: ViewEncapsulation.None,
   animations: [fadeInOut],
+  standalone: true,
+  imports: [
+    AsyncPipe,
+    MarkdownModule,
+    MatIconModule,
+    RouterLink,
+    MatButtonModule,
+  ],
 })
 export class ProblemDetailComponent {
   markdownReady = false;
-  isNative = Capacitor.isNative;
+  isNative = Capacitor.isNativePlatform();
 
   constructor(
     public problemService: ProblemService,

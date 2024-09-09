@@ -1,27 +1,55 @@
-import { Component, NgZone, ViewEncapsulation } from "@angular/core";
+import { Component, inject, NgZone, ViewEncapsulation } from "@angular/core";
 import { AppService } from "./services/app.service";
-import { Router, RouterOutlet } from "@angular/router";
+import { Router, RouterLink, RouterOutlet } from "@angular/router";
 import { slideTransition } from "./animations";
 
 import { environment } from "src/environments/environment";
 import { NotificationService } from "./services/notification.service";
 
-import { Plugins, Capacitor, StatusBarStyle } from "@capacitor/core";
+import { Capacitor } from "@capacitor/core";
+import { App } from "@capacitor/app";
+import { StatusBar, Style as StatusBarStyle } from "@capacitor/status-bar";
 import { AnalyticsService } from "./services/analytics.service";
 import { SeoService } from "./services/seo.service";
-import { LanguageService } from "./services/language.service";
-import { MatBottomSheet } from "@angular/material/bottom-sheet";
+import {
+  MatBottomSheet,
+  MatBottomSheetModule,
+} from "@angular/material/bottom-sheet";
 import { AppOpenTargetComponent } from "./components/app-open-target";
-const { StatusBar, App } = Plugins;
+import { MatIconModule, MatIconRegistry } from "@angular/material/icon";
+import { MatListModule } from "@angular/material/list";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { DomSanitizer } from "@angular/platform-browser";
+import { LanguageSwitcherComponent } from "./components/language-switcher/language-switcher.component";
+import { MatButtonModule } from "@angular/material/button";
+import { AsyncPipe } from "@angular/common";
+
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],
   encapsulation: ViewEncapsulation.None,
   animations: [slideTransition],
+  standalone: true,
+  imports: [
+    AsyncPipe,
+    RouterLink,
+    MatButtonModule,
+    MatBottomSheetModule,
+    MatListModule,
+    MatSidenavModule,
+    MatIconModule,
+    LanguageSwitcherComponent,
+    RouterOutlet,
+    MatToolbarModule,
+  ],
 })
 export class AppComponent {
   version = environment.APP_VERSION;
+
+  private _bottomSheet = inject(MatBottomSheet);
+
   constructor(
     public appService: AppService,
     notifications: NotificationService,
@@ -29,11 +57,13 @@ export class AppComponent {
     seo: SeoService,
     private zone: NgZone,
     private router: Router,
-    private _bottomSheet: MatBottomSheet
+    private iconRegistry: MatIconRegistry,
+    private sanitizer: DomSanitizer
   ) {
+    this.registerCustomIcons();
     // this.notifications.init()
     analytics.init();
-    if (Capacitor.isNative) {
+    if (Capacitor.isNativePlatform()) {
       // Light text for dark backgrounds.
       StatusBar.setStyle({ style: StatusBarStyle.Dark });
       this.configureDeepLinks();
@@ -58,7 +88,7 @@ export class AppComponent {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
       navigator.userAgent
     );
-    if (isMobile && !Capacitor.isNative) {
+    if (isMobile && !Capacitor.isNativePlatform()) {
       this._bottomSheet.open(AppOpenTargetComponent);
     }
   }
@@ -73,6 +103,22 @@ export class AppComponent {
           this.router.navigateByUrl(slug);
         }
       });
+    });
+  }
+
+  private registerCustomIcons() {
+    const customIcons = [
+      "facilitator-notes",
+      "facilitator-notes-outline",
+      "maths-club-logo",
+    ];
+    customIcons.forEach((iconName) => {
+      this.iconRegistry.addSvgIcon(
+        `sami-${iconName}`,
+        this.sanitizer.bypassSecurityTrustResourceUrl(
+          `assets/icons/${iconName}.svg`
+        )
+      );
     });
   }
 }

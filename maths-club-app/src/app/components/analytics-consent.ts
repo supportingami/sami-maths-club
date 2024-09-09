@@ -1,7 +1,11 @@
 import { Component } from "@angular/core";
+import { MatButtonModule } from "@angular/material/button";
+import { MatDialogModule } from "@angular/material/dialog";
 
 @Component({
   selector: "analytics-consent",
+  standalone: true,
+  imports: [MatDialogModule, MatButtonModule],
   template: `<h2 mat-dialog-title>Terms and Privacy</h2>
     <mat-dialog-content class="mat-typography">
       <p>
@@ -18,7 +22,8 @@ import { Component } from "@angular/core";
         cdkFocusInitial
         aria-label="privacy-consent-false"
         style="opacity:0; cursor:auto"
-      > Do not track
+      >
+        Do not track
       </button>
 
       <button

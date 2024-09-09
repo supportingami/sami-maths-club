@@ -22,7 +22,6 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": true,
             "assets": [
               "src/assets",
               {
@@ -36,9 +35,16 @@
               "node_modules/katex/dist/katex.min.css"
             ],
             "scripts": [
-              "node_modules/marked/lib/marked.js",
-              "node_modules/katex/dist/katex.min.js"
-            ]
+              "node_modules/marked/marked.min.js",
+              "node_modules/katex/dist/katex.min.js",
+              "node_modules/katex/dist/contrib/auto-render.min.js"
+            ],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -50,7 +56,6 @@
               ],
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -67,24 +72,28 @@
                   "maximumError": "10kb"
                 }
               ]
-            }
-          }
+            },
+            "development": {}
+          },
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "sami-maths-club-app:build"
-          },
+          "options": {},
           "configurations": {
             "production": {
-              "browserTarget": "sami-maths-club-app:build:production"
+              "buildTarget": "sami-maths-club-app:build:production"
+            },
+            "development": {
+              "buildTarget": "sami-maths-club-app:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "sami-maths-club-app:build"
+            "buildTarget": "sami-maths-club-app:build"
           }
         },
         "test": {
@@ -108,33 +117,24 @@
             "scripts": []
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "sami-maths-club-app:serve"
+            "protractorConfig": "e2e/protractor.conf.js"
           },
           "configurations": {
             "production": {
               "devServerTarget": "sami-maths-club-app:serve:production"
+            },
+            "development": {
+              "devServerTarget": "sami-maths-club-app:serve:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         }
       }
     }
   },
-  "defaultProject": "sami-maths-club-app",
   "cli": {
     "analytics": "a1bc7d9b-6e9a-43df-9687-ae5ccd55d25c"
   }

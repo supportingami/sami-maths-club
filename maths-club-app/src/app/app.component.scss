@@ -1,5 +1,3 @@
-@import "~material-design-icons/iconfont/material-icons.css";
-
 :host {
   display: contents;
 }
@@ -8,7 +6,14 @@ mat-sidenav-container {
 }
 
 mat-sidenav {
-  width: 200px;
+  --mat-sidenav-container-width: 200px;
+  --mat-list-list-item-leading-icon-start-space: 8px;
+  --mat-list-list-item-leading-icon-end-space: 8px;
+  --mdc-list-list-item-leading-icon-color: black;
+  --mdc-list-list-item-label-text-line-height: 16px;
+  a {
+    text-decoration: none;
+  }
 }
 mat-toolbar {
   position: sticky;

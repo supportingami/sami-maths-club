@@ -2,13 +2,11 @@ import { Injectable } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { NavigationEnd, Router } from "@angular/router";
 import "@capacitor-community/firebase-analytics";
-import { FirebaseAnalyticsWeb } from "@capacitor-community/firebase-analytics";
+import { FirebaseAnalytics } from "@capacitor-community/firebase-analytics";
 
-import { Plugins, Capacitor } from "@capacitor/core";
+import { Capacitor } from "@capacitor/core";
 import { environment } from "src/environments/environment";
 import { AnalyticsConsentComponent } from "../components/analytics-consent";
-const { FirebaseAnalytics } = Plugins;
-const Analytics = FirebaseAnalytics as FirebaseAnalyticsWeb;
 
 @Injectable({
   providedIn: "root",
@@ -27,9 +25,11 @@ export class AnalyticsService {
     const consented = await this.verifyUserAnalyticsConsent();
     if (consented) {
       // Only register analytics on web if production settings set
-      if (Capacitor.platform === "web") {
+      if (Capacitor.getPlatform() === "web") {
         if (environment.FIREBASE_CONFIG) {
-          await Analytics.initializeFirebase(environment.FIREBASE_CONFIG);
+          await FirebaseAnalytics.initializeFirebase(
+            environment.FIREBASE_CONFIG
+          );
           this._subscribeToRouteChanges();
         } else {
           console.info("No analytics settings configured, skipping");
@@ -71,11 +71,11 @@ export class AnalyticsService {
     console.info("Analytics enabled");
     this.router.events.subscribe(async (e) => {
       if (e instanceof NavigationEnd) {
-        Analytics.setScreenName({
+        FirebaseAnalytics.setScreenName({
           screenName: e.url,
           nameOverride: null,
         });
-        Analytics.logEvent({
+        FirebaseAnalytics.logEvent({
           name: "page_view",
           params: {
             url: e.url,
