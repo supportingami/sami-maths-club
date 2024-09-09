@@ -13,27 +13,33 @@
       </div>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content *ngIf="appService.routeParams$ | async as params">
-    <!-- Additional div to cover notch area on some iphones -->
-    <div
-      id="iosNotchCover"
-      class="safe-padding-top mat-toolbar mat-primary"
-    ></div>
-    <mat-toolbar color="primary" class="safe-padding-side">
-      <button mat-icon-button (click)="snav.toggle()" *ngIf="!params.slug">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <button mat-icon-button (click)="appService.goBack()" *ngIf="params.slug">
-        <mat-icon>arrow_back</mat-icon>
-      </button>
-      <span class="nav-title">SAMI Maths Club</span>
-      <app-language-switcher style="margin-right: 1em"></app-language-switcher>
-    </mat-toolbar>
-    <main
-      [@slideTransition]="getRouteAnimationState(outlet)"
-      class="content safe-padding-top safe-padding-side"
-    >
-      <router-outlet #outlet="outlet"></router-outlet>
-    </main>
-  </mat-sidenav-content>
+  @if (appService.routeParams$ | async; as params) {
+    <mat-sidenav-content>
+      <!-- Additional div to cover notch area on some iphones -->
+      <div
+        id="iosNotchCover"
+        class="safe-padding-top mat-toolbar mat-primary"
+      ></div>
+      <mat-toolbar color="primary" class="safe-padding-side">
+        @if (!params.slug) {
+          <button mat-icon-button (click)="snav.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        }
+        @if (params.slug) {
+          <button mat-icon-button (click)="appService.goBack()">
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+        }
+        <span class="nav-title">SAMI Maths Club</span>
+        <app-language-switcher style="margin-right: 1em"></app-language-switcher>
+      </mat-toolbar>
+      <main
+        [@slideTransition]="getRouteAnimationState(outlet)"
+        class="content safe-padding-top safe-padding-side"
+        >
+        <router-outlet #outlet="outlet"></router-outlet>
+      </main>
+    </mat-sidenav-content>
+  }
 </mat-sidenav-container>

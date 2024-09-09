@@ -1,21 +1,25 @@
-<div
-  class="problems-list-container"
-  [@fadeChildren]
-  *ngIf="problemService.problems$ | async as problems"
->
-  <mat-card
-    class="problem-card"
-    [routerLink]="[problem.slug]"
-    *ngFor="let problem of problems"
-    [attr.aria-label]="problem.slug"
-  >
-    <h2 class="problem-title">{{ problem.title }}</h2>
-    <div class="featured-problem" *ngIf="problem.featured">Weekly Problem</div>
-    <div
-      class="problem-image"
+@if (problemService.problems$ | async; as problems) {
+  <div
+    class="problems-list-container"
+    [@fadeChildren]
+    >
+    @for (problem of problems; track problem) {
+      <mat-card
+        class="problem-card"
+        [routerLink]="[problem.slug]"
+        [attr.aria-label]="problem.slug"
+        >
+        <h2 class="problem-title">{{ problem.title }}</h2>
+        @if (problem.featured) {
+          <div class="featured-problem">Weekly Problem</div>
+        }
+        <div
+          class="problem-image"
       [style.background-image]="
         'url(/assets/maths-club-pack/cover_images/' + problem.slug + '.svg)'
       "
-    ></div>
-  </mat-card>
-</div>
+        ></div>
+      </mat-card>
+    }
+  </div>
+}
