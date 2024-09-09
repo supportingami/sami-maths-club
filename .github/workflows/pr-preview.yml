@@ -39,22 +39,8 @@ jobs:
           node-version: 22.x
           cache: "yarn"
 
-      - uses: actions/cache/restore@v4
-        id: cache
-        with:
-          path: ./.yarn/cache
-          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node-modules-yarn-v1
-
       - name: Install node modules
         run: yarn install --immutable
-
-      - uses: actions/cache/save@v4
-        if: steps.cache.outputs.cache-hit != 'true'
-        with:
-          path: ./.yarn/cache
-          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('yarn.lock') }}
 
       - name: Populate Config
         run: echo $FIREBASE_CONFIG_JSON > maths-club-app/src/environments/firebaseConfig.json
