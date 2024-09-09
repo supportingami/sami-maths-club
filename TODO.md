@@ -1,0 +1,6 @@
+- [ ] ng core and mat 11->18
+- [ ] sentry
+- [ ] ngx-markdown
+- [ ] capacitor
+- [ ] yarn
+- [ ] misc deps
