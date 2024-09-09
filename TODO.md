@@ -41,9 +41,15 @@
 
 **IOS**
 
+- [ ] Splash screen
+- [ ] Native functionality (share, deep links)
+
+**IOS**
+
 - [ ] Configure plist for status bar: https://capacitorjs.com/docs/apis/status-bar#ios-note
 - [ ] Enable push notification https://capacitorjs.com/docs/apis/push-notifications#ios
 - [ ] Check all other plugin notes
+- [ ] Splash screen
 
 **Refactor**
 

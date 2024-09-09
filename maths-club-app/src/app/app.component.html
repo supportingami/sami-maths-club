@@ -1,10 +1,11 @@
 <mat-sidenav-container>
   <mat-sidenav #snav mode="over" class="safe-padding-top safe-padding-side">
-    <mat-nav-list>
-      <a mat-list-item routerLink="/">
-        <mat-icon>home</mat-icon>
-        Problems
-      </a>
+    <mat-nav-list (click)="snav.close()">
+      <mat-list-item routerLink="/">
+        <mat-icon matListItemIcon>home</mat-icon>
+        <a matListItemTitle href="/"> Problems</a>
+      </mat-list-item>
+
       <div class="bottom-items">
         <a mat-list-item routerLink="privacy">Privacy Policy</a>
         <a mat-list-item routerLink="app-terms">Terms and Conditions</a>
@@ -14,32 +15,31 @@
     </mat-nav-list>
   </mat-sidenav>
   @if (appService.routeParams$ | async; as params) {
-    <mat-sidenav-content>
-      <!-- Additional div to cover notch area on some iphones -->
-      <div
-        id="iosNotchCover"
-        class="safe-padding-top mat-toolbar mat-primary"
-      ></div>
-      <mat-toolbar color="primary" class="safe-padding-side">
-        @if (!params.slug) {
-          <button mat-icon-button (click)="snav.toggle()">
-            <mat-icon>menu</mat-icon>
-          </button>
-        }
-        @if (params.slug) {
-          <button mat-icon-button (click)="appService.goBack()">
-            <mat-icon>arrow_back</mat-icon>
-          </button>
-        }
-        <span class="nav-title">SAMI Maths Club</span>
-        <app-language-switcher style="margin-right: 1em"></app-language-switcher>
-      </mat-toolbar>
-      <main
-        [@slideTransition]="getRouteAnimationState(outlet)"
-        class="content safe-padding-top safe-padding-side"
-        >
-        <router-outlet #outlet="outlet"></router-outlet>
-      </main>
-    </mat-sidenav-content>
+  <mat-sidenav-content>
+    <!-- Additional div to cover notch area on some iphones -->
+    <div
+      id="iosNotchCover"
+      class="safe-padding-top mat-toolbar mat-primary"
+    ></div>
+    <mat-toolbar color="primary" class="safe-padding-side">
+      @if (!params.slug) {
+      <button mat-icon-button (click)="snav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      } @if (params.slug) {
+      <button mat-icon-button (click)="appService.goBack()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      }
+      <span class="nav-title">SAMI Maths Club</span>
+      <app-language-switcher style="margin-right: 1em"></app-language-switcher>
+    </mat-toolbar>
+    <main
+      [@slideTransition]="getRouteAnimationState(outlet)"
+      class="content safe-padding-top safe-padding-side"
+    >
+      <router-outlet #outlet="outlet"></router-outlet>
+    </main>
+  </mat-sidenav-content>
   }
 </mat-sidenav-container>
