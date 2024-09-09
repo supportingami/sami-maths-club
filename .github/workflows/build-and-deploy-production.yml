@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@master
         # TODO - consider gradle/swift caches as well - https://github.com/actions/cache/blob/main/examples.md#java---gradle
       - name: Setup Cache
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
@@ -61,14 +61,14 @@ jobs:
         with:
           name: maths-club-app
       - name: Setup Cache
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - name: Install Dependencies
-        run: yarn install --silent          
+        run: yarn install --silent
       - name: Sync capacitor plugins
-        run:  npx cap sync android
+        run: npx cap sync android
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1
         with:
@@ -107,7 +107,7 @@ jobs:
         with:
           name: maths-club-app
       - name: Setup Cache
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
