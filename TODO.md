@@ -53,13 +53,15 @@
 
 **Refactor**
 
-- [ ] all components standalone
-- [ ] typography
+- [x] all components standalone
 - [x] provide sentry error handler (see legacy app module)
 - [ ] lazy-load component routes
-- [ ] problems standalone repo (?)
-- [ ] material module imports to components (if standalone in mat 18)
 - [ ] async pipe -> signals
 - [ ] Dynamic links (deprecated?)
 - [ ] Lint rules (enforce control-flow, ordered imports)
 - [ ] Run prettier (write) `yarn prettier --write "**/*.{ts}"`
+- [ ] problems standalone repo (?)
+
+**Misc**
+
+- [ ] Improve typography
