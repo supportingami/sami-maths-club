@@ -30,13 +30,14 @@ jobs:
       # As immutable install will not change cache only save new cache if not hit
       # Uses fine-grained methods from https://github.com/actions/cache
       #############################################################################
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22.x
-
-      - name: Enable Corepack
-        run: corepack enable
+          cache: "yarn"
 
       - uses: actions/cache/restore@v4
         id: cache
