@@ -2,9 +2,9 @@
 
 - [x] ng core 11->18
 - [x] mat 11->16
-- [ ] mat 16->18
+- [x] mat 16->18
 - [ ] sentry
-- [ ] ngx-markdown
+- [x] ngx-markdown
 - [ ] capacitor
 - [ ] yarn
 - [ ] misc deps
@@ -32,7 +32,7 @@
 
 - [ ] animations
 - [ ] scroll restoration
-- [ ] markdown (katex)
+- [x] markdown (katex)
 - [ ] web build
 - [ ] android build
 - [ ] ios build
@@ -47,3 +47,19 @@
 - [ ] material module imports to components (if standalone in mat 18)
 - [ ] async pipe -> signals
 - [ ] Dynamic links (deprecated?)
+- [ ] Lint rules (enforce control-flow, ordered imports)
+- [ ] Weekly problem
+
+Sentry and http client
+
+```ts
+providers: [
+  {
+    provide: ErrorHandler,
+    useValue: Sentry.createErrorHandler({
+      showDialog: false,
+    }),
+  },
+  provideHttpClient(withInterceptorsFromDi()),
+],
+```

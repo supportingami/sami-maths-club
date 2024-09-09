@@ -59,8 +59,7 @@ export class AppComponent {
     private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer
   ) {
-    //
-
+    this.registerCustomIcons();
     // this.notifications.init()
     analytics.init();
     if (Capacitor.isNative) {

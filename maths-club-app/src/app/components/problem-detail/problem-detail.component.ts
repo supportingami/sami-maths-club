@@ -6,6 +6,7 @@ import { MarkdownModule } from "ngx-markdown";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { RouterLink } from "@angular/router";
+import { AsyncPipe } from "@angular/common";
 const { Share } = Plugins;
 
 @Component({
@@ -15,7 +16,13 @@ const { Share } = Plugins;
   encapsulation: ViewEncapsulation.None,
   animations: [fadeInOut],
   standalone: true,
-  imports: [MarkdownModule, MatIconModule, RouterLink, MatButtonModule],
+  imports: [
+    AsyncPipe,
+    MarkdownModule,
+    MatIconModule,
+    RouterLink,
+    MatButtonModule,
+  ],
 })
 export class ProblemDetailComponent {
   markdownReady = false;

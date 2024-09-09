@@ -2,6 +2,7 @@ import { Component, ViewEncapsulation, ChangeDetectorRef } from "@angular/core";
 import { ProblemService } from "src/app/services/problem.service";
 import { fadeInOut } from "src/app/animations";
 import { MarkdownModule } from "ngx-markdown";
+import { AsyncPipe } from "@angular/common";
 
 @Component({
   selector: "app-facilitator-note",
@@ -10,7 +11,7 @@ import { MarkdownModule } from "ngx-markdown";
   encapsulation: ViewEncapsulation.None,
   animations: [fadeInOut],
   standalone: true,
-  imports: [MarkdownModule],
+  imports: [AsyncPipe, MarkdownModule],
 })
 export class FacilitatorNoteComponent {
   markdownReady = false;
