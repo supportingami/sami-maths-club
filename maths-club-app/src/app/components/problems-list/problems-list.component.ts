@@ -2,11 +2,11 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ProblemService } from "../../services/problem.service";
 import { fadeChildren } from "src/app/animations";
 import * as Sentry from "@sentry/angular";
-import { Plugins, Capacitor } from "@capacitor/core";
+import { Capacitor } from "@capacitor/core";
+import { App } from "@capacitor/app";
 import { RouterLink } from "@angular/router";
 import { MatIconModule } from "@angular/material/icon";
 import { AsyncPipe } from "@angular/common";
-const { App } = Plugins;
 
 @Component({
   selector: "app-problems",
@@ -27,13 +27,13 @@ export class ProblemsListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    if (Capacitor.isNative) {
+    if (Capacitor.isNativePlatform()) {
       App.addListener("backButton", App.exitApp);
     }
   }
 
   ngOnDestroy() {
-    if (Capacitor.isNative) {
+    if (Capacitor.isNativePlatform) {
       App.removeAllListeners();
     }
   }

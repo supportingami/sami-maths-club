@@ -1,12 +1,6 @@
 import { Injectable } from "@angular/core";
-import {
-  Plugins,
-  PushNotification,
-  PushNotificationToken,
-  PushNotificationActionPerformed,
-} from "@capacitor/core";
-
-const { PushNotifications, Modals } = Plugins;
+import { Token, PushNotifications } from "@capacitor/push-notifications";
+import { Dialog } from "@capacitor/dialog";
 
 @Injectable({
   providedIn: "root",
@@ -15,19 +9,16 @@ export class NotificationService {
   constructor() {}
 
   init() {
-    PushNotifications.requestPermission().then((result) => {
-      if (result.granted) {
+    PushNotifications.requestPermissions().then((result) => {
+      if (result.receive === "granted") {
         PushNotifications.register();
       }
     });
 
-    PushNotifications.addListener(
-      "registration",
-      (token: PushNotificationToken) => {
-        alert("Push registration success, token:" + token.value);
-        console.log("Token Value", token.value);
-      }
-    );
+    PushNotifications.addListener("registration", (token: Token) => {
+      alert("Push registration success, token:" + token.value);
+      console.log("Token Value", token.value);
+    });
 
     PushNotifications.addListener("registrationError", (error: any) => {
       alert("Error on registration: " + JSON.stringify(error));
@@ -35,11 +26,11 @@ export class NotificationService {
 
     PushNotifications.addListener(
       "pushNotificationReceived",
-      (notification: PushNotification) => {
+      (notification) => {
         // alert("Push received: " + JSON.stringify(notification));
         console.log("Push Received: ", notification);
 
-        let alertRet = Modals.alert({
+        let alertRet = Dialog.alert({
           title: notification.title,
           message: notification.body,
         });
@@ -48,7 +39,7 @@ export class NotificationService {
 
     PushNotifications.addListener(
       "pushNotificationActionPerformed",
-      (notification: PushNotificationActionPerformed) => {
+      (notification) => {
         alert("Push action performed: " + JSON.stringify(notification));
       }
     );

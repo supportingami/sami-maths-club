@@ -6,7 +6,9 @@ import { slideTransition } from "./animations";
 import { environment } from "src/environments/environment";
 import { NotificationService } from "./services/notification.service";
 
-import { Plugins, Capacitor, StatusBarStyle } from "@capacitor/core";
+import { Capacitor } from "@capacitor/core";
+import { App } from "@capacitor/app";
+import { StatusBar, Style as StatusBarStyle } from "@capacitor/status-bar";
 import { AnalyticsService } from "./services/analytics.service";
 import { SeoService } from "./services/seo.service";
 import {
@@ -23,7 +25,6 @@ import { LanguageSwitcherComponent } from "./components/language-switcher/langua
 import { MatButtonModule } from "@angular/material/button";
 import { AsyncPipe } from "@angular/common";
 
-const { StatusBar, App } = Plugins;
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -62,7 +63,7 @@ export class AppComponent {
     this.registerCustomIcons();
     // this.notifications.init()
     analytics.init();
-    if (Capacitor.isNative) {
+    if (Capacitor.isNativePlatform()) {
       // Light text for dark backgrounds.
       StatusBar.setStyle({ style: StatusBarStyle.Dark });
       this.configureDeepLinks();
@@ -87,7 +88,7 @@ export class AppComponent {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
       navigator.userAgent
     );
-    if (isMobile && !Capacitor.isNative) {
+    if (isMobile && !Capacitor.isNativePlatform()) {
       this._bottomSheet.open(AppOpenTargetComponent);
     }
   }

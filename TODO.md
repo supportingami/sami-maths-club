@@ -3,7 +3,7 @@
 - [x] ng core 11->18
 - [x] mat 11->16
 - [x] mat 16->18
-- [ ] sentry
+- [x] sentry
 - [x] ngx-markdown
 - [ ] capacitor
 - [ ] yarn
@@ -12,9 +12,10 @@
 
 **Content**
 
-- [ ] control flow migration
+- [x] control flow migration
 - [ ] signals
-- [ ] mat component
+- [x] mat components
+- [ ] Weekly problem
 
 **Actions**
 
@@ -34,32 +35,25 @@
 - [ ] scroll restoration
 - [x] markdown (katex)
 - [ ] web build
-- [ ] android build
-- [ ] ios build
+- [ ] android build (+cap native functions)
+- [ ] ios build (+cap native functions)
+- [ ] ios content inset (notch)
+
+**IOS**
+
+- [ ] Configure plist for status bar: https://capacitorjs.com/docs/apis/status-bar#ios-note
+- [ ] Enable push notification https://capacitorjs.com/docs/apis/push-notifications#ios
+- [ ] Check all other plugin notes
 
 **Refactor**
 
 - [ ] all components standalone
 - [ ] typography
-- [ ] provide sentry error handler (see legacy app module)
+- [x] provide sentry error handler (see legacy app module)
 - [ ] lazy-load component routes
 - [ ] problems standalone repo (?)
 - [ ] material module imports to components (if standalone in mat 18)
 - [ ] async pipe -> signals
 - [ ] Dynamic links (deprecated?)
 - [ ] Lint rules (enforce control-flow, ordered imports)
-- [ ] Weekly problem
-
-Sentry and http client
-
-```ts
-providers: [
-  {
-    provide: ErrorHandler,
-    useValue: Sentry.createErrorHandler({
-      showDialog: false,
-    }),
-  },
-  provideHttpClient(withInterceptorsFromDi()),
-],
-```
+- [ ] Run prettier (write) `yarn prettier --write "**/*.{ts}"`
