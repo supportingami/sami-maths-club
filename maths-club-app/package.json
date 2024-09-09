@@ -9,20 +9,20 @@
     "test": "ng test",
     "lint": "eslint \"**/*.{js,ts}\" --quiet --fix",
     "e2e": "ng e2e",
-    "stats": "ng build --prod --stats-json && npx webpack-bundle-analyzer dist/sami-maths-club-app/stats.json"
+    "stats": "ng build --configuration production --stats-json && npx webpack-bundle-analyzer dist/sami-maths-club-app/stats.json"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~11.2.13",
+    "@angular/animations": "~12.2.17",
     "@angular/cdk": "^11.2.12",
-    "@angular/common": "~11.2.13",
-    "@angular/compiler": "~11.2.13",
-    "@angular/core": "~11.2.13",
-    "@angular/forms": "~11.2.13",
+    "@angular/common": "~12.2.17",
+    "@angular/compiler": "~12.2.17",
+    "@angular/core": "~12.2.17",
+    "@angular/forms": "~12.2.17",
     "@angular/material": "^11.2.12",
-    "@angular/platform-browser": "~11.2.13",
-    "@angular/platform-browser-dynamic": "~11.2.13",
-    "@angular/router": "~11.2.13",
+    "@angular/platform-browser": "~12.2.17",
+    "@angular/platform-browser-dynamic": "~12.2.17",
+    "@angular/router": "~12.2.17",
     "@capacitor-community/firebase-analytics": "^0.2.2",
     "@capacitor/android": "2.4.7",
     "@capacitor/cli": "^2.4.7",
@@ -37,10 +37,10 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1102.12",
-    "@angular/cli": "~11.2.12",
-    "@angular/compiler-cli": "~11.2.13",
-    "@angular/language-service": "~11.2.13",
+    "@angular-devkit/build-angular": "~12.2.18",
+    "@angular/cli": "~12.2.18",
+    "@angular/compiler-cli": "~12.2.17",
+    "@angular/language-service": "~12.2.17",
     "@types/jasmine": "~3.7.1",
     "@types/jasminewd2": "~2.0.9",
     "@types/node": "^15.0.2",
@@ -59,6 +59,6 @@
     "prettier-eslint": "^12.0.0",
     "protractor": "~7.0.0",
     "ts-node": "~9.1.1",
-    "typescript": "~4.1.5"
+    "typescript": "~4.3.5"
   }
 }
