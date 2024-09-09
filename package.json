@@ -38,5 +38,5 @@
     "ts-node": "^9.1.1",
     "typescript": "~3.8.3"
   },
-  "dependencies": {}
+  "packageManager": "yarn@4.4.1"
 }
