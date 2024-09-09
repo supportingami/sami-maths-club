@@ -30,10 +30,18 @@
 
 **Test**
 
+- [ ] animations
+- [ ] scroll restoration
+- [ ] markdown (katex)
 - [ ] web build
 - [ ] android build
 - [ ] ios build
 
 **Refactor**
 
+- [ ] all components standalone
+- [ ] provide sentry error handler (see legacy app module)
+- [ ] lazy-load component routes
 - [ ] problems standalone repo (?)
+- [ ] material module imports to components (if standalone in mat 18)
+- [ ] Dynamic links (deprecated?)

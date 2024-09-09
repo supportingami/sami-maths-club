@@ -1,5 +1,4 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
+import { Routes } from "@angular/router";
 
 import { ProblemsListComponent } from "./components/problems-list/problems-list.component";
 import { ProblemDetailComponent } from "./components/problem-detail/problem-detail.component";
@@ -8,7 +7,7 @@ import { PrivacyPolicyComponent } from "./components/privacy-policy/privacy-poli
 import { AppTermsComponent } from "./components/app-terms/app-terms.component";
 import { ContactComponent } from "./components/contact/contact.component";
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: "privacy", component: PrivacyPolicyComponent },
   { path: "app-terms", component: AppTermsComponent },
   { path: "contact", component: ContactComponent },
@@ -30,14 +29,3 @@ const routes: Routes = [
 
   { path: "", redirectTo: "en", pathMatch: "full" },
 ];
-
-@NgModule({
-  imports: [
-    RouterModule.forRoot(routes, {
-      scrollPositionRestoration: "enabled",
-      relativeLinkResolution: "legacy",
-    }),
-  ],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}

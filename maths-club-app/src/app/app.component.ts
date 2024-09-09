@@ -1,6 +1,6 @@
-import { Component, NgZone, ViewEncapsulation } from "@angular/core";
+import { Component, inject, NgZone, ViewEncapsulation } from "@angular/core";
 import { AppService } from "./services/app.service";
-import { Router, RouterOutlet } from "@angular/router";
+import { Router, RouterLink, RouterOutlet } from "@angular/router";
 import { slideTransition } from "./animations";
 
 import { environment } from "src/environments/environment";
@@ -9,8 +9,19 @@ import { NotificationService } from "./services/notification.service";
 import { Plugins, Capacitor, StatusBarStyle } from "@capacitor/core";
 import { AnalyticsService } from "./services/analytics.service";
 import { SeoService } from "./services/seo.service";
-import { MatBottomSheet } from "@angular/material/bottom-sheet";
+import {
+  MatBottomSheet,
+  MatBottomSheetModule,
+} from "@angular/material/bottom-sheet";
 import { AppOpenTargetComponent } from "./components/app-open-target";
+import { MatIconModule, MatIconRegistry } from "@angular/material/icon";
+import { MatListModule } from "@angular/material/list";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { DomSanitizer } from "@angular/platform-browser";
+import { LanguageSwitcherComponent } from "./components/language-switcher/language-switcher.component";
+import { MatButtonModule } from "@angular/material/button";
+
 const { StatusBar, App } = Plugins;
 @Component({
   selector: "app-root",
@@ -18,9 +29,24 @@ const { StatusBar, App } = Plugins;
   styleUrls: ["./app.component.scss"],
   encapsulation: ViewEncapsulation.None,
   animations: [slideTransition],
+  standalone: true,
+  imports: [
+    RouterLink,
+    MatButtonModule,
+    MatBottomSheetModule,
+    MatListModule,
+    MatSidenavModule,
+    MatIconModule,
+    LanguageSwitcherComponent,
+    RouterOutlet,
+    MatToolbarModule,
+  ],
 })
 export class AppComponent {
   version = environment.APP_VERSION;
+
+  private _bottomSheet = inject(MatBottomSheet);
+
   constructor(
     public appService: AppService,
     notifications: NotificationService,
@@ -28,8 +54,11 @@ export class AppComponent {
     seo: SeoService,
     private zone: NgZone,
     private router: Router,
-    private _bottomSheet: MatBottomSheet
+    private iconRegistry: MatIconRegistry,
+    private sanitizer: DomSanitizer
   ) {
+    //
+
     // this.notifications.init()
     analytics.init();
     if (Capacitor.isNative) {
@@ -72,6 +101,22 @@ export class AppComponent {
           this.router.navigateByUrl(slug);
         }
       });
+    });
+  }
+
+  private registerCustomIcons() {
+    const customIcons = [
+      "facilitator-notes",
+      "facilitator-notes-outline",
+      "maths-club-logo",
+    ];
+    customIcons.forEach((iconName) => {
+      this.iconRegistry.addSvgIcon(
+        `sami-${iconName}`,
+        this.sanitizer.bypassSecurityTrustResourceUrl(
+          `assets/icons/${iconName}.svg`
+        )
+      );
     });
   }
 }

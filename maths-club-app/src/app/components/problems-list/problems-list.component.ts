@@ -3,15 +3,19 @@ import { ProblemService } from "../../services/problem.service";
 import { fadeChildren } from "src/app/animations";
 import * as Sentry from "@sentry/angular";
 import { Plugins, Capacitor } from "@capacitor/core";
-const { StatusBar, App } = Plugins;
+import { RouterLink } from "@angular/router";
+import { MatIconModule } from "@angular/material/icon";
+const { App } = Plugins;
 
 @Component({
   selector: "app-problems",
   templateUrl: "./problems-list.component.html",
   styleUrls: ["./problems-list.component.scss"],
   animations: [fadeChildren],
+  standalone: true,
+  imports: [RouterLink, MatIconModule],
 })
-export class ProblemsListComponent implements OnInit, OnDestroy{
+export class ProblemsListComponent implements OnInit, OnDestroy {
   constructor(public problemService: ProblemService) {}
 
   /**
@@ -21,14 +25,14 @@ export class ProblemsListComponent implements OnInit, OnDestroy{
     Sentry.captureMessage(`[${identifier}] UI Test Interaction Recorded`);
   }
 
-  ngOnInit(){
-    if(Capacitor.isNative){
-      App.addListener('backButton', App.exitApp);
+  ngOnInit() {
+    if (Capacitor.isNative) {
+      App.addListener("backButton", App.exitApp);
     }
   }
 
-  ngOnDestroy(){
-    if(Capacitor.isNative){
+  ngOnDestroy() {
+    if (Capacitor.isNative) {
       App.removeAllListeners();
     }
   }

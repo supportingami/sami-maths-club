@@ -2,6 +2,10 @@ import { Component, ViewEncapsulation, ChangeDetectorRef } from "@angular/core";
 import { ProblemService } from "src/app/services/problem.service";
 import { fadeInOut } from "src/app/animations";
 import { Capacitor, Plugins } from "@capacitor/core";
+import { MarkdownModule } from "ngx-markdown";
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
+import { RouterLink } from "@angular/router";
 const { Share } = Plugins;
 
 @Component({
@@ -10,6 +14,8 @@ const { Share } = Plugins;
   styleUrls: ["./problem-detail.component.scss"],
   encapsulation: ViewEncapsulation.None,
   animations: [fadeInOut],
+  standalone: true,
+  imports: [MarkdownModule, MatIconModule, RouterLink, MatButtonModule],
 })
 export class ProblemDetailComponent {
   markdownReady = false;

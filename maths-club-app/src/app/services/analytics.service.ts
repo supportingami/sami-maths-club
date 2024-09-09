@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { MatLegacyDialog as MatDialog } from "@angular/material/legacy-dialog";
+import { MatDialog } from "@angular/material/dialog";
 import { NavigationEnd, Router } from "@angular/router";
 import "@capacitor-community/firebase-analytics";
 import { FirebaseAnalyticsWeb } from "@capacitor-community/firebase-analytics";
