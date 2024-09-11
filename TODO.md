@@ -1,4 +1,6 @@
-**Update**
+## 2024-09 - Update List
+
+**Dependencies**
 
 - [x] ng core 11->18
 - [x] mat 11->16
@@ -35,18 +37,18 @@
 
 **Test**
 
-- [ ] animations
-- [ ] scroll restoration
+- [x] animations
+- [x] scroll restoration
 - [x] markdown (katex)
-- [ ] web build
-- [ ] android build (+cap native functions)
-- [ ] ios build (+cap native functions)
-- [ ] ios content inset (notch)
+- [x] web
+- [ ] android
+- [ ] ios
 
 **Android**
 
 - [ ] Splash screen
-- [ ] Native functionality (share, deep links)
+- [ ] Notch
+- [ ] Deep Links
 
 **IOS**
 
@@ -54,6 +56,7 @@
 - [ ] Enable push notification https://capacitorjs.com/docs/apis/push-notifications#ios
 - [ ] Check all other plugin notes
 - [ ] Splash screen
+- [ ] Universal links
 
 **Refactor**
 
@@ -69,4 +72,5 @@
 **Misc**
 
 - [x] Improve typography
-- [ ] Fix mat-card shadow
+- [x] Fix mat-card shadow
+- [ ] notch fixes and layout
