@@ -1,0 +1,29 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+$sami-theme-primary: mat.m2-define-palette(mat.$m2-light-blue-palette);
+$sami-theme-accent: mat.m2-define-palette(
+  mat.$m2-amber-palette,
+  A200,
+  A100,
+  A400
+);
+
+$sami-theme-warn: mat.m2-define-palette(mat.$m2-red-palette);
+
+$sami-theme: mat.m2-define-light-theme(
+  (
+    color: (
+      primary: $sami-theme-primary,
+      accent: $sami-theme-accent,
+      warn: $sami-theme-warn,
+    ),
+    typography:
+      mat.m2-define-typography-config(
+        $font-family: "Noto Sans",
+      ),
+    density: 0,
+  )
+);
+
+@include mat.all-component-themes($sami-theme);

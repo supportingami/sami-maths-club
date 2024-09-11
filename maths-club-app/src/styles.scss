@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-@import "./theme/my-theme.scss";
+@import "./theme/sami-theme.scss";
 
-// Include material design icons
-@import "~material-design-icons/iconfont/material-icons.css";
+@import "./theme/fonts";
+@import "./theme/overrides";
+@import "./theme/typography";
 
 html,
 body {
@@ -14,7 +15,6 @@ body {
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 /* Markdown child content styling */
 table,

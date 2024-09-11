@@ -2,9 +2,14 @@
 name: PR Preview
 on:
   # use pull_request_target so that secrets accessible from fork
-  pull_request_target:
+  pull_request:
     # Trigger when labels are changed or more commits added to a PR that contains labels
     types: [labeled, synchronize]
+  # TODO - rever back when working
+  # # use pull_request_target so that secrets accessible from fork
+  # pull_request_target:
+  #   # Trigger when labels are changed or more commits added to a PR that contains labels
+  #   types: [labeled, synchronize]
 jobs:
   build_and_preview:
     # NOTE - as we are going to check out and build from forks we also need to add manual
@@ -14,17 +19,29 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           # pull the repo from the pull request source, not the default local repo
           ref: ${{ github.event.pull_request.head.sha }}
-      - name: Setup Cache
-        uses: actions/cache@v2
+
+      #############################################################################
+      #         Node Modules
+      # Manually restore any previous cache to speed install
+      # As immutable install will not change cache only save new cache if not hit
+      # Uses fine-grained methods from https://github.com/actions/cache
+      #############################################################################
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          path: "**/node_modules"
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-      - name: Install npm dependencies
-        run: yarn install
+          node-version: 22.x
+          cache: "yarn"
+
+      - name: Install node modules
+        run: yarn install --immutable
+
       - name: Populate Config
         run: echo $FIREBASE_CONFIG_JSON > maths-club-app/src/environments/firebaseConfig.json
         env:
