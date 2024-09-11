@@ -1,6 +1,5 @@
-import { Injectable } from "@angular/core";
+import { Injectable, signal } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { BehaviorSubject } from "rxjs";
 import { IProblemMeta, IProblem } from "../models/problem.models";
 import { Router, ActivatedRoute } from "@angular/router";
 import * as Sentry from "@sentry/angular";
@@ -12,8 +11,8 @@ import { AppService } from "./app.service";
   providedIn: "root",
 })
 export class ProblemService {
-  public problems$ = new BehaviorSubject<IProblemMeta[]>(undefined);
-  public activeProblem$ = new BehaviorSubject<IProblem>(undefined);
+  public problems = signal<IProblemMeta[]>([]);
+  public activeProblem = signal<IProblem | undefined>(undefined);
 
   constructor(
     private http: HttpClient,
@@ -60,7 +59,7 @@ export class ProblemService {
    */
   private async getProblemList(language: ILanguageCode) {
     // notify that the problems are not yet loaded
-    this.problems$.next(undefined);
+    this.problems.set([]);
     const url = `/assets/maths-club-pack/${language}/metadata.json`;
     let problems = await this.http
       .get<IProblemMeta[]>(url)
@@ -81,20 +80,20 @@ export class ProblemService {
         return a.featured ? -1 : b.featured ? 1 : a.added > b.added ? -1 : 1;
       });
     // allow time to finish any previous animations
-    this.problems$.next(problems);
+    this.problems.set(problems);
   }
 
   // Update the current active problem by slug
   private async setActiveProblem(slug: string) {
-    this.activeProblem$.next(undefined);
-    const meta = this.problems$.value.find((p) => p.slug === slug);
+    this.activeProblem.set(undefined);
+    const meta = this.problems().find((p) => p.slug === slug);
     try {
       const studentVersionText = await this.readProblemMD(slug, "student");
       const facilitatorVersionText = await this.readProblemMD(
         slug,
         "facilitator"
       );
-      this.activeProblem$.next({
+      this.activeProblem.set({
         ...meta,
         studentVersionText,
         facilitatorVersionText,
@@ -123,7 +122,7 @@ export class ProblemService {
       if (params.slug) {
         await this.setActiveProblem(this.slug);
       } else {
-        this.activeProblem$.next(undefined);
+        this.activeProblem.set(undefined);
       }
     });
   }

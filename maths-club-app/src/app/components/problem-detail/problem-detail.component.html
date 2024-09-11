@@ -1,39 +1,43 @@
-@if (problemService.activeProblem$ | async; as problem) {
-  <div
-    class="markdown-container"
+<div class="markdown-container">
+  <div [@fadeInOut]="markdownReady ? 'in' : 'out'">
+    @if (problemService.activeProblem(); as problem) {
+    <button
+      mat-flat-button
+      color="accent"
+      (click)="share()"
+      style="float: right; color: rgba(0, 0, 0, 0.85)"
     >
-    <div [@fadeInOut]="markdownReady ? 'in' : 'out'">
+      <span style="margin-right: 5px">Share</span>
+      <mat-icon>share</mat-icon>
+    </button>
+    <markdown
+      id="markdownStyle"
+      [data]="problem.studentVersionText"
+      katex
+      (ready)="onMarkdownReady()"
+    ></markdown>
+    <div class="facilitator-notes-container">
+      <p style="flex: 1; margin-right: 5px">
+        Want to check your solution or help others with the problem?
+      </p>
       <button
         mat-flat-button
         color="accent"
-        (click)="share()"
-        style="float: right; color: rgba(0, 0, 0, 0.85)"
+        [routerLink]="['notes']"
+        aria-label="facilitator-notes"
+        class="facilitator-notes-button"
+      >
+        <mat-icon
+          class="facilitator-notes-icon"
+          iconPositionStart
+          svgIcon="sami-facilitator-notes-outline"
+        ></mat-icon>
+        <span class="facilitator-notes-label">See Facilitator Notes</span>
+        <mat-icon iconPositionEnd class="facilitator-notes-icon"
+          >keyboard_arrow_right</mat-icon
         >
-        <span style="margin-right: 5px">Share</span>
-        <mat-icon>share</mat-icon>
       </button>
-      <markdown
-        id="markdownStyle"
-        [data]="problem.studentVersionText"
-        katex
-        (ready)="onMarkdownReady()"
-      ></markdown>
-      <div class="facilitator-notes-container">
-        <p style="flex: 1; margin-right: 5px">
-          Want to check your solution or help others with the problem?
-        </p>
-        <button
-          mat-flat-button
-          color="accent"
-          [routerLink]="['notes']"
-          aria-label="facilitator-notes"
-          class="facilitator-notes-button"
-          >
-          <mat-icon svgIcon="sami-facilitator-notes-outline"></mat-icon>
-          <span style="margin: 10px">See Facilitator Notes</span>
-          <mat-icon>keyboard_arrow_right</mat-icon>
-        </button>
-      </div>
     </div>
+    }
   </div>
-}
+</div>

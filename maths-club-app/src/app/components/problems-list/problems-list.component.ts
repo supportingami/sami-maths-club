@@ -1,4 +1,9 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnDestroy,
+  OnInit,
+} from "@angular/core";
 import { ProblemService } from "../../services/problem.service";
 import { fadeChildren } from "src/app/animations";
 import * as Sentry from "@sentry/angular";
@@ -7,15 +12,15 @@ import { App } from "@capacitor/app";
 import { RouterLink } from "@angular/router";
 import { MatCardModule } from "@angular/material/card";
 import { MatIconModule } from "@angular/material/icon";
-import { AsyncPipe } from "@angular/common";
 
 @Component({
   selector: "app-problems",
   templateUrl: "./problems-list.component.html",
   styleUrls: ["./problems-list.component.scss"],
-  animations: [fadeChildren],
+  animations: [fadeChildren(".problem-card")],
   standalone: true,
-  imports: [AsyncPipe, RouterLink, MatIconModule, MatCardModule],
+  imports: [RouterLink, MatIconModule, MatCardModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProblemsListComponent implements OnInit, OnDestroy {
   constructor(public problemService: ProblemService) {}

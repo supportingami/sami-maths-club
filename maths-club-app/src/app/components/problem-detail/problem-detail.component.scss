@@ -10,12 +10,17 @@
 }
 .facilitator-notes-button {
   width: 100%;
-  max-width: 500px;
-  padding: 16px;
-  font-size: large;
-  mat-icon {
+  max-width: 360px;
+  padding: 8px;
+  min-height: 64px;
+
+  & > mat-icon.facilitator-notes-icon {
     width: 32px;
     height: 32px;
     font-size: 32px;
+  }
+  & .facilitator-notes-label {
+    font-size: large;
+    margin: 0 8px;
   }
 }

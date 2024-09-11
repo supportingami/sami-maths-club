@@ -1,6 +1,6 @@
-@if (problemService.problems$ | async; as problems) {
+@if (problemService.problems(); as problems) { @if(problems.length > 0){
 <div class="problems-list-container" [@fadeChildren]>
-  @for (problem of problems; track problem) {
+  @for (problem of problems; track problem.slug) {
   <mat-card
     class="problem-card"
     [routerLink]="[problem.slug]"
@@ -20,4 +20,5 @@
   </mat-card>
   }
 </div>
-}
+
+} }

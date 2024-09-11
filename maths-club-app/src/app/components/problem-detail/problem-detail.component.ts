@@ -1,4 +1,9 @@
-import { Component, ViewEncapsulation, ChangeDetectorRef } from "@angular/core";
+import {
+  Component,
+  ViewEncapsulation,
+  ChangeDetectorRef,
+  ChangeDetectionStrategy,
+} from "@angular/core";
 import { ProblemService } from "src/app/services/problem.service";
 import { fadeInOut } from "src/app/animations";
 import { Capacitor } from "@capacitor/core";
@@ -7,22 +12,16 @@ import { MarkdownModule } from "ngx-markdown";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { RouterLink } from "@angular/router";
-import { AsyncPipe } from "@angular/common";
 
 @Component({
   selector: "app-problem-detail",
   templateUrl: "./problem-detail.component.html",
   styleUrls: ["./problem-detail.component.scss"],
   encapsulation: ViewEncapsulation.None,
-  animations: [fadeInOut],
+  animations: [fadeInOut({})],
   standalone: true,
-  imports: [
-    AsyncPipe,
-    MarkdownModule,
-    MatIconModule,
-    RouterLink,
-    MatButtonModule,
-  ],
+  imports: [MarkdownModule, MatIconModule, RouterLink, MatButtonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProblemDetailComponent {
   markdownReady = false;
@@ -42,7 +41,7 @@ export class ProblemDetailComponent {
 
   async share() {
     await Share.share({
-      title: this.problemService.activeProblem$.value.title,
+      title: this.problemService.activeProblem().title,
       text:
         "Here's a problem for you to try! If you get stuck there are also notes for facilitators included",
       url: `https://mathsclub.samicharity.co.uk${location.pathname}`,
