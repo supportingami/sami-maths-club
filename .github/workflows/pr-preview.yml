@@ -2,14 +2,9 @@
 name: PR Preview
 on:
   # use pull_request_target so that secrets accessible from fork
-  pull_request:
+  pull_request_target:
     # Trigger when labels are changed or more commits added to a PR that contains labels
     types: [labeled, synchronize]
-  # TODO - rever back when working
-  # # use pull_request_target so that secrets accessible from fork
-  # pull_request_target:
-  #   # Trigger when labels are changed or more commits added to a PR that contains labels
-  #   types: [labeled, synchronize]
 jobs:
   build_and_preview:
     # NOTE - as we are going to check out and build from forks we also need to add manual
