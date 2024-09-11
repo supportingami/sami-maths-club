@@ -14,11 +14,16 @@ import {
  * Use states 'in' and 'out' to handle fading an element
  * Used to fade in markdown after render complete
  */
-export const fadeInOut = trigger("fadeInOut", [
-  state("in", style({ opacity: 1 })),
-  state("out", style({ opacity: 0 })),
-  transition("out <=> in", [animate("0.5s")]),
-]);
+export const fadeInOut = ({
+  duration = "0.5s",
+  delay = "50ms",
+  easing = "ease-in-out",
+}) =>
+  trigger("fadeInOut", [
+    state("in", style({ opacity: 1 })),
+    state("out", style({ opacity: 0 })),
+    transition("out <=> in", [animate(`${duration} ${delay} ${easing}`)]),
+  ]);
 
 /**
  * Use states 'left' 'center' 'right', and transition between with slide motion
@@ -31,20 +36,21 @@ export const slideTransition = trigger("slideTransition", [
   transition("center => right", slideTo("right")),
 ]);
 
-export const fadeChildren = trigger("fadeChildren", [
-  transition("* => *", [
-    query(
-      ":enter",
-      [
-        style({ opacity: 0, transform: "translateY(50px)" }),
-        stagger(30, [
-          animate("300ms ease-out", style({ opacity: 1, transform: "none" })),
-        ]),
-      ],
-      { optional: true }
-    ),
-  ]),
-]);
+export const fadeChildren = (childSelector: string) =>
+  trigger("fadeChildren", [
+    transition(":enter", [
+      query(
+        childSelector,
+        [
+          style({ opacity: 0, transform: "translateY(50px)" }),
+          stagger(30, [
+            animate("300ms ease-out", style({ opacity: 1, transform: "none" })),
+          ]),
+        ],
+        { optional: true }
+      ),
+    ]),
+  ]);
 
 function slideTo(direction: "left" | "right") {
   const optional = { optional: true };

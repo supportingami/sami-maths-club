@@ -6,7 +6,10 @@ const config: CapacitorConfig = {
   webDir: "dist/sami-maths-club-app",
   plugins: {
     SplashScreen: {
-      launchShowDuration: 0,
+      launchShowDuration: 2000,
+      launchAutoHide: true,
+      launchFadeOutDuration: 500,
+      backgroundColor: "#ffffffff",
     },
   },
   ios: {

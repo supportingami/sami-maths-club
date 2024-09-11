@@ -1,4 +1,10 @@
-import { Component, inject, NgZone, ViewEncapsulation } from "@angular/core";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  NgZone,
+  ViewEncapsulation,
+} from "@angular/core";
 import { AppService } from "./services/app.service";
 import { Router, RouterLink, RouterOutlet } from "@angular/router";
 import { slideTransition } from "./animations";
@@ -23,7 +29,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { DomSanitizer } from "@angular/platform-browser";
 import { LanguageSwitcherComponent } from "./components/language-switcher/language-switcher.component";
 import { MatButtonModule } from "@angular/material/button";
-import { AsyncPipe } from "@angular/common";
+import { toSignal } from "@angular/core/rxjs-interop";
 
 @Component({
   selector: "app-root",
@@ -33,7 +39,6 @@ import { AsyncPipe } from "@angular/common";
   animations: [slideTransition],
   standalone: true,
   imports: [
-    AsyncPipe,
     RouterLink,
     MatButtonModule,
     MatBottomSheetModule,
@@ -44,17 +49,22 @@ import { AsyncPipe } from "@angular/common";
     RouterOutlet,
     MatToolbarModule,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   version = environment.APP_VERSION;
+
+  public params = toSignal(this.appService.routeParams$);
 
   private _bottomSheet = inject(MatBottomSheet);
 
   constructor(
     public appService: AppService,
+    // ensure seo service initialised
+    public seo: SeoService,
+
     notifications: NotificationService,
     analytics: AnalyticsService,
-    seo: SeoService,
     private zone: NgZone,
     private router: Router,
     private iconRegistry: MatIconRegistry,
@@ -69,7 +79,7 @@ export class AppComponent {
       this.configureDeepLinks();
     } else {
       // SEO only relevant whe not native
-      seo.init();
+
       this.toggleAppOpenTargetSheet();
     }
   }

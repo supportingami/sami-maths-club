@@ -2,14 +2,9 @@
 name: PR Preview
 on:
   # use pull_request_target so that secrets accessible from fork
-  pull_request:
+  pull_request_target:
     # Trigger when labels are changed or more commits added to a PR that contains labels
     types: [labeled, synchronize]
-  # TODO - rever back when working
-  # # use pull_request_target so that secrets accessible from fork
-  # pull_request_target:
-  #   # Trigger when labels are changed or more commits added to a PR that contains labels
-  #   types: [labeled, synchronize]
 jobs:
   build_and_preview:
     # NOTE - as we are going to check out and build from forks we also need to add manual
@@ -47,7 +42,7 @@ jobs:
         env:
           FIREBASE_CONFIG_JSON: ${{secrets.FIREBASE_CONFIG_JSON}}
       - name: Build and Copy
-        run: cd maths-club-app && npm run build:prod
+        run: cd maths-club-app && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"

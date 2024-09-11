@@ -10,7 +10,7 @@
     "pack:generatePDF": "ts-node scripts/pdf-generate.ts",
     "pack:generateWeeklyList": "ts-node scripts/weekly-problem.ts",
     "app": "cd maths-club-app && npm run --",
-    "app:build": "cd maths-club-app && npm run build:prod && npx cap sync",
+    "build": "cd maths-club-app && npm run build && npx cap sync",
     "version": "ts-node scripts/version.ts"
   },
   "repository": {

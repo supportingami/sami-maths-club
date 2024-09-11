@@ -1,25 +1,31 @@
-**Update**
+## 2024-09 - Update List
+
+**Dependencies**
 
 - [x] ng core 11->18
 - [x] mat 11->16
 - [x] mat 16->18
 - [x] sentry
 - [x] ngx-markdown
-- [ ] capacitor
-- [ ] yarn
-- [ ] misc deps
+- [x] capacitor
+- [x] yarn
+- [x] misc deps
 - [ ] nx
 
 **Content**
 
 - [x] control flow migration
-- [ ] signals
+- [x] signals
 - [x] mat components
-- [ ] Weekly problem
+- [x] Weekly problem
+- [ ] route subscriptions signals
 
 **Actions**
 
-- [ ] ....
+- [x] pr preview
+- [ ] production deploy
+- [ ] screenshots
+- [ ] release drafter
 
 **Functions**
 
@@ -27,22 +33,22 @@
 
 **Docs**
 
-- [ ] pre-requisites
+- [x] pre-requisites
 
 **Test**
 
-- [ ] animations
-- [ ] scroll restoration
+- [x] animations
+- [x] scroll restoration
 - [x] markdown (katex)
-- [ ] web build
-- [ ] android build (+cap native functions)
-- [ ] ios build (+cap native functions)
-- [ ] ios content inset (notch)
+- [x] web
+- [ ] android
+- [ ] ios
 
-**IOS**
+**Android**
 
 - [ ] Splash screen
-- [ ] Native functionality (share, deep links)
+- [ ] Notch
+- [ ] Deep Links
 
 **IOS**
 
@@ -50,13 +56,14 @@
 - [ ] Enable push notification https://capacitorjs.com/docs/apis/push-notifications#ios
 - [ ] Check all other plugin notes
 - [ ] Splash screen
+- [ ] Universal links
 
 **Refactor**
 
 - [x] all components standalone
 - [x] provide sentry error handler (see legacy app module)
-- [ ] lazy-load component routes
-- [ ] async pipe -> signals
+- [x] lazy-load component routes
+- [x] async pipe -> signals
 - [ ] Dynamic links (deprecated?)
 - [ ] Lint rules (enforce control-flow, ordered imports)
 - [ ] Run prettier (write) `yarn prettier --write "**/*.{ts}"`
@@ -64,4 +71,6 @@
 
 **Misc**
 
-- [ ] Improve typography
+- [x] Improve typography
+- [x] Fix mat-card shadow
+- [ ] notch fixes and layout

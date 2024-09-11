@@ -1,7 +1,8 @@
 import { DOCUMENT } from "@angular/common";
-import { Inject, Injectable } from "@angular/core";
+import { effect, Inject, Injectable } from "@angular/core";
 import { Meta, Title } from "@angular/platform-browser";
 import { ProblemService } from "./problem.service";
+import { IProblem } from "../models/problem.models";
 
 @Injectable({
   providedIn: "root",
@@ -18,11 +19,11 @@ export class SeoService {
     private meta: Meta,
     private problemService: ProblemService,
     @Inject(DOCUMENT) private document: Document
-  ) {}
-
-  init() {
-    this.setDefaultMeta();
-    this._subscribeToProblemUpdates();
+  ) {
+    effect(() => {
+      const problem = this.problemService.activeProblem();
+      this.setProblemMeta(problem);
+    });
   }
 
   updateMeta = (update: IMetaUpdate) => {
@@ -55,22 +56,20 @@ export class SeoService {
     });
   }
 
-  private _subscribeToProblemUpdates() {
-    this.problemService.activeProblem$.subscribe((p) => {
-      if (p) {
-        const { origin, href } = this.document.location;
-        this.updateMeta({
-          title: p.title,
-          image: `/assets/maths-club-pack/cover_images/jpgs/${p.slug}.jpg`,
-          url: `${origin}/${href}`,
-          favicon: `/assets/maths-club-pack/cover_images/${p.slug}.svg`,
-          // TODO - include problem description meta
-          description: defaultDescription,
-        });
-      } else {
-        this.setDefaultMeta();
-      }
-    });
+  private setProblemMeta(p?: IProblem) {
+    if (p) {
+      const { origin, href } = this.document.location;
+      this.updateMeta({
+        title: p.title,
+        image: `/assets/maths-club-pack/cover_images/jpgs/${p.slug}.jpg`,
+        url: `${origin}/${href}`,
+        favicon: `/assets/maths-club-pack/cover_images/${p.slug}.svg`,
+        // TODO - include problem description meta
+        description: defaultDescription,
+      });
+    } else {
+      this.setDefaultMeta();
+    }
   }
 }
 interface IMetaUpdate {

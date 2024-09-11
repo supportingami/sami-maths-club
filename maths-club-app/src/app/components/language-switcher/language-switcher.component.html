@@ -5,7 +5,7 @@
   appearance="fill"
 >
   <mat-select
-    [value]="languageService.activeLanguage$ | async"
+    [value]="languageService.activeLanguage()"
     (selectionChange)="selectionChanged($event)"
   >
     @for (languageCode of languagesCodes; track languageCode) {

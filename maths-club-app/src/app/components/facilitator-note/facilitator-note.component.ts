@@ -1,29 +1,31 @@
-import { Component, ViewEncapsulation, ChangeDetectorRef } from "@angular/core";
+import {
+  Component,
+  ViewEncapsulation,
+  ChangeDetectionStrategy,
+  signal,
+} from "@angular/core";
 import { ProblemService } from "src/app/services/problem.service";
 import { fadeInOut } from "src/app/animations";
 import { MarkdownModule } from "ngx-markdown";
-import { AsyncPipe } from "@angular/common";
 
 @Component({
   selector: "app-facilitator-note",
   templateUrl: "./facilitator-note.component.html",
   styleUrls: ["./facilitator-note.component.scss"],
   encapsulation: ViewEncapsulation.None,
-  animations: [fadeInOut],
+  animations: [fadeInOut({ delay: "100ms" })],
   standalone: true,
-  imports: [AsyncPipe, MarkdownModule],
+  imports: [MarkdownModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FacilitatorNoteComponent {
-  markdownReady = false;
-  constructor(
-    public problemService: ProblemService,
-    private cdr: ChangeDetectorRef
-  ) {}
+  markdownReady = signal(false);
+  constructor(public problemService: ProblemService) {}
 
   onMarkdownReady() {
-    this.markdownReady = true;
-    // as markdown can be ready before page fully initialised complete manually trigger
-    // change detection to avoid change detection errors
-    this.cdr.detectChanges();
+    if (!this.markdownReady()) {
+      // hack - markdown ready seems to trigger twice
+      this.markdownReady.set(true);
+    }
   }
 }

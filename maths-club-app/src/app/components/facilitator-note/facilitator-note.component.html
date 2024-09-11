@@ -1,14 +1,10 @@
-@if (problemService.activeProblem$ | async; as problem) {
-  <div
-    class="markdown-container"
-    >
-    <div [@fadeInOut]="markdownReady ? 'in' : 'out'">
-      <markdown
-        id="markdownStyle"
-        [data]="problem.facilitatorVersionText"
-        katex
-        (ready)="onMarkdownReady()"
-      ></markdown>
-    </div>
-  </div>
-}
+<div class="markdown-container" [@fadeInOut]="markdownReady() ? 'in' : 'out'">
+  @if (problemService.activeProblem(); as problem) {
+  <markdown
+    id="markdownStyle"
+    [data]="problem.facilitatorVersionText"
+    katex
+    (ready)="onMarkdownReady()"
+  ></markdown>
+  }
+</div>
