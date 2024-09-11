@@ -52,9 +52,11 @@ export class AppComponent {
 
   constructor(
     public appService: AppService,
+    // ensure seo service initialised
+    public seo: SeoService,
+
     notifications: NotificationService,
     analytics: AnalyticsService,
-    seo: SeoService,
     private zone: NgZone,
     private router: Router,
     private iconRegistry: MatIconRegistry,
@@ -69,7 +71,7 @@ export class AppComponent {
       this.configureDeepLinks();
     } else {
       // SEO only relevant whe not native
-      seo.init();
+
       this.toggleAppOpenTargetSheet();
     }
   }
