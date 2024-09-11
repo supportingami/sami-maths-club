@@ -1,8 +1,5 @@
 import { Routes } from "@angular/router";
 
-import { ProblemsListComponent } from "./components/problems-list/problems-list.component";
-import { ProblemDetailComponent } from "./components/problem-detail/problem-detail.component";
-import { FacilitatorNoteComponent } from "./components/facilitator-note/facilitator-note.component";
 import { PrivacyPolicyComponent } from "./components/privacy-policy/privacy-policy.component";
 import { AppTermsComponent } from "./components/app-terms/app-terms.component";
 import { ContactComponent } from "./components/contact/contact.component";
@@ -13,17 +10,26 @@ export const routes: Routes = [
   { path: "contact", component: ContactComponent },
   {
     path: ":lang",
-    component: ProblemsListComponent,
+    loadComponent: () =>
+      import("./components/problems-list/problems-list.component").then(
+        (m) => m.ProblemsListComponent
+      ),
     data: { animation: "left" },
   },
   {
     path: ":lang/:slug",
-    component: ProblemDetailComponent,
+    loadComponent: () =>
+      import("./components/problem-detail/problem-detail.component").then(
+        (m) => m.ProblemDetailComponent
+      ),
     data: { animation: "center" },
   },
   {
     path: ":lang/:slug/notes",
-    component: FacilitatorNoteComponent,
+    loadComponent: () =>
+      import("./components/facilitator-note/facilitator-note.component").then(
+        (m) => m.FacilitatorNoteComponent
+      ),
     data: { animation: "right" },
   },
 

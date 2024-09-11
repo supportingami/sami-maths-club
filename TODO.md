@@ -5,21 +5,25 @@
 - [x] mat 16->18
 - [x] sentry
 - [x] ngx-markdown
-- [ ] capacitor
-- [ ] yarn
-- [ ] misc deps
+- [x] capacitor
+- [x] yarn
+- [x] misc deps
 - [ ] nx
 
 **Content**
 
 - [x] control flow migration
-- [ ] signals
+- [x] signals
 - [x] mat components
-- [ ] Weekly problem
+- [x] Weekly problem
+- [ ] route subscriptions signals
 
 **Actions**
 
-- [ ] ....
+- [x] pr preview
+- [ ] production deploy
+- [ ] screenshots
+- [ ] release drafter
 
 **Functions**
 
@@ -27,7 +31,7 @@
 
 **Docs**
 
-- [ ] pre-requisites
+- [x] pre-requisites
 
 **Test**
 
@@ -39,7 +43,7 @@
 - [ ] ios build (+cap native functions)
 - [ ] ios content inset (notch)
 
-**IOS**
+**Android**
 
 - [ ] Splash screen
 - [ ] Native functionality (share, deep links)
@@ -55,8 +59,8 @@
 
 - [x] all components standalone
 - [x] provide sentry error handler (see legacy app module)
-- [ ] lazy-load component routes
-- [ ] async pipe -> signals
+- [x] lazy-load component routes
+- [x] async pipe -> signals
 - [ ] Dynamic links (deprecated?)
 - [ ] Lint rules (enforce control-flow, ordered imports)
 - [ ] Run prettier (write) `yarn prettier --write "**/*.{ts}"`
