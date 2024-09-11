@@ -34,15 +34,14 @@ Once the platform has been added, the app should be built and synced across
 From the app folder run:
 
 ```
-npm run build
+yarn build
 npx cap sync
 ```
 
 Or from the main folder
 
 ```
-npm run app:build
-npm run app:sync
+yarn build
 ```
 
 Finally open Android studio in the generated folder `maths-club-app/android`

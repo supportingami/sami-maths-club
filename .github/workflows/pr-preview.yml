@@ -42,7 +42,7 @@ jobs:
         env:
           FIREBASE_CONFIG_JSON: ${{secrets.FIREBASE_CONFIG_JSON}}
       - name: Build and Copy
-        run: cd maths-club-app && npm run build:prod
+        run: cd maths-club-app && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
