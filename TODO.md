@@ -64,4 +64,5 @@
 
 **Misc**
 
-- [ ] Improve typography
+- [x] Improve typography
+- [ ] Fix mat-card shadow
