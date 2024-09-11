@@ -1,11 +1,13 @@
-import { Injectable, signal } from "@angular/core";
+import { computed, effect, Injectable, signal } from "@angular/core";
+import { toSignal } from "@angular/core/rxjs-interop";
 import { HttpClient } from "@angular/common/http";
 import { IProblemMeta, IProblem } from "../models/problem.models";
 import { Router, ActivatedRoute } from "@angular/router";
 import * as Sentry from "@sentry/angular";
 import { WEEKLY_PROBLEMS } from "../data/weeklyProblems";
-import { ILanguageCode, LanguageService } from "./language.service";
-import { AppService } from "./app.service";
+import { ILanguageCode } from "./language.service";
+import { AppService, IRouteParams } from "./app.service";
+import { firstValueFrom } from "rxjs";
 
 @Injectable({
   providedIn: "root",
@@ -14,25 +16,38 @@ export class ProblemService {
   public problems = signal<IProblemMeta[]>([]);
   public activeProblem = signal<IProblem | undefined>(undefined);
 
+  private routeParams = toSignal(this.appService.routeParams$);
+
+  private _lang: ILanguageCode;
+  private _slug: string;
+
   constructor(
     private http: HttpClient,
-    private languageService: LanguageService,
     private appService: AppService,
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.init();
+    effect(
+      async () => {
+        const params = this.routeParams();
+        await this.handleRouteParamChange(params);
+      },
+      { allowSignalWrites: true }
+    );
   }
 
-  get slug() {
-    return this.appService.routeParams$.value.slug;
-  }
-  get language() {
-    return this.languageService.activeLanguage$.value;
-  }
-
-  private async init() {
-    this._subscribeToRouteChanges();
+  private async handleRouteParamChange({ lang, slug }: IRouteParams) {
+    // if language changed reload all problems and active
+    if (lang !== this._lang) {
+      await this.getProblemList(lang);
+      await this.setActiveProblem(this._slug, lang);
+      this._lang = lang;
+    }
+    // if slug changed load problem
+    if (slug !== this._slug) {
+      await this.setActiveProblem(slug, lang);
+      this._slug = slug;
+    }
   }
 
   /**
@@ -61,9 +76,7 @@ export class ProblemService {
     // notify that the problems are not yet loaded
     this.problems.set([]);
     const url = `/assets/maths-club-pack/${language}/metadata.json`;
-    let problems = await this.http
-      .get<IProblemMeta[]>(url)
-      .toPromise()
+    let problems = await firstValueFrom(this.http.get<IProblemMeta[]>(url))
       // redirect if language metadata not available
       .catch(() => {
         this.router.navigate(["/"]);
@@ -84,14 +97,23 @@ export class ProblemService {
   }
 
   // Update the current active problem by slug
-  private async setActiveProblem(slug: string) {
+  private async setActiveProblem(slug: string, language: ILanguageCode) {
+    // unset any previous problem while loading new
     this.activeProblem.set(undefined);
+    if (!slug) return;
+
+    // problem changed, load student and facilitator version
     const meta = this.problems().find((p) => p.slug === slug);
     try {
-      const studentVersionText = await this.readProblemMD(slug, "student");
+      const studentVersionText = await this.readProblemMD(
+        slug,
+        "student",
+        language
+      );
       const facilitatorVersionText = await this.readProblemMD(
         slug,
-        "facilitator"
+        "facilitator",
+        language
       );
       this.activeProblem.set({
         ...meta,
@@ -101,30 +123,18 @@ export class ProblemService {
       this.appService.setMenubarTitle(meta.title);
     } catch (error) {
       // if problem does not exist, redirect back to language home
-      this.router.navigate(["/", this.language], { relativeTo: this.route });
+      this.router.navigate(["/", language], { relativeTo: this.route });
     }
   }
 
   private async readProblemMD(
     slug: string,
-    version: "facilitator" | "student"
+    version: "facilitator" | "student",
+    language: ILanguageCode
   ) {
-    const url = `/assets/maths-club-pack/${this.language}/${version}/${slug}.md`;
+    const url = `/assets/maths-club-pack/${language}/${version}/${slug}.md`;
     const res = await this.http.get(url, { responseType: "text" }).toPromise();
     return this.rewriteImageUrls(res);
-  }
-
-  private _subscribeToRouteChanges() {
-    this.appService.routeParams$.subscribe(async (params) => {
-      if (params.lang) {
-        await this.getProblemList(params.lang as any);
-      }
-      if (params.slug) {
-        await this.setActiveProblem(this.slug);
-      } else {
-        this.activeProblem.set(undefined);
-      }
-    });
   }
 
   /**

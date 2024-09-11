@@ -2,6 +2,7 @@ import { Inject, Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 import { DOCUMENT } from "@angular/common";
+import { ILanguageCode } from "./language.service";
 
 @Injectable({
   providedIn: "root",
@@ -52,7 +53,7 @@ export class AppService {
     });
   }
 }
-interface IRouteParams {
-  lang?: string;
+export interface IRouteParams {
+  lang?: ILanguageCode;
   slug?: string;
 }

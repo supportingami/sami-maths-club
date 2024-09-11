@@ -1,7 +1,6 @@
 import { DOCUMENT } from "@angular/common";
-import { Inject, Injectable } from "@angular/core";
+import { Inject, Injectable, signal } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { BehaviorSubject } from "rxjs";
 import { AppService } from "./app.service";
 
 export type ILanguageCode = "en" | "fr";
@@ -16,7 +15,7 @@ export const LANGUAGE_MAPPING: { [code in ILanguageCode]: string } = {
 })
 export class LanguageService {
   /** Language code corresponding to current active language */
-  activeLanguage$ = new BehaviorSubject<ILanguageCode>(null);
+  activeLanguage = signal<ILanguageCode | null>(null);
 
   constructor(
     @Inject(DOCUMENT) private document: any,
@@ -45,7 +44,7 @@ export class LanguageService {
           replaceUrl: true,
         });
       }
-      this.activeLanguage$.next(languageCode);
+      this.activeLanguage.set(languageCode);
     }
   }
 
@@ -54,7 +53,7 @@ export class LanguageService {
    */
   _subscribeToRouteLanguageChanges() {
     this.appService.routeParams$.subscribe((params) => {
-      if (params.lang && params.lang !== this.activeLanguage$.value) {
+      if (params.lang && params.lang !== this.activeLanguage()) {
         this.setLanguage(params.lang as ILanguageCode);
       }
     });

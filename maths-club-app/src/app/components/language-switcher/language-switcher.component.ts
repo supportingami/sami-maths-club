@@ -1,4 +1,3 @@
-import { AsyncPipe } from "@angular/common";
 import { Component } from "@angular/core";
 import { MatOptionModule } from "@angular/material/core";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -14,7 +13,7 @@ import {
   templateUrl: "./language-switcher.component.html",
   styleUrls: ["./language-switcher.component.scss"],
   standalone: true,
-  imports: [MatFormFieldModule, MatSelectModule, MatOptionModule, AsyncPipe],
+  imports: [MatFormFieldModule, MatSelectModule, MatOptionModule],
 })
 export class LanguageSwitcherComponent {
   languagesCodes: ILanguageCode[];
@@ -27,7 +26,7 @@ export class LanguageSwitcherComponent {
 
   selectionChanged(e: MatSelectChange) {
     const selected: ILanguageCode = e.value;
-    if (selected !== this.languageService.activeLanguage$.value) {
+    if (selected !== this.languageService.activeLanguage()) {
       this.languageService.setLanguage(selected);
     }
   }
