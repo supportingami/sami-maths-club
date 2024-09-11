@@ -32,6 +32,7 @@ $max-item-height: 150px;
   cursor: pointer;
   position: relative;
   height: $max-item-height;
+  padding: 8px;
 }
 
 .problem-image {
@@ -43,6 +44,10 @@ $max-item-height: 150px;
 }
 .problem-title {
   margin: 0;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: normal;
 }
 .featured-problem {
   position: absolute;

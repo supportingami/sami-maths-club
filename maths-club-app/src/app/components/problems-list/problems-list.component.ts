@@ -5,6 +5,7 @@ import * as Sentry from "@sentry/angular";
 import { Capacitor } from "@capacitor/core";
 import { App } from "@capacitor/app";
 import { RouterLink } from "@angular/router";
+import { MatCardModule } from "@angular/material/card";
 import { MatIconModule } from "@angular/material/icon";
 import { AsyncPipe } from "@angular/common";
 
@@ -14,7 +15,7 @@ import { AsyncPipe } from "@angular/common";
   styleUrls: ["./problems-list.component.scss"],
   animations: [fadeChildren],
   standalone: true,
-  imports: [AsyncPipe, RouterLink, MatIconModule],
+  imports: [AsyncPipe, RouterLink, MatIconModule, MatCardModule],
 })
 export class ProblemsListComponent implements OnInit, OnDestroy {
   constructor(public problemService: ProblemService) {}

@@ -1,25 +1,23 @@
 @if (problemService.problems$ | async; as problems) {
-  <div
-    class="problems-list-container"
-    [@fadeChildren]
-    >
-    @for (problem of problems; track problem) {
-      <mat-card
-        class="problem-card"
-        [routerLink]="[problem.slug]"
-        [attr.aria-label]="problem.slug"
-        >
-        <h2 class="problem-title">{{ problem.title }}</h2>
-        @if (problem.featured) {
-          <div class="featured-problem">Weekly Problem</div>
-        }
-        <div
-          class="problem-image"
+<div class="problems-list-container" [@fadeChildren]>
+  @for (problem of problems; track problem) {
+  <mat-card
+    class="problem-card"
+    [routerLink]="[problem.slug]"
+    [attr.aria-label]="problem.slug"
+  >
+    <h2 class="problem-title">{{ problem.title }}</h2>
+
+    @if (problem.featured) {
+    <div class="featured-problem">Weekly Problem</div>
+    }
+    <div
+      class="problem-image"
       [style.background-image]="
         'url(/assets/maths-club-pack/cover_images/' + problem.slug + '.svg)'
       "
-        ></div>
-      </mat-card>
-    }
-  </div>
+    ></div>
+  </mat-card>
+  }
+</div>
 }
