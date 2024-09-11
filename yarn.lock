@@ -542,7 +542,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:4, debug@npm:^4.3.4":
+"debug@npm:4, debug@npm:^4.1.1, debug@npm:^4.3.4":
   version: 4.3.7
   resolution: "debug@npm:4.3.7"
   dependencies:
@@ -555,20 +555,11 @@ __metadata:
   linkType: hard
 
 "debug@npm:^3.1.0":
-  version: 3.2.6
-  resolution: "debug@npm:3.2.6"
+  version: 3.2.7
+  resolution: "debug@npm:3.2.7"
   dependencies:
     ms: "npm:^2.1.1"
-  checksum: 10c0/406ae034424c5570c83bb7f7baf6a2321ace5b94d6f0032ec796c686e277a55bbb575712bb9e6f204e044b1a8c31981ba97fab725a09fcdc7f85cd89daf4de30
-  languageName: node
-  linkType: hard
-
-"debug@npm:^4.1.1":
-  version: 4.1.1
-  resolution: "debug@npm:4.1.1"
-  dependencies:
-    ms: "npm:^2.1.1"
-  checksum: 10c0/399e98c779ba4e71537497f10caf6390646b69330ff8a455427acce04f1ce8d8cd018e1804fdcca772177666fdcd888dd3672bb8f9986c1d785a6c2b9805f370
+  checksum: 10c0/37d96ae42cbc71c14844d2ae3ba55adf462ec89fd3a999459dec3833944cd999af6007ff29c780f1c61153bcaaf2c842d1e4ce1ec621e4fc4923244942e4a02a
   languageName: node
   linkType: hard
 
