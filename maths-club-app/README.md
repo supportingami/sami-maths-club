@@ -47,6 +47,25 @@ yarn build
 Finally open Android studio in the generated folder `maths-club-app/android`
 You should be able to build and run the app directly from android studio.
 
+**Use Live-Reload**
+Follow guide at: https://capacitorjs.com/docs/guides/live-reload#using-with-framework-clis
+
+Example change to `capacitor.config.ts`
+
+```ts
+server: {
+    url: "http://192.168.50.67:4200",
+    cleartext: true,
+  }
+```
+
+Example (windows) command to serve with host binding
+
+```sh
+cd maths-club-app
+yarn ng serve --host=0.0.0.0
+```
+
 ## Running on IOS
 
 TODO

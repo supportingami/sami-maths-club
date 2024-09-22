@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { NavigationEnd, Router } from "@angular/router";
-import "@capacitor-community/firebase-analytics";
-import { FirebaseAnalytics } from "@capacitor-community/firebase-analytics";
-
+import { FirebaseAnalytics } from "@capacitor-firebase/analytics";
 import { Capacitor } from "@capacitor/core";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
 import { environment } from "src/environments/environment";
 import { AnalyticsConsentComponent } from "../components/analytics-consent";
 
@@ -18,8 +19,6 @@ export class AnalyticsService {
    *  Initialise analytics to track route changes and share data
    *  Note - requires installation and initialisation of analytics sdk
    *  and google services json
-   *  API - https://github.com/capacitor-community/firebase-analytics
-   * NOTE - currently only enabled for native, but could be initialised for web
    */
   async init() {
     const consented = await this.verifyUserAnalyticsConsent();
@@ -27,9 +26,8 @@ export class AnalyticsService {
       // Only register analytics on web if production settings set
       if (Capacitor.getPlatform() === "web") {
         if (environment.FIREBASE_CONFIG) {
-          await FirebaseAnalytics.initializeFirebase(
-            environment.FIREBASE_CONFIG
-          );
+          const app = initializeApp(environment.FIREBASE_CONFIG);
+          const analytics = getAnalytics(app);
           this._subscribeToRouteChanges();
         } else {
           console.info("No analytics settings configured, skipping");
@@ -71,9 +69,9 @@ export class AnalyticsService {
     console.info("Analytics enabled");
     this.router.events.subscribe(async (e) => {
       if (e instanceof NavigationEnd) {
-        FirebaseAnalytics.setScreenName({
+        FirebaseAnalytics.setCurrentScreen({
           screenName: e.url,
-          nameOverride: null,
+          screenClassOverride: null,
         });
         FirebaseAnalytics.logEvent({
           name: "page_view",
