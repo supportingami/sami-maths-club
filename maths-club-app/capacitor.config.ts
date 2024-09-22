@@ -1,4 +1,5 @@
 /// <reference types="@capacitor-community/safe-area" />
+/// <reference types="@capacitor/splash-screen" />
 
 import type { CapacitorConfig } from "@capacitor/cli";
 
@@ -9,9 +10,10 @@ const config: CapacitorConfig = {
   plugins: {
     SplashScreen: {
       launchShowDuration: 2000,
-      launchAutoHide: true,
       launchFadeOutDuration: 500,
       backgroundColor: "#ffffffff",
+      splashFullScreen: true,
+      splashImmersive: true,
     },
     SafeArea: {
       enabled: true,

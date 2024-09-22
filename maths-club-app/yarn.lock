@@ -2017,6 +2017,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@capacitor/splash-screen@npm:^6.0.2":
+  version: 6.0.2
+  resolution: "@capacitor/splash-screen@npm:6.0.2"
+  peerDependencies:
+    "@capacitor/core": ^6.0.0
+  checksum: 10c0/4bb604d3e708dbb4d2e3d0bc994daac1507262f9aa9854316efab8ce2449ec01546425ecf33ed88a6165c30af6e7171750472b6d54af249ab9b8b1dbbde5374c
+  languageName: node
+  linkType: hard
+
 "@capacitor/status-bar@npm:^6.0.1":
   version: 6.0.1
   resolution: "@capacitor/status-bar@npm:6.0.1"
@@ -12250,6 +12259,7 @@ __metadata:
     "@capacitor/ios": "npm:6.1.2"
     "@capacitor/push-notifications": "npm:^6.0.2"
     "@capacitor/share": "npm:^6.0.2"
+    "@capacitor/splash-screen": "npm:^6.0.2"
     "@capacitor/status-bar": "npm:^6.0.1"
     "@sentry/angular": "npm:^8.29.0"
     "@types/jasmine": "npm:~3.7.1"

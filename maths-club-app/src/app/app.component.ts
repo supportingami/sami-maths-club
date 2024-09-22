@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   inject,
@@ -19,7 +20,6 @@ import { MatButtonModule } from "@angular/material/button";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { Capacitor } from "@capacitor/core";
 import { App } from "@capacitor/app";
-import { StatusBar, Style as StatusBarStyle } from "@capacitor/status-bar";
 
 import { environment } from "src/environments/environment";
 import { AppService } from "./services/app.service";
@@ -51,7 +51,7 @@ import { AppOpenTargetComponent } from "./components/app-open-target";
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   version = environment.APP_VERSION;
 
   public params = toSignal(this.appService.routeParams$);
@@ -64,25 +64,27 @@ export class AppComponent {
     public seo: SeoService,
 
     notifications: NotificationService,
-    analytics: AnalyticsService,
+    private analytics: AnalyticsService,
     private zone: NgZone,
     private router: Router,
     private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer
   ) {
     this.registerCustomIcons();
-    // this.notifications.init()
-    analytics.init();
-    if (Capacitor.isNativePlatform()) {
-      // Light text for dark backgrounds.
-      StatusBar.setStyle({ style: StatusBarStyle.Dark });
-      this.configureDeepLinks();
-    } else {
-      // SEO only relevant whe not native
 
+    if (Capacitor.isNativePlatform()) {
+      this.configureDeepLinks();
+    }
+  }
+
+  ngAfterViewInit() {
+    // this.notifications.init()
+    this.analytics.init();
+    if (Capacitor.getPlatform() === "web") {
       this.toggleAppOpenTargetSheet();
     }
   }
+
   getRouteAnimationState(outlet: RouterOutlet) {
     return (
       outlet &&
