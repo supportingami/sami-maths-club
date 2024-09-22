@@ -50,7 +50,6 @@
     "@types/jasmine": "~3.7.1",
     "@types/jasminewd2": "~2.0.9",
     "@types/node": "^15.0.2",
-    "codelyzer": "^6.0.2",
     "eslint": "^7.26.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
@@ -66,5 +65,13 @@
     "protractor": "~7.0.0",
     "ts-node": "~9.1.1",
     "typescript": "~5.4.5"
-  }
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 1 Firefox version",
+    "last 2 Edge major versions",
+    "last 2 Safari major versions",
+    "last 2 iOS major versions",
+    "Firefox ESR"
+  ]
 }
