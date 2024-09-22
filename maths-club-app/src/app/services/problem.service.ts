@@ -38,13 +38,13 @@ export class ProblemService {
 
   private async handleRouteParamChange({ lang, slug }: IRouteParams) {
     // if language changed reload all problems and active
-    if (lang !== this._lang) {
+    if (lang && lang !== this._lang) {
       await this.getProblemList(lang);
       await this.setActiveProblem(this._slug, lang);
       this._lang = lang;
     }
     // if slug changed load problem
-    if (slug !== this._slug) {
+    if (slug && slug !== this._slug) {
       await this.setActiveProblem(slug, lang);
       this._slug = slug;
     }

@@ -5,23 +5,10 @@ import {
   NgZone,
   ViewEncapsulation,
 } from "@angular/core";
-import { AppService } from "./services/app.service";
-import { Router, RouterLink, RouterOutlet } from "@angular/router";
-import { slideTransition } from "./animations";
-
-import { environment } from "src/environments/environment";
-import { NotificationService } from "./services/notification.service";
-
-import { Capacitor } from "@capacitor/core";
-import { App } from "@capacitor/app";
-import { StatusBar, Style as StatusBarStyle } from "@capacitor/status-bar";
-import { AnalyticsService } from "./services/analytics.service";
-import { SeoService } from "./services/seo.service";
 import {
   MatBottomSheet,
   MatBottomSheetModule,
 } from "@angular/material/bottom-sheet";
-import { AppOpenTargetComponent } from "./components/app-open-target";
 import { MatIconModule, MatIconRegistry } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
 import { MatSidenavModule } from "@angular/material/sidenav";
@@ -30,6 +17,19 @@ import { DomSanitizer } from "@angular/platform-browser";
 import { LanguageSwitcherComponent } from "./components/language-switcher/language-switcher.component";
 import { MatButtonModule } from "@angular/material/button";
 import { toSignal } from "@angular/core/rxjs-interop";
+import { Capacitor } from "@capacitor/core";
+import { App } from "@capacitor/app";
+import { StatusBar, Style as StatusBarStyle } from "@capacitor/status-bar";
+
+import { environment } from "src/environments/environment";
+import { AppService } from "./services/app.service";
+import { Router, RouterLink, RouterOutlet } from "@angular/router";
+import { slideTransition } from "./animations";
+import { NotificationService } from "./services/notification.service";
+import { AnalyticsService } from "./services/analytics.service";
+import { SeoService } from "./services/seo.service";
+
+import { AppOpenTargetComponent } from "./components/app-open-target";
 
 @Component({
   selector: "app-root",
