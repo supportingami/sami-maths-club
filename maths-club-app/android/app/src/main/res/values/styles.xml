@@ -20,10 +20,12 @@
         <item name="windowSplashScreenBackground">@color/colorPrimary</item>
         <item name="windowSplashScreenAnimationDuration">1000</item>
 
-        <!-- API 31+ specific attributes -->
-        <item name="windowSplashScreenAnimatedIcon">@drawable/sami_logo_animated</item>
+        <!-- NOTE - animated only available from API 31+ -->
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_logo</item>
 
-        <!-- <item name="android:windowSplashScreenBrandingImage"></item> -->
+        <item name="android:windowSplashScreenBrandingImage">@drawable/sami_branding</item>
+
+
         <!-- <item name="android:background">@drawable/splash</item> -->
 
         <!--        <item name="android:windowSplashScreenBehavior">icon_preferred</item>-->

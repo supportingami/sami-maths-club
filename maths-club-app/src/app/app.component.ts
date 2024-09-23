@@ -30,6 +30,7 @@ import { AnalyticsService } from "./services/analytics.service";
 import { SeoService } from "./services/seo.service";
 
 import { AppOpenTargetComponent } from "./components/app-open-target";
+import { SafeArea } from "@capacitor-community/safe-area";
 
 @Component({
   selector: "app-root",
@@ -70,11 +71,10 @@ export class AppComponent implements AfterViewInit {
     private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer
   ) {
-    this.registerCustomIcons();
-
     if (Capacitor.isNativePlatform()) {
       this.configureDeepLinks();
     }
+    this.registerCustomIcons();
   }
 
   ngAfterViewInit() {
@@ -92,6 +92,25 @@ export class AppComponent implements AfterViewInit {
       outlet.activatedRouteData["animation"]
     );
   }
+
+  /**
+   * Legacy method used with splash screen plugin which would
+   * sometimes lost safeArea and status bar updates on load
+   * (re-configure with same settings defined in capacitor.config.ts)
+   * */
+  private configureSplashAndStatus() {
+    SafeArea.enable({
+      config: {
+        customColorsForSystemBars: true,
+        statusBarColor: "#03a9f4", // SAMI Theme color
+        statusBarContent: "light",
+        navigationBarColor: "#03a9f4",
+        navigationBarContent: "light",
+        offset: 0,
+      },
+    });
+  }
+
   /**
    * Present a bottom sheet to encourage user to use native version of app if running
    * on mobile

@@ -8,13 +8,6 @@ const config: CapacitorConfig = {
   appName: "Maths Club",
   webDir: "dist/sami-maths-club-app",
   plugins: {
-    SplashScreen: {
-      launchShowDuration: 2000,
-      launchFadeOutDuration: 500,
-      backgroundColor: "#ffffffff",
-      splashFullScreen: true,
-      splashImmersive: true,
-    },
     SafeArea: {
       enabled: true,
       customColorsForSystemBars: true,
