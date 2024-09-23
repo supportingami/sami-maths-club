@@ -10,7 +10,6 @@
 - [x] capacitor
 - [x] yarn
 - [x] misc deps
-- [ ] nx
 
 **Content**
 
@@ -18,7 +17,7 @@
 - [x] signals
 - [x] mat components
 - [x] Weekly problem
-- [ ] route subscriptions signals
+- [x] route subscriptions signals
 
 **Actions**
 
@@ -41,7 +40,7 @@
 - [x] scroll restoration
 - [x] markdown (katex)
 - [x] web
-- [ ] android
+- [x] android
 - [ ] ios
 
 **Android**
@@ -49,10 +48,13 @@
 - [ ] Splash screen
 - [ ] Notch
 - [ ] Deep Links
+- [ ] Add crashlytics
 
 **IOS**
 
 - [ ] Configure plist for status bar: https://capacitorjs.com/docs/apis/status-bar#ios-note
+- [ ] Notch
+- [ ] Analytics
 - [ ] Enable push notification https://capacitorjs.com/docs/apis/push-notifications#ios
 - [ ] Check all other plugin notes
 - [ ] Splash screen
@@ -68,6 +70,8 @@
 - [ ] Lint rules (enforce control-flow, ordered imports)
 - [ ] Run prettier (write) `yarn prettier --write "**/*.{ts}"`
 - [ ] problems standalone repo (?)
+- [ ] Add nx
+- [ ] Add esbuild
 
 **Misc**
 
