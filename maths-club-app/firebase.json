@@ -5,16 +5,16 @@
     "rewrites": [
       {
         "source": "**",
-        "function": "seoHost2"
+        "function": {
+          "functionId": "seoHost2",
+          "pinTag": true
+        }
       }
     ]
   },
   "functions": {
-    "predeploy": [
-      "yarn --cwd \"$RESOURCE_DIR\" install",
-      "npm --prefix \"$RESOURCE_DIR\" run lint",
-      "npm --prefix \"$RESOURCE_DIR\" run build"
-    ],
-    "source": "functions"
+    "predeploy": ["npm --prefix \"$RESOURCE_DIR\" run lint"],
+    "source": "functions",
+    "runtime": "nodejs20"
   }
 }

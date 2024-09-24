@@ -1,4 +1,5 @@
-import * as functions from "firebase-functions";
+import type { Request } from "firebase-functions/https";
+
 import * as fs from "fs";
 import { JSDOM } from "jsdom";
 
@@ -18,7 +19,7 @@ import { JSDOM } from "jsdom";
  * Workarounds attempted with http get requests but messy
  * */
 
-export const seoHost = functions.https.onRequest(async (req, res) => {
+export const seoHost = (req: Request) => {
   const userAgent = req.headers["user-agent"];
   const baseURL = `${req.protocol}://${req.hostname}`;
   let indexHTML = fs.readFileSync("assets/index.html").toString();
@@ -33,8 +34,8 @@ export const seoHost = functions.https.onRequest(async (req, res) => {
   } else {
     console.log("is-not-bot", userAgent);
   }
-  res.status(200).send(indexHTML);
-});
+  return indexHTML;
+};
 
 const updateProblemTags = (
   slug: string,

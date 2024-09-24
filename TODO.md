@@ -28,7 +28,9 @@
 
 **Functions**
 
-- [ ] ...
+- [x] Upgrade to v2 SEOHost
+- [ ] Used pinned tags to [colocate hosting and function assets](https://firebase.google.com/docs/hosting/functions#direct-requests-to-function)
+- [ ] Fix web deployment action
 
 **Docs**
 
