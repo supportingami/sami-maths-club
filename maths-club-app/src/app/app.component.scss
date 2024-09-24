@@ -6,7 +6,7 @@ mat-sidenav-container {
 }
 
 mat-sidenav {
-  --mat-sidenav-container-width: 200px;
+  --mat-sidenav-container-width: 240px;
   --mat-list-list-item-leading-icon-start-space: 8px;
   --mat-list-list-item-leading-icon-end-space: 8px;
   --mdc-list-list-item-leading-icon-color: black;
@@ -24,6 +24,7 @@ mat-toolbar {
 .bottom-items {
   position: absolute;
   bottom: 0;
+  padding-bottom: var(--safe-area-inset-bottom);
 }
 .nav-title {
   flex: 1;

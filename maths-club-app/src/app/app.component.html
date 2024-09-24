@@ -1,12 +1,12 @@
 <mat-sidenav-container>
-  <mat-sidenav #snav mode="over" class="safe-padding-top safe-padding-side">
+  <mat-sidenav #snav mode="over">
     <mat-nav-list (click)="snav.close()">
       <mat-list-item routerLink="/">
         <mat-icon matListItemIcon>home</mat-icon>
         <a matListItemTitle href="/"> Problems</a>
       </mat-list-item>
 
-      <div class="bottom-items">
+      <div class="bottom-items safe-padding-side safe-padding-bottom">
         <a mat-list-item routerLink="privacy">Privacy Policy</a>
         <a mat-list-item routerLink="app-terms">Terms and Conditions</a>
         <a mat-list-item routerLink="contact">Contact</a>

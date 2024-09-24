@@ -1,5 +1,4 @@
 /// <reference types="@capacitor-community/safe-area" />
-/// <reference types="@capacitor/splash-screen" />
 
 import type { CapacitorConfig } from "@capacitor/cli";
 
@@ -13,7 +12,7 @@ const config: CapacitorConfig = {
       customColorsForSystemBars: true,
       statusBarColor: "#03a9f4", // SAMI Theme color
       statusBarContent: "light",
-      navigationBarColor: "#03a9f4",
+      navigationBarColor: "#00FFFFFF", // transparent
       navigationBarContent: "light",
       offset: 0,
     },

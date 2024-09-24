@@ -21,6 +21,8 @@ import { toSignal } from "@angular/core/rxjs-interop";
 import { Capacitor } from "@capacitor/core";
 import { App } from "@capacitor/app";
 
+import CAPACITOR_CONFIG from "../../capacitor.config";
+
 import { environment } from "src/environments/environment";
 import { AppService } from "./services/app.service";
 import { Router, RouterLink, RouterOutlet } from "@angular/router";
@@ -72,6 +74,7 @@ export class AppComponent implements AfterViewInit {
     private sanitizer: DomSanitizer
   ) {
     if (Capacitor.isNativePlatform()) {
+      this.configureSafeAreaView();
       this.configureDeepLinks();
     }
     this.registerCustomIcons();
@@ -98,16 +101,9 @@ export class AppComponent implements AfterViewInit {
    * sometimes lost safeArea and status bar updates on load
    * (re-configure with same settings defined in capacitor.config.ts)
    * */
-  private configureSplashAndStatus() {
+  private configureSafeAreaView() {
     SafeArea.enable({
-      config: {
-        customColorsForSystemBars: true,
-        statusBarColor: "#03a9f4", // SAMI Theme color
-        statusBarContent: "light",
-        navigationBarColor: "#03a9f4",
-        navigationBarContent: "light",
-        offset: 0,
-      },
+      config: CAPACITOR_CONFIG.plugins.SafeArea,
     });
   }
 
