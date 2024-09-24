@@ -1,27 +1,15 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   inject,
   NgZone,
   ViewEncapsulation,
 } from "@angular/core";
-import { AppService } from "./services/app.service";
-import { Router, RouterLink, RouterOutlet } from "@angular/router";
-import { slideTransition } from "./animations";
-
-import { environment } from "src/environments/environment";
-import { NotificationService } from "./services/notification.service";
-
-import { Capacitor } from "@capacitor/core";
-import { App } from "@capacitor/app";
-import { StatusBar, Style as StatusBarStyle } from "@capacitor/status-bar";
-import { AnalyticsService } from "./services/analytics.service";
-import { SeoService } from "./services/seo.service";
 import {
   MatBottomSheet,
   MatBottomSheetModule,
 } from "@angular/material/bottom-sheet";
-import { AppOpenTargetComponent } from "./components/app-open-target";
 import { MatIconModule, MatIconRegistry } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
 import { MatSidenavModule } from "@angular/material/sidenav";
@@ -30,6 +18,22 @@ import { DomSanitizer } from "@angular/platform-browser";
 import { LanguageSwitcherComponent } from "./components/language-switcher/language-switcher.component";
 import { MatButtonModule } from "@angular/material/button";
 import { toSignal } from "@angular/core/rxjs-interop";
+import { Capacitor } from "@capacitor/core";
+import { App } from "@capacitor/app";
+
+import CAPACITOR_CONFIG from "../../capacitor.config";
+
+import { environment } from "src/environments/environment";
+import { AppService } from "./services/app.service";
+import { Router, RouterLink, RouterOutlet } from "@angular/router";
+import { slideTransition } from "./animations";
+import { NotificationService } from "./services/notification.service";
+import { AnalyticsService } from "./services/analytics.service";
+import { SeoService } from "./services/seo.service";
+
+import { AppOpenTargetComponent } from "./components/app-open-target";
+import { SafeArea } from "@capacitor-community/safe-area";
+import { CrashlyticsService } from "./services/crashlytics.service";
 
 @Component({
   selector: "app-root",
@@ -51,7 +55,7 @@ import { toSignal } from "@angular/core/rxjs-interop";
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   version = environment.APP_VERSION;
 
   public params = toSignal(this.appService.routeParams$);
@@ -64,25 +68,29 @@ export class AppComponent {
     public seo: SeoService,
 
     notifications: NotificationService,
-    analytics: AnalyticsService,
+    private analytics: AnalyticsService,
+    private crashlytics: CrashlyticsService,
     private zone: NgZone,
     private router: Router,
     private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer
   ) {
-    this.registerCustomIcons();
-    // this.notifications.init()
-    analytics.init();
     if (Capacitor.isNativePlatform()) {
-      // Light text for dark backgrounds.
-      StatusBar.setStyle({ style: StatusBarStyle.Dark });
+      this.configureSafeAreaView();
       this.configureDeepLinks();
-    } else {
-      // SEO only relevant whe not native
+    }
+    this.registerCustomIcons();
+  }
 
+  ngAfterViewInit() {
+    // this.notifications.init()
+    this.crashlytics.init();
+    this.analytics.init();
+    if (Capacitor.getPlatform() === "web") {
       this.toggleAppOpenTargetSheet();
     }
   }
+
   getRouteAnimationState(outlet: RouterOutlet) {
     return (
       outlet &&
@@ -90,6 +98,18 @@ export class AppComponent {
       outlet.activatedRouteData["animation"]
     );
   }
+
+  /**
+   * Legacy method used with splash screen plugin which would
+   * sometimes lost safeArea and status bar updates on load
+   * (re-configure with same settings defined in capacitor.config.ts)
+   * */
+  private configureSafeAreaView() {
+    SafeArea.enable({
+      config: CAPACITOR_CONFIG.plugins.SafeArea,
+    });
+  }
+
   /**
    * Present a bottom sheet to encourage user to use native version of app if running
    * on mobile

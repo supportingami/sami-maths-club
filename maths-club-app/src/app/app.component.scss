@@ -6,7 +6,7 @@ mat-sidenav-container {
 }
 
 mat-sidenav {
-  --mat-sidenav-container-width: 200px;
+  --mat-sidenav-container-width: 240px;
   --mat-list-list-item-leading-icon-start-space: 8px;
   --mat-list-list-item-leading-icon-end-space: 8px;
   --mdc-list-list-item-leading-icon-color: black;
@@ -24,6 +24,7 @@ mat-toolbar {
 .bottom-items {
   position: absolute;
   bottom: 0;
+  padding-bottom: var(--safe-area-inset-bottom);
 }
 .nav-title {
   flex: 1;
@@ -40,10 +41,15 @@ mat-toolbar {
   text-align: left;
 }
 // IOS Style Safe Areas - viewport-fit=cover fills notch space, so add padding as required
+// Vars set by https://github.com/capacitor-community/safe-area?tab=readme-ov-file#examples
+// Default capacitor sets env (which aren't detected correctly on some android devices)
 .safe-padding-top {
-  padding-top: env(safe-area-inset-top) !important;
+  padding-top: var(--safe-area-inset-top) !important;
+}
+.safe-padding-bottom {
+  padding-bottom: var(--safe-area-inset-bottom) !important;
 }
 .safe-padding-side {
-  padding-left: env(safe-area-inset-left) !important ;
-  padding-right: env(safe-area-inset-right) !important;
+  padding-left: var(--safe-area-inset-left) !important ;
+  padding-right: var(--safe-area-inset-right) !important;
 }
