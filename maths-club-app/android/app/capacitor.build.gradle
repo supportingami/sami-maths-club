@@ -11,7 +11,9 @@ apply from: "../capacitor-cordova-android-plugins/cordova.variables.gradle"
 dependencies {
     implementation project(':capacitor-community-safe-area')
     implementation project(':capacitor-firebase-analytics')
+    implementation project(':capacitor-firebase-crashlytics')
     implementation project(':capacitor-app')
+    implementation project(':capacitor-device')
     implementation project(':capacitor-dialog')
     implementation project(':capacitor-push-notifications')
     implementation project(':capacitor-share')

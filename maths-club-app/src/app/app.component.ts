@@ -33,6 +33,7 @@ import { SeoService } from "./services/seo.service";
 
 import { AppOpenTargetComponent } from "./components/app-open-target";
 import { SafeArea } from "@capacitor-community/safe-area";
+import { CrashlyticsService } from "./services/crashlytics.service";
 
 @Component({
   selector: "app-root",
@@ -68,6 +69,7 @@ export class AppComponent implements AfterViewInit {
 
     notifications: NotificationService,
     private analytics: AnalyticsService,
+    private crashlytics: CrashlyticsService,
     private zone: NgZone,
     private router: Router,
     private iconRegistry: MatIconRegistry,
@@ -82,6 +84,7 @@ export class AppComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     // this.notifications.init()
+    this.crashlytics.init();
     this.analytics.init();
     if (Capacitor.getPlatform() === "web") {
       this.toggleAppOpenTargetSheet();

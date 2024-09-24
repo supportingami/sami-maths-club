@@ -1,6 +1,10 @@
 <mat-sidenav-container>
   <mat-sidenav #snav mode="over">
-    <mat-nav-list (click)="snav.close()">
+    <mat-nav-list
+      (click)="snav.close()"
+      class="safe-padding-top"
+      style="margin-top: 1rem"
+    >
       <mat-list-item routerLink="/">
         <mat-icon matListItemIcon>home</mat-icon>
         <a matListItemTitle href="/"> Problems</a>
