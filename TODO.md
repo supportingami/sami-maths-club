@@ -30,6 +30,9 @@
 
 - [x] Upgrade to v2 SEOHost
 - [ ] Used pinned tags to [colocate hosting and function assets](https://firebase.google.com/docs/hosting/functions#direct-requests-to-function)
+- [ ] Consider using predeploy to ensure index.html copied over
+- [ ] Update source files uploaded to contain bare minimum
+      https://console.cloud.google.com/run/detail/europe-west1/seohost2/source
 - [ ] Fix web deployment action
 
 **Docs**
