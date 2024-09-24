@@ -7,5 +7,6 @@
     <!-- NOTE - animated only available from API 31+ -->
     <item name="windowSplashScreenAnimatedIcon">@drawable/splash_animated</item>
     <item name="android:windowSplashScreenBrandingImage">@drawable/sami_branding</item>
+    <item name="android:windowSplashScreenBehavior">icon_preferred</item>
   </style>
 </resources>
