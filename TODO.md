@@ -77,4 +77,8 @@
 
 - [x] Improve typography
 - [x] Fix mat-card shadow
-- [ ] notch fixes and layout
+- [x] notch fixes and layout
+
+**Content**
+
+- [ ] Separate out into standalone git repo and add as submodule to app repo
