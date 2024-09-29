@@ -68,7 +68,10 @@ yarn ng serve --host=0.0.0.0
 
 ## Running on IOS
 
-TODO
+Run from xcode
+
+Build production via `product -> archive` and select provisioning profile
+Can upload to testflight/app store connect from output view
 
 # Angular Docs
 
