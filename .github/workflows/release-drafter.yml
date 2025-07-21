@@ -12,7 +12,7 @@ jobs:
     steps:
       # Extract current version number from package.json and set it as the APP_VERSION env variable
       - name: checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@v4
       - name: get_version
         run: echo "APP_VERSION=$(echo "$(cat package.json | jq -r '.version')")" >> $GITHUB_ENV
       - name: check_version
