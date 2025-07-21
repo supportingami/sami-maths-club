@@ -3,6 +3,7 @@ name: Build and Deploy Production
 on:
   release:
     types: [published]
+  workflow_dispatch:
 jobs:
   build_dist:
     name: Build Production
@@ -11,11 +12,10 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
         # TODO - consider gradle/swift caches as well - https://github.com/actions/cache/blob/main/examples.md#java---gradle
-      - name: Setup Cache
-        uses: actions/cache@v4
+      - uses: actions/setup-node@v4
         with:
-          path: "**/node_modules"
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          node-version: 22
+          cache: "yarn"
       - name: Install Dependencies
         run: yarn install
       - name: Populate Config
@@ -23,7 +23,7 @@ jobs:
         env:
           FIREBASE_CONFIG_JSON: ${{secrets.FIREBASE_CONFIG_JSON}}
       - name: Build and Copy
-        run: cd maths-club-app && npm run build
+        run: cd maths-club-app && yarn build
         # Store various folders as artifacts for use by other jobs (ignore node modules except those needed by capacitor)
       - name: Store Build Artifact
         uses: actions/upload-artifact@v4
@@ -60,11 +60,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: maths-club-app
-      - name: Setup Cache
-        uses: actions/cache@v4
+      - uses: actions/setup-node@v4
         with:
-          path: "**/node_modules"
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          node-version: 22
+          cache: "yarn"
       - name: Install Dependencies
         run: yarn install --silent
       - name: Sync capacitor plugins
@@ -107,11 +106,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: maths-club-app
-      - name: Setup Cache
-        uses: actions/cache@v4
+      - uses: actions/setup-node@v4
         with:
-          path: "**/node_modules"
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          node-version: 22
+          cache: "yarn"
       - name: Install Dependencies
         run: yarn install --silent
       - name: Sync capacitor plugins

@@ -1,8 +1,7 @@
 # Create production builds for web, ios and android, and deploy to relevant providers
 name: Generate Screenshots
 on:
-  release:
-    types: [published]
+  workflow_dispatch:
 jobs:
   build_dist:
     name: Build Production
@@ -10,11 +9,10 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
-      - name: Setup Cache
-        uses: actions/cache@v4
+      - uses: actions/setup-node@v4
         with:
-          path: "**/node_modules"
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          node-version: 22
+          cache: "yarn"
       - name: Install Dependencies
         run: yarn install
       - name: Populate Config
@@ -42,11 +40,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: maths-club-app
-      - name: Setup Cache
-        uses: actions/cache@v4
+      - uses: actions/setup-node@v4
         with:
-          path: "**/node_modules"
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          node-version: 22
+          cache: "yarn"
       - name: Install Dependencies
         run: yarn install --silent
       - name: Sync capacitor plugins
@@ -87,24 +84,15 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: maths-club-app
-      - name: Setup Cache
-        uses: actions/cache@v4
+      - uses: actions/setup-node@v4
         with:
-          path: "**/node_modules"
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          node-version: 22
+          cache: "yarn"
       - name: Install Dependencies
         run: yarn install --silent
       - name: Sync capacitor plugins
         run: npx cap sync android
-      # - name: Setup Cache
-      #   uses: actions/cache@v4
-      #   with:
-      #     path: |
-      #       ~/.gradle/caches
-      #       ~/.gradle/wrapper
-      #     key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-gradle-
+
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
