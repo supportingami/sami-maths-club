@@ -1903,41 +1903,41 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor-community/safe-area@npm:^6.0.0-alpha.7":
-  version: 6.0.0-alpha.7
-  resolution: "@capacitor-community/safe-area@npm:6.0.0-alpha.7"
+"@capacitor-community/safe-area@npm:^7.0.0-alpha.1":
+  version: 7.0.0-alpha.1
+  resolution: "@capacitor-community/safe-area@npm:7.0.0-alpha.1"
   peerDependencies:
-    "@capacitor/core": ^6.0.0
-  checksum: 10c0/a37c4071d44bbe02e1ad995c1ff581827bd009330261723a04a23d74d859f050e804fef27e9c208751b8b672e68a58dd4da4ef467931f431ec30c5acfb3ce140
+    "@capacitor/core": ">=7.0.0"
+  checksum: 10c0/d744bf0043e0ff7534411cdf7215e36ca6f57d92e02f02e660042095f80ee54828695bf00471bf3f31467a4b6c10c940b041e910d3509c5f0c238f0f42e27574
   languageName: node
   linkType: hard
 
-"@capacitor-firebase/analytics@npm:^6.1.0":
-  version: 6.1.0
-  resolution: "@capacitor-firebase/analytics@npm:6.1.0"
+"@capacitor-firebase/analytics@npm:^7.2.0":
+  version: 7.2.0
+  resolution: "@capacitor-firebase/analytics@npm:7.2.0"
   peerDependencies:
-    "@capacitor/core": ^6.0.0
-    firebase: ^10.9.0
+    "@capacitor/core": ">=7.0.0"
+    firebase: ^11.2.0
   peerDependenciesMeta:
     firebase:
       optional: true
-  checksum: 10c0/48c34c2fd9987a24347bad356d1d9f00ccd90980a1fc95ce1e6c8ad630358ad0d6fbd991bcbffb37fd979bb67a1dfdf14b08df8ca3928efdef44e731c70e0047
+  checksum: 10c0/ce02a4e2ecf618d2113a1705c232f127f8baff38bda560b6bc3a3ac0b7831b8aade340c5b98094ca116e4a9d6fe2b0971fa3fab00d3751de4c016220039df06c
   languageName: node
   linkType: hard
 
-"@capacitor-firebase/crashlytics@npm:^6.1.0":
-  version: 6.1.0
-  resolution: "@capacitor-firebase/crashlytics@npm:6.1.0"
+"@capacitor-firebase/crashlytics@npm:^7.2.0":
+  version: 7.2.0
+  resolution: "@capacitor-firebase/crashlytics@npm:7.2.0"
   peerDependencies:
-    "@capacitor/core": ^6.0.0
+    "@capacitor/core": ">=7.0.0"
   peerDependenciesMeta:
     firebase:
       optional: true
-  checksum: 10c0/dae52c07116aa2fd21ef441ef1a1f56a4c6f7b55651d6294ff9c89593e67b9cab397fd862f2233d659040c0690903401d5b0b3811d72a68bc61ad614cb81e2d7
+  checksum: 10c0/82a142871773b981035b84a8676fc163dea17f9b9c8c4fbedbdb1b0cc78662a037457feb8689626a3c0fea9ff815de8fba54ec705d0b3c87700828dcf325cd91
   languageName: node
   linkType: hard
 
-"@capacitor/android@npm:^7.0.0":
+"@capacitor/android@npm:^7.4.2":
   version: 7.4.2
   resolution: "@capacitor/android@npm:7.4.2"
   peerDependencies:
@@ -1946,7 +1946,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/app@npm:^7.0.0":
+"@capacitor/app@npm:^7.0.1":
   version: 7.0.1
   resolution: "@capacitor/app@npm:7.0.1"
   peerDependencies:
@@ -1955,7 +1955,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/cli@npm:^7.0.0":
+"@capacitor/cli@npm:^7.4.2":
   version: 7.4.2
   resolution: "@capacitor/cli@npm:7.4.2"
   dependencies:
@@ -1983,7 +1983,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/core@npm:^7.0.0":
+"@capacitor/core@npm:^7.4.2":
   version: 7.4.2
   resolution: "@capacitor/core@npm:7.4.2"
   dependencies:
@@ -1992,7 +1992,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/device@npm:^7.0.0":
+"@capacitor/device@npm:^7.0.1":
   version: 7.0.1
   resolution: "@capacitor/device@npm:7.0.1"
   peerDependencies:
@@ -2001,7 +2001,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/dialog@npm:^7.0.0":
+"@capacitor/dialog@npm:^7.0.1":
   version: 7.0.1
   resolution: "@capacitor/dialog@npm:7.0.1"
   peerDependencies:
@@ -2010,7 +2010,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/ios@npm:^7.0.0":
+"@capacitor/ios@npm:^7.4.2":
   version: 7.4.2
   resolution: "@capacitor/ios@npm:7.4.2"
   peerDependencies:
@@ -2019,7 +2019,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/push-notifications@npm:^7.0.0":
+"@capacitor/push-notifications@npm:^7.0.1":
   version: 7.0.1
   resolution: "@capacitor/push-notifications@npm:7.0.1"
   peerDependencies:
@@ -2028,7 +2028,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/share@npm:^7.0.0":
+"@capacitor/share@npm:^7.0.1":
   version: 7.0.1
   resolution: "@capacitor/share@npm:7.0.1"
   peerDependencies:
@@ -2037,7 +2037,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/status-bar@npm:^7.0.0":
+"@capacitor/status-bar@npm:^7.0.1":
   version: 7.0.1
   resolution: "@capacitor/status-bar@npm:7.0.1"
   peerDependencies:
@@ -12291,19 +12291,19 @@ __metadata:
     "@angular/platform-browser": "npm:^18.2.3"
     "@angular/platform-browser-dynamic": "npm:^18.2.3"
     "@angular/router": "npm:^18.2.3"
-    "@capacitor-community/safe-area": "npm:^6.0.0-alpha.7"
-    "@capacitor-firebase/analytics": "npm:^6.1.0"
-    "@capacitor-firebase/crashlytics": "npm:^6.1.0"
-    "@capacitor/android": "npm:^7.0.0"
-    "@capacitor/app": "npm:^7.0.0"
-    "@capacitor/cli": "npm:^7.0.0"
-    "@capacitor/core": "npm:^7.0.0"
-    "@capacitor/device": "npm:^7.0.0"
-    "@capacitor/dialog": "npm:^7.0.0"
-    "@capacitor/ios": "npm:^7.0.0"
-    "@capacitor/push-notifications": "npm:^7.0.0"
-    "@capacitor/share": "npm:^7.0.0"
-    "@capacitor/status-bar": "npm:^7.0.0"
+    "@capacitor-community/safe-area": "npm:^7.0.0-alpha.1"
+    "@capacitor-firebase/analytics": "npm:^7.2.0"
+    "@capacitor-firebase/crashlytics": "npm:^7.2.0"
+    "@capacitor/android": "npm:^7.4.2"
+    "@capacitor/app": "npm:^7.0.1"
+    "@capacitor/cli": "npm:^7.4.2"
+    "@capacitor/core": "npm:^7.4.2"
+    "@capacitor/device": "npm:^7.0.1"
+    "@capacitor/dialog": "npm:^7.0.1"
+    "@capacitor/ios": "npm:^7.4.2"
+    "@capacitor/push-notifications": "npm:^7.0.1"
+    "@capacitor/share": "npm:^7.0.1"
+    "@capacitor/status-bar": "npm:^7.0.1"
     "@sentry/angular": "npm:^8.29.0"
     "@types/jasmine": "npm:~3.7.1"
     "@types/jasminewd2": "npm:~2.0.9"
