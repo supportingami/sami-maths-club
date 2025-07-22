@@ -1,6 +1,6 @@
 {
   "name": "sami-maths-club",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -37,5 +37,6 @@
     "sitemap": "^6.3.0",
     "ts-node": "^9.1.1",
     "typescript": "~3.8.3"
-  }
+  },
+  "packageManager": "yarn@4.9.2"
 }
