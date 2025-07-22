@@ -1,7 +1,6 @@
 package io.c2dev.samimathsclub;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.getcapacitor.BridgeActivity;
@@ -26,5 +25,8 @@ public class MainActivity extends BridgeActivity {
     if(SPLASH_DELAY > 0){
         new SplashDelay().run(SPLASH_DELAY, content);
     }
+
+    // Apply status bar inset to root view
+    StatusBarUtil.addStatusBarOverlay(this,"#03a9f4");
   }
 }
