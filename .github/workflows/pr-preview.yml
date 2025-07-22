@@ -19,14 +19,14 @@ jobs:
           # pull the repo from the pull request source, not the default local repo
           ref: ${{ github.event.pull_request.head.sha }}
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Enable Corepack
+        run: corepack enable
+      - uses: actions/setup-node@v4
         with:
-          node-version: 22.x
+          node-version: 22
           cache: "yarn"
-
-      - name: Install node modules
-        run: corepack enable && yarn install --immutable
+      - name: Install Dependencies
+        run: yarn install --immutable
 
       - name: Populate Config
         run: echo $FIREBASE_CONFIG_JSON > maths-club-app/src/environments/firebaseConfig.json

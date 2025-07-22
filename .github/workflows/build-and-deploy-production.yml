@@ -1,4 +1,5 @@
 # Create production builds for web, ios and android, and deploy to relevant providers
+# TODO - consider gradle/swift caches as well - https://github.com/actions/cache/blob/main/examples.md#java---gradle
 name: Build and Deploy Production
 on:
   release:
@@ -11,13 +12,14 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
-        # TODO - consider gradle/swift caches as well - https://github.com/actions/cache/blob/main/examples.md#java---gradle
+      - name: Enable Corepack
+        run: corepack enable
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: "yarn"
       - name: Install Dependencies
-        run: corepack enable && yarn install
+        run: yarn install --immutable
       - name: Populate Config
         run: echo $FIREBASE_CONFIG_JSON > maths-club-app/src/environments/firebaseConfig.json
         env:
@@ -60,12 +62,14 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: maths-club-app
+      - name: Enable Corepack
+        run: corepack enable
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: "yarn"
       - name: Install Dependencies
-        run: corepack enable && yarn install --silent
+        run: yarn install --immutable
       - name: Sync capacitor plugins
         run: npx cap sync android
       - name: Set up JDK 21
@@ -106,12 +110,14 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: maths-club-app
+      - name: Enable Corepack
+        run: corepack enable
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: "yarn"
       - name: Install Dependencies
-        run: corepack enable && yarn install --silent
+        run: yarn install --immutable
       - name: Sync capacitor plugins
         run: npx cap sync ios
       - name: Setup environment
