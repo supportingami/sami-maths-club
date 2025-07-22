@@ -13,7 +13,7 @@ public class StatusBarUtil {
    * Adds a colored overlay behind the status bar to ensure system icons are visible.
    * This reverts changes from Android 15 edge-to-edge, but can be used with transparent color
    * https://developer.android.com/develop/ui/views/layout/edge-to-edge
-   * 
+   *
    * @param activity The activity to which the overlay should be added.
    * @param colorString The overlay color as a string (e.g., "#8003a9f4" for 50% transparent #03a9f4).
    */

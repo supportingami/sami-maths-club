@@ -26,7 +26,9 @@ public class MainActivity extends BridgeActivity {
         new SplashDelay().run(SPLASH_DELAY, content);
     }
 
-    // Apply status bar inset to root view
-    StatusBarUtil.addStatusBarOverlay(this,"#03a9f4");
+    // Add overlay to replace default edge-to-edge handling
+    if (android.os.Build.VERSION.SDK_INT >= 35) {
+      StatusBarUtil.addStatusBarOverlay(this,"#03a9f4");
+    }
   }
 }
