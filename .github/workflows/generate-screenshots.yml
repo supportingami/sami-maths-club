@@ -14,7 +14,7 @@ jobs:
           node-version: 22
           cache: "yarn"
       - name: Install Dependencies
-        run: yarn install
+        run: corepack enable && yarn install
       - name: Populate Config
         run: echo $FIREBASE_CONFIG_JSON > maths-club-app/src/environments/firebaseConfig.json
         env:
@@ -45,7 +45,7 @@ jobs:
           node-version: 22
           cache: "yarn"
       - name: Install Dependencies
-        run: yarn install --silent
+        run: corepack enable && yarn install --silent
       - name: Sync capacitor plugins
         run: npx cap sync ios
       - name: Setup environment
@@ -89,7 +89,7 @@ jobs:
           node-version: 22
           cache: "yarn"
       - name: Install Dependencies
-        run: yarn install --silent
+        run: corepack enable && yarn install --silent
       - name: Sync capacitor plugins
         run: npx cap sync android
 

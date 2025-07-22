@@ -26,7 +26,7 @@ jobs:
           cache: "yarn"
 
       - name: Install node modules
-        run: yarn install --immutable
+        run: corepack enable && yarn install --immutable
 
       - name: Populate Config
         run: echo $FIREBASE_CONFIG_JSON > maths-club-app/src/environments/firebaseConfig.json
