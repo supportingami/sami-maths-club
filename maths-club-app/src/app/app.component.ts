@@ -87,7 +87,7 @@ export class AppComponent implements AfterViewInit {
     this.crashlytics.init();
     this.analytics.init();
     if (Capacitor.getPlatform() === "web") {
-      this.toggleAppOpenTargetSheet();
+      // this.toggleAppOpenTargetSheet();
     }
   }
 
@@ -111,6 +111,11 @@ export class AppComponent implements AfterViewInit {
   }
 
   /**
+   * @deprecated - Firestore Dynamic Links end of service August 2025
+   * Will need alternative approach in future, likely combination of universal links
+   * smart banners and dynamic links
+   * https://claude.ai/public/artifacts/32e8c795-73ca-48e4-a07e-7f04e813dc31
+   *
    * Present a bottom sheet to encourage user to use native version of app if running
    * on mobile
    */
